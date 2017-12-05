@@ -84,7 +84,7 @@ MERGED from [com.github.zackratos.ultimatebar:ultimatebar2:2.0.0] C:\Users\Admin
 	android:theme
 		ADDED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\AndroidManifest.xml:23:9-52
 	android:name
-		ADDED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\AndroidManifest.xml:17:9-38
+		ADDED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\AndroidManifest.xml:17:9-47
 activity#com.vegetablestrading.activity.LoginActivity
 ADDED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\AndroidManifest.xml:24:9-30:20
 	android:name
@@ -119,12 +119,12 @@ ADDED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\Android
 		ADDED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\AndroidManifest.xml:38:13-74
 	android:name
 		ADDED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\AndroidManifest.xml:37:13-60
-activity#com.vegetablestrading.MainActivity
+activity#com.vegetablestrading.activity.MainActivity
 ADDED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\AndroidManifest.xml:41:9-43:60
 	android:label
 		ADDED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\AndroidManifest.xml:43:13-57
 	android:name
-		ADDED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\AndroidManifest.xml:42:13-41
+		ADDED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\AndroidManifest.xml:42:13-50
 activity#com.vegetablestrading.activity.RegistActivity
 ADDED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\AndroidManifest.xml:44:9-61
 	android:name

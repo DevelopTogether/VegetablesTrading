@@ -31,8 +31,12 @@ import com.vegetablestrading.utils.DaoUtils;
 import com.vegetablestrading.utils.PublicUtils;
 import com.vegetablestrading.utils.SharedPreferencesHelper;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
+import static com.vegetablestrading.utils.CalendarUtil.GetWeekFromDate;
 import static com.vegetablestrading.utils.CalendarUtil.compareTime;
 
 /**
@@ -74,7 +78,7 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         mContext = getActivity();
         sharedPreferencesHelper = new SharedPreferencesHelper(mContext, "TRADEABLE");
-        daoUtil = new DaoUtils(mContext,"");
+        daoUtil = new DaoUtils(mContext, "");
         putTransportVegetableInfoToSqlite();
 
     }
@@ -83,19 +87,25 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
      * 初始化按钮状态
      */
     private void initUntradeThisWeekButtonStatus() {
-        if (sharedPreferencesHelper.getBoolean("UN_TRADE", false)) {
-            mUnTradeThisWeekTv.setEnabled(false);
-            mUnTradeThisWeekTv.setBackgroundResource(R.drawable.cancel_regist_shape);
-            if (compareTime(CalendarUtil.getCurrentTime(), sharedPreferencesHelper.getString("THIS_DAY_WEEK", ""))) {
+        if (conditionOfUnTradeThisWeek()) {
+            if (sharedPreferencesHelper.getBoolean("UN_TRADE", false)) {
+                mUnTradeThisWeekTv.setEnabled(false);
+                mUnTradeThisWeekTv.setBackgroundResource(R.drawable.cancel_regist_shape);
+                if (compareTime(CalendarUtil.getCurrentTime(), sharedPreferencesHelper.getString("THIS_DAY_WEEK", ""))) {
+                    mUnTradeThisWeekTv.setEnabled(true);
+                    mUnTradeThisWeekTv.setBackgroundResource(R.drawable.app_exit_shape);
+                    sharedPreferencesHelper.putBoolean("UN_TRADE", false);
+                }
+            } else {
                 mUnTradeThisWeekTv.setEnabled(true);
                 mUnTradeThisWeekTv.setBackgroundResource(R.drawable.app_exit_shape);
                 sharedPreferencesHelper.putBoolean("UN_TRADE", false);
             }
-        } else {
-            mUnTradeThisWeekTv.setEnabled(true);
-            mUnTradeThisWeekTv.setBackgroundResource(R.drawable.app_exit_shape);
-            sharedPreferencesHelper.putBoolean("UN_TRADE", false);
+        }else{
+            mUnTradeThisWeekTv.setBackgroundResource(R.drawable.cancel_regist_shape);
+            mUnTradeThisWeekTv.setEnabled(false);
         }
+
     }
 
     @Nullable
@@ -134,6 +144,7 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
         mSelectedDateLl.setOnClickListener(this);
         mUnTradeThisWeekTv = (TextView) view.findViewById(R.id.unTradeThisWeek_tv);
         mUnTradeThisWeekTv.setOnClickListener(this);
+
         mDefaultTab1Ll = (LinearLayout) view.findViewById(R.id.default_tab1_ll);
         mVegetablesRv = (RecyclerView) view.findViewById(R.id.vegetables_rv);
         initDataForAdapter();
@@ -153,6 +164,33 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
                 unTradeThisWeekDialog();
                 break;
         }
+    }
+
+    /**
+     * 本周不配送的条件
+     *
+     * @return
+     */
+    private boolean conditionOfUnTradeThisWeek() {
+        boolean clickable = false;
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat form = new SimpleDateFormat("yyyy年MM月dd日");
+        Date date = calendar.getTime();
+        String date_str = form.format(date);
+        String week = GetWeekFromDate(date_str);
+        if ("星期四".equals(week)) {
+            if (CalendarUtil.compareTime(CalendarUtil.getCurrentTime(), CalendarUtil.getTimeMidOfDay())) {
+                clickable = false;
+            } else {
+                clickable = true;
+            }
+        } else if ("星期五".equals(week) || "星期六".equals(week) || "星期日".equals(week)) {
+            clickable = false;
+        } else {
+            clickable = true;
+        }
+
+        return clickable;
     }
 
     /**
@@ -271,10 +309,10 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
     /**
      * 将配送蔬菜信息保存本地
      */
-    private void putTransportVegetableInfoToSqlite(){
+    private void putTransportVegetableInfoToSqlite() {
         daoUtil.deleteAllEntity(TransportVegetableInfo.class);
         daoUtil.insertMultEntity(getTransportVegetables());
-     ArrayList<TransportVegetableInfo>  arrays =  daoUtil.listAllTransportVatetables();
+        ArrayList<TransportVegetableInfo> arrays = daoUtil.listAllTransportVatetables();
         arrays.size();
 
     }
@@ -282,7 +320,7 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
     /**
      * 初始化adapter数据
      */
-    private void initDataForAdapter(){
+    private void initDataForAdapter() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
         mVegetablesRv.setLayoutManager(linearLayoutManager);
         adapter = new TransportListAdapter(mContext);
@@ -319,7 +357,7 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
 //                        }
 //                    });
 
-        }else{//没有网络的情况下读取数据库里面的数据
+        } else {//没有网络的情况下读取数据库里面的数据
             adapter.setData(daoUtil.listAllTransportVatetables());
         }
     }

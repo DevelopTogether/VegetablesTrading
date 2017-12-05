@@ -38,6 +38,18 @@ public class CalendarUtil {
     }
 
     /**
+     * 获取当天12点的时间
+     *
+     * @return
+     */
+    public static String getTimeMidOfDay() {
+        Calendar ca = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(ca.getTime())+" "+"12:00:00";
+
+    }
+
+    /**
      * 获取本周的第一天||上周的最后一天
      *
      * @return
@@ -81,7 +93,7 @@ public class CalendarUtil {
     /**
      * 通过日期获取对应的星期
      *
-     * @param time
+     * @param time yyyy年MM月dd日
      * @return
      */
     public static String GetWeekFromDate(String time) {
@@ -142,8 +154,8 @@ public class CalendarUtil {
     /**
      * 比较两个时间串的大小
      *
-     * @param startTime 开始时间
-     * @param endTime   结束时间
+     * @param startTime 开始时间yyyy-MM-dd HH:mm:ss
+     * @param endTime   结束时间yyyy-MM-dd HH:mm:ss
      * @return
      */
     public static boolean compareTime(String startTime, String endTime) {
@@ -202,7 +214,7 @@ public class CalendarUtil {
                 Date endDate = simpleDateFormat.parse(time);
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTime(endDate);
-                calendar.add(Calendar.DAY_OF_YEAR,1);
+                calendar.add(Calendar.DAY_OF_YEAR, 1);
                 return sdf.format(calendar.getTime());
             } catch (ParseException e) {
                 e.printStackTrace();
@@ -212,6 +224,7 @@ public class CalendarUtil {
         }
         return time_info;
     }
+
     /**
      * 将yyyy年MM月dd日格式的日期转换为yyyy-MM-dd
      */
@@ -219,12 +232,12 @@ public class CalendarUtil {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日");
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String time_info = "";
-            try {
-                Date startDate = simpleDateFormat.parse(time);
-                return sdf.format(startDate);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
+        try {
+            Date startDate = simpleDateFormat.parse(time);
+            return sdf.format(startDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         return time_info;
     }
 
