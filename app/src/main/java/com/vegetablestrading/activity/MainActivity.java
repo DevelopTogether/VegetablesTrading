@@ -1,4 +1,4 @@
-package com.vegetablestrading;
+package com.vegetablestrading.activity;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.vegetablestrading.R;
 import com.vegetablestrading.fragment.FragmentTab1;
 import com.vegetablestrading.fragment.FragmentTab2;
 import com.vegetablestrading.fragment.FragmentTab3;

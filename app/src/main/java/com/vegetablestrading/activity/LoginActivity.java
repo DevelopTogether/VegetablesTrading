@@ -10,7 +10,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.github.zackratos.ultimatebar.UltimateBar;
-import com.vegetablestrading.MainActivity;
 import com.vegetablestrading.R;
 import com.vegetablestrading.utils.SharedPreferencesHelper;
 
