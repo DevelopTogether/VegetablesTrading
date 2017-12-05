@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f1f1f1"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/app_top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"></include>
+
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/app_logo" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="蔬菜配送系统"
+                android:textColor="@android:color/black"
+                android:textSize="26sp" />
+
+            <TextView
+                android:id="@+id/version_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:text="当前版本号:1.0.0"
+                android:textSize="18sp" />
+
+            <com.vegetablestrading.customViews.CustomView
+                android:id="@+id/check_update_cv"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="30dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                app:left_button_text="检查更新"
+                app:left_button_text_color="#000000"
+                app:right_button_drawable="@drawable/arrow_right"
+                app:right_button_text_color="#000000"></com.vegetablestrading.customViews.CustomView>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#000000"></View>
+
+            <com.vegetablestrading.customViews.CustomView
+                android:id="@+id/web_url_cv"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                app:left_button_text="官方网站"
+                app:left_button_text_color="#000000"
+                app:right_button_text="www.bukengnikengshui.com"
+                app:right_button_text_color="#6F6F6F"></com.vegetablestrading.customViews.CustomView>
+        </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                android:text="北京京工科贸 版权所有"
+                android:textSize="14sp" />
+</LinearLayout>

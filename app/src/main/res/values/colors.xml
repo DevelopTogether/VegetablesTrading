@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2AA146</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="navigition_normal">#E5E5E5</color>
+    <color name="navigition_press">#FFFFFF</color>
+    <color name="app_green">#2AA146</color>
+    <color name="app_red">#A90004</color>
+    <color name="app_black">#000000</color>
+    <color name="blue">#2367C9</color>
+
+</resources>

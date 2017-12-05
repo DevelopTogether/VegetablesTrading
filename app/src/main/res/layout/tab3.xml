@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <include
+        layout="@layout/app_top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"></include>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/shopping_trolley_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginTop="1dp"
+        android:background="@android:color/white"></android.support.v7.widget.RecyclerView>
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:background="#f1f1f1"
+    android:layout_height="50dp">
+    <RadioButton
+        android:layout_marginLeft="15dp"
+        android:id="@+id/select_all_rb"
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:textSize="16sp"
+        android:text="  全选"
+        android:textColor="@color/app_black"
+        android:button="@drawable/checkbox_select_status"
+        />
+    <TextView
+        android:id="@+id/total_sum_tv"
+        android:layout_toLeftOf="@+id/comfirmToPay"
+        android:paddingRight="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="合计：100元"
+        android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_alignParentRight="true"
+        android:id="@+id/comfirmToPay"
+        android:layout_marginLeft="10dp"
+        android:paddingLeft="35dp"
+        android:paddingRight="35dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="结算"
+        android:gravity="center"
+        android:background="@color/app_red"
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
+
+</RelativeLayout>
+</LinearLayout>

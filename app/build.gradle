@@ -1,0 +1,61 @@
+apply plugin: 'com.android.application'
+//使用greendao
+apply plugin: 'org.greenrobot.greendao'
+android {
+    compileSdkVersion 25
+    buildToolsVersion "26.0.0"
+    defaultConfig {
+        applicationId "com.vegetablestrading"
+        minSdkVersion 19
+        targetSdkVersion 21
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+//属性介绍：
+//schemaVersion--> 指定数据库schema版本号，迁移等操作会用到;
+//daoPackage --> dao的包名，包名默认是entity所在的包；
+//targetGenDir --> 生成数据库文件的目录;
+
+greendao {
+    schemaVersion 1
+    daoPackage 'com.vegetablestrading'
+    targetGenDir 'src/main/java'
+}
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    compile(name: 'chose_address1128', ext: 'aar')
+    compile(name: 'checkToUpdateApp', ext: 'aar')
+
+    compile 'com.zhy:okhttputils:2.6.2'
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support:support-v4:25.3.1'
+    compile 'com.android.support:design:25.3.1'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.github.zackratos.ultimatebar:ultimatebar2:2.0.0'
+    testCompile 'junit:junit:4.12'
+    compile 'org.greenrobot:greendao:3.2.2'
+    compile 'org.greenrobot:greendao-generator:3.2.2'
+
+    compile 'com.google.code.gson:gson:2.6.2'
+}

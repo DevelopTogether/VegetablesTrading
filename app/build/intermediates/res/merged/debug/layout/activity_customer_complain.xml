@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f1f1f1"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/app_top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"></include>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#ffffff"
+       ></View>
+
+    <TextView
+        android:id="@+id/complain_mobile_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp"
+        android:text="官方投诉电话:      400-888-888"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#ffffff"></View>
+
+    <TextView
+        android:id="@+id/complain_title_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:text="投诉标题"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/complain_title_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/note_info_tv"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/et_bg_shape"
+        android:gravity="left"
+        android:hint="输入投诉的标题"
+        android:maxLength="20"
+        android:maxLines="4"
+        android:paddingBottom="8dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="8dp"
+        android:singleLine="true"
+        android:textColorHint="#c1c1c1"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:text="投诉类型"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <RadioGroup
+            android:id="@+id/complain_type_rg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+
+            android:paddingRight="20dp">
+
+            <RadioButton
+                android:id="@+id/quality_problem_rv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@drawable/radio_button_select"
+                android:checked="true"
+                android:paddingLeft="5dp"
+                android:text="质量问题" />
+
+            <RadioButton
+                android:id="@+id/after_sale_problem_rv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@drawable/radio_button_select"
+                android:paddingLeft="5dp"
+                android:text="售后问题" />
+
+            <RadioButton
+                android:id="@+id/transport_problem_rv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@drawable/radio_button_select"
+                android:paddingLeft="5dp"
+                android:text="配送问题" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="30dp"
+    >
+
+        <TextView
+            android:id="@+id/complain_info_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:paddingBottom="10dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:text="投诉详情"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/complain_info_et"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_below="@+id/complain_info_tv"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/et_bg_shape"
+            android:gravity="left"
+            android:hint="至少输入5个字，最多50个字"
+            android:maxLength="50"
+            android:maxLines="4"
+            android:paddingLeft="5dp"
+            android:paddingTop="3dp"
+            android:textColorHint="#c1c1c1"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/confirm_complain_tv"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/complain_info_et"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/bt_pressed_selecter"
+            android:gravity="center"
+            android:text="提交投诉"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+</LinearLayout>
