@@ -10,6 +10,7 @@ import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.database.DatabaseStatement;
 
 import com.vegetablestrading.bean.LogisticsInfoConvert;
+import com.vegetablestrading.bean.TransportVegetableInfoConvert;
 import java.util.List;
 
 import com.vegetablestrading.bean.TransportRecord;
@@ -31,21 +32,23 @@ public class TransportRecordDao extends AbstractDao<TransportRecord, Long> {
         public final static Property LogisticsNo = new Property(1, String.class, "LogisticsNo", false, "LOGISTICS_NO");
         public final static Property LogisticsName = new Property(2, String.class, "LogisticsName", false, "LOGISTICS_NAME");
         public final static Property LogisticsInfos = new Property(3, String.class, "logisticsInfos", false, "LOGISTICS_INFOS");
-        public final static Property TransportPeople = new Property(4, String.class, "transportPeople", false, "TRANSPORT_PEOPLE");
-        public final static Property TransportPeopleMobile = new Property(5, String.class, "transportPeopleMobile", false, "TRANSPORT_PEOPLE_MOBILE");
-        public final static Property TransportTime = new Property(6, String.class, "transportTime", false, "TRANSPORT_TIME");
-        public final static Property TransportInfo = new Property(7, String.class, "transportInfo", false, "TRANSPORT_INFO");
-        public final static Property PetName = new Property(8, String.class, "petName", false, "PET_NAME");
-        public final static Property Mobile = new Property(9, String.class, "mobile", false, "MOBILE");
-        public final static Property Address = new Property(10, String.class, "address", false, "ADDRESS");
-        public final static Property ResidualIntegral = new Property(11, String.class, "residualIntegral", false, "RESIDUAL_INTEGRAL");
-        public final static Property RelayBoxNo = new Property(12, String.class, "relayBoxNo", false, "RELAY_BOX_NO");
-        public final static Property OperatingPeople = new Property(13, String.class, "operatingPeople", false, "OPERATING_PEOPLE");
-        public final static Property OperateTime = new Property(14, String.class, "operateTime", false, "OPERATE_TIME");
-        public final static Property NoteInfo = new Property(15, String.class, "noteInfo", false, "NOTE_INFO");
+        public final static Property TransportVegetableInfos = new Property(4, String.class, "transportVegetableInfos", false, "TRANSPORT_VEGETABLE_INFOS");
+        public final static Property TransportPeople = new Property(5, String.class, "transportPeople", false, "TRANSPORT_PEOPLE");
+        public final static Property TransportPeopleMobile = new Property(6, String.class, "transportPeopleMobile", false, "TRANSPORT_PEOPLE_MOBILE");
+        public final static Property TransportTime = new Property(7, String.class, "transportTime", false, "TRANSPORT_TIME");
+        public final static Property TransportInfo = new Property(8, String.class, "transportInfo", false, "TRANSPORT_INFO");
+        public final static Property PetName = new Property(9, String.class, "petName", false, "PET_NAME");
+        public final static Property Mobile = new Property(10, String.class, "mobile", false, "MOBILE");
+        public final static Property Address = new Property(11, String.class, "address", false, "ADDRESS");
+        public final static Property ResidualIntegral = new Property(12, String.class, "residualIntegral", false, "RESIDUAL_INTEGRAL");
+        public final static Property RelayBoxNo = new Property(13, String.class, "relayBoxNo", false, "RELAY_BOX_NO");
+        public final static Property OperatingPeople = new Property(14, String.class, "operatingPeople", false, "OPERATING_PEOPLE");
+        public final static Property OperateTime = new Property(15, String.class, "operateTime", false, "OPERATE_TIME");
+        public final static Property NoteInfo = new Property(16, String.class, "noteInfo", false, "NOTE_INFO");
     }
 
     private final LogisticsInfoConvert logisticsInfosConverter = new LogisticsInfoConvert();
+    private final TransportVegetableInfoConvert transportVegetableInfosConverter = new TransportVegetableInfoConvert();
 
     public TransportRecordDao(DaoConfig config) {
         super(config);
@@ -63,18 +66,19 @@ public class TransportRecordDao extends AbstractDao<TransportRecord, Long> {
                 "\"LOGISTICS_NO\" TEXT NOT NULL ," + // 1: LogisticsNo
                 "\"LOGISTICS_NAME\" TEXT," + // 2: LogisticsName
                 "\"LOGISTICS_INFOS\" TEXT," + // 3: logisticsInfos
-                "\"TRANSPORT_PEOPLE\" TEXT," + // 4: transportPeople
-                "\"TRANSPORT_PEOPLE_MOBILE\" TEXT," + // 5: transportPeopleMobile
-                "\"TRANSPORT_TIME\" TEXT," + // 6: transportTime
-                "\"TRANSPORT_INFO\" TEXT," + // 7: transportInfo
-                "\"PET_NAME\" TEXT," + // 8: petName
-                "\"MOBILE\" TEXT," + // 9: mobile
-                "\"ADDRESS\" TEXT," + // 10: address
-                "\"RESIDUAL_INTEGRAL\" TEXT," + // 11: residualIntegral
-                "\"RELAY_BOX_NO\" TEXT," + // 12: relayBoxNo
-                "\"OPERATING_PEOPLE\" TEXT," + // 13: operatingPeople
-                "\"OPERATE_TIME\" TEXT," + // 14: operateTime
-                "\"NOTE_INFO\" TEXT);"); // 15: noteInfo
+                "\"TRANSPORT_VEGETABLE_INFOS\" TEXT," + // 4: transportVegetableInfos
+                "\"TRANSPORT_PEOPLE\" TEXT," + // 5: transportPeople
+                "\"TRANSPORT_PEOPLE_MOBILE\" TEXT," + // 6: transportPeopleMobile
+                "\"TRANSPORT_TIME\" TEXT," + // 7: transportTime
+                "\"TRANSPORT_INFO\" TEXT," + // 8: transportInfo
+                "\"PET_NAME\" TEXT," + // 9: petName
+                "\"MOBILE\" TEXT," + // 10: mobile
+                "\"ADDRESS\" TEXT," + // 11: address
+                "\"RESIDUAL_INTEGRAL\" TEXT," + // 12: residualIntegral
+                "\"RELAY_BOX_NO\" TEXT," + // 13: relayBoxNo
+                "\"OPERATING_PEOPLE\" TEXT," + // 14: operatingPeople
+                "\"OPERATE_TIME\" TEXT," + // 15: operateTime
+                "\"NOTE_INFO\" TEXT);"); // 16: noteInfo
     }
 
     /** Drops the underlying database table. */
@@ -103,64 +107,69 @@ public class TransportRecordDao extends AbstractDao<TransportRecord, Long> {
             stmt.bindString(4, logisticsInfosConverter.convertToDatabaseValue(logisticsInfos));
         }
  
+        List transportVegetableInfos = entity.getTransportVegetableInfos();
+        if (transportVegetableInfos != null) {
+            stmt.bindString(5, transportVegetableInfosConverter.convertToDatabaseValue(transportVegetableInfos));
+        }
+ 
         String transportPeople = entity.getTransportPeople();
         if (transportPeople != null) {
-            stmt.bindString(5, transportPeople);
+            stmt.bindString(6, transportPeople);
         }
  
         String transportPeopleMobile = entity.getTransportPeopleMobile();
         if (transportPeopleMobile != null) {
-            stmt.bindString(6, transportPeopleMobile);
+            stmt.bindString(7, transportPeopleMobile);
         }
  
         String transportTime = entity.getTransportTime();
         if (transportTime != null) {
-            stmt.bindString(7, transportTime);
+            stmt.bindString(8, transportTime);
         }
  
         String transportInfo = entity.getTransportInfo();
         if (transportInfo != null) {
-            stmt.bindString(8, transportInfo);
+            stmt.bindString(9, transportInfo);
         }
  
         String petName = entity.getPetName();
         if (petName != null) {
-            stmt.bindString(9, petName);
+            stmt.bindString(10, petName);
         }
  
         String mobile = entity.getMobile();
         if (mobile != null) {
-            stmt.bindString(10, mobile);
+            stmt.bindString(11, mobile);
         }
  
         String address = entity.getAddress();
         if (address != null) {
-            stmt.bindString(11, address);
+            stmt.bindString(12, address);
         }
  
         String residualIntegral = entity.getResidualIntegral();
         if (residualIntegral != null) {
-            stmt.bindString(12, residualIntegral);
+            stmt.bindString(13, residualIntegral);
         }
  
         String relayBoxNo = entity.getRelayBoxNo();
         if (relayBoxNo != null) {
-            stmt.bindString(13, relayBoxNo);
+            stmt.bindString(14, relayBoxNo);
         }
  
         String operatingPeople = entity.getOperatingPeople();
         if (operatingPeople != null) {
-            stmt.bindString(14, operatingPeople);
+            stmt.bindString(15, operatingPeople);
         }
  
         String operateTime = entity.getOperateTime();
         if (operateTime != null) {
-            stmt.bindString(15, operateTime);
+            stmt.bindString(16, operateTime);
         }
  
         String noteInfo = entity.getNoteInfo();
         if (noteInfo != null) {
-            stmt.bindString(16, noteInfo);
+            stmt.bindString(17, noteInfo);
         }
     }
 
@@ -184,64 +193,69 @@ public class TransportRecordDao extends AbstractDao<TransportRecord, Long> {
             stmt.bindString(4, logisticsInfosConverter.convertToDatabaseValue(logisticsInfos));
         }
  
+        List transportVegetableInfos = entity.getTransportVegetableInfos();
+        if (transportVegetableInfos != null) {
+            stmt.bindString(5, transportVegetableInfosConverter.convertToDatabaseValue(transportVegetableInfos));
+        }
+ 
         String transportPeople = entity.getTransportPeople();
         if (transportPeople != null) {
-            stmt.bindString(5, transportPeople);
+            stmt.bindString(6, transportPeople);
         }
  
         String transportPeopleMobile = entity.getTransportPeopleMobile();
         if (transportPeopleMobile != null) {
-            stmt.bindString(6, transportPeopleMobile);
+            stmt.bindString(7, transportPeopleMobile);
         }
  
         String transportTime = entity.getTransportTime();
         if (transportTime != null) {
-            stmt.bindString(7, transportTime);
+            stmt.bindString(8, transportTime);
         }
  
         String transportInfo = entity.getTransportInfo();
         if (transportInfo != null) {
-            stmt.bindString(8, transportInfo);
+            stmt.bindString(9, transportInfo);
         }
  
         String petName = entity.getPetName();
         if (petName != null) {
-            stmt.bindString(9, petName);
+            stmt.bindString(10, petName);
         }
  
         String mobile = entity.getMobile();
         if (mobile != null) {
-            stmt.bindString(10, mobile);
+            stmt.bindString(11, mobile);
         }
  
         String address = entity.getAddress();
         if (address != null) {
-            stmt.bindString(11, address);
+            stmt.bindString(12, address);
         }
  
         String residualIntegral = entity.getResidualIntegral();
         if (residualIntegral != null) {
-            stmt.bindString(12, residualIntegral);
+            stmt.bindString(13, residualIntegral);
         }
  
         String relayBoxNo = entity.getRelayBoxNo();
         if (relayBoxNo != null) {
-            stmt.bindString(13, relayBoxNo);
+            stmt.bindString(14, relayBoxNo);
         }
  
         String operatingPeople = entity.getOperatingPeople();
         if (operatingPeople != null) {
-            stmt.bindString(14, operatingPeople);
+            stmt.bindString(15, operatingPeople);
         }
  
         String operateTime = entity.getOperateTime();
         if (operateTime != null) {
-            stmt.bindString(15, operateTime);
+            stmt.bindString(16, operateTime);
         }
  
         String noteInfo = entity.getNoteInfo();
         if (noteInfo != null) {
-            stmt.bindString(16, noteInfo);
+            stmt.bindString(17, noteInfo);
         }
     }
 
@@ -257,18 +271,19 @@ public class TransportRecordDao extends AbstractDao<TransportRecord, Long> {
             cursor.getString(offset + 1), // LogisticsNo
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // LogisticsName
             cursor.isNull(offset + 3) ? null : logisticsInfosConverter.convertToEntityProperty(cursor.getString(offset + 3)), // logisticsInfos
-            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // transportPeople
-            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // transportPeopleMobile
-            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // transportTime
-            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // transportInfo
-            cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // petName
-            cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9), // mobile
-            cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10), // address
-            cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11), // residualIntegral
-            cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12), // relayBoxNo
-            cursor.isNull(offset + 13) ? null : cursor.getString(offset + 13), // operatingPeople
-            cursor.isNull(offset + 14) ? null : cursor.getString(offset + 14), // operateTime
-            cursor.isNull(offset + 15) ? null : cursor.getString(offset + 15) // noteInfo
+            cursor.isNull(offset + 4) ? null : transportVegetableInfosConverter.convertToEntityProperty(cursor.getString(offset + 4)), // transportVegetableInfos
+            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // transportPeople
+            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // transportPeopleMobile
+            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // transportTime
+            cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // transportInfo
+            cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9), // petName
+            cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10), // mobile
+            cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11), // address
+            cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12), // residualIntegral
+            cursor.isNull(offset + 13) ? null : cursor.getString(offset + 13), // relayBoxNo
+            cursor.isNull(offset + 14) ? null : cursor.getString(offset + 14), // operatingPeople
+            cursor.isNull(offset + 15) ? null : cursor.getString(offset + 15), // operateTime
+            cursor.isNull(offset + 16) ? null : cursor.getString(offset + 16) // noteInfo
         );
         return entity;
     }
@@ -279,18 +294,19 @@ public class TransportRecordDao extends AbstractDao<TransportRecord, Long> {
         entity.setLogisticsNo(cursor.getString(offset + 1));
         entity.setLogisticsName(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
         entity.setLogisticsInfos(cursor.isNull(offset + 3) ? null : logisticsInfosConverter.convertToEntityProperty(cursor.getString(offset + 3)));
-        entity.setTransportPeople(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
-        entity.setTransportPeopleMobile(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
-        entity.setTransportTime(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
-        entity.setTransportInfo(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
-        entity.setPetName(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
-        entity.setMobile(cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9));
-        entity.setAddress(cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10));
-        entity.setResidualIntegral(cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11));
-        entity.setRelayBoxNo(cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12));
-        entity.setOperatingPeople(cursor.isNull(offset + 13) ? null : cursor.getString(offset + 13));
-        entity.setOperateTime(cursor.isNull(offset + 14) ? null : cursor.getString(offset + 14));
-        entity.setNoteInfo(cursor.isNull(offset + 15) ? null : cursor.getString(offset + 15));
+        entity.setTransportVegetableInfos(cursor.isNull(offset + 4) ? null : transportVegetableInfosConverter.convertToEntityProperty(cursor.getString(offset + 4)));
+        entity.setTransportPeople(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
+        entity.setTransportPeopleMobile(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
+        entity.setTransportTime(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
+        entity.setTransportInfo(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
+        entity.setPetName(cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9));
+        entity.setMobile(cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10));
+        entity.setAddress(cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11));
+        entity.setResidualIntegral(cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12));
+        entity.setRelayBoxNo(cursor.isNull(offset + 13) ? null : cursor.getString(offset + 13));
+        entity.setOperatingPeople(cursor.isNull(offset + 14) ? null : cursor.getString(offset + 14));
+        entity.setOperateTime(cursor.isNull(offset + 15) ? null : cursor.getString(offset + 15));
+        entity.setNoteInfo(cursor.isNull(offset + 16) ? null : cursor.getString(offset + 16));
      }
     
     @Override

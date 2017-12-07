@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.vegetablestrading.R;
 import com.vegetablestrading.utils.PublicUtils;
 import com.vegetablestrading.utils.SharedPreferencesHelper;
 
@@ -70,12 +69,14 @@ public class EditTestChangedListener implements TextWatcher{
                    if (!PublicUtils.isMobileNO(mString)) {
                        Toast.makeText(context, "手机号格式不正确", Toast.LENGTH_LONG).show();
                        return;
-                   }else{
-                       mTextView.setBackgroundResource(R.drawable.bt_pressed_selecter);
                    }
-               }else{
-                   mTextView.setBackgroundResource(R.drawable.cancel_regist_shape);
+//                   else{
+//                       mTextView.setBackgroundResource(R.drawable.bt_pressed_selecter);
+//                   }
                }
+//               else{
+//                   mTextView.setBackgroundResource(R.drawable.cancel_regist_shape);
+//               }
                break;
            case 1://短信验证码
                if (mString.length()>4) {
@@ -162,15 +163,17 @@ public class EditTestChangedListener implements TextWatcher{
                        }else{
                            if (!savedMobile.equals(mString)) {
                                Toast.makeText(context.getApplicationContext(), "请输入注册时登记的手机号", Toast.LENGTH_SHORT).show();
-                           }else{
-                               mTextView.setBackgroundResource(R.drawable.bt_pressed_selecter);
                            }
+//                           else{
+//                               mTextView.setBackgroundResource(R.drawable.bt_pressed_selecter);
+//                           }
                        }
                    }
 
-               }else{
-                   mTextView.setBackgroundResource(R.drawable.cancel_regist_shape);
                }
+//               else{
+//                   mTextView.setBackgroundResource(R.drawable.cancel_regist_shape);
+//               }
                break;
            default:
                break;

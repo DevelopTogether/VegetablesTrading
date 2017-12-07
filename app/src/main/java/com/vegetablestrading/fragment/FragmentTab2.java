@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -61,12 +62,13 @@ public class FragmentTab2 extends Fragment implements View.OnClickListener {
     private SearchView mShopSearchSv;
     private ShopListAdapter adapter;
     private DaoUtils daoUtil;
+    private SwipeRefreshLayout mSwipeRefreshSl;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = getActivity();
-        daoUtil = new DaoUtils(mContext,"shop_vagetable_info.sqlite");
+        daoUtil = new DaoUtils(mContext, "shop_vagetable_info.sqlite");
         putTransportVegetableInfoToSqlite();
     }
 
@@ -158,7 +160,7 @@ public class FragmentTab2 extends Fragment implements View.OnClickListener {
             @Override
             public void itemClick(TransportVegetableInfo transportVegetableInfo) {
                 if (!PublicUtils.getStatusOfActivated(mContext)) {
-                      PublicUtils.warnActivateDialog(mContext);
+                    PublicUtils.warnActivateDialog(mContext);
                     return;
                 }
             }
@@ -172,7 +174,7 @@ public class FragmentTab2 extends Fragment implements View.OnClickListener {
             }
         });
         mShopVegetablesRv.setAdapter(adapter);
-        mShopVegetablesRv.addItemDecoration(new DividerItemDecoration(mContext,LinearLayoutManager.HORIZONTAL,R.drawable.horizontal_line_grey));
+        mShopVegetablesRv.addItemDecoration(new DividerItemDecoration(mContext, LinearLayoutManager.HORIZONTAL, R.drawable.horizontal_line_grey));
         initDataForAdapter();
         mDefaultTab1Ll = (LinearLayout) view.findViewById(R.id.default_tab1_ll);
         mShopSearchSv = (SearchView) view.findViewById(R.id.shop_search_sv);
@@ -187,25 +189,43 @@ public class FragmentTab2 extends Fragment implements View.OnClickListener {
                 Toast.makeText(mContext, "开始搜寻...", Toast.LENGTH_LONG).show();
             }
         });
+        mSwipeRefreshSl = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_sl);
+        mSwipeRefreshSl.setColorSchemeResources(R.color.colorPrimary);
+        mSwipeRefreshSl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                //TODO 请求数据 更新adapter
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                mSwipeRefreshSl.setRefreshing(false);
+
+            }
+        });
     }
+
     /**
      * 获取配送列表中的蔬菜信息
+     *
      * @return
      */
-    public ArrayList<TransportVegetableInfo> getTransportVegetables(){
+    public ArrayList<TransportVegetableInfo> getTransportVegetables() {
         ArrayList<TransportVegetableInfo> arrays = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            TransportVegetableInfo  bean = new TransportVegetableInfo();
+            TransportVegetableInfo bean = new TransportVegetableInfo();
             bean.setType(TransportVegetableInfo.TRANSPORT_MODE);
-            bean.setVegetableName("白菜"+i);
+            bean.setVegetableName("白菜" + i);
             bean.setVegetablePrice("12.5/kg");
             bean.setVegetableInfo("描述信息faslkdjfasdjfasdjfas;dfja;slkdjfa;sljdfaslkd;jf;askjdfljasdflajs;dfljasdf");
             bean.setTransportStartTime("2017-11-21 12:00:00");
             bean.setTransportEndTime("2017-11-21 12:00:00");
             arrays.add(bean);
         }
-        return  arrays;
+        return arrays;
     }
+
     @Override
     public void onClick(View v) {
         if (!PublicUtils.getStatusOfActivated(mContext)) {
@@ -214,7 +234,7 @@ public class FragmentTab2 extends Fragment implements View.OnClickListener {
         }
         switch (v.getId()) {
             case R.id.top_left_image_iv:
-                if (popupWindow_types==null) {
+                if (popupWindow_types == null) {
                     popupWindow_types = getVegetableTypesDialog();
                 }
 
@@ -305,7 +325,7 @@ public class FragmentTab2 extends Fragment implements View.OnClickListener {
         LayoutInflater inflater = LayoutInflater.from(mContext); // 引入窗口配置文件
         View view = inflater.inflate(R.layout.vegetable_types_layout, null); //
         RecyclerView master_type_rv = (RecyclerView) view.findViewById(R.id.master_type_rv);
-        LinearLayoutManager manager = new LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false);
+        LinearLayoutManager manager = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
         master_type_rv.setLayoutManager(manager);
         VegetableTypeAdapter adapter = new VegetableTypeAdapter();
         adapter.setData(getDataOfVegetableTypes());
@@ -314,13 +334,13 @@ public class FragmentTab2 extends Fragment implements View.OnClickListener {
             @Override
             public void OnVegetableTypeItemClick(String vegetableType) {
                 //TODO 通过关键字（蔬菜类型）请求对应蔬菜
-               Toast.makeText(mContext, "您点击了======"+vegetableType, Toast.LENGTH_LONG).show();
+                Toast.makeText(mContext, "您点击了======" + vegetableType, Toast.LENGTH_LONG).show();
             }
         });
-        master_type_rv.addItemDecoration(new DividerItemDecoration(mContext,LinearLayoutManager.HORIZONTAL,R.drawable.horizontal_line));
-    // 创建PopupWindow对象
+        master_type_rv.addItemDecoration(new DividerItemDecoration(mContext, LinearLayoutManager.HORIZONTAL, R.drawable.horizontal_line));
+        // 创建PopupWindow对象
         final PopupWindow pop = new PopupWindow(view, LinearLayout.LayoutParams.WRAP_CONTENT,
-                PublicUtils.app_height*5/7, false);
+                PublicUtils.app_height * 5 / 7, false);
 
         pop.setOutsideTouchable(false);
         pop.setFocusable(true);
@@ -329,6 +349,7 @@ public class FragmentTab2 extends Fragment implements View.OnClickListener {
 
     /**
      * 获取蔬菜种类列表
+     *
      * @return
      */
     private ArrayList<String> getDataOfVegetableTypes() {
@@ -350,18 +371,20 @@ public class FragmentTab2 extends Fragment implements View.OnClickListener {
         arrays.add(i);
         return arrays;
     }
+
     /**
      * 将配送蔬菜信息保存本地
      */
-    private void putTransportVegetableInfoToSqlite(){
+    private void putTransportVegetableInfoToSqlite() {
         daoUtil.deleteAllEntity(TransportVegetableInfo.class);
         daoUtil.insertMultEntity(getTransportVegetables());
 
     }
+
     /**
      * 初始化adapter数据
      */
-    private void initDataForAdapter(){
+    private void initDataForAdapter() {
         if (PublicUtils.isConnected(mContext)) {
             adapter.setData(daoUtil.listAllTransportVatetables());
             //TODO 从服务端请求配送蔬菜列表信息
@@ -383,7 +406,7 @@ public class FragmentTab2 extends Fragment implements View.OnClickListener {
 //                        }
 //                    });
 
-        }else{//没有网络的情况下读取数据库里面的数据
+        } else {//没有网络的情况下读取数据库里面的数据
             adapter.setData(daoUtil.listAllTransportVatetables());
         }
     }

@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
@@ -72,6 +73,7 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
     private SharedPreferencesHelper sharedPreferencesHelper;
     private TransportListAdapter adapter;
     private DaoUtils daoUtil;
+    private SwipeRefreshLayout mSwipeRefreshSl;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -101,7 +103,7 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
                 mUnTradeThisWeekTv.setBackgroundResource(R.drawable.app_exit_shape);
                 sharedPreferencesHelper.putBoolean("UN_TRADE", false);
             }
-        }else{
+        } else {
             mUnTradeThisWeekTv.setBackgroundResource(R.drawable.cancel_regist_shape);
             mUnTradeThisWeekTv.setEnabled(false);
         }
@@ -148,6 +150,21 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
         mDefaultTab1Ll = (LinearLayout) view.findViewById(R.id.default_tab1_ll);
         mVegetablesRv = (RecyclerView) view.findViewById(R.id.vegetables_rv);
         initDataForAdapter();
+        mSwipeRefreshSl = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_sl);
+        mSwipeRefreshSl.setColorSchemeResources(R.color.colorPrimary);
+        mSwipeRefreshSl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                //TODO 请求数据 更新adapter
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                mSwipeRefreshSl.setRefreshing(false);
+
+            }
+        });
     }
 
     @Override

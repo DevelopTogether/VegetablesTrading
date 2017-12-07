@@ -663,7 +663,7 @@ public final class R {
         public static final int progress_number = 0x7f0d0127;
         public static final int progress_percent = 0x7f0d0126;
         public static final int radio = 0x7f0d0064;
-        public static final int regdialog = 0x7f0d0191;
+        public static final int regdialog = 0x7f0d0192;
         public static final int right_icon = 0x7f0d0154;
         public static final int right_side = 0x7f0d014f;
         public static final int screen = 0x7f0d0028;
@@ -707,10 +707,10 @@ public final class R {
         public static final int top = 0x7f0d0037;
         public static final int topPanel = 0x7f0d005d;
         public static final int up = 0x7f0d000d;
-        public static final int update_later_tv = 0x7f0d0194;
-        public static final int update_rightnow_tv = 0x7f0d0193;
+        public static final int update_later_tv = 0x7f0d0195;
+        public static final int update_rightnow_tv = 0x7f0d0194;
         public static final int useLogo = 0x7f0d0020;
-        public static final int version_description_lv = 0x7f0d0192;
+        public static final int version_description_lv = 0x7f0d0193;
         public static final int withText = 0x7f0d0045;
         public static final int wrap = 0x7f0d0011;
         public static final int wrap_content = 0x7f0d002c;

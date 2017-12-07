@@ -21,6 +21,8 @@ public class TransportRecord {
     private String LogisticsName;//物流名称
     @Convert(columnType = String.class, converter = LogisticsInfoConvert.class)
     private List<LogisticsInfo> logisticsInfos;
+    @Convert(columnType = String.class, converter = TransportVegetableInfoConvert.class)
+    private List<TransportVegetableInfo> transportVegetableInfos;
     private String transportPeople;//配送人
     private String transportPeopleMobile;//配送人电话
     private String transportTime;//配送时间
@@ -33,18 +35,18 @@ public class TransportRecord {
     private String operatingPeople;//操作人
     private String operateTime;//操作时间
     private String noteInfo;//noteInfo
-    @Generated(hash = 1747172944)
-    public TransportRecord(Long id, @NotNull String LogisticsNo,
-            String LogisticsName, List<LogisticsInfo> logisticsInfos,
-            String transportPeople, String transportPeopleMobile,
-            String transportTime, String transportInfo, String petName,
-            String mobile, String address, String residualIntegral,
-            String relayBoxNo, String operatingPeople, String operateTime,
-            String noteInfo) {
+    @Generated(hash = 2000042799)
+    public TransportRecord(Long id, @NotNull String LogisticsNo, String LogisticsName,
+            List<LogisticsInfo> logisticsInfos,
+            List<TransportVegetableInfo> transportVegetableInfos, String transportPeople,
+            String transportPeopleMobile, String transportTime, String transportInfo,
+            String petName, String mobile, String address, String residualIntegral,
+            String relayBoxNo, String operatingPeople, String operateTime, String noteInfo) {
         this.id = id;
         this.LogisticsNo = LogisticsNo;
         this.LogisticsName = LogisticsName;
         this.logisticsInfos = logisticsInfos;
+        this.transportVegetableInfos = transportVegetableInfos;
         this.transportPeople = transportPeople;
         this.transportPeopleMobile = transportPeopleMobile;
         this.transportTime = transportTime;
@@ -156,6 +158,13 @@ public class TransportRecord {
     }
     public void setNoteInfo(String noteInfo) {
         this.noteInfo = noteInfo;
+    }
+    public List<TransportVegetableInfo> getTransportVegetableInfos() {
+        return this.transportVegetableInfos;
+    }
+    public void setTransportVegetableInfos(
+            List<TransportVegetableInfo> transportVegetableInfos) {
+        this.transportVegetableInfos = transportVegetableInfos;
     }
 
 

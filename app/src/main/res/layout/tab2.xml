@@ -34,8 +34,8 @@
                 android:id="@+id/price_priority_ll"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:layout_marginLeft="15dp"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <TextView
@@ -56,17 +56,17 @@
 
             <View
                 android:layout_width="1px"
-                android:layout_margin="5dp"
                 android:layout_height="match_parent"
+                android:layout_margin="5dp"
                 android:background="@color/app_black"></View>
 
             <TextView
                 android:id="@+id/sales_priority_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
+                android:gravity="center"
                 android:text="销量优先"
                 android:textColor="@android:color/black"
                 android:textSize="14sp" />
@@ -81,11 +81,18 @@
                 android:layout_weight="1"></com.vegetablestrading.customViews.SearchView>
         </LinearLayout>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/shop_vegetables_rv"
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh_sl"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="1dp"
-            android:background="@android:color/white"></android.support.v7.widget.RecyclerView>
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/shop_vegetables_rv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="1dp"
+                android:background="@android:color/white"></android.support.v7.widget.RecyclerView>
+        </android.support.v4.widget.SwipeRefreshLayout>
+
     </LinearLayout>
 </LinearLayout>
