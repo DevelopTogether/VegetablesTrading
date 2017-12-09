@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,6 +15,13 @@ import com.checktoupdatedemo.utils.CheckUpdateUtil;
 import com.vegetablestrading.R;
 import com.vegetablestrading.customViews.CustomView;
 import com.vegetablestrading.utils.Constant;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import okhttp3.Call;
 
 
 public class AboutUsActivity extends AppCompatActivity implements View.OnClickListener {
@@ -66,11 +75,50 @@ public class AboutUsActivity extends AppCompatActivity implements View.OnClickLi
                 startActivity(intent);
                 break;
             case R.id.check_update_cv://检查更新
-                CheckUpdateUtil checkUpdateUtil = new CheckUpdateUtil(this, "2.0", Constant.apkDownLoadServerUrl, Constant.downloadApkPath, Constant.appVersionDescription, Constant.unUpdateNotice);
-                if (!checkUpdateUtil.CheckVersionToWarnUpdate()) {
-                    Toast.makeText(getApplicationContext(), "当前版本已是最新版本", Toast.LENGTH_LONG).show();
-                }
+                getApkDownLoadUrl();
                 break;
         }
+    }
+
+    /**
+     * 获取apk的下载路径
+     */
+    private void getApkDownLoadUrl() {
+        OkHttpUtils
+                .post()
+                .url(Constant.checkToUpdate_url)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call cll, Exception e, int id) {
+                        Toast.makeText(AboutUsActivity.this, "网络错误", Toast.LENGTH_LONG).show();
+//                        adapter.setData(daoUtil.listAll(TransportVegetableInfo.class));
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        if (!TextUtils.isEmpty(response)) {
+                            try {
+                                JSONObject obj = new JSONObject(response);
+                                String result = obj.getString("Result");
+                                String softVersion = obj.getString("softwareVersion");
+                                String downloadUrl = obj.getString("downloadUrl");
+                                if ("Ok".equals(result)) {
+                                    CheckUpdateUtil checkUpdateUtil = new CheckUpdateUtil(AboutUsActivity.this, "2.0", Constant.apkDownLoadServerUrl, Constant.downloadApkPath, Constant.appVersionDescription, Constant.unUpdateNotice);
+                                    if (!checkUpdateUtil.CheckVersionToWarnUpdate()) {
+                                        Toast.makeText(getApplicationContext(), "当前版本已是最新版本", Toast.LENGTH_LONG).show();
+                                    }
+                                } else {
+                                    Toast.makeText(AboutUsActivity.this, "网络错误", Toast.LENGTH_LONG).show();
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        Log.e("DEBUG", response);
+
+                    }
+
+                });
     }
 }

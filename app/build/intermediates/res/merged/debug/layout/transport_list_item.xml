@@ -1,25 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/trade_ll"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@android:color/white"
-    android:id="@+id/trade_ll"
     android:orientation="vertical">
 
     <LinearLayout
-        android:layout_marginTop="3dp"
-        android:layout_marginBottom="3dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp"
+        android:layout_marginTop="3dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/vegetable_icon_iv"
+        <android.support.v7.widget.CardView
             android:layout_width="100dp"
+            android:layout_margin="10dp"
             android:layout_height="100dp"
-            android:padding="10dp"
-            android:src="@drawable/app_logo" />
+            app:cardCornerRadius="6dp"
+         >
+
+            <ImageView
+                android:id="@+id/vegetable_icon_iv"
+                android:layout_width="100dp"
+                android:padding="5dp"
+                android:layout_height="100dp"
+                android:src="@drawable/app_logo" />
+        </android.support.v7.widget.CardView>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -46,7 +56,7 @@
                     android:id="@+id/vegetable_weight_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="1.5"
                     android:padding="3dp"
                     android:text="重量：2KG"
                     android:textColor="@android:color/black"

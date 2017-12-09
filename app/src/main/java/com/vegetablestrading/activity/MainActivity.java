@@ -20,6 +20,7 @@ import com.vegetablestrading.fragment.FragmentTab2;
 import com.vegetablestrading.fragment.FragmentTab3;
 import com.vegetablestrading.fragment.FragmentTab4;
 import com.vegetablestrading.interfaces.FinishActivityInterface;
+import com.vegetablestrading.utils.CalendarUtil;
 import com.vegetablestrading.utils.PublicUtils;
 
 import java.util.List;
@@ -72,6 +73,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         PublicUtils.app_width = wm.getDefaultDisplay().getWidth();
         PublicUtils.app_height = wm.getDefaultDisplay().getHeight();
 //        startActivity(new Intent(this, ActivatedActivity.class));
+
+        CalendarUtil.getWeekStartAndWeekEndBaseTime("2017-11-16 10:30:52");
+
     }
 
     /**

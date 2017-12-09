@@ -26,7 +26,7 @@ public class TransportVegetableInfoDao extends AbstractDao<TransportVegetableInf
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property Type = new Property(1, int.class, "Type", false, "TYPE");
-        public final static Property VegetableIconPath = new Property(2, String.class, "vegetableIconPath", false, "VEGETABLE_ICON_PATH");
+        public final static Property VegetableIcon = new Property(2, String.class, "vegetableIcon", false, "VEGETABLE_ICON");
         public final static Property VegetableName = new Property(3, String.class, "vegetableName", false, "VEGETABLE_NAME");
         public final static Property Weight = new Property(4, String.class, "weight", false, "WEIGHT");
         public final static Property VegetablePrice = new Property(5, String.class, "vegetablePrice", false, "VEGETABLE_PRICE");
@@ -53,7 +53,7 @@ public class TransportVegetableInfoDao extends AbstractDao<TransportVegetableInf
         db.execSQL("CREATE TABLE " + constraint + "\"TRANSPORT_VEGETABLE_INFO\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY ," + // 0: id
                 "\"TYPE\" INTEGER NOT NULL ," + // 1: Type
-                "\"VEGETABLE_ICON_PATH\" TEXT," + // 2: vegetableIconPath
+                "\"VEGETABLE_ICON\" TEXT," + // 2: vegetableIcon
                 "\"VEGETABLE_NAME\" TEXT," + // 3: vegetableName
                 "\"WEIGHT\" TEXT," + // 4: weight
                 "\"VEGETABLE_PRICE\" TEXT," + // 5: vegetablePrice
@@ -81,9 +81,9 @@ public class TransportVegetableInfoDao extends AbstractDao<TransportVegetableInf
         }
         stmt.bindLong(2, entity.getType());
  
-        String vegetableIconPath = entity.getVegetableIconPath();
-        if (vegetableIconPath != null) {
-            stmt.bindString(3, vegetableIconPath);
+        String vegetableIcon = entity.getVegetableIcon();
+        if (vegetableIcon != null) {
+            stmt.bindString(3, vegetableIcon);
         }
  
         String vegetableName = entity.getVegetableName();
@@ -142,9 +142,9 @@ public class TransportVegetableInfoDao extends AbstractDao<TransportVegetableInf
         }
         stmt.bindLong(2, entity.getType());
  
-        String vegetableIconPath = entity.getVegetableIconPath();
-        if (vegetableIconPath != null) {
-            stmt.bindString(3, vegetableIconPath);
+        String vegetableIcon = entity.getVegetableIcon();
+        if (vegetableIcon != null) {
+            stmt.bindString(3, vegetableIcon);
         }
  
         String vegetableName = entity.getVegetableName();
@@ -203,7 +203,7 @@ public class TransportVegetableInfoDao extends AbstractDao<TransportVegetableInf
         TransportVegetableInfo entity = new TransportVegetableInfo( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.getInt(offset + 1), // Type
-            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // vegetableIconPath
+            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // vegetableIcon
             cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // vegetableName
             cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // weight
             cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // vegetablePrice
@@ -221,7 +221,7 @@ public class TransportVegetableInfoDao extends AbstractDao<TransportVegetableInf
     public void readEntity(Cursor cursor, TransportVegetableInfo entity, int offset) {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setType(cursor.getInt(offset + 1));
-        entity.setVegetableIconPath(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
+        entity.setVegetableIcon(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
         entity.setVegetableName(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
         entity.setWeight(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
         entity.setVegetablePrice(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));

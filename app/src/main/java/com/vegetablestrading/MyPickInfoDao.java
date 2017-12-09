@@ -25,13 +25,13 @@ public class MyPickInfoDao extends AbstractDao<MyPickInfo, Long> {
      */
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
-        public final static Property PetName = new Property(1, String.class, "petName", false, "PET_NAME");
-        public final static Property Pick_Time = new Property(2, String.class, "pick_Time", false, "PICK__TIME");
+        public final static Property UserName = new Property(1, String.class, "userName", false, "USER_NAME");
+        public final static Property PickTime = new Property(2, String.class, "pickTime", false, "PICK_TIME");
         public final static Property PickPeopleNumber = new Property(3, String.class, "pickPeopleNumber", false, "PICK_PEOPLE_NUMBER");
         public final static Property ResidualPickAmount = new Property(4, String.class, "residualPickAmount", false, "RESIDUAL_PICK_AMOUNT");
         public final static Property OperatingPeople = new Property(5, String.class, "operatingPeople", false, "OPERATING_PEOPLE");
         public final static Property OperateTime = new Property(6, String.class, "operateTime", false, "OPERATE_TIME");
-        public final static Property OperateNote = new Property(7, String.class, "operateNote", false, "OPERATE_NOTE");
+        public final static Property NoteInfo = new Property(7, String.class, "noteInfo", false, "NOTE_INFO");
     }
 
 
@@ -48,13 +48,13 @@ public class MyPickInfoDao extends AbstractDao<MyPickInfo, Long> {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"MY_PICK_INFO\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY ," + // 0: id
-                "\"PET_NAME\" TEXT NOT NULL ," + // 1: petName
-                "\"PICK__TIME\" TEXT," + // 2: pick_Time
+                "\"USER_NAME\" TEXT NOT NULL ," + // 1: userName
+                "\"PICK_TIME\" TEXT," + // 2: pickTime
                 "\"PICK_PEOPLE_NUMBER\" TEXT," + // 3: pickPeopleNumber
                 "\"RESIDUAL_PICK_AMOUNT\" TEXT," + // 4: residualPickAmount
                 "\"OPERATING_PEOPLE\" TEXT," + // 5: operatingPeople
                 "\"OPERATE_TIME\" TEXT," + // 6: operateTime
-                "\"OPERATE_NOTE\" TEXT);"); // 7: operateNote
+                "\"NOTE_INFO\" TEXT);"); // 7: noteInfo
     }
 
     /** Drops the underlying database table. */
@@ -71,11 +71,11 @@ public class MyPickInfoDao extends AbstractDao<MyPickInfo, Long> {
         if (id != null) {
             stmt.bindLong(1, id);
         }
-        stmt.bindString(2, entity.getPetName());
+        stmt.bindString(2, entity.getUserName());
  
-        String pick_Time = entity.getPick_Time();
-        if (pick_Time != null) {
-            stmt.bindString(3, pick_Time);
+        String pickTime = entity.getPickTime();
+        if (pickTime != null) {
+            stmt.bindString(3, pickTime);
         }
  
         String pickPeopleNumber = entity.getPickPeopleNumber();
@@ -98,9 +98,9 @@ public class MyPickInfoDao extends AbstractDao<MyPickInfo, Long> {
             stmt.bindString(7, operateTime);
         }
  
-        String operateNote = entity.getOperateNote();
-        if (operateNote != null) {
-            stmt.bindString(8, operateNote);
+        String noteInfo = entity.getNoteInfo();
+        if (noteInfo != null) {
+            stmt.bindString(8, noteInfo);
         }
     }
 
@@ -112,11 +112,11 @@ public class MyPickInfoDao extends AbstractDao<MyPickInfo, Long> {
         if (id != null) {
             stmt.bindLong(1, id);
         }
-        stmt.bindString(2, entity.getPetName());
+        stmt.bindString(2, entity.getUserName());
  
-        String pick_Time = entity.getPick_Time();
-        if (pick_Time != null) {
-            stmt.bindString(3, pick_Time);
+        String pickTime = entity.getPickTime();
+        if (pickTime != null) {
+            stmt.bindString(3, pickTime);
         }
  
         String pickPeopleNumber = entity.getPickPeopleNumber();
@@ -139,9 +139,9 @@ public class MyPickInfoDao extends AbstractDao<MyPickInfo, Long> {
             stmt.bindString(7, operateTime);
         }
  
-        String operateNote = entity.getOperateNote();
-        if (operateNote != null) {
-            stmt.bindString(8, operateNote);
+        String noteInfo = entity.getNoteInfo();
+        if (noteInfo != null) {
+            stmt.bindString(8, noteInfo);
         }
     }
 
@@ -154,13 +154,13 @@ public class MyPickInfoDao extends AbstractDao<MyPickInfo, Long> {
     public MyPickInfo readEntity(Cursor cursor, int offset) {
         MyPickInfo entity = new MyPickInfo( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
-            cursor.getString(offset + 1), // petName
-            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // pick_Time
+            cursor.getString(offset + 1), // userName
+            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // pickTime
             cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // pickPeopleNumber
             cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // residualPickAmount
             cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // operatingPeople
             cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // operateTime
-            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7) // operateNote
+            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7) // noteInfo
         );
         return entity;
     }
@@ -168,13 +168,13 @@ public class MyPickInfoDao extends AbstractDao<MyPickInfo, Long> {
     @Override
     public void readEntity(Cursor cursor, MyPickInfo entity, int offset) {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
-        entity.setPetName(cursor.getString(offset + 1));
-        entity.setPick_Time(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
+        entity.setUserName(cursor.getString(offset + 1));
+        entity.setPickTime(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
         entity.setPickPeopleNumber(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
         entity.setResidualPickAmount(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
         entity.setOperatingPeople(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
         entity.setOperateTime(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
-        entity.setOperateNote(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
+        entity.setNoteInfo(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
      }
     
     @Override

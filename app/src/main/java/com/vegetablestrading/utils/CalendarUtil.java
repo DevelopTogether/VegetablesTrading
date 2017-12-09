@@ -45,7 +45,7 @@ public class CalendarUtil {
     public static String getTimeMidOfDay() {
         Calendar ca = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        return sdf.format(ca.getTime())+" "+"12:00:00";
+        return sdf.format(ca.getTime()) + " " + "12:00:00";
 
     }
 
@@ -194,6 +194,29 @@ public class CalendarUtil {
             e.printStackTrace();
         }
         return false;
+    }
+
+    /**
+     * 根据传入的日期，得到对应的日期
+     *
+     * @param time 一个日期 yyyy-MM-dd HH:mm:ss
+     */
+    public static String[] getWeekStartAndWeekEndBaseTime(String time) {
+        StringBuffer sb = new StringBuffer();
+        Calendar ca = getCalendar();
+        try {
+            Date date = sdf.parse(time);
+            ca.setTime(date);
+            ca.set(Calendar.DAY_OF_WEEK, ca.getFirstDayOfWeek() + 1);
+            String time_start = sdf.format(ca.getTime());
+            sb.append(time_start + ",");
+            ca.add(Calendar.DAY_OF_WEEK, 6);
+            String time_end = sdf.format(ca.getTime());
+            sb.append(time_end);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return sb.toString().split(",");
     }
 
     /**

@@ -27,4 +27,11 @@ public class Constant {
     public static String transportVegetablesByDate_url = company_url + "/index.php/Home/vegetableshop/transportVegetablesByDate.html";
     public static String applyOfTransport_url = company_url + "/index.php/Home/vegetableshop/applyOfTransport.html";
     public static String applyRecordOfMin_url = company_url + "/index.php/Home/vegetableshop/applyRecordOfMine.html";
+    public static String pickRecord_url = company_url + "/index.php/Home/vegetableshop/pickRecord.html";
+    public static String transportRecord_url = company_url + "/index.php/Home/vegetableshop/transportRecord.html";
+    public static String logisticsInfo_url = company_url + "/index.php/Home/vegetableshop/transportRecord/index.php/Home/vegetableshop/logisticsInfo.html";
+    public static String checkToUpdate_url = company_url + "/index.php/Home/vegetableshop/checkToUpdate.html";
+    public static String applyforRefund_url = company_url + "/index.php/Home/vegetableshop/applyforRefund.html";
+
+
 }

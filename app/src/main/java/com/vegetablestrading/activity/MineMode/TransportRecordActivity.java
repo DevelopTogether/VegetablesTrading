@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,11 +15,21 @@ import android.widget.Toast;
 import com.vegetablestrading.R;
 import com.vegetablestrading.adapter.DividerItemDecoration;
 import com.vegetablestrading.adapter.TransportRecordAdapter;
-import com.vegetablestrading.bean.LogisticsInfo;
 import com.vegetablestrading.bean.TransportRecord;
+import com.vegetablestrading.utils.CalendarUtil;
+import com.vegetablestrading.utils.Constant;
+import com.vegetablestrading.utils.DaoUtils;
+import com.vegetablestrading.utils.GsonUtils;
 import com.vegetablestrading.utils.PublicUtils;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+
+import okhttp3.Call;
 
 import static com.vegetablestrading.R.id.top_left_image_iv;
 
@@ -34,13 +46,16 @@ public class TransportRecordActivity extends AppCompatActivity implements View.O
     private ImageView mTopRightImageIv;
     private RecyclerView mTransportRecordRv;
     private TransportRecordAdapter adapter;
+    private DaoUtils daoUtil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transport);
+        daoUtil = new DaoUtils(this, "");
         initView();
         initActionBar();
+
     }
 
     /**
@@ -61,7 +76,7 @@ public class TransportRecordActivity extends AppCompatActivity implements View.O
         mTransportRecordRv.setLayoutManager(manager);
         adapter = new TransportRecordAdapter();
         mTransportRecordRv.setAdapter(adapter);
-        adapter.setData(getTransportRecordData());
+        transportRecordsByDate("2017-11-5 10:30:22", CalendarUtil.getCurrentTime());
         adapter.setTransportRecordItemClick(new TransportRecordAdapter.TransportRecordItemClick() {
             @Override
             public void itemClick(TransportRecord transportRecord) {//item点击事件
@@ -83,12 +98,12 @@ public class TransportRecordActivity extends AppCompatActivity implements View.O
             TransportRecord bean = new TransportRecord();
             bean.setLogisticsNo("物流单号：110121211000200"+i);
             bean.setLogisticsName("顺丰快递");
-            bean.setLogisticsInfos(getLogisticsInfos());
+//            bean.setLogisticsInfos(getLogisticsInfos());
             bean.setTransportPeople("配送人：王彬");
             bean.setTransportPeopleMobile("配送人电话：15311810032");
             bean.setTransportTime("配送时间：2017-11-20 14:21:30");
             bean.setTransportInfo("配送备注：多送点香菜");
-            bean.setPetName("收件人：王司令");
+            bean.setUserName("收件人：王司令");
             bean.setMobile("收件人电话：18888888888");
             bean.setAddress("收件人地址：北京市海淀区增光路30号");
             bean.setResidualIntegral(i+"");
@@ -114,19 +129,59 @@ public class TransportRecordActivity extends AppCompatActivity implements View.O
         }
     }
 
+
     /**
-     * 获取配送列表中的蔬菜信息
+     * 根据起始时间获取配送记录
      *
-     * @return
+     * @param startTime
+     * @param endTime
      */
-    public ArrayList<LogisticsInfo> getLogisticsInfos() {
-        ArrayList<LogisticsInfo> arrays = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            LogisticsInfo bean = new LogisticsInfo();
-            bean.setTime("2017年11月23日 上午9:06:23");
-            bean.setDescription("苏州市|签收|苏州市【运东一分布】，宝尊仓库电商退货组，先签收，后验货！（13号门） 已签收");
-            arrays.add(bean);
-        }
-        return arrays;
+    private void transportRecordsByDate(String startTime, String endTime) {
+        OkHttpUtils
+                .post()
+                .url(Constant.transportRecord_url)
+                .addParams("userId", PublicUtils.userInfo.getUserId())
+                .addParams("startTime", startTime)
+                .addParams("endTime", endTime)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        Toast.makeText(TransportRecordActivity.this, "网络错误", Toast.LENGTH_LONG).show();
+                        adapter.setData(daoUtil.listAll(TransportRecord.class));
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        if (!TextUtils.isEmpty(response)) {
+                            try {
+                                JSONObject obj = new JSONObject(response);
+                                String result = obj.getString("Result");
+                                String message = obj.getString("Model");
+                                if ("Ok".equals(result)) {
+                                    ArrayList<TransportRecord> arrays = GsonUtils.jsonToArrayList(message, TransportRecord.class);
+                                    adapter.setData(arrays);
+                                    putTransportRecordInfoToSqlite(arrays);
+                                } else {
+                                    Toast.makeText(TransportRecordActivity.this, message, Toast.LENGTH_LONG).show();
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        Log.e("DEBUG", response);
+
+                    }
+
+                });
+    }
+
+    /**
+     * 将配送蔬菜信息保存本地
+     */
+    private void putTransportRecordInfoToSqlite(ArrayList<TransportRecord> arrayList) {
+        daoUtil.deleteAllEntity(TransportRecord.class);
+        daoUtil.insertMultEntity(arrayList);
+
     }
 }

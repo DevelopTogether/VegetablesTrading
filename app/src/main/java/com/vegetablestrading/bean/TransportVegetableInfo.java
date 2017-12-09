@@ -18,7 +18,7 @@ public class TransportVegetableInfo {
     private Long id;
     @NotNull
     private int Type;//实体类的类型
-    private String vegetableIconPath;//蔬菜图片
+    private String vegetableIcon;//蔬菜图片
     private String vegetableName;//蔬菜名称
     private String weight;//配送重量
     private String vegetablePrice;//蔬菜单价
@@ -28,15 +28,15 @@ public class TransportVegetableInfo {
     private String classify;//蔬菜所属类别
     private String webURL;//蔬菜对应二级界面（详情）
     private String vegetableId;//蔬菜对应ID
-    @Generated(hash = 1243977677)
-    public TransportVegetableInfo(Long id, int Type, String vegetableIconPath,
+    @Generated(hash = 702894334)
+    public TransportVegetableInfo(Long id, int Type, String vegetableIcon,
             String vegetableName, String weight, String vegetablePrice,
             String vegetableInfo, String transportStartTime,
             String transportEndTime, String classify, String webURL,
             String vegetableId) {
         this.id = id;
         this.Type = Type;
-        this.vegetableIconPath = vegetableIconPath;
+        this.vegetableIcon = vegetableIcon;
         this.vegetableName = vegetableName;
         this.weight = weight;
         this.vegetablePrice = vegetablePrice;
@@ -62,11 +62,11 @@ public class TransportVegetableInfo {
     public void setType(int Type) {
         this.Type = Type;
     }
-    public String getVegetableIconPath() {
-        return this.vegetableIconPath;
+    public String getVegetableIcon() {
+        return this.vegetableIcon;
     }
-    public void setVegetableIconPath(String vegetableIconPath) {
-        this.vegetableIconPath = vegetableIconPath;
+    public void setVegetableIcon(String vegetableIcon) {
+        this.vegetableIcon = vegetableIcon;
     }
     public String getVegetableName() {
         return this.vegetableName;

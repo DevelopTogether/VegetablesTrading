@@ -14,25 +14,25 @@ public class MyPickInfo {
     @Id
     private Long id;
     @NotNull
-    private String petName;//会员名
-    private String pick_Time;//采摘时间
+    private String userName;//会员名
+    private String pickTime;//采摘时间
     private String pickPeopleNumber;//采摘人数
     private String residualPickAmount;//剩余采摘次数
     private String operatingPeople;//操作人
     private String operateTime;//操作时间
-    private String operateNote;//操作备注时间
-    @Generated(hash = 67802872)
-    public MyPickInfo(Long id, @NotNull String petName, String pick_Time,
+    private String noteInfo;//操作备注时间
+    @Generated(hash = 1153771238)
+    public MyPickInfo(Long id, @NotNull String userName, String pickTime,
             String pickPeopleNumber, String residualPickAmount,
-            String operatingPeople, String operateTime, String operateNote) {
+            String operatingPeople, String operateTime, String noteInfo) {
         this.id = id;
-        this.petName = petName;
-        this.pick_Time = pick_Time;
+        this.userName = userName;
+        this.pickTime = pickTime;
         this.pickPeopleNumber = pickPeopleNumber;
         this.residualPickAmount = residualPickAmount;
         this.operatingPeople = operatingPeople;
         this.operateTime = operateTime;
-        this.operateNote = operateNote;
+        this.noteInfo = noteInfo;
     }
     @Generated(hash = 1742949351)
     public MyPickInfo() {
@@ -43,17 +43,17 @@ public class MyPickInfo {
     public void setId(Long id) {
         this.id = id;
     }
-    public String getPetName() {
-        return this.petName;
+    public String getUserName() {
+        return this.userName;
     }
-    public void setPetName(String petName) {
-        this.petName = petName;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
-    public String getPick_Time() {
-        return this.pick_Time;
+    public String getPickTime() {
+        return this.pickTime;
     }
-    public void setPick_Time(String pick_Time) {
-        this.pick_Time = pick_Time;
+    public void setPickTime(String pickTime) {
+        this.pickTime = pickTime;
     }
     public String getPickPeopleNumber() {
         return this.pickPeopleNumber;
@@ -79,11 +79,11 @@ public class MyPickInfo {
     public void setOperateTime(String operateTime) {
         this.operateTime = operateTime;
     }
-    public String getOperateNote() {
-        return this.operateNote;
+    public String getNoteInfo() {
+        return this.noteInfo;
     }
-    public void setOperateNote(String operateNote) {
-        this.operateNote = operateNote;
+    public void setNoteInfo(String noteInfo) {
+        this.noteInfo = noteInfo;
     }
 
 }

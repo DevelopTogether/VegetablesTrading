@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -32,10 +33,14 @@ import com.vegetablestrading.interfaces.FinishActivityInterface;
 import com.vegetablestrading.utils.CalendarUtil;
 import com.vegetablestrading.utils.Constant;
 import com.vegetablestrading.utils.DaoUtils;
+import com.vegetablestrading.utils.GsonUtils;
 import com.vegetablestrading.utils.PublicUtils;
 import com.vegetablestrading.utils.SharedPreferencesHelper;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -88,7 +93,6 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
         mContext = getActivity();
         sharedPreferencesHelper = new SharedPreferencesHelper(mContext, "TRADEABLE");
         daoUtil = new DaoUtils(mContext, "");
-        putTransportVegetableInfoToSqlite();
 
     }
 
@@ -163,12 +167,8 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
             @Override
             public void onRefresh() {
                 //TODO 请求数据 更新adapter
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                mSwipeRefreshSl.setRefreshing(false);
+                transportVegetablesByDate("2017-11-05 10:30:00", CalendarUtil.getCurrentTime());
+
 
             }
         });
@@ -217,25 +217,25 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
         return clickable;
     }
 
-    /**
-     * 获取配送列表中的蔬菜信息
-     *
-     * @return
-     */
-    public ArrayList<TransportVegetableInfo> getTransportVegetables() {
-        ArrayList<TransportVegetableInfo> arrays = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            TransportVegetableInfo bean = new TransportVegetableInfo();
-            bean.setType(TransportVegetableInfo.TRANSPORT_MODE);
-            bean.setVegetableName("白菜" + i);
-            bean.setWeight("2kg");
-            bean.setVegetableInfo("描述信息faslkdjfasdjfasdjfas;dfja;slkdjfa;sljdfaslkd;jf;askjdfljasdflajs;dfljasdf");
-            bean.setTransportStartTime("2017-11-21 12:00:00");
-            bean.setTransportEndTime("2017-11-21 12:00:00");
-            arrays.add(bean);
-        }
-        return arrays;
-    }
+//    /**
+//     * 获取配送列表中的蔬菜信息
+//     *
+//     * @return
+//     */
+//    public ArrayList<TransportVegetableInfo> getTransportVegetables() {
+//        ArrayList<TransportVegetableInfo> arrays = new ArrayList<>();
+//        for (int i = 0; i < 10; i++) {
+//            TransportVegetableInfo bean = new TransportVegetableInfo();
+//            bean.setType(TransportVegetableInfo.TRANSPORT_MODE);
+//            bean.setVegetableName("白菜" + i);
+//            bean.setWeight("2kg");
+//            bean.setVegetableInfo("描述信息faslkdjfasdjfasdjfas;dfja;slkdjfa;sljdfaslkd;jf;askjdfljasdflajs;dfljasdf");
+//            bean.setTransportStartTime("2017-11-21 12:00:00");
+//            bean.setTransportEndTime("2017-11-21 12:00:00");
+//            arrays.add(bean);
+//        }
+//        return arrays;
+//    }
 
     /**
      * 选择查看配送菜品的日期
@@ -268,7 +268,7 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
                 mTradeDateTv.setText("本周");
                 pop.dismiss();
                 // 请求本周配送菜品信息
-                transportVegetablesByDate(CalendarUtil.getTimeOfWeekStart(),CalendarUtil.getTimeOfWeekEnd());
+                transportVegetablesByDate(CalendarUtil.getTimeOfWeekStart(), CalendarUtil.getTimeOfWeekEnd());
             }
         });
         lastWeek.setOnClickListener(new View.OnClickListener() {
@@ -279,7 +279,7 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
                 mTradeDateTv.setText("上周");
                 pop.dismiss();
                 // 请求上周配送菜品信息
-                transportVegetablesByDate(CalendarUtil.getTimeOfLastWeekStart(),CalendarUtil.getTimeOfWeekStart());
+                transportVegetablesByDate(CalendarUtil.getTimeOfLastWeekStart(), CalendarUtil.getTimeOfWeekStart());
             }
         });
         return pop;
@@ -287,10 +287,11 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
 
     /**
      * 根据起始时间获取配送清单
+     *
      * @param startTime
      * @param endTime
      */
-    private void transportVegetablesByDate(String startTime ,String endTime) {
+    private void transportVegetablesByDate(String startTime, String endTime) {
         OkHttpUtils
                 .post()
                 .url(Constant.transportVegetablesByDate_url)
@@ -301,35 +302,35 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
                     @Override
                     public void onError(Call call, Exception e, int id) {
                         Toast.makeText(mContext, "", Toast.LENGTH_LONG).show();
+                        mSwipeRefreshSl.setRefreshing(false);
                     }
 
                     @Override
                     public void onResponse(String response, int id) {
-//                        if (!TextUtils.isEmpty(response)) {
-//                            try {
-//                                JSONObject obj = new JSONObject(response);
-//                                String result = obj.getString("Result");
-//                                String message = obj.getString("Message");
-//                                if ("Ok".equals(result)) {
-//                                    startActivity(new Intent(mContext, MainActivity.class));
-//                                } else {
-//                                    if ("账号不存在!".equals(message)) {
-//                                        Toast.makeText(mContext, "账号不存在", Toast.LENGTH_LONG).show();
-//                                    } else {
-//                                        Toast.makeText(mContext, "密码错误,请重新输入", Toast.LENGTH_LONG).show();
-//
-//                                    }
-//                                }
-//                            } catch (JSONException e) {
-//                                e.printStackTrace();
-//                            }
-//                        }
-                        Log.e("DEBUG",response);
+                        mSwipeRefreshSl.setRefreshing(false);
+                        if (!TextUtils.isEmpty(response)) {
+                            try {
+                                JSONObject obj = new JSONObject(response);
+                                String result = obj.getString("Result");
+                                String message = obj.getString("Model");
+                                if ("Ok".equals(result)) {
+                                    ArrayList<TransportVegetableInfo> arrays = GsonUtils.jsonToArrayList(message, TransportVegetableInfo.class);
+                                    adapter.setData(arrays);
+                                    putTransportVegetableInfoToSqlite(arrays);
+                                } else {
+                                    Toast.makeText(mContext, message, Toast.LENGTH_LONG).show();
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        Log.e("DEBUG", response);
 
                     }
 
                 });
     }
+
     /**
      * 不配送提示窗口
      */
@@ -380,11 +381,9 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
     /**
      * 将配送蔬菜信息保存本地
      */
-    private void putTransportVegetableInfoToSqlite() {
+    private void putTransportVegetableInfoToSqlite(ArrayList<TransportVegetableInfo> arrayList) {
         daoUtil.deleteAllEntity(TransportVegetableInfo.class);
-        daoUtil.insertMultEntity(getTransportVegetables());
-        ArrayList<TransportVegetableInfo> arrays = daoUtil.listAll(TransportVegetableInfo.class);
-        arrays.size();
+        daoUtil.insertMultEntity(arrayList);
 
     }
 
@@ -408,28 +407,9 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
             }
         });
         if (PublicUtils.isConnected(mContext)) {
-            adapter.setData( daoUtil.listAll(TransportVegetableInfo.class));
-            //TODO 从服务端请求配送蔬菜列表信息
-//            OkHttpUtils
-//                    .post()
-//                    .url(url)
-//                    .addParams("username", "hyman")
-//                    .addParams("password", "123")
-//                    .build()
-//                    .execute(new StringCallback() {
-//                        @Override
-//                        public void onError(Call call, Exception e, int id) {
-//
-//                        }
-//
-//                        @Override
-//                        public void onResponse(String response, int id) {
-//
-//                        }
-//                    });
-
+            transportVegetablesByDate("2017-11-05 10:30:00", CalendarUtil.getCurrentTime());
         } else {//没有网络的情况下读取数据库里面的数据
-            adapter.setData( daoUtil.listAll(TransportVegetableInfo.class));
+            adapter.setData(daoUtil.listAll(TransportVegetableInfo.class));
         }
     }
 

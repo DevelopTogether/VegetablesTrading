@@ -4,10 +4,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.vegetablestrading.R;
 import com.vegetablestrading.adapter.DividerItemDecoration;
@@ -15,9 +18,20 @@ import com.vegetablestrading.adapter.LogisticsInfoAdapter;
 import com.vegetablestrading.adapter.TransportListAdapter;
 import com.vegetablestrading.bean.TransportRecord;
 import com.vegetablestrading.bean.TransportVegetableInfo;
+import com.vegetablestrading.utils.CalendarUtil;
+import com.vegetablestrading.utils.Constant;
+import com.vegetablestrading.utils.DaoUtils;
+import com.vegetablestrading.utils.GsonUtils;
 import com.vegetablestrading.utils.PublicUtils;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+
+import okhttp3.Call;
 
 /**
  * 配送详情
@@ -72,6 +86,7 @@ public class TransportInfoActivity extends AppCompatActivity implements View.OnC
 
     private boolean displayLogistics = false;//是否展示物流详情
     private TextView mLogisticsTypeTv;
+    private DaoUtils daoUtil;
 
 
     @Override
@@ -80,6 +95,7 @@ public class TransportInfoActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.activity_transport_info);
         initView();
         initActionBar();
+        daoUtil = new DaoUtils(this, "");
     }
 
     /**
@@ -112,12 +128,12 @@ public class TransportInfoActivity extends AppCompatActivity implements View.OnC
         adapter = new TransportListAdapter(this);
         mTransportInfoDetailRv.setAdapter(adapter);
         mTransportInfoDetailRv.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.HORIZONTAL, R.drawable.horizontal_line_grey));
-        adapter.setData(getTransportVegetables());
+        transportVegetablesByDate("2017-11-5 10:30:21", CalendarUtil.getCurrentTime());
         mTransportNoTv.setText(transportRecord.getLogisticsNo());
         mTransportTimeTv.setText(transportRecord.getTransportTime());
         mTransportPersionTv.setText(transportRecord.getTransportPeople());
         mTransportPersionMobileTv.setText(transportRecord.getTransportPeopleMobile());
-        mAcceptPersionTv.setText(transportRecord.getPetName());
+        mAcceptPersionTv.setText(transportRecord.getUserName());
         mAcceptPersionMobileTv.setText(transportRecord.getMobile());
         mAcceptAddrTv.setText(transportRecord.getAddress());
         mLogisticsStatusTv = (TextView) findViewById(R.id.logistics_status_tv);
@@ -136,7 +152,8 @@ public class TransportInfoActivity extends AppCompatActivity implements View.OnC
         adapter_logistics = new LogisticsInfoAdapter();
         mLogisticsInfoRv.setAdapter(adapter_logistics);
         mLogisticsInfoRv.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.HORIZONTAL, R.drawable.horizontal_line_grey));
-        adapter_logistics.setData(transportRecord.getLogisticsInfos());
+//        adapter_logistics.setData(transportRecord.getLogisticsInfos());
+        LogisticsInfoFromService();
         mLogisticsTypeTv = (TextView) findViewById(R.id.logistics_type_tv);
         mLogisticsTypeTv.setText(transportRecord.getLogisticsName());
     }
@@ -163,23 +180,98 @@ public class TransportInfoActivity extends AppCompatActivity implements View.OnC
     }
 
     /**
-     * 获取配送列表中的蔬菜信息
+     * 根据起始时间获取配送清单
      *
-     * @return
+     * @param startTime
+     * @param endTime
      */
-    public ArrayList<TransportVegetableInfo> getTransportVegetables() {
-        ArrayList<TransportVegetableInfo> arrays = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            TransportVegetableInfo bean = new TransportVegetableInfo();
-            bean.setVegetableName("白菜" + i);
-            bean.setWeight("2kg");
-            bean.setVegetableInfo("描述信息faslkdjfasdjfasdjfas;dfja;slkdjfa;sljdfaslkd;jf;askjdfljasdflajs;dfljasdf");
-            bean.setTransportStartTime("2017-11-21 12:00:00");
-            bean.setTransportEndTime("2017-11-21 12:00:00");
-            arrays.add(bean);
-        }
-        return arrays;
+    private void transportVegetablesByDate(String startTime, String endTime) {
+        OkHttpUtils
+                .post()
+                .url(Constant.transportVegetablesByDate_url)
+                .addParams("startTime", startTime)
+                .addParams("endTime", endTime)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call cll, Exception e, int id) {
+                        Toast.makeText(TransportInfoActivity.this, "网络错误", Toast.LENGTH_LONG).show();
+                        adapter.setData(daoUtil.listAll(TransportVegetableInfo.class));
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        if (!TextUtils.isEmpty(response)) {
+                            try {
+                                JSONObject obj = new JSONObject(response);
+                                String result = obj.getString("Result");
+                                String message = obj.getString("Model");
+                                if ("Ok".equals(result)) {
+                                    ArrayList<TransportVegetableInfo> arrays = GsonUtils.jsonToArrayList(message, TransportVegetableInfo.class);
+                                    adapter.setData(arrays);
+                                    putTransportVegetableInfoToSqlite(arrays);
+                                } else {
+                                    Toast.makeText(TransportInfoActivity.this, message, Toast.LENGTH_LONG).show();
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        Log.e("DEBUG", response);
+
+                    }
+
+                });
     }
 
+    /**
+     * 将配送蔬菜信息保存本地
+     */
+    private void putTransportVegetableInfoToSqlite(ArrayList<TransportVegetableInfo> arrayList) {
+        daoUtil.deleteAllEntity(TransportVegetableInfo.class);
+        daoUtil.insertMultEntity(arrayList);
 
+    }
+
+    /**
+     * 根据起始时间获取配送清单
+     */
+    private void LogisticsInfoFromService() {
+        OkHttpUtils
+                .post()
+                .url(Constant.logisticsInfo_url)
+                .addParams("userId", PublicUtils.userInfo.getUserId())
+                .addParams("transportRecordId", transportRecord.getTransportRecordId())
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call cll, Exception e, int id) {
+                        Toast.makeText(TransportInfoActivity.this, "网络错误", Toast.LENGTH_LONG).show();
+//                        adapter.setData(daoUtil.listAll(TransportVegetableInfo.class));
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        if (!TextUtils.isEmpty(response)) {
+//                            try {
+//                                JSONObject obj = new JSONObject(response);
+//                                String result = obj.getString("Result");
+//                                String message = obj.getString("Model");
+//                                if ("Ok".equals(result)) {
+//                                    ArrayList<TransportVegetableInfo> arrays = GsonUtils.jsonToArrayList(message, TransportVegetableInfo.class);
+////                                    adapter_logistics.setData(transportRecord.getLogisticsInfos());
+//                                    putTransportVegetableInfoToSqlite(arrays);
+//                                } else {
+//                                    Toast.makeText(TransportInfoActivity.this, message, Toast.LENGTH_LONG).show();
+//                                }
+//                            } catch (JSONException e) {
+//                                e.printStackTrace();
+//                            }
+                        }
+                        Log.e("DEBUG", response);
+
+                    }
+
+                });
+    }
 }

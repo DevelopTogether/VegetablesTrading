@@ -24,6 +24,7 @@ public class PickRecordAdapter extends RecyclerView.Adapter<PickRecordAdapter.Vi
 
     public void setData(ArrayList<MyPickInfo> arrays) {
         this.arrays = arrays;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -38,8 +39,8 @@ public class PickRecordAdapter extends RecyclerView.Adapter<PickRecordAdapter.Vi
         final MyPickInfo myPickInfo = arrays.get(position);
         holder.mPickNoTv.setText("采摘人数："+myPickInfo.getPickPeopleNumber());
         holder.mResidualPickAmountTv.setText("剩余次数："+myPickInfo.getResidualPickAmount());
-        holder.mPickTimeTv.setText("采摘时间："+myPickInfo.getPick_Time());
-        holder.mPickNoteTv.setText("备注信息："+myPickInfo.getOperateNote());
+        holder.mPickTimeTv.setText("采摘时间："+myPickInfo.getPickTime());
+        holder.mPickNoteTv.setText("备注信息："+myPickInfo.getNoteInfo());
     }
 
     @Override

@@ -6,17 +6,29 @@ import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.TextUtils;
 import android.text.style.AbsoluteSizeSpan;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.vegetablestrading.R;
 import com.vegetablestrading.bean.UserInfo;
 import com.vegetablestrading.customViews.CustomView;
+import com.vegetablestrading.utils.Constant;
+import com.vegetablestrading.utils.PublicUtils;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import okhttp3.Call;
 
 /**
  * created by 8级大的狂风
@@ -62,6 +74,7 @@ public class QuitPetActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quit_pet);
         initView();
+        messageToView(PublicUtils.userInfo);
         mQuitPetDepositToReturn.setText(getQuitPetDepositToReturnText());
     }
 
@@ -86,9 +99,9 @@ public class QuitPetActivity extends AppCompatActivity implements View.OnClickLi
         mRefundTypeRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-                if (radioGroup.getCheckedRadioButtonId()==R.id.zhifubao_rb) {
+                if (radioGroup.getCheckedRadioButtonId() == R.id.zhifubao_rb) {
                     mRefundAccountNameTv.setText("支付宝账号");
-                }else if (radioGroup.getCheckedRadioButtonId()==R.id.weixin_rb) {
+                } else if (radioGroup.getCheckedRadioButtonId() == R.id.weixin_rb) {
                     mRefundAccountNameTv.setText("微信账号");
                 }
             }
@@ -128,20 +141,73 @@ public class QuitPetActivity extends AppCompatActivity implements View.OnClickLi
                 finish();
                 break;
             case R.id.confirm_quitPet_tv:
+                String mRefundAccount = mRefundAccountEt.getText().toString().trim();
+                if (TextUtils.isEmpty(mRefundAccount)) {
+                    if (getAccountOfQuitPet().equals("1")) {
+                        Toast.makeText(getApplicationContext(), "请填写微信账号", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "请填写支付宝账号", Toast.LENGTH_LONG).show();
+                    }
+                    return;
+                }
+
+                transportRecordsByDate(mRefundAccount);
                 break;
         }
     }
+
     /**
+     * 1微信 2支付宝
      * 获取退会收款方式
      */
     private String getAccountOfQuitPet() {
         switch (mRefundTypeRg.getCheckedRadioButtonId()) {
             case R.id.zhifubao_rb:
-                return "支付宝";
+                return "2";
             case R.id.weixin_rb:
-                return "微信";
+                return "1";
             default:
-                return "VIP金卡";
+                return "2";
         }
     }
+
+    /**
+     * 根据起始时间获取配送记录
+     */
+    private void transportRecordsByDate(String mRefundAccount) {
+        OkHttpUtils
+                .post()
+                .url(Constant.applyforRefund_url)
+                .addParams("userId", PublicUtils.userInfo.getUserId())
+                .addParams("refundAccountName", getAccountOfQuitPet())
+                .addParams("refundAccount", mRefundAccount)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        Toast.makeText(QuitPetActivity.this, "网络错误", Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        if (!TextUtils.isEmpty(response)) {
+                            try {
+                                JSONObject obj = new JSONObject(response);
+                                String result = obj.getString("Result");
+                                String message = obj.getString("Model");
+                                if ("Ok".equals(result)) {
+                                } else {
+                                    Toast.makeText(QuitPetActivity.this, message, Toast.LENGTH_LONG).show();
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        Log.e("DEBUG", response);
+
+                    }
+
+                });
+    }
+
 }

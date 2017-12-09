@@ -23,6 +23,7 @@ public class TransportRecordAdapter extends RecyclerView.Adapter<TransportRecord
 
     public void setData(ArrayList<TransportRecord> arrays) {
         this.arrays = arrays;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -35,10 +36,10 @@ public class TransportRecordAdapter extends RecyclerView.Adapter<TransportRecord
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
        final TransportRecord transportRecord = arrays.get(position);
-        holder.mTransportNoTv.setText(transportRecord.getLogisticsNo());
-        holder.mTransportPersonTv.setText( transportRecord.getTransportPeople());
-        holder.mTransportTimeTv.setText( transportRecord.getTransportTime());
-        holder.mTransportPersonMobileTv.setText( transportRecord.getTransportPeopleMobile());
+        holder.mTransportNoTv.setText("配送单号："+transportRecord.getLogisticsNo());
+        holder.mTransportPersonTv.setText("配送人："+ transportRecord.getTransportPeople());
+        holder.mTransportTimeTv.setText( "配送时间："+transportRecord.getTransportTime());
+        holder.mTransportPersonMobileTv.setText( "配送人手机："+transportRecord.getTransportPeopleMobile());
         holder.transport_record_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -1,6 +1,7 @@
 package com.vegetablestrading.adapter;
 
 import android.content.Context;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.vegetablestrading.R;
 import com.vegetablestrading.bean.TransportVegetableInfo;
+import com.vegetablestrading.utils.Constant;
 
 import java.util.ArrayList;
 
@@ -28,6 +30,7 @@ public class TransportListAdapter extends RecyclerView.Adapter<TransportListAdap
 
     public void setData(ArrayList<TransportVegetableInfo> arrayList) {
         this.arrayList = arrayList;
+        notifyDataSetChanged();
     }
 
     public TransportListAdapter(Context context) {
@@ -46,7 +49,7 @@ public class TransportListAdapter extends RecyclerView.Adapter<TransportListAdap
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         final TransportVegetableInfo bean = arrayList.get(position);
-        Glide.with(context).load(R.drawable.app_logo).into(holder.mVegetableIconIv);
+        Glide.with(context).load(Uri.parse(Constant.company_url+bean.getVegetableIcon())).into(holder.mVegetableIconIv);
         holder.mVegetableNameTv.setText(bean.getVegetableName());
         holder.mVegetableWeightTv.setText(bean.getWeight());
         holder.mVegetableDescripTv.setText(bean.getVegetableInfo());

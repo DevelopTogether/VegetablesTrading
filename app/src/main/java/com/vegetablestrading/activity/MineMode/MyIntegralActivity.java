@@ -104,7 +104,7 @@ public class MyIntegralActivity extends AppCompatActivity implements View.OnClic
             bean.setTransportPeopleMobile("15311810032");
             bean.setTransportTime("2017-11-20 14:21:30");
             bean.setTransportInfo("多送点香菜");
-            bean.setPetName("王司令");
+            bean.setUserName("王司令");
             bean.setMobile("18888888888");
             bean.setAddress("北京市海淀区增光路30号");
             bean.setResidualIntegral(i+"");
