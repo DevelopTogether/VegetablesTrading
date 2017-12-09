@@ -132,7 +132,7 @@ public class MyApplyRecordActivity extends AppCompatActivity implements View.OnC
                 .post()
                 .url(Constant.applyRecordOfMin_url)
                 .addParams("userId", PublicUtils.userInfo.getUserId())
-                .addParams("startTime", PublicUtils.userInfo.getRegistDate())
+                .addParams("startTime", "2017-10-2 10:52:22")
                 .addParams("endTime", CalendarUtil.getCurrentTime())
                 .build()
                 .execute(new StringCallback() {

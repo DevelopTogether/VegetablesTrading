@@ -3,6 +3,7 @@ package com.vegetablestrading.activity.MineMode;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -14,7 +15,15 @@ import android.widget.Toast;
 import com.vegetablestrading.R;
 import com.vegetablestrading.activity.BaseActivity;
 import com.vegetablestrading.interfaces.EditTestChangedListener;
+import com.vegetablestrading.utils.Constant;
 import com.vegetablestrading.utils.PublicUtils;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import okhttp3.Call;
 
 
 public class ModifyPwdActivity extends BaseActivity implements View.OnClickListener {
@@ -129,6 +138,43 @@ public class ModifyPwdActivity extends BaseActivity implements View.OnClickListe
             }
         }
         //TODO 将新密码提交后台
+        modifyPwdThoughService(old_pwd,pwd_new);
+    }
+    /**
+     * 更改密码
+     */
+    private void modifyPwdThoughService(String oldPwd,String newPwd) {
+        //TODO 从服务端请求申请记录
+        OkHttpUtils
+                .post()
+                .url(Constant.modifyPwd_url)
+                .addParams("userId", PublicUtils.userInfo.getUserId())
+                .addParams("oldPwd", oldPwd)
+                .addParams("newPwd", newPwd)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        Toast.makeText(getApplicationContext(), "网络错误", Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        if (!TextUtils.isEmpty(response)) {
+                            try {
+                                JSONObject obj = new JSONObject(response);
+                                String message = obj.getString("Model");
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+
+                        Log.e("DEBUG", response);
+
+
+                    }
+                });
 
     }
 }

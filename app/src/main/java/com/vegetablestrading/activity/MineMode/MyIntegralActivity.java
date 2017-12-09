@@ -13,13 +13,10 @@ import android.widget.Toast;
 import com.vegetablestrading.R;
 import com.vegetablestrading.adapter.DividerItemDecoration;
 import com.vegetablestrading.adapter.MyIntegralAdapter;
-import com.vegetablestrading.bean.MyApply;
 import com.vegetablestrading.bean.TransportRecord;
 import com.vegetablestrading.customViews.CustomView;
 import com.vegetablestrading.utils.DaoUtils;
 import com.vegetablestrading.utils.PublicUtils;
-
-import java.util.ArrayList;
 
 /**
  * 我的积分
@@ -54,7 +51,6 @@ public class MyIntegralActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_integral);
         daoUtils = new DaoUtils(this,"");
-        putIntegralInfoToSqlite();
         initView();
         initActionBar();
     }
@@ -81,7 +77,6 @@ public class MyIntegralActivity extends AppCompatActivity implements View.OnClic
         mMineIntegralRv.setLayoutManager(manager);
         adapter = new MyIntegralAdapter();
         mMineIntegralRv.setAdapter(adapter);
-        adapter.setData(getTransportRecordData());
         adapter.setMyIntegralItemClick(new MyIntegralAdapter.MyIntegralItemClick() {
             @Override
             public void itemClick(TransportRecord transportRecord) {
@@ -90,32 +85,6 @@ public class MyIntegralActivity extends AppCompatActivity implements View.OnClic
                 startActivity(new Intent(MyIntegralActivity.this,TransportInfoActivity.class));
             }
         });
-    }
-    /**
-     * 测试数据
-     * @return
-     */
-    private ArrayList<TransportRecord> getTransportRecordData(){
-        ArrayList<TransportRecord> arrayList = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            TransportRecord bean = new TransportRecord();
-            bean.setLogisticsNo("110121211000200"+i);
-            bean.setTransportPeople("王彬");
-            bean.setTransportPeopleMobile("15311810032");
-            bean.setTransportTime("2017-11-20 14:21:30");
-            bean.setTransportInfo("多送点香菜");
-            bean.setUserName("王司令");
-            bean.setMobile("18888888888");
-            bean.setAddress("北京市海淀区增光路30号");
-            bean.setResidualIntegral(i+"");
-            bean.setRelayBoxNo("168712357164563");
-            bean.setOperatingPeople("文员1");
-            bean.setOperateTime("2017-11-20 14:22:46");
-            bean.setNoteInfo(".dlkfj");
-            arrayList.add(bean);
-        }
-
-        return arrayList;
     }
 
     @Override
@@ -127,41 +96,12 @@ public class MyIntegralActivity extends AppCompatActivity implements View.OnClic
         }
     }
 
-    /**
-     * 将我的积分信息保存本地
-     */
-    private void putIntegralInfoToSqlite(){
-        daoUtils.deleteAllEntity(MyApply.class);
-        daoUtils.insertMultEntity(getTransportRecordData());
-
-    }
-    /**
-     * 初始化adapter数据
-     */
-    private void initDataForAdapter(){
-        if (PublicUtils.isConnected(this)) {
-            adapter.setData(daoUtils.listAll(MyApply.class));
-            //TODO 从服务端请求申请记录
-//            OkHttpUtils
-//                    .post()
-//                    .url(url)
-//                    .addParams("username", "hyman")
-//                    .addParams("password", "123")
-//                    .build()
-//                    .execute(new StringCallback() {
-//                        @Override
-//                        public void onError(Call call, Exception e, int id) {
+//    /**
+//     * 将我的积分信息保存本地
+//     */
+//    private void putIntegralInfoToSqlite(){
+//        daoUtils.deleteAllEntity(MyApply.class);
+//        daoUtils.insertMultEntity(getTransportRecordData());
 //
-//                        }
-//
-//                        @Override
-//                        public void onResponse(String response, int id) {
-//
-//                        }
-//                    });
-
-        }else{//没有网络的情况下读取数据库里面的数据
-            adapter.setData(daoUtils.listAll(MyApply.class));
-        }
-    }
+//    }
 }
