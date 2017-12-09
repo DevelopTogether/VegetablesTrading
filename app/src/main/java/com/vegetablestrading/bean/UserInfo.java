@@ -18,9 +18,9 @@ public class UserInfo {
     private String userId;//用户Id
     private String userName;//用户名
     private String userPhone;//用户手机号
-    private String petType;//会员类型
-    private String petStatus;//会员状态
-    private String petSum;//会费
+    private String userType;//会员类型 1==N蓝卡，2==P银卡，3==VIP金卡
+    private String userStatus;//会员状态
+    private String dues;//会费
     private String deposit;//押金
     private String expirationTime;//会员过期时间
     private String residualIntegral;//剩余积分
@@ -31,9 +31,9 @@ public class UserInfo {
     private String userAddr;//用户地址
     private String refundAccountName;//退款账户名称（微信，支付宝）
     private String refundAccount;//退款账户
-    @Generated(hash = 1656927996)
+    @Generated(hash = 514566146)
     public UserInfo(Long id, @NotNull String userId, String userName,
-            String userPhone, String petType, String petStatus, String petSum,
+            String userPhone, String userType, String userStatus, String dues,
             String deposit, String expirationTime, String residualIntegral,
             String residualPickAmount, String boxNo, String registDate,
             String userEmail, String userAddr, String refundAccountName,
@@ -42,9 +42,9 @@ public class UserInfo {
         this.userId = userId;
         this.userName = userName;
         this.userPhone = userPhone;
-        this.petType = petType;
-        this.petStatus = petStatus;
-        this.petSum = petSum;
+        this.userType = userType;
+        this.userStatus = userStatus;
+        this.dues = dues;
         this.deposit = deposit;
         this.expirationTime = expirationTime;
         this.residualIntegral = residualIntegral;
@@ -83,23 +83,23 @@ public class UserInfo {
     public void setUserPhone(String userPhone) {
         this.userPhone = userPhone;
     }
-    public String getPetType() {
-        return this.petType;
+    public String getUserType() {
+        return this.userType;
     }
-    public void setPetType(String petType) {
-        this.petType = petType;
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
-    public String getPetStatus() {
-        return this.petStatus;
+    public String getUserStatus() {
+        return this.userStatus;
     }
-    public void setPetStatus(String petStatus) {
-        this.petStatus = petStatus;
+    public void setUserStatus(String userStatus) {
+        this.userStatus = userStatus;
     }
-    public String getPetSum() {
-        return this.petSum;
+    public String getDues() {
+        return this.dues;
     }
-    public void setPetSum(String petSum) {
-        this.petSum = petSum;
+    public void setDues(String dues) {
+        this.dues = dues;
     }
     public String getDeposit() {
         return this.deposit;
@@ -161,6 +161,5 @@ public class UserInfo {
     public void setRefundAccount(String refundAccount) {
         this.refundAccount = refundAccount;
     }
-
 
 }

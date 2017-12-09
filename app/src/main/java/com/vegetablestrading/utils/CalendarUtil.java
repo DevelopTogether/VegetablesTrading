@@ -181,7 +181,7 @@ public class CalendarUtil {
      * @return
      */
     public static boolean compareTimeOfAddApply(String startTime, String endTime) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH:mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
         try {
             Long a = sdf.parse(startTime).getTime();
             Long b = sdf.parse(endTime).getTime();

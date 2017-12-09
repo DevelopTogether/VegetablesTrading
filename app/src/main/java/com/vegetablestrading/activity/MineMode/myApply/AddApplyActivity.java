@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -15,10 +16,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vegetablestrading.R;
+import com.vegetablestrading.utils.CalendarUtil;
+import com.vegetablestrading.utils.Constant;
+import com.vegetablestrading.utils.PublicUtils;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+
+import okhttp3.Call;
 
 import static com.vegetablestrading.utils.CalendarUtil.GetUploadTime;
 import static com.vegetablestrading.utils.CalendarUtil.GetWeekFromDate;
@@ -124,13 +135,61 @@ public class AddApplyActivity extends AppCompatActivity implements View.OnClickL
             case R.id.confirm_apply_tv:
                 date_start_str_upload=  GetUploadTime(date_start_str,"start");
                 date_end_str_upload =  GetUploadTime(date_end_str,"end");
-                String applyType = getApplyType();
                 String noteInfo = mNoteInfoEt.getText().toString().trim();
                 if (TextUtils.isEmpty(noteInfo)) {
                     Toast.makeText(getApplicationContext(), "备注信息不能为空", Toast.LENGTH_LONG).show();
+                    return;
                 }
+                //向服务器上传申请信息
+                applyToService(noteInfo);
+
                 break;
         }
+    }
+
+    /**
+     * 上传申请信息
+     * @param noteInfo
+     */
+    private void applyToService( String noteInfo) {
+
+        OkHttpUtils
+                .post()
+                .url(Constant.applyOfTransport_url)
+                .addParams("userId", PublicUtils.userInfo.getUserId())
+                .addParams("applyType", getApplyType())
+                .addParams("applyInfo", noteInfo)
+                .addParams("startTime", date_start_str_upload)
+                .addParams("endTime", date_end_str_upload)
+                .addParams("apply_time", CalendarUtil.getCurrentTime())
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        Toast.makeText(getApplicationContext(), "", Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        if (!TextUtils.isEmpty(response)) {
+                            try {
+                                JSONObject obj = new JSONObject(response);
+                                String result = obj.getString("Result");
+                                String message = obj.getString("Message");
+                                if ("Ok".equals(result)) {
+                                    Toast.makeText(getApplicationContext(), "您已成功提交申请", Toast.LENGTH_LONG).show();
+                                } else {
+                                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        Log.e("DEBUG", response);
+
+                    }
+
+                });
     }
 
     /**
@@ -226,18 +285,18 @@ public class AddApplyActivity extends AppCompatActivity implements View.OnClickL
     }
 
     /**
-     * 获取申请类型
+     * 获取申请类型 1代表减少配送，2代表增加配送，3代表不配送
      */
     private String getApplyType() {
         switch (mApplyTypeRg.getCheckedRadioButtonId()) {
             case R.id.do_not_transport_rv:
-                return "不配送";
+                return "3";
             case R.id.more_transport_rv:
-                return "增加";
+                return "2";
             case R.id.less_transport_rv:
-                return "减少";
+                return "1";
             default:
-                return "不配送";
+                return "3";
         }
     }
 }

@@ -10,6 +10,7 @@ import com.vegetablestrading.activity.BaseActivity;
 import com.vegetablestrading.bean.UserInfo;
 import com.vegetablestrading.customViews.CustomView;
 import com.vegetablestrading.utils.DaoUtils;
+import com.vegetablestrading.utils.PublicUtils;
 
 
 public class MyInfoActivity extends BaseActivity implements View.OnClickListener {
@@ -40,6 +41,7 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
         setContentView(R.layout.activity_my_info);
         daoUtils = new DaoUtils(this,"");
         initView();
+        setTextOfViews(PublicUtils.userInfo);
         initActionBar();
 
     }
@@ -86,9 +88,9 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
         mUserName.getTitleBarRightBtn().setText(userInfo.getUserName());
         mMineInfoUserPhone.getTitleBarRightBtn().setText(userInfo.getUserPhone());
         mMineInfoUserEmail.getTitleBarRightBtn().setText(userInfo.getUserEmail());
-        mUserType.getTitleBarRightBtn().setText(userInfo.getPetType());
-        mUserStatus.getTitleBarRightBtn().setText(userInfo.getPetType());
-        mUserSum.getTitleBarRightBtn().setText(userInfo.getPetSum());
+        mUserType.getTitleBarRightBtn().setText(userInfo.getUserType());
+        mUserStatus.getTitleBarRightBtn().setText(userInfo.getUserStatus());
+        mUserSum.getTitleBarRightBtn().setText(userInfo.getDues());
         mDeposit.getTitleBarRightBtn().setText(userInfo.getDeposit());
         mIntegral.getTitleBarRightBtn().setText(userInfo.getResidualIntegral());
         mPickAmount.getTitleBarRightBtn().setText(userInfo.getResidualPickAmount());
@@ -97,11 +99,11 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
         mMineInfoExpirationTime.getTitleBarRightBtn().setText(userInfo.getExpirationTime());
     }
 
-    /**
-     * 将申请记录信息保存本地
-     */
-    private void putMyInfoToSqlite(UserInfo userInfo){
-        daoUtils.insertEntity(userInfo);
-
-    }
+//    /**
+//     * 将申请记录信息保存本地
+//     */
+//    private void putMyInfoToSqlite(UserInfo userInfo){
+//        daoUtils.insertEntity(userInfo);
+//
+//    }
 }

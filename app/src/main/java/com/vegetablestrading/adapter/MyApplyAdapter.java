@@ -24,6 +24,7 @@ public class MyApplyAdapter extends RecyclerView.Adapter<MyApplyAdapter.ViewHold
 
     public void setData(ArrayList<MyApply> arrays) {
         this.arrays = arrays;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -35,7 +36,7 @@ public class MyApplyAdapter extends RecyclerView.Adapter<MyApplyAdapter.ViewHold
     public void onBindViewHolder(MyApplyAdapter.ViewHolder holder, int position) {
         final MyApply bean = arrays.get(position);
         holder.mApplyTypeTv.setText("申请类型："+bean.getApplyType());
-        holder.mApplyTimeTv.setText(bean.getApply_Time());
+        holder.mApplyTimeTv.setText(bean.getApplyTime());
         holder.mApplyInfoTv.setText(bean.getApplyInfo());
         holder.mApplyStatusTv.setText(bean.getOperateStatus());
         holder.my_apply_rl.setOnClickListener(new View.OnClickListener() {

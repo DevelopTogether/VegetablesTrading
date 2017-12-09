@@ -14,7 +14,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.zackratos.ultimatebar.UltimateBar;
+import com.google.gson.Gson;
 import com.vegetablestrading.R;
+import com.vegetablestrading.bean.UserInfo;
 import com.vegetablestrading.utils.Constant;
 import com.vegetablestrading.utils.PublicUtils;
 import com.vegetablestrading.utils.SharedPreferencesHelper;
@@ -54,11 +56,13 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     private SharedPreferences sp;
     private LinearLayout mSavePwdLl;
     private ProgressBar mLoginPb;
+    private Gson mGson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        mGson = new Gson();
         initView();
         initUserNameAndPwd();
         UltimateBar.newImmersionBuilder()
@@ -167,6 +171,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     }
 
     private void loginToService(String userName, String pwd) {
+        if (!PublicUtils.isConnected(this)) {
+            Toast.makeText(getApplicationContext(), "无网络，请稍后再试", Toast.LENGTH_LONG).show();
+            return;
+        }
         mLoginPb.setVisibility(View.VISIBLE);
         OkHttpUtils
                 .post()
@@ -188,6 +196,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                                 JSONObject obj = new JSONObject(response);
                                 String result = obj.getString("Result");
                                 String message = obj.getString("Message");
+                                String object = obj.getString("Model");
+                                PublicUtils.userInfo = mGson.fromJson(object, UserInfo.class);
                                 if ("Ok".equals(result)) {
                                     mLoginPb.setVisibility(View.GONE);
                                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
@@ -209,5 +219,16 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                     }
 
                 });
+    }
+
+
+    @Override
+    public void onBackPressed() {
+
+        if (mLoginPb.isShown()) {
+            mLoginPb.setVisibility(View.GONE);
+        } else {
+            super.onBackPressed();
+        }
     }
 }

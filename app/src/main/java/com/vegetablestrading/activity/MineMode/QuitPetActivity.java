@@ -101,9 +101,9 @@ public class QuitPetActivity extends AppCompatActivity implements View.OnClickLi
     private void messageToView(UserInfo userInfo) {
 
         mQuitPetUserName.getTitleBarRightBtn().setText(userInfo.getUserName());
-        mQuitPetUserType.getTitleBarRightBtn().setText(userInfo.getPetType());
+        mQuitPetUserType.getTitleBarRightBtn().setText(userInfo.getUserType());
         expirationTimeCv.getTitleBarRightBtn().setText(userInfo.getExpirationTime());
-        mQuitPetUserSum.getTitleBarRightBtn().setText(userInfo.getPetSum());
+        mQuitPetUserSum.getTitleBarRightBtn().setText(userInfo.getDues());
         mQuitPetIntegral.getTitleBarRightBtn().setText(userInfo.getResidualIntegral());
         mQuitPetMobile.getTitleBarRightBtn().setText(userInfo.getUserPhone());
         mQuitPetDepositToReturn.setText(getQuitPetDepositToReturnText());

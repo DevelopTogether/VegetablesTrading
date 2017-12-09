@@ -25,5 +25,6 @@ public class Constant {
     public static String regist_url = company_url + "/index.php/Home/vegetableshop/regist.html";
     public static String login_url = company_url + "/index.php/Home/vegetableshop/login.html";
     public static String transportVegetablesByDate_url = company_url + "/index.php/Home/vegetableshop/transportVegetablesByDate.html";
-
+    public static String applyOfTransport_url = company_url + "/index.php/Home/vegetableshop/applyOfTransport.html";
+    public static String applyRecordOfMin_url = company_url + "/index.php/Home/vegetableshop/applyRecordOfMine.html";
 }

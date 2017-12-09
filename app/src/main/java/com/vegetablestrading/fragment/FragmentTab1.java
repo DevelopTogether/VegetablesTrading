@@ -383,7 +383,7 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
     private void putTransportVegetableInfoToSqlite() {
         daoUtil.deleteAllEntity(TransportVegetableInfo.class);
         daoUtil.insertMultEntity(getTransportVegetables());
-        ArrayList<TransportVegetableInfo> arrays = daoUtil.listAllTransportVatetables();
+        ArrayList<TransportVegetableInfo> arrays = daoUtil.listAll(TransportVegetableInfo.class);
         arrays.size();
 
     }
@@ -408,7 +408,7 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
             }
         });
         if (PublicUtils.isConnected(mContext)) {
-            adapter.setData(daoUtil.listAllTransportVatetables());
+            adapter.setData( daoUtil.listAll(TransportVegetableInfo.class));
             //TODO 从服务端请求配送蔬菜列表信息
 //            OkHttpUtils
 //                    .post()
@@ -429,7 +429,7 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
 //                    });
 
         } else {//没有网络的情况下读取数据库里面的数据
-            adapter.setData(daoUtil.listAllTransportVatetables());
+            adapter.setData( daoUtil.listAll(TransportVegetableInfo.class));
         }
     }
 

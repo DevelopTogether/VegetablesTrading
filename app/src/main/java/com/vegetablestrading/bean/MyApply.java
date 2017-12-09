@@ -14,28 +14,28 @@ public class MyApply {
     @Id
     private Long id;
     @NotNull
-    private String petName;//会员名
+    private String userName;//会员名
     private String applyType;//申请类型
     private String applyInfo;//申请备注
-    private String apply_startTime;//申请开始时间
-    private String apply_endTime;//申请结束时间
-    private String apply_Time;//申请时间
+    private String applyStartTime;//申请开始时间
+    private String applyEndTime;//申请结束时间
+    private String applyTime;//申请时间
     private String operatingPeople;//审核人
     private String operateTime;//审核时间
     private String operateStatus;//审核状态
     private String operateNote;//审核备注
-    @Generated(hash = 1354302475)
-    public MyApply(Long id, @NotNull String petName, String applyType,
-            String applyInfo, String apply_startTime, String apply_endTime,
-            String apply_Time, String operatingPeople, String operateTime,
+    @Generated(hash = 813569057)
+    public MyApply(Long id, @NotNull String userName, String applyType,
+            String applyInfo, String applyStartTime, String applyEndTime,
+            String applyTime, String operatingPeople, String operateTime,
             String operateStatus, String operateNote) {
         this.id = id;
-        this.petName = petName;
+        this.userName = userName;
         this.applyType = applyType;
         this.applyInfo = applyInfo;
-        this.apply_startTime = apply_startTime;
-        this.apply_endTime = apply_endTime;
-        this.apply_Time = apply_Time;
+        this.applyStartTime = applyStartTime;
+        this.applyEndTime = applyEndTime;
+        this.applyTime = applyTime;
         this.operatingPeople = operatingPeople;
         this.operateTime = operateTime;
         this.operateStatus = operateStatus;
@@ -50,11 +50,11 @@ public class MyApply {
     public void setId(Long id) {
         this.id = id;
     }
-    public String getPetName() {
-        return this.petName;
+    public String getUserName() {
+        return this.userName;
     }
-    public void setPetName(String petName) {
-        this.petName = petName;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
     public String getApplyType() {
         return this.applyType;
@@ -68,23 +68,23 @@ public class MyApply {
     public void setApplyInfo(String applyInfo) {
         this.applyInfo = applyInfo;
     }
-    public String getApply_startTime() {
-        return this.apply_startTime;
+    public String getApplyStartTime() {
+        return this.applyStartTime;
     }
-    public void setApply_startTime(String apply_startTime) {
-        this.apply_startTime = apply_startTime;
+    public void setApplyStartTime(String applyStartTime) {
+        this.applyStartTime = applyStartTime;
     }
-    public String getApply_endTime() {
-        return this.apply_endTime;
+    public String getApplyEndTime() {
+        return this.applyEndTime;
     }
-    public void setApply_endTime(String apply_endTime) {
-        this.apply_endTime = apply_endTime;
+    public void setApplyEndTime(String applyEndTime) {
+        this.applyEndTime = applyEndTime;
     }
-    public String getApply_Time() {
-        return this.apply_Time;
+    public String getApplyTime() {
+        return this.applyTime;
     }
-    public void setApply_Time(String apply_Time) {
-        this.apply_Time = apply_Time;
+    public void setApplyTime(String applyTime) {
+        this.applyTime = applyTime;
     }
     public String getOperatingPeople() {
         return this.operatingPeople;

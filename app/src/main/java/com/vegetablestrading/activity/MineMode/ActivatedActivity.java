@@ -62,8 +62,8 @@ public class ActivatedActivity extends AppCompatActivity implements View.OnClick
     private void setTextOfViews(UserInfo userInfo) {
         mActivatedUserName.getTitleBarRightBtn().setText(userInfo.getUserName());
         mActivatedUserPhone.getTitleBarRightBtn().setText(userInfo.getUserPhone());
-        mActivatedUserType.getTitleBarRightBtn().setText(userInfo.getPetType());
-        mActivatedUserSum.getTitleBarRightBtn().setText(userInfo.getPetSum());
+        mActivatedUserType.getTitleBarRightBtn().setText(userInfo.getUserType());
+        mActivatedUserSum.getTitleBarRightBtn().setText(userInfo.getDues());
         mActivatedDeposit.getTitleBarRightBtn().setText(userInfo.getDeposit());
         mActivatedRegistDate.getTitleBarRightBtn().setText(userInfo.getRegistDate());
         mActivatedExpirationTime.getTitleBarRightBtn().setText(userInfo.getExpirationTime());

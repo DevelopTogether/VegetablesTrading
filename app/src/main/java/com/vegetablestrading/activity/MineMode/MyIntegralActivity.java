@@ -140,7 +140,7 @@ public class MyIntegralActivity extends AppCompatActivity implements View.OnClic
      */
     private void initDataForAdapter(){
         if (PublicUtils.isConnected(this)) {
-            adapter.setData(daoUtils.listAllapplys());
+            adapter.setData(daoUtils.listAll(MyApply.class));
             //TODO 从服务端请求申请记录
 //            OkHttpUtils
 //                    .post()
@@ -161,7 +161,7 @@ public class MyIntegralActivity extends AppCompatActivity implements View.OnClic
 //                    });
 
         }else{//没有网络的情况下读取数据库里面的数据
-            adapter.setData(daoUtils.listAllapplys());
+            adapter.setData(daoUtils.listAll(MyApply.class));
         }
     }
 }

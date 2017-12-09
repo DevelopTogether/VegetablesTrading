@@ -99,7 +99,7 @@ public class PickRecordActivity extends AppCompatActivity implements View.OnClic
      */
     private void initDataForAdapter(){
         if (PublicUtils.isConnected(this)) {
-            adapter.setData(daoUtils.listAllMyPickInfo());
+            adapter.setData(daoUtils.listAll(MyPickInfo.class));
             //TODO 从服务端请求申请记录
 //            OkHttpUtils
 //                    .post()
@@ -120,7 +120,7 @@ public class PickRecordActivity extends AppCompatActivity implements View.OnClic
 //                    });
 
         }else{//没有网络的情况下读取数据库里面的数据
-            adapter.setData(daoUtils.listAllMyPickInfo());
+            adapter.setData(daoUtils.listAll(MyPickInfo.class));
         }
     }
 }

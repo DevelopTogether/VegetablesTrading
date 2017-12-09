@@ -26,6 +26,7 @@ import com.vegetablestrading.R;
 import com.vegetablestrading.activity.MineMode.ActivateUserActivity;
 import com.vegetablestrading.bean.MyApply;
 import com.vegetablestrading.bean.TransportRecord;
+import com.vegetablestrading.bean.UserInfo;
 
 import java.util.regex.Pattern;
 
@@ -42,6 +43,7 @@ public class PublicUtils {
     public static MyApply myApply;//申请详情实体类
     private static String USERINFO = "USER_INFO";//用户信息标识，用于存储sp
     private static String ACTIVATED = "ACTIVATED";//用户激活状态，用于存储sp
+    public static UserInfo userInfo;//用户个人信息
 
 
     /**

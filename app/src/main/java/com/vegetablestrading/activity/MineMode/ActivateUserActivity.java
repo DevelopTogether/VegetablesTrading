@@ -22,7 +22,9 @@ import com.alipay.sdk.app.PayTask;
 import com.vegetablestrading.R;
 import com.vegetablestrading.aLiPay.PayResult;
 import com.vegetablestrading.activity.BaseActivity;
+import com.vegetablestrading.bean.UserInfo;
 import com.vegetablestrading.customViews.CustomView;
+import com.vegetablestrading.utils.PublicUtils;
 
 import java.util.Map;
 
@@ -105,8 +107,9 @@ public class ActivateUserActivity extends BaseActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activate_user);
         initView();
+        setViewValue(PublicUtils.userInfo);
         initActionBar();
-        mPetTypeDescriptionTv.setText(getResources().getText(R.string.glodCard_description));
+
     }
 
     /**
@@ -152,6 +155,7 @@ public class ActivateUserActivity extends BaseActivity implements View.OnClickLi
                         mPayAmount.getTitleBarRightBtn().setText(String.valueOf(payAmount));
                         break;
                     default:
+
                         break;
                 }
             }
@@ -163,20 +167,20 @@ public class ActivateUserActivity extends BaseActivity implements View.OnClickLi
     /**
      * 设置会员信息
      */
-    private void setViewValue(String name, String mobile, String userType, String sumOneYear, String deposit) {
-        mUserName.getTitleBarRightBtn().setText(name);
-        mMobile.getTitleBarRightBtn().setText(mobile);
-        mUserType.getTitleBarRightBtn().setText(userType);
-        mUserSum.getTitleBarRightBtn().setText(sumOneYear);
-        mDeposit.getTitleBarRightBtn().setText(deposit);
-        switch (userType) {
-            case "VIP金卡":
+    private void setViewValue(UserInfo userInfo) {
+        mUserName.getTitleBarRightBtn().setText(userInfo.getUserName());
+        mMobile.getTitleBarRightBtn().setText(userInfo.getUserPhone());
+        mUserType.getTitleBarRightBtn().setText(userInfo.getUserType());
+        mUserSum.getTitleBarRightBtn().setText(userInfo.getDues());
+        mDeposit.getTitleBarRightBtn().setText(userInfo.getDeposit());
+        switch (userInfo.getUserType()) {//1==N蓝卡，2==P银卡，3==VIP金卡
+            case "3":
                 mPetTypeDescriptionTv.setText(getResources().getText(R.string.glodCard_description));
                 break;
-            case "P银卡":
+            case "2":
                 mPetTypeDescriptionTv.setText(getResources().getText(R.string.silverCard_description));
                 break;
-            case "N蓝卡":
+            case "1":
                 mPetTypeDescriptionTv.setText(getResources().getText(R.string.blueCard_description));
                 break;
             default:

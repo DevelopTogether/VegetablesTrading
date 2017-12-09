@@ -4,9 +4,6 @@ import android.content.Context;
 import android.util.Log;
 
 import com.vegetablestrading.DaoSession;
-import com.vegetablestrading.bean.MyApply;
-import com.vegetablestrading.bean.MyPickInfo;
-import com.vegetablestrading.bean.TransportVegetableInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -117,46 +114,14 @@ public class DaoUtils<Entity> {
         return flag;
     }
 
-//    /**
-//     * 返回多行配送蔬菜信息
-//     *
-//     * @return
-//     */
-//    public ArrayList<TransportVegetableInfo> listAllTransportVatetables() {
-//        return (ArrayList<TransportVegetableInfo>) daoSession.loadAll(TransportVegetableInfo.class);
-//    }
     /**
-     * 返回多行商城蔬菜信息
+     * 返回多行信息
      *
      * @return
      */
-    public ArrayList<TransportVegetableInfo> listAllTransportVatetables() {
-        return (ArrayList<TransportVegetableInfo>) daoSession.loadAll(TransportVegetableInfo.class);
+    public ArrayList<Object> listAll(Class<Object> clazz) {
+        return (ArrayList<Object>) daoSession.loadAll(clazz);
     }
-    /**
-     * 返回所有申请记录
-     *
-     * @return
-     */
-    public ArrayList<MyApply> listAllapplys() {
-        return (ArrayList<MyApply>) daoSession.loadAll(MyApply.class);
-    }
-    /**
-     * 返回所有采摘记录
-     *
-     * @return
-     */
-    public ArrayList<MyPickInfo> listAllMyPickInfo() {
-        return (ArrayList<MyPickInfo>) daoSession.loadAll(MyPickInfo.class);
-    }
-//    /**
-//     * 返回所有积分记录
-//     *
-//     * @return
-//     */
-//    public ArrayList<Inte> listAllIntegral() {
-//        return (ArrayList<MyApply>) daoSession.loadAll(MyApply.class);
-//    }
 
     /**
      * 按照主键返回单行记录

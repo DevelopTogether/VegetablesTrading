@@ -58,9 +58,9 @@ public class ApplyDescriptActivity extends AppCompatActivity implements View.OnC
         mApplyTypeDescriptCv.getTitleBarLeftBtn().setTextSize(16);
         mApplyTypeDescriptCv.getTitleBarRightBtn().setTextSize(16);
         mApplyStartTimeTv = (TextView) findViewById(R.id.apply_startTime_tv);
-        mApplyStartTimeTv.setText("申请开始时间："+PublicUtils.myApply.getApply_startTime());
+        mApplyStartTimeTv.setText("申请开始时间："+PublicUtils.myApply.getApplyStartTime());
         mApplyEndTimeTv = (TextView) findViewById(R.id.apply_endTime_tv);
-        mApplyEndTimeTv.setText("申请结束时间："+PublicUtils.myApply.getApply_endTime());
+        mApplyEndTimeTv.setText("申请结束时间："+PublicUtils.myApply.getApplyEndTime());
         mApplyInfoTv = (TextView) findViewById(R.id.apply_info_tv);
         mApplyInfoTv.setText("申请描述："+PublicUtils.myApply.getApplyInfo());
         mOperateStatusCv = (CustomView) findViewById(R.id.operateStatus_cv);
@@ -72,7 +72,7 @@ public class ApplyDescriptActivity extends AppCompatActivity implements View.OnC
         mOperatingNoteCv = (CustomView) findViewById(R.id.operatingNote_cv);
         mOperatingNoteCv.getTitleBarRightBtn().setText(PublicUtils.myApply.getOperateNote());
         mApplyUploadTimeTv = (TextView) findViewById(R.id.apply_uploadTime_tv);
-        mApplyUploadTimeTv.setText("申请提交时间："+PublicUtils.myApply.getApply_Time());
+        mApplyUploadTimeTv.setText("申请提交时间："+PublicUtils.myApply.getApplyTime());
     }
 
     @Override

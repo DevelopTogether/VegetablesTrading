@@ -28,9 +28,9 @@ public class UserInfoDao extends AbstractDao<UserInfo, Long> {
         public final static Property UserId = new Property(1, String.class, "userId", false, "USER_ID");
         public final static Property UserName = new Property(2, String.class, "userName", false, "USER_NAME");
         public final static Property UserPhone = new Property(3, String.class, "userPhone", false, "USER_PHONE");
-        public final static Property PetType = new Property(4, String.class, "petType", false, "PET_TYPE");
-        public final static Property PetStatus = new Property(5, String.class, "petStatus", false, "PET_STATUS");
-        public final static Property PetSum = new Property(6, String.class, "petSum", false, "PET_SUM");
+        public final static Property UserType = new Property(4, String.class, "userType", false, "USER_TYPE");
+        public final static Property UserStatus = new Property(5, String.class, "userStatus", false, "USER_STATUS");
+        public final static Property Dues = new Property(6, String.class, "dues", false, "DUES");
         public final static Property Deposit = new Property(7, String.class, "deposit", false, "DEPOSIT");
         public final static Property ExpirationTime = new Property(8, String.class, "expirationTime", false, "EXPIRATION_TIME");
         public final static Property ResidualIntegral = new Property(9, String.class, "residualIntegral", false, "RESIDUAL_INTEGRAL");
@@ -60,9 +60,9 @@ public class UserInfoDao extends AbstractDao<UserInfo, Long> {
                 "\"USER_ID\" TEXT NOT NULL ," + // 1: userId
                 "\"USER_NAME\" TEXT," + // 2: userName
                 "\"USER_PHONE\" TEXT," + // 3: userPhone
-                "\"PET_TYPE\" TEXT," + // 4: petType
-                "\"PET_STATUS\" TEXT," + // 5: petStatus
-                "\"PET_SUM\" TEXT," + // 6: petSum
+                "\"USER_TYPE\" TEXT," + // 4: userType
+                "\"USER_STATUS\" TEXT," + // 5: userStatus
+                "\"DUES\" TEXT," + // 6: dues
                 "\"DEPOSIT\" TEXT," + // 7: deposit
                 "\"EXPIRATION_TIME\" TEXT," + // 8: expirationTime
                 "\"RESIDUAL_INTEGRAL\" TEXT," + // 9: residualIntegral
@@ -101,19 +101,19 @@ public class UserInfoDao extends AbstractDao<UserInfo, Long> {
             stmt.bindString(4, userPhone);
         }
  
-        String petType = entity.getPetType();
-        if (petType != null) {
-            stmt.bindString(5, petType);
+        String userType = entity.getUserType();
+        if (userType != null) {
+            stmt.bindString(5, userType);
         }
  
-        String petStatus = entity.getPetStatus();
-        if (petStatus != null) {
-            stmt.bindString(6, petStatus);
+        String userStatus = entity.getUserStatus();
+        if (userStatus != null) {
+            stmt.bindString(6, userStatus);
         }
  
-        String petSum = entity.getPetSum();
-        if (petSum != null) {
-            stmt.bindString(7, petSum);
+        String dues = entity.getDues();
+        if (dues != null) {
+            stmt.bindString(7, dues);
         }
  
         String deposit = entity.getDeposit();
@@ -187,19 +187,19 @@ public class UserInfoDao extends AbstractDao<UserInfo, Long> {
             stmt.bindString(4, userPhone);
         }
  
-        String petType = entity.getPetType();
-        if (petType != null) {
-            stmt.bindString(5, petType);
+        String userType = entity.getUserType();
+        if (userType != null) {
+            stmt.bindString(5, userType);
         }
  
-        String petStatus = entity.getPetStatus();
-        if (petStatus != null) {
-            stmt.bindString(6, petStatus);
+        String userStatus = entity.getUserStatus();
+        if (userStatus != null) {
+            stmt.bindString(6, userStatus);
         }
  
-        String petSum = entity.getPetSum();
-        if (petSum != null) {
-            stmt.bindString(7, petSum);
+        String dues = entity.getDues();
+        if (dues != null) {
+            stmt.bindString(7, dues);
         }
  
         String deposit = entity.getDeposit();
@@ -265,9 +265,9 @@ public class UserInfoDao extends AbstractDao<UserInfo, Long> {
             cursor.getString(offset + 1), // userId
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // userName
             cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // userPhone
-            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // petType
-            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // petStatus
-            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // petSum
+            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // userType
+            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // userStatus
+            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // dues
             cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // deposit
             cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // expirationTime
             cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9), // residualIntegral
@@ -288,9 +288,9 @@ public class UserInfoDao extends AbstractDao<UserInfo, Long> {
         entity.setUserId(cursor.getString(offset + 1));
         entity.setUserName(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
         entity.setUserPhone(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
-        entity.setPetType(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
-        entity.setPetStatus(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
-        entity.setPetSum(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
+        entity.setUserType(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
+        entity.setUserStatus(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
+        entity.setDues(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
         entity.setDeposit(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
         entity.setExpirationTime(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
         entity.setResidualIntegral(cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9));
