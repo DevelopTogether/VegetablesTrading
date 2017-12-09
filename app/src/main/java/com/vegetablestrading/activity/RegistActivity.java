@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -27,6 +28,9 @@ import com.vegetablestrading.utils.PublicUtils;
 import com.vegetablestrading.utils.SharedPreferencesHelper;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import okhttp3.Call;
 
@@ -116,7 +120,7 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
         initView();
         initActionBar();
         registBroadcast();
-        sharedPreferencesHelper = new SharedPreferencesHelper(this,"USERINFO");
+        sharedPreferencesHelper = new SharedPreferencesHelper(this, "USERINFO");
 
 
     }
@@ -126,7 +130,7 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
         public void onReceive(Context context, Intent intent) {
             if (intent.getAction().equals(ChooserActivity.ACTION)) {
                 String region = intent.getStringExtra(ChooserActivity.ART_ADDRESS);
-                mSelectAddrTv.setText("北京市 "+region);
+                mSelectAddrTv.setText("北京市 " + region);
             }
         }
     };
@@ -207,7 +211,7 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
         mRegistRightnowTv.setOnClickListener(this);
         mCancelRegistTv = (TextView) findViewById(R.id.cancel_regist_tv);
         mCancelRegistTv.setOnClickListener(this);
-        mUserMobileEt.addTextChangedListener(new EditTestChangedListener(this, mUserMobileEt,mForTestContentTv, 0));
+        mUserMobileEt.addTextChangedListener(new EditTestChangedListener(this, mUserMobileEt, mForTestContentTv, 0));
         mUserTestEt.addTextChangedListener(new EditTestChangedListener(this, mUserTestEt, 1));
         mUserPwdEt.addTextChangedListener(new EditTestChangedListener(this, mUserPwdEt, 2));
         mUserRePwdEt.addTextChangedListener(new EditTestChangedListener(this, mUserRePwdEt, mUserPwdEt, 3));
@@ -303,7 +307,7 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
         String petName = mUserPetNameEt.getText().toString().trim();
         String addr = mSelectAddrTv.getText().toString().trim();
         String addr_detail = mDetailAddrEt.getText().toString().trim();
-
+        registToService(pwd, email, petName);
 
         if (TextUtils.isEmpty(mobile)) {
             Toast.makeText(getApplicationContext(), "请填写手机号", Toast.LENGTH_LONG).show();
@@ -369,13 +373,64 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
             Toast.makeText(this, "请选择是否同意《账号服务条款，隐私政策》", Toast.LENGTH_SHORT).show();
             return;
         }
-        //TODO 将用户信息提交到平台
+
+
         //将手机号保存到sp中
-        sharedPreferencesHelper.putString("USER_MOBILE",mobile);
+        sharedPreferencesHelper.putString("USER_MOBILE", mobile);
         Toast.makeText(getApplicationContext(), "注册成功", Toast.LENGTH_LONG).show();
         startActivity(new Intent(this, LoginActivity.class));
 
 
+    }
+
+    /**
+     * @param pwd
+     * @param email
+     * @param petName
+     */
+    private void registToService(String pwd, String email, String petName) {
+        OkHttpUtils
+                .post()
+                .url(Constant.regist_url)
+                .addParams("mobile", "18888888889")
+                .addParams("password", "123456asdf")
+                .addParams("email", "123456789@qq.com")
+                .addParams("userName", "213")
+                .addParams("userLevel", getVipType())
+                .addParams("address", "1,2,3,119,增光路30号")
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        Toast.makeText(getApplicationContext(), "", Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        if (!TextUtils.isEmpty(response)) {
+                            try {
+                                JSONObject obj = new JSONObject(response);
+                                String result = obj.getString("Result");
+                                String message = obj.getString("Message");
+                                if ("Ok".equals(result)) {
+                                    Toast.makeText(getApplicationContext(), "注册成功", Toast.LENGTH_LONG).show();
+                                } else {
+                                    if ("账号已存在".equals(message)) {
+                                        Toast.makeText(getApplicationContext(), "账号已存在,无需重复注册", Toast.LENGTH_LONG).show();
+                                    } else {
+                                        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+
+                                    }
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                        Log.e("DEBUG", response);
+                    }
+
+                });
     }
 
     @Override
@@ -390,13 +445,13 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
     private String getVipType() {
         switch (mVipRg.getCheckedRadioButtonId()) {
             case R.id.vip_glod_rb:
-                return "VIP金卡";
+                return "3";
             case R.id.vip_silver_rb:
-                return "P银卡";
+                return "2";
             case R.id.vip_blue_rb:
-                return "N蓝卡";
+                return "1";
             default:
-                return "VIP金卡";
+                return "3";
         }
     }
 }

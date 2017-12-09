@@ -21,7 +21,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".activity.LoginActivity">
+        <activity android:name=".activity.LoginActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -40,25 +41,44 @@
             android:screenOrientation="behind" />
         <activity
             android:name=".activity.MainActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_login" />
-        <activity android:name=".activity.RegistActivity" />
-        <activity android:name=".activity.MineMode.ActivateUserActivity" />
-        <activity android:name=".activity.MineMode.MyInfoActivity" />
-        <activity android:name=".activity.MineMode.ModifyPwdActivity" />
-        <activity android:name=".activity.MineMode.AboutUsActivity" />
-        <activity android:name=".activity.MineMode.MyIntegralActivity" />
-        <activity android:name=".activity.MineMode.TransportRecordActivity" />
-        <activity android:name=".activity.MineMode.TransportInfoActivity" />
-        <activity android:name=".activity.MineMode.myApply.MyApplyRecordActivity" />
-        <activity android:name=".activity.MineMode.myApply.AddApplyActivity" />
-        <activity android:name=".activity.MineMode.myApply.ApplyDescriptActivity" />
-        <activity android:name=".activity.MineMode.myPick.PickRecordActivity" />
-        <activity android:name=".activity.MineMode.CustomerComplainActivity" />
-        <activity android:name=".activity.MineMode.QuitPetActivity" />
-        <activity android:name=".activity.ForgetPwdActivity" />
-        <activity android:name=".activity.MineMode.TermOfServiceActivity" />
-        <activity android:name=".activity.MineMode.ActivatedActivity" />
-        <activity android:name=".activity.MineMode.myPick.MyPickActivity"></activity>
+        <activity android:name=".activity.RegistActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.MineMode.ActivateUserActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.MineMode.MyInfoActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.MineMode.ModifyPwdActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.MineMode.AboutUsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.MineMode.MyIntegralActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.MineMode.TransportRecordActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.MineMode.TransportInfoActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.MineMode.myApply.MyApplyRecordActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.MineMode.myApply.AddApplyActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.MineMode.myApply.ApplyDescriptActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.MineMode.myPick.PickRecordActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.MineMode.CustomerComplainActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.MineMode.QuitPetActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.ForgetPwdActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.MineMode.TermOfServiceActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.MineMode.ActivatedActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.MineMode.myPick.MyPickActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

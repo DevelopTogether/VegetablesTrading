@@ -3,15 +3,28 @@ package com.vegetablestrading.activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.zackratos.ultimatebar.UltimateBar;
 import com.vegetablestrading.R;
+import com.vegetablestrading.utils.Constant;
+import com.vegetablestrading.utils.PublicUtils;
 import com.vegetablestrading.utils.SharedPreferencesHelper;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import okhttp3.Call;
 
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
@@ -40,6 +53,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     private SharedPreferencesHelper sharedPreferencesHelper;
     private SharedPreferences sp;
     private LinearLayout mSavePwdLl;
+    private ProgressBar mLoginPb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,10 +71,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
      * 初始化账号密码状态
      */
     private void initUserNameAndPwd() {
-        sharedPreferencesHelper = new SharedPreferencesHelper(this,"LOGIN");
-        mUserMobileEt.setText(sharedPreferencesHelper.getString("LOGIN_NAME",""));
-        mUserPwdEt.setText(sharedPreferencesHelper.getString("LOGIN_PWD",""));
-        boolean pwdSaved = sharedPreferencesHelper.getBoolean("REMEMBERPWD",false);
+        sharedPreferencesHelper = new SharedPreferencesHelper(this, "LOGIN");
+        mUserMobileEt.setText(sharedPreferencesHelper.getString("LOGIN_NAME", ""));
+        mUserPwdEt.setText(sharedPreferencesHelper.getString("LOGIN_PWD", ""));
+        boolean pwdSaved = sharedPreferencesHelper.getBoolean("REMEMBERPWD", false);
         if (pwdSaved) {
             mRememberPwdCb.setChecked(true);
         } else {
@@ -82,6 +96,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         mUserPwdEt = (EditText) findViewById(R.id.user_pwd_et);
         mSavePwdLl = (LinearLayout) findViewById(R.id.save_pwd_ll);
         mSavePwdLl.setOnClickListener(this);
+        mLoginPb = (ProgressBar) findViewById(R.id.login_pb);
     }
 
     @Override
@@ -111,7 +126,28 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.login_confirm_tv://登录
-                startActivity(new Intent(this, MainActivity.class));
+                String mobile = mUserMobileEt.getText().toString().trim();
+                String pwd = mUserPwdEt.getText().toString().trim();
+
+                if (TextUtils.isEmpty(mobile)) {
+                    Toast.makeText(getApplicationContext(), "请填写手机号", Toast.LENGTH_LONG).show();
+                } else {
+                    if (!PublicUtils.isMobileNO(mobile)) {
+                        Toast.makeText(getApplicationContext(), "请填写正规的手机号", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                }
+                if (pwd == null || TextUtils.isEmpty(pwd)) {
+                    Toast.makeText(getApplicationContext(), "请设置密码", Toast.LENGTH_LONG).show();
+                    return;
+                } else {
+                    if (!PublicUtils.isContainAll(pwd)) {
+                        Toast.makeText(getApplicationContext(), "请按规定格式填写密码以保证账号安全", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                }
+                putUserInfoToSp();
+                loginToService(mobile, pwd);
                 break;
             case R.id.forget_pwd_tv://忘记密码
                 startActivity(new Intent(this, ForgetPwdActivity.class));
@@ -122,11 +158,56 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             case R.id.save_pwd_ll://记住密码
                 if (mRememberPwdCb.isChecked()) {
                     mRememberPwdCb.setChecked(false);
-                }else{
+                } else {
                     mRememberPwdCb.setChecked(true);
                 }
                 putUserInfoToSp();
                 break;
         }
+    }
+
+    private void loginToService(String userName, String pwd) {
+        mLoginPb.setVisibility(View.VISIBLE);
+        OkHttpUtils
+                .post()
+                .url(Constant.login_url)
+                .addParams("mobile", userName)
+                .addParams("password", pwd)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        mLoginPb.setVisibility(View.GONE);
+                        Toast.makeText(getApplicationContext(), "", Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        if (!TextUtils.isEmpty(response)) {
+                            try {
+                                JSONObject obj = new JSONObject(response);
+                                String result = obj.getString("Result");
+                                String message = obj.getString("Message");
+                                if ("Ok".equals(result)) {
+                                    mLoginPb.setVisibility(View.GONE);
+                                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                } else {
+                                    mLoginPb.setVisibility(View.GONE);
+                                    if ("账号不存在!".equals(message)) {
+                                        Toast.makeText(getApplicationContext(), "账号不存在", Toast.LENGTH_LONG).show();
+                                    } else {
+                                        Toast.makeText(getApplicationContext(), "密码错误,请重新输入", Toast.LENGTH_LONG).show();
+
+                                    }
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        Log.e("DEBUG", response);
+
+                    }
+
+                });
     }
 }

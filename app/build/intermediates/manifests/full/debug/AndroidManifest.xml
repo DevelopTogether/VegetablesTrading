@@ -38,7 +38,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar" >
-        <activity android:name="com.vegetablestrading.activity.LoginActivity" >
+        <activity
+            android:name="com.vegetablestrading.activity.LoginActivity"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -57,25 +59,62 @@
             android:screenOrientation="behind" />
         <activity
             android:name="com.vegetablestrading.activity.MainActivity"
-            android:label="@string/title_activity_login" />
-        <activity android:name="com.vegetablestrading.activity.RegistActivity" />
-        <activity android:name="com.vegetablestrading.activity.MineMode.ActivateUserActivity" />
-        <activity android:name="com.vegetablestrading.activity.MineMode.MyInfoActivity" />
-        <activity android:name="com.vegetablestrading.activity.MineMode.ModifyPwdActivity" />
-        <activity android:name="com.vegetablestrading.activity.MineMode.AboutUsActivity" />
-        <activity android:name="com.vegetablestrading.activity.MineMode.MyIntegralActivity" />
-        <activity android:name="com.vegetablestrading.activity.MineMode.TransportRecordActivity" />
-        <activity android:name="com.vegetablestrading.activity.MineMode.TransportInfoActivity" />
-        <activity android:name="com.vegetablestrading.activity.MineMode.myApply.MyApplyRecordActivity" />
-        <activity android:name="com.vegetablestrading.activity.MineMode.myApply.AddApplyActivity" />
-        <activity android:name="com.vegetablestrading.activity.MineMode.myApply.ApplyDescriptActivity" />
-        <activity android:name="com.vegetablestrading.activity.MineMode.myPick.PickRecordActivity" />
-        <activity android:name="com.vegetablestrading.activity.MineMode.CustomerComplainActivity" />
-        <activity android:name="com.vegetablestrading.activity.MineMode.QuitPetActivity" />
-        <activity android:name="com.vegetablestrading.activity.ForgetPwdActivity" />
-        <activity android:name="com.vegetablestrading.activity.MineMode.TermOfServiceActivity" />
-        <activity android:name="com.vegetablestrading.activity.MineMode.ActivatedActivity" />
-        <activity android:name="com.vegetablestrading.activity.MineMode.myPick.MyPickActivity" />
+            android:label="@string/title_activity_login"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.vegetablestrading.activity.RegistActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.vegetablestrading.activity.MineMode.ActivateUserActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.vegetablestrading.activity.MineMode.MyInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.vegetablestrading.activity.MineMode.ModifyPwdActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.vegetablestrading.activity.MineMode.AboutUsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.vegetablestrading.activity.MineMode.MyIntegralActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.vegetablestrading.activity.MineMode.TransportRecordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.vegetablestrading.activity.MineMode.TransportInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.vegetablestrading.activity.MineMode.myApply.MyApplyRecordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.vegetablestrading.activity.MineMode.myApply.AddApplyActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.vegetablestrading.activity.MineMode.myApply.ApplyDescriptActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.vegetablestrading.activity.MineMode.myPick.PickRecordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.vegetablestrading.activity.MineMode.CustomerComplainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.vegetablestrading.activity.MineMode.QuitPetActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.vegetablestrading.activity.ForgetPwdActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.vegetablestrading.activity.MineMode.TermOfServiceActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.vegetablestrading.activity.MineMode.ActivatedActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.vegetablestrading.activity.MineMode.myPick.MyPickActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.choseaddrdemo.selectAddr.ChooserActivity"
             android:theme="@style/AppTheme.NoActionBar" />

@@ -40,17 +40,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView mNavigationTv4;
     private LinearLayout mNavigationLine4;
     private FragmentManager fragmentManager;
-    private FragmentTab1 navitionFragment1 = new FragmentTab1();
-    private FragmentTab4 navitionFragment4 = new FragmentTab4();
-    private FragmentTab3 navitionFragment3 = new FragmentTab3();
-    private FragmentTab2 navitionFragment2 = new FragmentTab2();
+    private FragmentTab1 navitionFragment1;
+    private FragmentTab4 navitionFragment4;
+    private FragmentTab3 navitionFragment3;
+    private FragmentTab2 navitionFragment2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        fragmentManager = getSupportFragmentManager();
+        if (savedInstanceState == null) {
+            navitionFragment1 = new FragmentTab1();
+            navitionFragment4 = new FragmentTab4();
+            navitionFragment3 = new FragmentTab3();
+            navitionFragment2 = new FragmentTab2();
+        }else{
+            navitionFragment1 = (FragmentTab1) fragmentManager.getFragment(savedInstanceState,"navitionFragment1");
+            navitionFragment2 = (FragmentTab2) fragmentManager.getFragment(savedInstanceState,"navitionFragment2");
+            navitionFragment3 = (FragmentTab3) fragmentManager.getFragment(savedInstanceState,"navitionFragment3");
+            navitionFragment4 = (FragmentTab4) fragmentManager.getFragment(savedInstanceState,"navitionFragment4");
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
-        fragmentManager = getSupportFragmentManager();
+
         initBottomViewStatus(0);
         initFragmentSelected(0);
         fragmentCallBackForFinishActivity();
@@ -169,25 +182,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (i) {
             case 0:
                 if (!navitionFragment1.isAdded()) {
-                    fragmentTransaction.add(R.id.content_fl, navitionFragment1);
+                    fragmentTransaction.add(R.id.content_fl, navitionFragment1,"navitionFragment1");
                 }
                 fragmentTransaction.show(navitionFragment1);
                 break;
             case 1:
                 if (!navitionFragment2.isAdded()) {
-                    fragmentTransaction.add(R.id.content_fl, navitionFragment2);
+                    fragmentTransaction.add(R.id.content_fl, navitionFragment2,"navitionFragment2");
                 }
                 fragmentTransaction.show(navitionFragment2);
                 break;
             case 2:
                 if (!navitionFragment3.isAdded()) {
-                    fragmentTransaction.add(R.id.content_fl, navitionFragment3);
+                    fragmentTransaction.add(R.id.content_fl, navitionFragment3,"navitionFragment3");
                 }
                 fragmentTransaction.show(navitionFragment3);
                 break;
             case 3:
                 if (!navitionFragment4.isAdded()) {
-                    fragmentTransaction.add(R.id.content_fl, navitionFragment4);
+                    fragmentTransaction.add(R.id.content_fl, navitionFragment4,"navitionFragment4");
                 }
                 fragmentTransaction.show(navitionFragment4);
                 break;

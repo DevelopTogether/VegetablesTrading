@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -21,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.vegetablestrading.R;
 import com.vegetablestrading.adapter.DividerItemDecoration;
@@ -28,14 +30,19 @@ import com.vegetablestrading.adapter.TransportListAdapter;
 import com.vegetablestrading.bean.TransportVegetableInfo;
 import com.vegetablestrading.interfaces.FinishActivityInterface;
 import com.vegetablestrading.utils.CalendarUtil;
+import com.vegetablestrading.utils.Constant;
 import com.vegetablestrading.utils.DaoUtils;
 import com.vegetablestrading.utils.PublicUtils;
 import com.vegetablestrading.utils.SharedPreferencesHelper;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+
+import okhttp3.Call;
 
 import static com.vegetablestrading.utils.CalendarUtil.GetWeekFromDate;
 import static com.vegetablestrading.utils.CalendarUtil.compareTime;
@@ -260,7 +267,8 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
                 lastWeek.setTextColor(getResources().getColor(R.color.app_black));
                 mTradeDateTv.setText("本周");
                 pop.dismiss();
-                //TODO 请求本周配送菜品信息
+                // 请求本周配送菜品信息
+                transportVegetablesByDate(CalendarUtil.getTimeOfWeekStart(),CalendarUtil.getTimeOfWeekEnd());
             }
         });
         lastWeek.setOnClickListener(new View.OnClickListener() {
@@ -270,12 +278,58 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
                 thisWeek.setTextColor(getResources().getColor(R.color.app_black));
                 mTradeDateTv.setText("上周");
                 pop.dismiss();
-                //TODO 请求上周配送菜品信息
+                // 请求上周配送菜品信息
+                transportVegetablesByDate(CalendarUtil.getTimeOfLastWeekStart(),CalendarUtil.getTimeOfWeekStart());
             }
         });
         return pop;
     }
 
+    /**
+     * 根据起始时间获取配送清单
+     * @param startTime
+     * @param endTime
+     */
+    private void transportVegetablesByDate(String startTime ,String endTime) {
+        OkHttpUtils
+                .post()
+                .url(Constant.transportVegetablesByDate_url)
+                .addParams("startTime", startTime)
+                .addParams("endTime", endTime)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        Toast.makeText(mContext, "", Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+//                        if (!TextUtils.isEmpty(response)) {
+//                            try {
+//                                JSONObject obj = new JSONObject(response);
+//                                String result = obj.getString("Result");
+//                                String message = obj.getString("Message");
+//                                if ("Ok".equals(result)) {
+//                                    startActivity(new Intent(mContext, MainActivity.class));
+//                                } else {
+//                                    if ("账号不存在!".equals(message)) {
+//                                        Toast.makeText(mContext, "账号不存在", Toast.LENGTH_LONG).show();
+//                                    } else {
+//                                        Toast.makeText(mContext, "密码错误,请重新输入", Toast.LENGTH_LONG).show();
+//
+//                                    }
+//                                }
+//                            } catch (JSONException e) {
+//                                e.printStackTrace();
+//                            }
+//                        }
+                        Log.e("DEBUG",response);
+
+                    }
+
+                });
+    }
     /**
      * 不配送提示窗口
      */

@@ -18,10 +18,12 @@ public class Constant {
     public static String company_url = "http://www.jgkmgs.net";//官方网址
     public static String appVersionDescription = "1.我是功能1 \n 1.我是功能1 \n 2.我是功能2 \n 3.我是功能3 \n 4.我是功能4 \n ";//最新软件版本特征描述
 
-    public static  String downloadApkPath = "/SoftwareManagement/Uploads/celllocation_NR-release(1).apk";//服务端apk包的路径
-    public static   String apkDownLoadServerUrl = "http://zc.xun365.net";//服务端地址
-    public static   String unUpdateNotice = "取消";//提示更新框不立即更新提示语：一个是稍后提示（7天后再提示），一个是取消
+    public static String downloadApkPath = "/SoftwareManagement/Uploads/celllocation_NR-release(1).apk";//服务端apk包的路径
+    public static String apkDownLoadServerUrl = "http://zc.xun365.net";//服务端地址
+    public static String unUpdateNotice = "取消";//提示更新框不立即更新提示语：一个是稍后提示（7天后再提示），一个是取消
 
-
+    public static String regist_url = company_url + "/index.php/Home/vegetableshop/regist.html";
+    public static String login_url = company_url + "/index.php/Home/vegetableshop/login.html";
+    public static String transportVegetablesByDate_url = company_url + "/index.php/Home/vegetableshop/transportVegetablesByDate.html";
 
 }
