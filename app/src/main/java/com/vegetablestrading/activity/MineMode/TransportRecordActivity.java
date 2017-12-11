@@ -15,7 +15,9 @@ import android.widget.Toast;
 import com.vegetablestrading.R;
 import com.vegetablestrading.adapter.DividerItemDecoration;
 import com.vegetablestrading.adapter.TransportRecordAdapter;
+import com.vegetablestrading.bean.LogisticsInfo;
 import com.vegetablestrading.bean.TransportRecord;
+import com.vegetablestrading.bean.TransportVegetableInfo;
 import com.vegetablestrading.utils.CalendarUtil;
 import com.vegetablestrading.utils.Constant;
 import com.vegetablestrading.utils.DaoUtils;
@@ -28,6 +30,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.Call;
 
@@ -148,7 +151,8 @@ public class TransportRecordActivity extends AppCompatActivity implements View.O
                     @Override
                     public void onError(Call call, Exception e, int id) {
                         Toast.makeText(TransportRecordActivity.this, "网络错误", Toast.LENGTH_LONG).show();
-                        adapter.setData(daoUtil.listAll(TransportRecord.class));
+                        ArrayList<TransportRecord> arrayList =      daoUtil.listAll(TransportRecord.class);
+                        adapter.setData(arrayList);
                     }
 
                     @Override
@@ -160,6 +164,12 @@ public class TransportRecordActivity extends AppCompatActivity implements View.O
                                 String message = obj.getString("Model");
                                 if ("Ok".equals(result)) {
                                     ArrayList<TransportRecord> arrays = GsonUtils.jsonToArrayList(message, TransportRecord.class);
+                                    List<LogisticsInfo> arrays_list = new ArrayList<LogisticsInfo>();
+                                    List<TransportVegetableInfo> arrays_transport = new ArrayList<TransportVegetableInfo>();
+                                    for (TransportRecord array : arrays) {
+                                        array.setLogisticsInfos(arrays_list);
+                                        array.setTransportVegetableInfos(arrays_transport);
+                                    }
                                     adapter.setData(arrays);
                                     putTransportRecordInfoToSqlite(arrays);
                                 } else {
@@ -180,8 +190,12 @@ public class TransportRecordActivity extends AppCompatActivity implements View.O
      * 将配送蔬菜信息保存本地
      */
     private void putTransportRecordInfoToSqlite(ArrayList<TransportRecord> arrayList) {
-        daoUtil.deleteAllEntity(TransportRecord.class);
-        daoUtil.insertMultEntity(arrayList);
+        ArrayList<TransportRecord> list =  daoUtil.listAll(TransportRecord.class);
+        for (TransportRecord transportRecord : arrayList ) {
+            if (!list.contains(transportRecord)) {
+                daoUtil.insertEntity(transportRecord);
+            }
+        }
 
     }
 }

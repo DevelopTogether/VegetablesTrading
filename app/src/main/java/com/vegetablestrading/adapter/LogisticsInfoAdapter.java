@@ -38,8 +38,8 @@ public class LogisticsInfoAdapter extends RecyclerView.Adapter<LogisticsInfoAdap
         } else {
             holder.mLogisticsMarkeTv.setVisibility(View.INVISIBLE);
         }
-        holder.mLogisticsTimeTv.setText(logisticsInfo.getTime());
-        holder.mLogisticsDescriptionTv.setText(logisticsInfo.getDescription());
+        holder.mLogisticsTimeTv.setText(logisticsInfo.getDatetime());
+        holder.mLogisticsDescriptionTv.setText(logisticsInfo.getRemark());
     }
 
     @Override

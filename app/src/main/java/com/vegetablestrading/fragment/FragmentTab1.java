@@ -301,7 +301,7 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
                 .execute(new StringCallback() {
                     @Override
                     public void onError(Call call, Exception e, int id) {
-                        Toast.makeText(mContext, "", Toast.LENGTH_LONG).show();
+                        Toast.makeText(mContext, "网络错误", Toast.LENGTH_LONG).show();
                         mSwipeRefreshSl.setRefreshing(false);
                     }
 

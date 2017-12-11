@@ -23,7 +23,8 @@ public class MyIntegralAdapter extends RecyclerView.Adapter<MyIntegralAdapter.Vi
     private MyIntegralItemClick myIntegralItemClick;
 
     public void setData(ArrayList<TransportRecord> arrays) {
-        this.arrays = arrays;
+      this.arrays = arrays;
+        notifyDataSetChanged();
     }
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

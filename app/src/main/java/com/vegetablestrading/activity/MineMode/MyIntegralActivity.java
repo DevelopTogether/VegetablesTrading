@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,8 +17,20 @@ import com.vegetablestrading.adapter.DividerItemDecoration;
 import com.vegetablestrading.adapter.MyIntegralAdapter;
 import com.vegetablestrading.bean.TransportRecord;
 import com.vegetablestrading.customViews.CustomView;
+import com.vegetablestrading.utils.CalendarUtil;
+import com.vegetablestrading.utils.Constant;
 import com.vegetablestrading.utils.DaoUtils;
+import com.vegetablestrading.utils.GsonUtils;
 import com.vegetablestrading.utils.PublicUtils;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
+import okhttp3.Call;
 
 /**
  * 我的积分
@@ -50,7 +64,7 @@ public class MyIntegralActivity extends AppCompatActivity implements View.OnClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_integral);
-        daoUtils = new DaoUtils(this,"");
+        daoUtils = new DaoUtils(this,"shop_vagetable_myIntegral.sqlite");
         initView();
         initActionBar();
     }
@@ -77,6 +91,7 @@ public class MyIntegralActivity extends AppCompatActivity implements View.OnClic
         mMineIntegralRv.setLayoutManager(manager);
         adapter = new MyIntegralAdapter();
         mMineIntegralRv.setAdapter(adapter);
+        transportVegetablesByDate("2017-11-05 10:30:00", CalendarUtil.getCurrentTime());
         adapter.setMyIntegralItemClick(new MyIntegralAdapter.MyIntegralItemClick() {
             @Override
             public void itemClick(TransportRecord transportRecord) {
@@ -95,13 +110,57 @@ public class MyIntegralActivity extends AppCompatActivity implements View.OnClic
                 break;
         }
     }
+    /**
+     * 根据起始时间获取配送清单
+     *
+     * @param startTime
+     * @param endTime
+     */
+    private void transportVegetablesByDate(String startTime, String endTime) {
+        OkHttpUtils
+                .post()
+                .url(Constant.transportRecord_url)
+                .addParams("userId", PublicUtils.userInfo.getUserId())
+                .addParams("startTime", startTime)
+                .addParams("endTime", endTime)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        Toast.makeText(MyIntegralActivity.this, "网络错误", Toast.LENGTH_LONG).show();
+                        adapter.setData(daoUtils.listAll(TransportRecord.class));
+                    }
 
-//    /**
-//     * 将我的积分信息保存本地
-//     */
-//    private void putIntegralInfoToSqlite(){
-//        daoUtils.deleteAllEntity(MyApply.class);
-//        daoUtils.insertMultEntity(getTransportRecordData());
-//
-//    }
+                    @Override
+                    public void onResponse(String response, int id) {
+                        if (!TextUtils.isEmpty(response)) {
+                            try {
+                                JSONObject obj = new JSONObject(response);
+                                String result = obj.getString("Result");
+                                String message = obj.getString("Model");
+                                if ("Ok".equals(result)) {
+                                    ArrayList<TransportRecord> arrays = GsonUtils.jsonToArrayList(message, TransportRecord.class);
+                                    adapter.setData(arrays);
+                                    putIntegralInfoToSqlite(arrays);
+                                } else {
+                                    Toast.makeText(MyIntegralActivity.this, message, Toast.LENGTH_LONG).show();
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        Log.e("DEBUG", response);
+
+                    }
+
+                });
+    }
+    /**
+     * 将我的积分信息保存本地
+     */
+    private void putIntegralInfoToSqlite(ArrayList<TransportRecord> arrayList){
+        daoUtils.deleteAllEntity(TransportRecord.class);
+        daoUtils.insertMultEntity(arrayList);
+
+    }
 }

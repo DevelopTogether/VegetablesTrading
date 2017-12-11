@@ -1,9 +1,12 @@
 package com.vegetablestrading.bean;
 
+import org.greenrobot.greendao.annotation.Convert;
 import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.NotNull;
-import org.greenrobot.greendao.annotation.Generated;
+
+import java.util.List;
 
 /**
  * Created by ${王sir} on 2017/11/20.
@@ -17,6 +20,10 @@ public class TransportRecord {
     private String transportRecordId;//配送记录ID
     private String logisticsNo;//物流单号
     private String logisticsName;//物流名称
+    @Convert(columnType = String.class, converter = Logistics_converter.class)
+    private List<LogisticsInfo> LogisticsInfos;
+    @Convert(columnType = String.class, converter = TransportVegetable_converter.class)
+    private List<TransportVegetableInfo> transportVegetableInfos;
     private String transportPeople;//配送人
     private String transportPeopleMobile;//配送人电话
     private String transportTime;//配送时间
@@ -29,17 +36,19 @@ public class TransportRecord {
     private String operatingPeople;//操作人
     private String operateTime;//操作时间
     private String noteInfo;//noteInfo
-    @Generated(hash = 1464327313)
-    public TransportRecord(Long id, @NotNull String transportRecordId,
-            String logisticsNo, String logisticsName, String transportPeople,
-            String transportPeopleMobile, String transportTime,
-            String transportInfo, String userName, String mobile, String address,
-            String residualIntegral, String relayBoxNo, String operatingPeople,
-            String operateTime, String noteInfo) {
+    @Generated(hash = 1604843095)
+    public TransportRecord(Long id, @NotNull String transportRecordId, String logisticsNo,
+            String logisticsName, List<LogisticsInfo> LogisticsInfos,
+            List<TransportVegetableInfo> transportVegetableInfos, String transportPeople,
+            String transportPeopleMobile, String transportTime, String transportInfo,
+            String userName, String mobile, String address, String residualIntegral,
+            String relayBoxNo, String operatingPeople, String operateTime, String noteInfo) {
         this.id = id;
         this.transportRecordId = transportRecordId;
         this.logisticsNo = logisticsNo;
         this.logisticsName = logisticsName;
+        this.LogisticsInfos = LogisticsInfos;
+        this.transportVegetableInfos = transportVegetableInfos;
         this.transportPeople = transportPeople;
         this.transportPeopleMobile = transportPeopleMobile;
         this.transportTime = transportTime;
@@ -79,6 +88,19 @@ public class TransportRecord {
     }
     public void setLogisticsName(String logisticsName) {
         this.logisticsName = logisticsName;
+    }
+    public List<LogisticsInfo> getLogisticsInfos() {
+        return this.LogisticsInfos;
+    }
+    public void setLogisticsInfos(List<LogisticsInfo> LogisticsInfos) {
+        this.LogisticsInfos = LogisticsInfos;
+    }
+    public List<TransportVegetableInfo> getTransportVegetableInfos() {
+        return this.transportVegetableInfos;
+    }
+    public void setTransportVegetableInfos(
+            List<TransportVegetableInfo> transportVegetableInfos) {
+        this.transportVegetableInfos = transportVegetableInfos;
     }
     public String getTransportPeople() {
         return this.transportPeople;

@@ -16,6 +16,7 @@ import com.vegetablestrading.R;
 import com.vegetablestrading.adapter.DividerItemDecoration;
 import com.vegetablestrading.adapter.LogisticsInfoAdapter;
 import com.vegetablestrading.adapter.TransportListAdapter;
+import com.vegetablestrading.bean.LogisticsInfo;
 import com.vegetablestrading.bean.TransportRecord;
 import com.vegetablestrading.bean.TransportVegetableInfo;
 import com.vegetablestrading.utils.CalendarUtil;
@@ -196,7 +197,7 @@ public class TransportInfoActivity extends AppCompatActivity implements View.OnC
                     @Override
                     public void onError(Call cll, Exception e, int id) {
                         Toast.makeText(TransportInfoActivity.this, "网络错误", Toast.LENGTH_LONG).show();
-                        adapter.setData(daoUtil.listAll(TransportVegetableInfo.class));
+                        adapter.setData(transportRecord.getTransportVegetableInfos());
                     }
 
                     @Override
@@ -228,9 +229,8 @@ public class TransportInfoActivity extends AppCompatActivity implements View.OnC
      * 将配送蔬菜信息保存本地
      */
     private void putTransportVegetableInfoToSqlite(ArrayList<TransportVegetableInfo> arrayList) {
-        daoUtil.deleteAllEntity(TransportVegetableInfo.class);
-        daoUtil.insertMultEntity(arrayList);
-
+        transportRecord.setTransportVegetableInfos(arrayList);
+        daoUtil.updateStudent(transportRecord);
     }
 
     /**
@@ -247,31 +247,42 @@ public class TransportInfoActivity extends AppCompatActivity implements View.OnC
                     @Override
                     public void onError(Call cll, Exception e, int id) {
                         Toast.makeText(TransportInfoActivity.this, "网络错误", Toast.LENGTH_LONG).show();
-//                        adapter.setData(daoUtil.listAll(TransportVegetableInfo.class));
+                        adapter_logistics.setData(transportRecord.getLogisticsInfos());
                     }
 
                     @Override
                     public void onResponse(String response, int id) {
                         if (!TextUtils.isEmpty(response)) {
-//                            try {
-//                                JSONObject obj = new JSONObject(response);
-//                                String result = obj.getString("Result");
-//                                String message = obj.getString("Model");
-//                                if ("Ok".equals(result)) {
-//                                    ArrayList<TransportVegetableInfo> arrays = GsonUtils.jsonToArrayList(message, TransportVegetableInfo.class);
-////                                    adapter_logistics.setData(transportRecord.getLogisticsInfos());
-//                                    putTransportVegetableInfoToSqlite(arrays);
-//                                } else {
-//                                    Toast.makeText(TransportInfoActivity.this, message, Toast.LENGTH_LONG).show();
-//                                }
-//                            } catch (JSONException e) {
-//                                e.printStackTrace();
-//                            }
+                            try {
+                                JSONObject obj = new JSONObject(response);
+                                String result = obj.getString("Result");
+                                String message = obj.getString("Model");
+                                if ("Ok".equals(result)) {
+                                    ArrayList<LogisticsInfo> arrays = GsonUtils.jsonToArrayList(message, LogisticsInfo.class);
+                                    adapter_logistics.setData(arrays);
+                                    putLogisticsInfoToSqlite(arrays);
+                                } else {
+                                    Toast.makeText(TransportInfoActivity.this, message, Toast.LENGTH_LONG).show();
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
                         }
                         Log.e("DEBUG", response);
 
                     }
 
+
+
                 });
+    }
+
+    /**
+     * 将物流信息保存本地
+     * @param arrays
+     */
+    private void putLogisticsInfoToSqlite(ArrayList<LogisticsInfo> arrays) {
+        transportRecord.setLogisticsInfos(arrays);
+        daoUtil.updateStudent(transportRecord);
     }
 }

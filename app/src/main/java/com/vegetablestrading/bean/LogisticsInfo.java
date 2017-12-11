@@ -7,32 +7,31 @@ package com.vegetablestrading.bean;
  */
 public class LogisticsInfo {
 
-    private String time;//物流更新时间
-    private String status;//物流状态
-    private String description;//物流信息描述
+    private String datetime;//物流更新时间
+    private String zone;
+    private String remark;//物流信息描述
 
-
-    public String getTime() {
-        return time;
+    public String getDatetime() {
+        return datetime;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setDatetime(String datetime) {
+        this.datetime = datetime;
     }
 
-    public String getStatus() {
-        return status;
+    public String getZone() {
+        return zone;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setZone(String zone) {
+        this.zone = zone;
     }
 
-    public String getDescription() {
-        return description;
+    public String getRemark() {
+        return remark;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 }

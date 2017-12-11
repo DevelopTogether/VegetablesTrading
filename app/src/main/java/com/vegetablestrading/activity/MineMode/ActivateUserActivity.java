@@ -24,11 +24,18 @@ import com.vegetablestrading.aLiPay.PayResult;
 import com.vegetablestrading.activity.BaseActivity;
 import com.vegetablestrading.bean.UserInfo;
 import com.vegetablestrading.customViews.CustomView;
+import com.vegetablestrading.utils.Constant;
 import com.vegetablestrading.utils.PublicUtils;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.Map;
 
-import static com.vegetablestrading.utils.Constant.orderInfo;
+import okhttp3.Call;
+
 
 /**
  * 会员激活类
@@ -205,9 +212,97 @@ public class ActivateUserActivity extends BaseActivity implements View.OnClickLi
                 changeCheckBoxStatus(false);
                 break;
             case R.id.confirm_pay_tv://开始支付
-                startActivateUser();
+                if (mSelectedAliPayCb.isChecked()) {//通过支付宝支付
+                    getOrderInfoByService(getYearLimit(), "100");
+                } else {
+                    getMsgForWeixinPay(getYearLimit(), "100");
+                }
+
                 break;
         }
+    }
+
+    /**
+     *获取微信支付需要的数据
+     */
+    private void getMsgForWeixinPay(String yearLimit, String payAmount) {
+
+        OkHttpUtils
+                .post()
+                .url(Constant.userActivateThroughWeiXinPay_url)
+                .addParams("userId", PublicUtils.userInfo.getUserId())
+                .addParams("yearLimit", yearLimit)
+                .addParams("userType", PublicUtils.userInfo.getUserType())
+                .addParams("payAmount", payAmount)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        Toast.makeText(ActivateUserActivity.this, "网络错误", Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        if (!TextUtils.isEmpty(response)) {
+                            try {
+                                JSONObject obj = new JSONObject(response);
+                                String result = obj.getString("Result");
+                                String orderInfo = obj.getString("OrderInfo");
+                                if ("Ok".equals(result) && !TextUtils.isEmpty(orderInfo)) {
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        Log.e("DEBUG", response);
+
+                    }
+
+                });
+
+    }
+
+    /**
+     * 从服务端获取orderInfo(支付宝)
+     *
+     * @param yearLimit 年限
+     * @param payAmount 支付金额
+     */
+    private void getOrderInfoByService(String yearLimit, String payAmount) {
+        OkHttpUtils
+                .post()
+                .url(Constant.userActivateThroughALiPay_url)
+                .addParams("userId", PublicUtils.userInfo.getUserId())
+                .addParams("yearLimit", yearLimit)
+                .addParams("userType", PublicUtils.userInfo.getUserType())
+                .addParams("payAmount", payAmount)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        Toast.makeText(ActivateUserActivity.this, "网络错误", Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        if (!TextUtils.isEmpty(response)) {
+                            try {
+                                JSONObject obj = new JSONObject(response);
+                                String result = obj.getString("Result");
+                                String orderInfo = obj.getString("OrderInfo");
+                                if ("Ok".equals(result) && !TextUtils.isEmpty(orderInfo)) {
+                                    startPayForActivateUserThoughAli(orderInfo);
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        Log.e("DEBUG", response);
+
+                    }
+
+                });
+
     }
 
     /**
@@ -255,29 +350,50 @@ public class ActivateUserActivity extends BaseActivity implements View.OnClickLi
     }
 
     /**
-     * 开始激活，支付
+     * 开始激活，支付宝支付
      */
-    private void startActivateUser() {
-        if (mSelectedAliPayCb.isChecked()) {//通过支付宝支付
-            Runnable payRunnable = new Runnable() {
+    private void startPayForActivateUserThoughAli(final String orderInfo) {
 
-                @Override
-                public void run() {
-                    PayTask alipay = new PayTask(ActivateUserActivity.this);
-                    Map<String, String> result = alipay.payV2(orderInfo, true);
-                    Log.i("msp", result.toString());
+        Runnable payRunnable = new Runnable() {
 
-                    Message msg = new Message();
-                    msg.what = SDK_PAY_FLAG;
-                    msg.obj = result;
-                    mHandler.sendMessage(msg);
-                }
-            };
+            @Override
+            public void run() {
+                PayTask alipay = new PayTask(ActivateUserActivity.this);
+                Map<String, String> result = alipay.payV2(orderInfo, true);
+                Log.i("msp", result.toString());
 
-            Thread payThread = new Thread(payRunnable);
-            payThread.start();
-        }
+                Message msg = new Message();
+                msg.what = SDK_PAY_FLAG;
+                msg.obj = result;
+                mHandler.sendMessage(msg);
+            }
+        };
+
+        Thread payThread = new Thread(payRunnable);
+        payThread.start();
 
     }
 
+    /**
+     * 开始激活，微信支付
+     */
+    private void startPayForActivateUserThoughWeixin(final String orderInfo) {
+
+    }
+
+    /**
+     * 获取会员期限
+     */
+    private String getYearLimit() {
+        switch (mYearLimitRg.getCheckedRadioButtonId()) {
+            case R.id.limit_one_rb:
+                return "1";
+            case R.id.limit_two_rb:
+                return "2";
+            case R.id.limit_three_rb:
+                return "3";
+            default:
+                return "1";
+        }
+    }
 }

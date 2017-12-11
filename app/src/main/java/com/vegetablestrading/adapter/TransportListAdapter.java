@@ -15,7 +15,7 @@ import com.vegetablestrading.R;
 import com.vegetablestrading.bean.TransportVegetableInfo;
 import com.vegetablestrading.utils.Constant;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by ${王sir} on 2017/11/21.
@@ -24,11 +24,11 @@ import java.util.ArrayList;
 
 public class TransportListAdapter extends RecyclerView.Adapter<TransportListAdapter.ViewHolder> {
 
-    private ArrayList<TransportVegetableInfo> arrayList;
+    private List<TransportVegetableInfo> arrayList;
     private Context context;
     private OnTransportListItemInterface onTransportListItemInterface;
 
-    public void setData(ArrayList<TransportVegetableInfo> arrayList) {
+    public void setData(List<TransportVegetableInfo> arrayList) {
         this.arrayList = arrayList;
         notifyDataSetChanged();
     }
