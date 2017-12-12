@@ -28,6 +28,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import okhttp3.Call;
 
@@ -51,7 +52,7 @@ public class MyApplyRecordActivity extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_apply);
         daoUtils = new DaoUtils(this, "");
-        putApplyRecordInfoToSqlite();
+
         initView();
 
 
@@ -79,30 +80,6 @@ public class MyApplyRecordActivity extends AppCompatActivity implements View.OnC
         });
     }
 
-    /**
-     * 测试数据
-     *
-     * @return
-     */
-    private ArrayList<MyApply> getTransportRecordData() {
-        ArrayList<MyApply> arrayList = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            MyApply bean = new MyApply();
-            bean.setApplyType("不派送" + i);
-            bean.setApplyTime("2017-11-20 14:21:30");
-            bean.setApplyStartTime("2017-11-20 14:21:30");
-            bean.setApplyEndTime("2017-11-20 14:21:30");
-            bean.setApplyInfo("中共中央总将改革推向前进");
-            bean.setOperateStatus("已通过");
-            bean.setUserName("王司令");
-            bean.setOperatingPeople("文员1");
-            bean.setOperateTime("2017-11-20 14:22:46");
-            bean.setOperateNote("已经申请过了");
-            arrayList.add(bean);
-        }
-
-        return arrayList;
-    }
 
     @Override
     public void onClick(View v) {
@@ -117,9 +94,9 @@ public class MyApplyRecordActivity extends AppCompatActivity implements View.OnC
     /**
      * 将申请记录信息保存本地
      */
-    private void putApplyRecordInfoToSqlite() {
+    private void putApplyRecordInfoToSqlite( ArrayList arrayList) {
         daoUtils.deleteAllEntity(MyApply.class);
-        daoUtils.insertMultEntity(getTransportRecordData());
+        daoUtils.insertMultEntity(arrayList);
 
     }
 
@@ -149,7 +126,9 @@ public class MyApplyRecordActivity extends AppCompatActivity implements View.OnC
                                 JSONObject obj = new JSONObject(response);
                                 String message = obj.getString("Model");
                                 ArrayList arrayList = GsonUtils.jsonToArrayList(message, MyApply.class);
+                                Collections.reverse(arrayList);
                                 adapter.setData(arrayList);
+                                putApplyRecordInfoToSqlite(arrayList);
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }

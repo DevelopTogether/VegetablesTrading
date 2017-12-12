@@ -147,7 +147,7 @@ public class QuitPetActivity extends AppCompatActivity implements View.OnClickLi
                 break;
         }
        if (!TextUtils.isEmpty(residualIntegral)) {
-           mQuitPetDepositToReturnAmountTv.setText((Integer.parseInt(residualIntegral))*100+"元");
+           mQuitPetUserSumToReturn.getTitleBarRightBtn().setText((Integer.parseInt(residualIntegral))*100+"元");
        }
 
     }
@@ -224,8 +224,9 @@ public class QuitPetActivity extends AppCompatActivity implements View.OnClickLi
                             try {
                                 JSONObject obj = new JSONObject(response);
                                 String result = obj.getString("Result");
-                                String message = obj.getString("Model");
+                                String message = obj.getString("Message");
                                 if ("Ok".equals(result)) {
+                                    Toast.makeText(getApplicationContext(), "已成功提交申请", Toast.LENGTH_LONG).show();
                                     sp.putBoolean("QUIT_COMMIT",true);
                                     mConfirmQuitPetTv.setText("处理中");
                                     mConfirmQuitPetTv.setClickable(false);

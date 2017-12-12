@@ -28,6 +28,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import okhttp3.Call;
 
@@ -120,6 +121,7 @@ public class PickRecordActivity extends AppCompatActivity implements View.OnClic
                                 String message = obj.getString("Model");
                                 if ("Ok".equals(result)) {
                                     ArrayList<MyPickInfo> arrays = GsonUtils.jsonToArrayList(message, MyPickInfo.class);
+                                    Collections.reverse(arrays);
                                     adapter.setData(arrays);
                                     putPickRecordInfoToSqlite(arrays);
                                 } else {

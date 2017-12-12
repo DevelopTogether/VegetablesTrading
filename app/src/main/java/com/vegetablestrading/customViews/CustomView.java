@@ -86,9 +86,9 @@ public class CustomView extends RelativeLayout {
             String rightButtonText = attributes.getString(R.styleable.CustomView_right_button_text);
             if (!TextUtils.isEmpty(rightButtonText)) {
                 titleBarRightBtn.setText(rightButtonText);
-                //设置右边按钮文字颜色
-                int rightButtonTextColor = attributes.getColor(R.styleable.CustomView_right_button_text_color, Color.WHITE);
-                titleBarRightBtn.setTextColor(rightButtonTextColor);
+//                //设置右边按钮文字颜色
+//                int rightButtonTextColor = attributes.getColor(R.styleable.CustomView_right_button_text_color, Color.WHITE);
+//                titleBarRightBtn.setTextColor(rightButtonTextColor);
             } else {
                 //设置右边图片icon 这里是二选一 要么只能是文字 要么只能是图片
                 int rightButtonDrawable = attributes.getResourceId(R.styleable.CustomView_right_button_drawable, -1);

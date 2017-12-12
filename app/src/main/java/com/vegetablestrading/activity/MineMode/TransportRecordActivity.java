@@ -30,6 +30,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import okhttp3.Call;
@@ -141,6 +142,7 @@ public class TransportRecordActivity extends AppCompatActivity implements View.O
                                         array.setLogisticsInfos(arrays_list);
                                         array.setTransportVegetableInfos(arrays_transport);
                                     }
+                                    Collections.reverse(arrays);
                                     adapter.setData(arrays);
                                     putTransportRecordInfoToSqlite(arrays);
                                 } else {

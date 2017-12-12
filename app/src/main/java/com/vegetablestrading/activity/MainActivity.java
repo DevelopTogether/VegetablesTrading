@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -13,16 +14,27 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.checktoupdatedemo.utils.CheckUpdateUtil;
 import com.vegetablestrading.R;
 import com.vegetablestrading.fragment.FragmentTab1;
 import com.vegetablestrading.fragment.FragmentTab22;
 import com.vegetablestrading.fragment.FragmentTab33;
 import com.vegetablestrading.fragment.FragmentTab4;
 import com.vegetablestrading.interfaces.FinishActivityInterface;
+import com.vegetablestrading.utils.Constant;
 import com.vegetablestrading.utils.PublicUtils;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.List;
+
+import okhttp3.Call;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -72,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         PublicUtils.app_width = wm.getDefaultDisplay().getWidth();
         PublicUtils.app_height = wm.getDefaultDisplay().getHeight();
 //        startActivity(new Intent(this, ActivatedActivity.class));
-
+        checkForUpdate(this);
 
     }
 
@@ -258,5 +270,54 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        }
         return super.onKeyDown(keyCode, event);
     }
+
+
+    /**
+     * 检查更新
+     */
+    private void checkForUpdate(final Context context) {
+        OkHttpUtils
+                .post()
+                .addParams("softwareId", Constant.APP_MARK)
+                .addParams("softwareType", "mb")
+                .url(Constant.URL_Reg_Center)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call cll, Exception e, int id) {
+                        Toast.makeText(context, "网络错误", Toast.LENGTH_LONG).show();
+//                        adapter.setData(daoUtil.listAll(TransportVegetableInfo.class));
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+
+                        if (response != null && !TextUtils.isEmpty(response)) {
+
+                            try {
+                                JSONObject obj = new JSONObject(response);
+                                JSONArray infos = obj.getJSONArray("Model");
+                                if (infos.length() > 0) {
+                                    JSONObject obj_ = (JSONObject) infos.get(0);
+                                    String  nearestVersion = obj_.getString("SoftwareVersion").trim();
+                                    String down_url = obj_.getString("softDownloadUrl");
+                                    String appDescription = obj_.getString("softDescription");
+                                    CheckUpdateUtil checkUpdateUtil = new CheckUpdateUtil(context, nearestVersion, Constant.apkDownLoadServerUrl, down_url, appDescription, "稍后提示");
+                                    checkUpdateUtil.CheckVersionToWarnUpdate();
+                                } else {
+                                    Toast.makeText(context, "服务器上查不到该软件", Toast.LENGTH_SHORT).show();
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+
+
+                    }
+
+                });
+    }
+
 
 }

@@ -30,7 +30,7 @@
                 app:left_button_text="会员名称"
                 app:left_button_text_color="#000000"
                 app:right_button_text="张三"
-                app:right_button_text_color="#000000"></com.vegetablestrading.customViews.CustomView>
+               ></com.vegetablestrading.customViews.CustomView>
 
 
             <View
@@ -182,7 +182,6 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
                             android:text="100元"
-                            android:textStyle="bold"
                             android:textColor="@android:color/black" />
                     </RelativeLayout>
 

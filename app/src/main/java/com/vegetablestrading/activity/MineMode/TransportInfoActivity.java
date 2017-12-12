@@ -135,13 +135,13 @@ public class TransportInfoActivity extends AppCompatActivity implements View.OnC
            transportVegetablesByDate(times[0], times[1]);
        }
 
-        mTransportNoTv.setText(transportRecord.getLogisticsNo());
-        mTransportTimeTv.setText(transportRecord.getTransportTime());
-        mTransportPersionTv.setText(transportRecord.getTransportPeople());
-        mTransportPersionMobileTv.setText(transportRecord.getTransportPeopleMobile());
-        mAcceptPersionTv.setText(transportRecord.getUserName());
-        mAcceptPersionMobileTv.setText(transportRecord.getMobile());
-        mAcceptAddrTv.setText(transportRecord.getAddress());
+        mTransportNoTv.setText("配送单号："+transportRecord.getLogisticsNo());
+        mTransportTimeTv.setText("配送时间："+transportRecord.getTransportTime());
+        mTransportPersionTv.setText("配送人："+transportRecord.getTransportPeople());
+        mTransportPersionMobileTv.setText("配送人电话："+transportRecord.getTransportPeopleMobile());
+        mAcceptPersionTv.setText("收货人："+transportRecord.getUserName());
+        mAcceptPersionMobileTv.setText("收货人电话："+transportRecord.getMobile());
+        mAcceptAddrTv.setText("收货地址："+transportRecord.getAddress());
         mLogisticsStatusTv = (TextView) findViewById(R.id.logistics_status_tv);
         mDirectionIconIv = (ImageView) findViewById(R.id.direction_icon_iv);
         mDirectionIconIv.setBackgroundResource(R.drawable.down);

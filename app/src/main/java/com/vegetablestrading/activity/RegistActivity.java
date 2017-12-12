@@ -1,9 +1,6 @@
 package com.vegetablestrading.activity;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -13,13 +10,11 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.choseaddrdemo.selectAddr.ChooserActivity;
 import com.vegetablestrading.R;
 import com.vegetablestrading.activity.MineMode.TermOfServiceActivity;
 import com.vegetablestrading.interfaces.EditTestChangedListener;
@@ -102,15 +97,15 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
         }
     };
     private String randomData = "";
-    /**
-     * 请选择收货地址
-     */
-    private TextView mSelectAddrTv;
-    private LinearLayout mSelectAddrLl;
-    /**
-     * 街道门牌信息
-     */
-    private EditText mDetailAddrEt;
+//    /**
+//     * 请选择收货地址
+//     */
+//    private TextView mSelectAddrTv;
+//    private LinearLayout mSelectAddrLl;
+//    /**
+//     * 街道门牌信息
+//     */
+//    private EditText mDetailAddrEt;
     private SharedPreferencesHelper sharedPreferencesHelper;
 
     @Override
@@ -119,30 +114,30 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
         setContentView(R.layout.activity_regist);
         initView();
         initActionBar();
-        registBroadcast();
+//        registBroadcast();
         sharedPreferencesHelper = new SharedPreferencesHelper(this, "USERINFO");
 
 
     }
 
-    private BroadcastReceiver echoRegionReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (intent.getAction().equals(ChooserActivity.ACTION)) {
-                String region = intent.getStringExtra(ChooserActivity.ART_ADDRESS);
-                mSelectAddrTv.setText("北京市 " + region);
-            }
-        }
-    };
+//    private BroadcastReceiver echoRegionReceiver = new BroadcastReceiver() {
+//        @Override
+//        public void onReceive(Context context, Intent intent) {
+//            if (intent.getAction().equals(ChooserActivity.ACTION)) {
+//                String region = intent.getStringExtra(ChooserActivity.ART_ADDRESS);
+//                mSelectAddrTv.setText("北京市 " + region);
+//            }
+//        }
+//    };
 
-    /**
-     * 注册处理选择地址的广播
-     */
-    private void registBroadcast() {
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction(ChooserActivity.ACTION);
-        registerReceiver(echoRegionReceiver, intentFilter);
-    }
+//    /**
+//     * 注册处理选择地址的广播
+//     */
+//    private void registBroadcast() {
+//        IntentFilter intentFilter = new IntentFilter();
+//        intentFilter.addAction(ChooserActivity.ACTION);
+//        registerReceiver(echoRegionReceiver, intentFilter);
+//    }
 
     /**
      * 初始化actionBar
@@ -218,10 +213,10 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
         mUserEmailEt.addTextChangedListener(new EditTestChangedListener(this, mUserEmailEt, 4));
         mUserPetNameEt.addTextChangedListener(new EditTestChangedListener(this, mUserPetNameEt, 5));
 
-        mSelectAddrTv = (TextView) findViewById(R.id.select_addr_et);
-        mSelectAddrLl = (LinearLayout) findViewById(R.id.select_addr_ll);
-        mSelectAddrLl.setOnClickListener(this);
-        mDetailAddrEt = (EditText) findViewById(R.id.detail_addr_et);
+//        mSelectAddrTv = (TextView) findViewById(R.id.select_addr_et);
+//        mSelectAddrLl = (LinearLayout) findViewById(R.id.select_addr_ll);
+//        mSelectAddrLl.setOnClickListener(this);
+//        mDetailAddrEt = (EditText) findViewById(R.id.detail_addr_et);
     }
 
 
@@ -245,9 +240,9 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
             case R.id.cancel_regist_tv://取消注册
                 finish();
                 break;
-            case R.id.select_addr_ll://选择收货地址
-                ChooserActivity.start(RegistActivity.this, null);
-                break;
+//            case R.id.select_addr_ll://选择收货地址
+//                ChooserActivity.start(RegistActivity.this, null);
+//                break;
         }
     }
 
@@ -305,8 +300,8 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
         String repwd = mUserRePwdEt.getText().toString().trim();
         String email = mUserEmailEt.getText().toString().trim();
         String petName = mUserPetNameEt.getText().toString().trim();
-        String addr = mSelectAddrTv.getText().toString().trim();
-        String addr_detail = mDetailAddrEt.getText().toString().trim();
+//        String addr = mSelectAddrTv.getText().toString().trim();
+//        String addr_detail = mDetailAddrEt.getText().toString().trim();
 
 
         if (TextUtils.isEmpty(mobile)) {
@@ -361,14 +356,14 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
             Toast.makeText(getApplicationContext(), "请输入会员昵称", Toast.LENGTH_LONG).show();
             return;
         }
-        if (addr == null || TextUtils.isEmpty(addr)) {
-            Toast.makeText(getApplicationContext(), "请选择收货地址", Toast.LENGTH_LONG).show();
-            return;
-        }
-        if (addr_detail == null || TextUtils.isEmpty(addr_detail)) {
-            Toast.makeText(getApplicationContext(), "请填写街道门牌信息", Toast.LENGTH_LONG).show();
-            return;
-        }
+//        if (addr == null || TextUtils.isEmpty(addr)) {
+//            Toast.makeText(getApplicationContext(), "请选择收货地址", Toast.LENGTH_LONG).show();
+//            return;
+//        }
+//        if (addr_detail == null || TextUtils.isEmpty(addr_detail)) {
+//            Toast.makeText(getApplicationContext(), "请填写街道门牌信息", Toast.LENGTH_LONG).show();
+//            return;
+//        }
         if (!mAgreeProvisionCb.isChecked()) {
             Toast.makeText(this, "请选择是否同意《账号服务条款，隐私政策》", Toast.LENGTH_SHORT).show();
             return;
@@ -436,7 +431,7 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        unregisterReceiver(echoRegionReceiver);
+//        unregisterReceiver(echoRegionReceiver);
     }
 
     /**

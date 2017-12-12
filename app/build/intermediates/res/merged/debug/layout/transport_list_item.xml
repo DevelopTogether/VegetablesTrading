@@ -10,23 +10,21 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="3dp"
-        android:layout_marginTop="3dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <android.support.v7.widget.CardView
-            android:layout_width="100dp"
-            android:layout_margin="10dp"
-            android:layout_height="100dp"
+            android:layout_width="80dp"
+            android:layout_margin="5dp"
+            android:layout_height="80dp"
             app:cardCornerRadius="6dp"
          >
 
             <ImageView
                 android:id="@+id/vegetable_icon_iv"
-                android:layout_width="100dp"
+                android:layout_width="80dp"
                 android:padding="5dp"
-                android:layout_height="100dp"
+                android:layout_height="80dp"
                 android:src="@drawable/app_logo" />
         </android.support.v7.widget.CardView>
 
@@ -47,20 +45,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:padding="3dp"
+                    android:padding="2dp"
                     android:text="油菜"
                     android:textColor="@android:color/black"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/vegetable_weight_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
-                    android:padding="3dp"
+                    android:padding="2dp"
                     android:text="重量：2KG"
                     android:textColor="@android:color/black"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <TextView
@@ -68,10 +66,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:maxLines="2"
-                android:padding="3dp"
+                android:padding="2dp"
                 android:text="描述信息"
                 android:textColor="@android:color/black"
-                android:textSize="14sp" />
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/startTime_transport_tv"
