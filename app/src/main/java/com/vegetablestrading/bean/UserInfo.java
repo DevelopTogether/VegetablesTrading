@@ -19,7 +19,7 @@ public class UserInfo {
     private String userName;//用户名
     private String userPhone;//用户手机号
     private String userType;//会员类型 1==N蓝卡，2==P银卡，3==VIP金卡
-    private String userStatus;//会员状态
+    private String userStatus;//会员状态  0 ==未激活 1==已激活
     private String dues;//会费
     private String deposit;//押金
     private String expirationTime;//会员过期时间

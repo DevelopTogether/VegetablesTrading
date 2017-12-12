@@ -16,11 +16,10 @@ import android.widget.TextView;
 
 import com.vegetablestrading.R;
 import com.vegetablestrading.fragment.FragmentTab1;
-import com.vegetablestrading.fragment.FragmentTab2;
-import com.vegetablestrading.fragment.FragmentTab3;
+import com.vegetablestrading.fragment.FragmentTab22;
+import com.vegetablestrading.fragment.FragmentTab33;
 import com.vegetablestrading.fragment.FragmentTab4;
 import com.vegetablestrading.interfaces.FinishActivityInterface;
-import com.vegetablestrading.utils.CalendarUtil;
 import com.vegetablestrading.utils.PublicUtils;
 
 import java.util.List;
@@ -43,8 +42,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FragmentManager fragmentManager;
     private FragmentTab1 navitionFragment1;
     private FragmentTab4 navitionFragment4;
-    private FragmentTab3 navitionFragment3;
-    private FragmentTab2 navitionFragment2;
+    private FragmentTab33 navitionFragment3;
+    private FragmentTab22 navitionFragment2;
 
 
     @Override
@@ -53,12 +52,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (savedInstanceState == null) {
             navitionFragment1 = new FragmentTab1();
             navitionFragment4 = new FragmentTab4();
-            navitionFragment3 = new FragmentTab3();
-            navitionFragment2 = new FragmentTab2();
+            navitionFragment3 = new FragmentTab33();
+            navitionFragment2 = new FragmentTab22();
         }else{
             navitionFragment1 = (FragmentTab1) fragmentManager.getFragment(savedInstanceState,"navitionFragment1");
-            navitionFragment2 = (FragmentTab2) fragmentManager.getFragment(savedInstanceState,"navitionFragment2");
-            navitionFragment3 = (FragmentTab3) fragmentManager.getFragment(savedInstanceState,"navitionFragment3");
+            navitionFragment2 = (FragmentTab22) fragmentManager.getFragment(savedInstanceState,"navitionFragment2");
+            navitionFragment3 = (FragmentTab33) fragmentManager.getFragment(savedInstanceState,"navitionFragment3");
             navitionFragment4 = (FragmentTab4) fragmentManager.getFragment(savedInstanceState,"navitionFragment4");
         }
         super.onCreate(savedInstanceState);
@@ -74,7 +73,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         PublicUtils.app_height = wm.getDefaultDisplay().getHeight();
 //        startActivity(new Intent(this, ActivatedActivity.class));
 
-        CalendarUtil.getWeekStartAndWeekEndBaseTime("2017-11-16 10:30:52");
 
     }
 
@@ -250,11 +248,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-//        if (getVisibleFragment() instanceof FragmentTab2) {
+//        if (getVisibleFragment() instanceof FragmentTab22) {
 //            navitionFragment2.onKeyDown(keyCode, event);
 //            return true;
 //        }
-//        if (getVisibleFragment() instanceof FragmentTab3) {
+//        if (getVisibleFragment() instanceof FragmentTab33) {
 //            navitionFragment3.onKeyDown(keyCode, event);
 //            return true;
 //        }

@@ -82,6 +82,7 @@ public class MyIntegralActivity extends AppCompatActivity implements View.OnClic
         mTopTitleTv = (TextView) findViewById(R.id.top_title_tv);
         mTopRightImageIv = (ImageView) findViewById(R.id.top_right_image_iv);
         mIrregularDisplayCv = (CustomView) findViewById(R.id.irregular_display_cv);
+        mIrregularDisplayCv.getTitleBarRightBtn().setText(PublicUtils.userInfo.getResidualIntegral());
         mTransportDateTv = (TextView) findViewById(R.id.transport_date_tv);
         mIrregularDetailTv = (TextView) findViewById(R.id.irregular_detail_tv);
         mTransportNoTv = (TextView) findViewById(R.id.transport_no_tv);
@@ -91,12 +92,11 @@ public class MyIntegralActivity extends AppCompatActivity implements View.OnClic
         mMineIntegralRv.setLayoutManager(manager);
         adapter = new MyIntegralAdapter();
         mMineIntegralRv.setAdapter(adapter);
-        transportVegetablesByDate("2017-11-05 10:30:00", CalendarUtil.getCurrentTime());
+        transportVegetablesByDate(PublicUtils.userInfo.getRegistDate(), CalendarUtil.getCurrentTime());
         adapter.setMyIntegralItemClick(new MyIntegralAdapter.MyIntegralItemClick() {
             @Override
             public void itemClick(TransportRecord transportRecord) {
-                PublicUtils.transportRecord = transportRecord;
-                Toast.makeText(getApplicationContext(), transportRecord.getResidualIntegral(), Toast.LENGTH_LONG).show();
+                PublicUtils.transportRecordClicked = transportRecord;
                 startActivity(new Intent(MyIntegralActivity.this,TransportInfoActivity.class));
             }
         });

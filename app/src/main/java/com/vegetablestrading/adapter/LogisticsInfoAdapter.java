@@ -23,6 +23,7 @@ public class LogisticsInfoAdapter extends RecyclerView.Adapter<LogisticsInfoAdap
 
     public void setData(List<LogisticsInfo> arrays) {
         this.arrays = arrays;
+        notifyDataSetChanged();
     }
 
     @Override

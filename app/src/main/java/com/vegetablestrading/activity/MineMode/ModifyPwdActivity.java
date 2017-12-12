@@ -3,7 +3,6 @@ package com.vegetablestrading.activity.MineMode;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -144,7 +143,6 @@ public class ModifyPwdActivity extends BaseActivity implements View.OnClickListe
      * 更改密码
      */
     private void modifyPwdThoughService(String oldPwd,String newPwd) {
-        //TODO 从服务端请求申请记录
         OkHttpUtils
                 .post()
                 .url(Constant.modifyPwd_url)
@@ -163,17 +161,19 @@ public class ModifyPwdActivity extends BaseActivity implements View.OnClickListe
                         if (!TextUtils.isEmpty(response)) {
                             try {
                                 JSONObject obj = new JSONObject(response);
-                                String message = obj.getString("Model");
+                                String result = obj.getString("Result");
+                                String message = obj.getString("Message");
+                                if ("Ok".equals(result)) {
+                                    Toast.makeText(getApplicationContext(), "密码修改成功", Toast.LENGTH_LONG).show();
+                                } else {
+                                }
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
                         }
 
-
-                        Log.e("DEBUG", response);
-
-
                     }
+
                 });
 
     }

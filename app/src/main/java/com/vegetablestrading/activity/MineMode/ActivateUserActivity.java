@@ -1,5 +1,6 @@
 package com.vegetablestrading.activity.MineMode;
 
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -19,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alipay.sdk.app.PayTask;
+import com.google.gson.Gson;
 import com.vegetablestrading.R;
 import com.vegetablestrading.aLiPay.PayResult;
 import com.vegetablestrading.activity.BaseActivity;
@@ -84,14 +86,19 @@ public class ActivateUserActivity extends BaseActivity implements View.OnClickLi
                     // 判断resultStatus 为9000则代表支付成功
                     if (TextUtils.equals(resultStatus, "9000")) {
                         // 该笔订单是否真实支付成功，需要依赖服务端的异步通知。
-                        Toast.makeText(ActivateUserActivity.this, "支付成功", Toast.LENGTH_SHORT).show();
-                        if (popWindow != null && popWindow.isShowing()) {
-                            popWindow.dismiss();
-                            popWindow = null;
+                        try {
+                            JSONObject obj = new JSONObject(resultInfo);
+                            String str = obj.getString("alipay_trade_app_pay_response");
+                            JSONObject object = new JSONObject(str);
+                            String tradeNo = object.getString("out_trade_no");
+                            activateUserAfterPay(tradeNo);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
-                        mActivateRightnowTv.setText("已激活");
-                        mActivateRightnowTv.setClickable(false);
-                        mActivateRightnowTv.setBackgroundResource(R.drawable.bt_unpress_selecter);
+                        //支付成功，调用接口激活
+
+                        Toast.makeText(ActivateUserActivity.this, "支付成功", Toast.LENGTH_SHORT).show();
+
 
                     } else {
                         // 该笔订单真实的支付结果，需要依赖服务端的异步通知。
@@ -106,6 +113,52 @@ public class ActivateUserActivity extends BaseActivity implements View.OnClickLi
 
         ;
     };
+
+    /**
+     * 支付宝支付成功后调用激活接口激活账户
+     */
+    private void activateUserAfterPay(String tradeNo) {
+        OkHttpUtils
+                .post()
+                .url(Constant.userActivateAfterPay_url)
+                .addParams("userId", PublicUtils.userInfo.getUserId())
+                .addParams("tradeNo", tradeNo)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        Toast.makeText(ActivateUserActivity.this, "网络错误", Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        if (!TextUtils.isEmpty(response)) {
+                            try {
+                                JSONObject obj = new JSONObject(response);
+                                String result = obj.getString("Result");
+                                String message = obj.getString("Message");
+
+                                if ("Ok".equals(result)) {
+                                    String userInfo = obj.getString("Model");
+                                    PublicUtils.userInfo = new Gson().fromJson(userInfo, UserInfo.class);
+                                    PublicUtils.ACTIVATED = true;
+                                    mActivateRightnowTv.setText("已激活");
+                                    mActivateRightnowTv.setClickable(false);
+                                    mActivateRightnowTv.setBackgroundResource(R.drawable.bt_unpress_selecter);
+                                    startActivity(new Intent(ActivateUserActivity.this, ActivatedActivity.class));
+                                } else {
+                                    Toast.makeText(ActivateUserActivity.this, message, Toast.LENGTH_LONG).show();
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                    }
+
+                });
+    }
+
     private PopupWindow popWindow;
     private TextView mPetTypeDescriptionTv;
 
@@ -143,32 +196,41 @@ public class ActivateUserActivity extends BaseActivity implements View.OnClickLi
         mYearLimitRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-                String userSum = mUserSum.getTitleBarRightBtn().getText().toString().trim();
-                if (TextUtils.isEmpty(userSum)) {
-                    return;
-                }
-                int payAmount = Integer.parseInt(userSum.split("/")[0]);
-                switch (mYearLimitRg.getCheckedRadioButtonId()) {
-                    case R.id.limit_one_rb:
-                        payAmount = payAmount + 100;
-                        mPayAmount.getTitleBarRightBtn().setText(String.valueOf(payAmount));
-                        break;
-                    case R.id.limit_two_rb:
-                        payAmount = (payAmount * 2) + 100;
-                        mPayAmount.getTitleBarRightBtn().setText(String.valueOf(payAmount));
-                        break;
-                    case R.id.limit_three_rb:
-                        payAmount = (payAmount * 3) + 100;
-                        mPayAmount.getTitleBarRightBtn().setText(String.valueOf(payAmount));
-                        break;
-                    default:
-
-                        break;
-                }
+                initPayAmountValue();
             }
         });
 
         mPetTypeDescriptionTv = (TextView) findViewById(R.id.petType_description_tv);
+
+
+    }
+
+    /**
+     * 初始化实付金额的金额
+     */
+    private void initPayAmountValue() {
+        String userSum = mUserSum.getTitleBarRightBtn().getText().toString().trim();
+        if (TextUtils.isEmpty(userSum)) {
+            return;
+        }
+        int payAmount = Integer.parseInt(userSum.split("/")[0]);
+        switch (mYearLimitRg.getCheckedRadioButtonId()) {
+            case R.id.limit_one_rb:
+                payAmount = payAmount + 100;
+                mPayAmount.getTitleBarRightBtn().setText(String.valueOf(payAmount));
+                break;
+            case R.id.limit_two_rb:
+                payAmount = (payAmount * 2) + 100;
+                mPayAmount.getTitleBarRightBtn().setText(String.valueOf(payAmount));
+                break;
+            case R.id.limit_three_rb:
+                payAmount = (payAmount * 3) + 100;
+                mPayAmount.getTitleBarRightBtn().setText(String.valueOf(payAmount));
+                break;
+            default:
+
+                break;
+        }
     }
 
     /**
@@ -177,22 +239,40 @@ public class ActivateUserActivity extends BaseActivity implements View.OnClickLi
     private void setViewValue(UserInfo userInfo) {
         mUserName.getTitleBarRightBtn().setText(userInfo.getUserName());
         mMobile.getTitleBarRightBtn().setText(userInfo.getUserPhone());
-        mUserType.getTitleBarRightBtn().setText(userInfo.getUserType());
-        mUserSum.getTitleBarRightBtn().setText(userInfo.getDues());
-        mDeposit.getTitleBarRightBtn().setText(userInfo.getDeposit());
+
+
         switch (userInfo.getUserType()) {//1==N蓝卡，2==P银卡，3==VIP金卡
             case "3":
+                mDeposit.getTitleBarRightBtn().setText(PublicUtils.deposit);
+                mUserSum.getTitleBarRightBtn().setText(PublicUtils.glodCard);
+                mUserType.getTitleBarRightBtn().setText("VIP金卡");
                 mPetTypeDescriptionTv.setText(getResources().getText(R.string.glodCard_description));
                 break;
             case "2":
+                mDeposit.getTitleBarRightBtn().setText(PublicUtils.deposit);
+                mUserSum.getTitleBarRightBtn().setText(PublicUtils.silverCard);
+                mUserType.getTitleBarRightBtn().setText("P银卡");
                 mPetTypeDescriptionTv.setText(getResources().getText(R.string.silverCard_description));
                 break;
             case "1":
+                mDeposit.getTitleBarRightBtn().setText(PublicUtils.deposit);
+                mUserSum.getTitleBarRightBtn().setText(PublicUtils.blueCard);
+                mUserType.getTitleBarRightBtn().setText("N蓝卡");
                 mPetTypeDescriptionTv.setText(getResources().getText(R.string.blueCard_description));
                 break;
             default:
                 break;
         }
+        if (PublicUtils.ACTIVATED) {
+            mActivateRightnowTv.setText("已激活");
+            mActivateRightnowTv.setClickable(false);
+            mActivateRightnowTv.setBackgroundResource(R.drawable.bt_unpress_selecter);
+        } else {
+            mActivateRightnowTv.setText("立即激活");
+            mActivateRightnowTv.setClickable(true);
+            mActivateRightnowTv.setBackgroundResource(R.drawable.bt_pressed_selecter);
+        }
+        initPayAmountValue();
     }
 
     @Override
@@ -212,6 +292,10 @@ public class ActivateUserActivity extends BaseActivity implements View.OnClickLi
                 changeCheckBoxStatus(false);
                 break;
             case R.id.confirm_pay_tv://开始支付
+                if (popWindow != null && popWindow.isShowing()) {
+                    popWindow.dismiss();
+                    popWindow = null;
+                }
                 if (mSelectedAliPayCb.isChecked()) {//通过支付宝支付
                     getOrderInfoByService(getYearLimit(), "100");
                 } else {
@@ -223,7 +307,7 @@ public class ActivateUserActivity extends BaseActivity implements View.OnClickLi
     }
 
     /**
-     *获取微信支付需要的数据
+     * 获取微信支付需要的数据
      */
     private void getMsgForWeixinPay(String yearLimit, String payAmount) {
 
@@ -334,6 +418,7 @@ public class ActivateUserActivity extends BaseActivity implements View.OnClickLi
         mAliPayRl.setOnClickListener(this);
         mSelectedWeixinCb = (CheckBox) popView.findViewById(R.id.selected_weixin_cb);
         mWeixinPayRl = (RelativeLayout) popView.findViewById(R.id.weixin_pay_rl);
+        mWeixinPayRl.setVisibility(View.GONE);
         mWeixinPayRl.setOnClickListener(this);
         mConfirmPayTv = (TextView) popView.findViewById(R.id.confirm_pay_tv);
         mConfirmPayTv.setOnClickListener(this);

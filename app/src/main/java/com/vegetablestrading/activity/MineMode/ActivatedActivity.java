@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.vegetablestrading.R;
 import com.vegetablestrading.bean.UserInfo;
 import com.vegetablestrading.customViews.CustomView;
+import com.vegetablestrading.utils.PublicUtils;
 
 /**
  * created by 8级大的狂风
@@ -22,7 +23,6 @@ public class ActivatedActivity extends AppCompatActivity implements View.OnClick
     private CustomView mActivatedUserSum;
     private CustomView mActivatedDeposit;
     private CustomView mActivatedRegistDate;
-    private CustomView mActivatedExpirationTime;
     /**
      * 我知道了
      */
@@ -42,9 +42,9 @@ public class ActivatedActivity extends AppCompatActivity implements View.OnClick
         mActivatedUserSum = (CustomView) findViewById(R.id.activated_userSum);
         mActivatedDeposit = (CustomView) findViewById(R.id.activated_deposit);
         mActivatedRegistDate = (CustomView) findViewById(R.id.activated_regist_date);
-        mActivatedExpirationTime = (CustomView) findViewById(R.id.activated_expirationTime);
         mStartUseTv = (TextView) findViewById(R.id.start_use_tv);
         mStartUseTv.setOnClickListener(this);
+        setTextOfViews(PublicUtils.userInfo);
     }
 
     @Override
@@ -62,10 +62,21 @@ public class ActivatedActivity extends AppCompatActivity implements View.OnClick
     private void setTextOfViews(UserInfo userInfo) {
         mActivatedUserName.getTitleBarRightBtn().setText(userInfo.getUserName());
         mActivatedUserPhone.getTitleBarRightBtn().setText(userInfo.getUserPhone());
-        mActivatedUserType.getTitleBarRightBtn().setText(userInfo.getUserType());
-        mActivatedUserSum.getTitleBarRightBtn().setText(userInfo.getDues());
+        switch (userInfo.getUserType()) {//1==N蓝卡，2==P银卡，3==VIP金卡
+            case "3":
+                mActivatedUserType.getTitleBarRightBtn().setText("VIP金卡");
+                break;
+            case "2":
+                mActivatedUserType.getTitleBarRightBtn().setText("P银卡");
+                break;
+            case "1":
+                mActivatedUserType.getTitleBarRightBtn().setText("N蓝卡");
+                break;
+            default:
+                break;
+        }
+        mActivatedUserSum.getTitleBarRightBtn().setText(userInfo.getDues()+"/年");
         mActivatedDeposit.getTitleBarRightBtn().setText(userInfo.getDeposit());
         mActivatedRegistDate.getTitleBarRightBtn().setText(userInfo.getRegistDate());
-        mActivatedExpirationTime.getTitleBarRightBtn().setText(userInfo.getExpirationTime());
     }
 }

@@ -307,7 +307,7 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
         String petName = mUserPetNameEt.getText().toString().trim();
         String addr = mSelectAddrTv.getText().toString().trim();
         String addr_detail = mDetailAddrEt.getText().toString().trim();
-        registToService(pwd, email, petName);
+
 
         if (TextUtils.isEmpty(mobile)) {
             Toast.makeText(getApplicationContext(), "请填写手机号", Toast.LENGTH_LONG).show();
@@ -373,7 +373,7 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
             Toast.makeText(this, "请选择是否同意《账号服务条款，隐私政策》", Toast.LENGTH_SHORT).show();
             return;
         }
-
+        registToService(pwd, email, petName);
 
         //将手机号保存到sp中
         sharedPreferencesHelper.putString("USER_MOBILE", mobile);
@@ -392,12 +392,12 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
         OkHttpUtils
                 .post()
                 .url(Constant.regist_url)
-                .addParams("mobile", "18888888889")
-                .addParams("password", "123456asdf")
-                .addParams("email", "123456789@qq.com")
-                .addParams("userName", "213")
+                .addParams("mobile", mobile)
+                .addParams("password", pwd)
+                .addParams("email", email)
+                .addParams("userName", petName)
                 .addParams("userLevel", getVipType())
-                .addParams("address", "1,2,3,119,增光路30号")
+                .addParams("address", "")
                 .build()
                 .execute(new StringCallback() {
                     @Override

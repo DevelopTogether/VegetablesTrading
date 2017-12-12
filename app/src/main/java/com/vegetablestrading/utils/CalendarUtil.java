@@ -16,6 +16,7 @@ public class CalendarUtil {
 
     private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
+
     @NonNull
     private static Calendar getCalendar() {
         Calendar ca = Calendar.getInstance();
@@ -25,6 +26,19 @@ public class CalendarUtil {
         ca.clear(Calendar.MILLISECOND);
         return ca;
     }
+
+    /**
+     * 将时间戳转换为固定格式的时间
+     *
+     * @return
+     */
+    public static String getSpecialTypeTime(String time) {
+        // 将时间戳转为字符串
+            String re_StrTime = null;
+            long lcc_time = Long.valueOf(time);
+            re_StrTime = sdf.format(new Date(lcc_time * 1000L));
+            return re_StrTime;
+}
 
     /**
      * 获取当前的时间
@@ -47,6 +61,23 @@ public class CalendarUtil {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(ca.getTime()) + " " + "12:00:00";
 
+    }
+    /**
+     * 获取0点的时间
+     *
+     * @time yyyy-MM-dd **:**:**
+     * @return  yyyy-MM-dd 00:00:00
+     */
+    public static String getZeroTime(String time) {
+        String time_return = "";
+        SimpleDateFormat sdf_a = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+           Date date =  sdf.parse(time);
+           time_return =  sdf_a.format(date)+" 00:00:00";
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+return time_return;
     }
 
     /**

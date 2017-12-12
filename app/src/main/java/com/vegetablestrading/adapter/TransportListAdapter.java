@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.vegetablestrading.R;
 import com.vegetablestrading.bean.TransportVegetableInfo;
+import com.vegetablestrading.utils.CalendarUtil;
 import com.vegetablestrading.utils.Constant;
 
 import java.util.List;
@@ -51,10 +52,10 @@ public class TransportListAdapter extends RecyclerView.Adapter<TransportListAdap
         final TransportVegetableInfo bean = arrayList.get(position);
         Glide.with(context).load(Uri.parse(Constant.company_url+bean.getVegetableIcon())).into(holder.mVegetableIconIv);
         holder.mVegetableNameTv.setText(bean.getVegetableName());
-        holder.mVegetableWeightTv.setText(bean.getWeight());
+        holder.mVegetableWeightTv.setText(bean.getWeight()+"g");
         holder.mVegetableDescripTv.setText(bean.getVegetableInfo());
-        holder.mStartTimeTransportTv.setText(bean.getTransportStartTime());
-        holder.mEndTimeTransportTv.setText(bean.getTransportEndTime());
+        holder.mStartTimeTransportTv.setText("开始有效期："+ CalendarUtil.getSpecialTypeTime(bean.getTransportStartTime()));
+        holder.mEndTimeTransportTv.setText("结束有效期："+CalendarUtil.getSpecialTypeTime(bean.getTransportEndTime()));
         holder.trade_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -162,18 +162,6 @@
             app:left_button_text_color="#000000"
             app:right_button_text="100元"
             app:right_button_text_color="#000000"></com.vegetablestrading.customViews.CustomView>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:background="#000000"></View>
-        <com.vegetablestrading.customViews.CustomView
-            android:id="@+id/mineInfo_expirationTime"
-            android:layout_width="match_parent"
-            android:layout_height="46dp"
-            app:left_button_text="到期日期"
-            app:left_button_text_color="#000000"
-            app:right_button_text="张三"
-            app:right_button_text_color="#000000"></com.vegetablestrading.customViews.CustomView>
 
 
 

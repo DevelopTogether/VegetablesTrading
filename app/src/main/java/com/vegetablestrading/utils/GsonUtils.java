@@ -6,6 +6,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Author:wang_sir
@@ -32,5 +33,23 @@ public class GsonUtils {
             arrayList.add(new Gson().fromJson(jsonObject, clazz));
         }
         return arrayList;
+    }
+    /**
+     * @param json
+     * @param clazz
+     * @return
+     */
+    public static <T> List<T> jsonToList(String json, Class<T> clazz)
+    {
+        Type type = new TypeToken<ArrayList<JsonObject>>()
+        {}.getType();
+        List<JsonObject> jsonObjects = new Gson().fromJson(json, type);
+
+        List<T> list = new ArrayList<>();
+        for (JsonObject jsonObject : jsonObjects)
+        {
+            list.add(new Gson().fromJson(jsonObject, clazz));
+        }
+        return list;
     }
 }

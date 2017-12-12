@@ -39,10 +39,13 @@ public class PublicUtils {
 
     public static int app_width = 0;
     public static int app_height = 0;
-    public static TransportRecord transportRecord;//配送记录点击的实体类
+    public static TransportRecord transportRecordClicked;//配送记录点击的实体类
     public static MyApply myApply;//申请详情实体类
-    private static String USERINFO = "USER_INFO";//用户信息标识，用于存储sp
-    private static String ACTIVATED = "ACTIVATED";//用户激活状态，用于存储sp
+    public static boolean ACTIVATED = false;//用户激活状态
+    public static String glodCard = "8000";//金卡金额
+    public static String silverCard = "4200";//银卡金额
+    public static String blueCard = "0";//蓝卡金额
+    public static String deposit = "100";//押金金额
     public static UserInfo userInfo;//用户个人信息
 
 
@@ -176,19 +179,11 @@ public class PublicUtils {
         return (int) (pxValue / scale + 0.5f);
     }
 
-    /**
-     * 查询激活状态
-     *
-     * @param context
-     * @return
-     */
-    public static boolean getStatusOfActivated(Context context) {
-        SharedPreferencesHelper sph = new SharedPreferencesHelper(context, USERINFO);
-        return sph.getBoolean(ACTIVATED, true);
-    }
+
 
     /**
      * 提醒用户激活
+     *
      * @param context
      */
     private static Dialog warnActivate(final Context context) {
@@ -230,13 +225,56 @@ public class PublicUtils {
         });
         return dialog_toWarn;
     }
+    /**
+     * 提醒用户
+     *
+     * @param context
+     */
+    public static Dialog warnUserDialog(final Context context) {
+
+        View v = LayoutInflater.from(context).inflate(R.layout.warn_user_layout
+                , null);
+        final Dialog dialog_toWarn = new Dialog(context, R.style.DialogStyle);
+        dialog_toWarn.setCanceledOnTouchOutside(false);
+        dialog_toWarn.setCancelable(false);
+        Window window = dialog_toWarn.getWindow();
+        WindowManager.LayoutParams lp = window.getAttributes();
+        window.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL);
+//        lp.width = dip2px(this, 300); // 宽度
+//        lp.height = dip2px(this, 160); // 高度
+        // lp.alpha = 0.7f; // 透明度
+        dialog_toWarn.show();
+        window.setAttributes(lp);
+        window.setContentView(v);
+        dialog_toWarn.setOnKeyListener(new DialogInterface.OnKeyListener() {
+            @Override
+            public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+
+                if (keyCode == KeyEvent.KEYCODE_BACK) {
+                    if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                        dialog_toWarn.dismiss();
+                    }
+                }
+                return false;
+            }
+        });
+        final TextView activate_tv = (TextView) v.findViewById(R.id.activate_tv);
+        activate_tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog_toWarn.dismiss();
+            }
+        });
+        return dialog_toWarn;
+    }
 
     /**
      * 提醒用户激活的dialog
+     *
      * @param context
      */
-    public static void warnActivateDialog(Context context){
-        Dialog dialog =warnActivate(context);
+    public static void warnActivateDialog(Context context) {
+        Dialog dialog = warnActivate(context);
         if (!dialog.isShowing()) {
             dialog.show();
         }
@@ -244,10 +282,11 @@ public class PublicUtils {
 
     /**
      * 更改EditText中hint字体的大小
+     *
      * @param hintContent
      * @return
      */
-    public static void getEdittextHint(EditText et ,String hintContent){
+    public static void getEdittextHint(EditText et, String hintContent) {
         SpannableString spanString = new SpannableString(hintContent);
 //        ForegroundColorSpan span = new ForegroundColorSpan(Color.RED);
 //        spanString.setSpan(span, 2, spanString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);

@@ -32,7 +32,6 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
     private CustomView mRegistDate;
     private CustomView mMineInfoUserPhone;
     private CustomView mMineInfoUserEmail;
-    private CustomView mMineInfoExpirationTime;
     private DaoUtils daoUtils;
 
     @Override
@@ -69,7 +68,6 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
         mRegistDate = (CustomView) findViewById(R.id.mineInfo_regist_date);
         mMineInfoUserPhone = (CustomView) findViewById(R.id.mineInfo_userPhone);
         mMineInfoUserEmail = (CustomView) findViewById(R.id.mineInfo_userEmail);
-        mMineInfoExpirationTime = (CustomView) findViewById(R.id.mineInfo_expirationTime);
     }
 
     @Override
@@ -88,15 +86,36 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
         mUserName.getTitleBarRightBtn().setText(userInfo.getUserName());
         mMineInfoUserPhone.getTitleBarRightBtn().setText(userInfo.getUserPhone());
         mMineInfoUserEmail.getTitleBarRightBtn().setText(userInfo.getUserEmail());
-        mUserType.getTitleBarRightBtn().setText(userInfo.getUserType());
-        mUserStatus.getTitleBarRightBtn().setText(userInfo.getUserStatus());
+
         mUserSum.getTitleBarRightBtn().setText(userInfo.getDues());
         mDeposit.getTitleBarRightBtn().setText(userInfo.getDeposit());
         mIntegral.getTitleBarRightBtn().setText(userInfo.getResidualIntegral());
         mPickAmount.getTitleBarRightBtn().setText(userInfo.getResidualPickAmount());
         mBoxNo.getTitleBarRightBtn().setText(userInfo.getBoxNo());
         mRegistDate.getTitleBarRightBtn().setText(userInfo.getRegistDate());
-        mMineInfoExpirationTime.getTitleBarRightBtn().setText(userInfo.getExpirationTime());
+        switch (userInfo.getUserStatus()) {
+            case "0":
+                mUserStatus.getTitleBarRightBtn().setText("未激活");
+                break;
+            case "1":
+                mUserStatus.getTitleBarRightBtn().setText("已激活");
+                break;
+            default:
+                break;
+        }
+        switch (userInfo.getUserType()) {//1==N蓝卡，2==P银卡，3==VIP金卡
+            case "3":
+                mUserType.getTitleBarRightBtn().setText("VIP金卡");
+                break;
+            case "2":
+                mUserType.getTitleBarRightBtn().setText("P银卡");
+                break;
+            case "1":
+                mUserType.getTitleBarRightBtn().setText("N蓝卡");
+                break;
+            default:
+                break;
+        }
     }
 
 //    /**

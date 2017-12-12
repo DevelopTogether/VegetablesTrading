@@ -31,6 +31,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import okhttp3.Call;
 
@@ -74,7 +75,7 @@ public class TransportInfoActivity extends AppCompatActivity implements View.OnC
      */
     private TextView mAcceptAddrTv;
     private RecyclerView mTransportInfoDetailRv;
-    private TransportRecord transportRecord = PublicUtils.transportRecord;
+    private TransportRecord transportRecord = PublicUtils.transportRecordClicked;
     private TransportListAdapter adapter;
     /**
      * 配送中
@@ -96,7 +97,7 @@ public class TransportInfoActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.activity_transport_info);
         initView();
         initActionBar();
-        daoUtil = new DaoUtils(this, "");
+        daoUtil = new DaoUtils(this, "transport_record.sqlit");
     }
 
     /**
@@ -129,7 +130,11 @@ public class TransportInfoActivity extends AppCompatActivity implements View.OnC
         adapter = new TransportListAdapter(this);
         mTransportInfoDetailRv.setAdapter(adapter);
         mTransportInfoDetailRv.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.HORIZONTAL, R.drawable.horizontal_line_grey));
-        transportVegetablesByDate("2017-11-5 10:30:21", CalendarUtil.getCurrentTime());
+        String[] times = CalendarUtil.getWeekStartAndWeekEndBaseTime(CalendarUtil.getZeroTime(transportRecord.getTransportTime()));
+       if (times.length>1) {
+           transportVegetablesByDate(times[0], times[1]);
+       }
+
         mTransportNoTv.setText(transportRecord.getLogisticsNo());
         mTransportTimeTv.setText(transportRecord.getTransportTime());
         mTransportPersionTv.setText(transportRecord.getTransportPeople());
@@ -259,6 +264,7 @@ public class TransportInfoActivity extends AppCompatActivity implements View.OnC
                                 String message = obj.getString("Model");
                                 if ("Ok".equals(result)) {
                                     ArrayList<LogisticsInfo> arrays = GsonUtils.jsonToArrayList(message, LogisticsInfo.class);
+                                    Collections.reverse(arrays);
                                     adapter_logistics.setData(arrays);
                                     putLogisticsInfoToSqlite(arrays);
                                 } else {
@@ -273,12 +279,12 @@ public class TransportInfoActivity extends AppCompatActivity implements View.OnC
                     }
 
 
-
                 });
     }
 
     /**
      * 将物流信息保存本地
+     *
      * @param arrays
      */
     private void putLogisticsInfoToSqlite(ArrayList<LogisticsInfo> arrays) {

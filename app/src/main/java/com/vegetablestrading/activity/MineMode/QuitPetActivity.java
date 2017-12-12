@@ -9,7 +9,6 @@ import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.style.AbsoluteSizeSpan;
 import android.text.style.ForegroundColorSpan;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -22,6 +21,7 @@ import com.vegetablestrading.bean.UserInfo;
 import com.vegetablestrading.customViews.CustomView;
 import com.vegetablestrading.utils.Constant;
 import com.vegetablestrading.utils.PublicUtils;
+import com.vegetablestrading.utils.SharedPreferencesHelper;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -46,7 +46,6 @@ public class QuitPetActivity extends AppCompatActivity implements View.OnClickLi
     private TextView mTopTitleTv;
     private CustomView mQuitPetUserName;
     private CustomView mQuitPetUserType;
-    private CustomView expirationTimeCv;
     private CustomView mQuitPetUserSum;
     private CustomView mQuitPetIntegral;
     private CustomView mQuitPetUserSumToReturn;
@@ -68,14 +67,21 @@ public class QuitPetActivity extends AppCompatActivity implements View.OnClickLi
      * 请输入退款账户
      */
     private EditText mRefundAccountEt;
+    /**
+     * 100元
+     */
+    private TextView mQuitPetDepositToReturnAmountTv;
+    private SharedPreferencesHelper sp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        sp = new SharedPreferencesHelper(this,"QUIT_PET");
         setContentView(R.layout.activity_quit_pet);
         initView();
         messageToView(PublicUtils.userInfo);
         mQuitPetDepositToReturn.setText(getQuitPetDepositToReturnText());
+
     }
 
     private void initView() {
@@ -85,12 +91,20 @@ public class QuitPetActivity extends AppCompatActivity implements View.OnClickLi
         mTopTitleTv.setText("退会");
         mQuitPetUserName = (CustomView) findViewById(R.id.quitPet_userName);
         mQuitPetUserType = (CustomView) findViewById(R.id.quitPet_userType);
-        expirationTimeCv = (CustomView) findViewById(R.id.expirationTime_cv);
         mQuitPetUserSum = (CustomView) findViewById(R.id.quitPet_userSum);
         mQuitPetIntegral = (CustomView) findViewById(R.id.quitPet_integral);
         mQuitPetUserSumToReturn = (CustomView) findViewById(R.id.quitPet_userSumToReturn);
         mConfirmQuitPetTv = (TextView) findViewById(R.id.confirm_quitPet_tv);
         mConfirmQuitPetTv.setOnClickListener(this);
+        if (sp.getBoolean("QUIT_COMMIT",false)) {
+            mConfirmQuitPetTv.setText("处理中");
+            mConfirmQuitPetTv.setClickable(false);
+            mConfirmQuitPetTv.setBackgroundResource(R.drawable.bt_unpress_selecter);
+        }else{
+            mConfirmQuitPetTv.setText("申请退会");
+            mConfirmQuitPetTv.setClickable(true);
+            mConfirmQuitPetTv.setBackgroundResource(R.drawable.bt_pressed_selecter);
+        }
         mQuitPetDepositToReturn = (TextView) findViewById(R.id.quitPet_depositToReturn);
         mQuitPetMobile = (CustomView) findViewById(R.id.quitPet_mobile);
         mRefundTypeRg = (RadioGroup) findViewById(R.id.refund_type_rg);
@@ -106,20 +120,36 @@ public class QuitPetActivity extends AppCompatActivity implements View.OnClickLi
                 }
             }
         });
+        mQuitPetDepositToReturnAmountTv = (TextView) findViewById(R.id.quitPet_depositToReturnAmount_tv);
     }
 
     /**
      * 将用户信息填入控件中
      */
     private void messageToView(UserInfo userInfo) {
-
+        String residualIntegral = userInfo.getResidualIntegral();
         mQuitPetUserName.getTitleBarRightBtn().setText(userInfo.getUserName());
-        mQuitPetUserType.getTitleBarRightBtn().setText(userInfo.getUserType());
-        expirationTimeCv.getTitleBarRightBtn().setText(userInfo.getExpirationTime());
         mQuitPetUserSum.getTitleBarRightBtn().setText(userInfo.getDues());
-        mQuitPetIntegral.getTitleBarRightBtn().setText(userInfo.getResidualIntegral());
+        mQuitPetIntegral.getTitleBarRightBtn().setText(residualIntegral);
         mQuitPetMobile.getTitleBarRightBtn().setText(userInfo.getUserPhone());
         mQuitPetDepositToReturn.setText(getQuitPetDepositToReturnText());
+        switch (userInfo.getUserType()) {//1==N蓝卡，2==P银卡，3==VIP金卡
+            case "3":
+                mQuitPetUserType.getTitleBarRightBtn().setText("VIP金卡");
+                break;
+            case "2":
+                mQuitPetUserType.getTitleBarRightBtn().setText("P银卡");
+                break;
+            case "1":
+                mQuitPetUserType.getTitleBarRightBtn().setText("N蓝卡");
+                break;
+            default:
+                break;
+        }
+       if (!TextUtils.isEmpty(residualIntegral)) {
+           mQuitPetDepositToReturnAmountTv.setText((Integer.parseInt(residualIntegral))*100+"元");
+       }
+
     }
 
     /**
@@ -196,6 +226,10 @@ public class QuitPetActivity extends AppCompatActivity implements View.OnClickLi
                                 String result = obj.getString("Result");
                                 String message = obj.getString("Model");
                                 if ("Ok".equals(result)) {
+                                    sp.putBoolean("QUIT_COMMIT",true);
+                                    mConfirmQuitPetTv.setText("处理中");
+                                    mConfirmQuitPetTv.setClickable(false);
+                                    mConfirmQuitPetTv.setBackgroundResource(R.drawable.bt_unpress_selecter);
                                 } else {
                                     Toast.makeText(QuitPetActivity.this, message, Toast.LENGTH_LONG).show();
                                 }
@@ -203,7 +237,6 @@ public class QuitPetActivity extends AppCompatActivity implements View.OnClickLi
                                 e.printStackTrace();
                             }
                         }
-                        Log.e("DEBUG", response);
 
                     }
 

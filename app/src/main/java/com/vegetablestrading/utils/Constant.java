@@ -35,6 +35,7 @@ public class Constant {
     public static String modifyPwd_url = company_url + "/index.php/Home/vegetableshop/modifyPwd.html";
     public static String userActivateThroughALiPay_url = company_url + "/index.php/Home/vegetableshop/userActivateThroughALiPay.html";
     public static String userActivateThroughWeiXinPay_url = company_url + "/index.php/Home/vegetableshop/userActivateThroughWeiXinPay.html";
+    public static String userActivateAfterPay_url = company_url + "/index.php/Home/vegetableshop/userActivateAfterPay.html";
 
 
 }

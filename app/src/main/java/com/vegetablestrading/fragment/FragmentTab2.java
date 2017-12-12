@@ -159,7 +159,7 @@ public class FragmentTab2 extends Fragment implements View.OnClickListener {
 
             @Override
             public void itemClick(TransportVegetableInfo transportVegetableInfo) {
-                if (!PublicUtils.getStatusOfActivated(mContext)) {
+                if (!PublicUtils.ACTIVATED) {
                     PublicUtils.warnActivateDialog(mContext);
                     return;
                 }
@@ -167,7 +167,7 @@ public class FragmentTab2 extends Fragment implements View.OnClickListener {
 
             @Override
             public void buyRightnow() {
-                if (!PublicUtils.getStatusOfActivated(mContext)) {
+                if (!PublicUtils.ACTIVATED) {
                     PublicUtils.warnActivateDialog(mContext);
                     return;
                 }
@@ -181,7 +181,7 @@ public class FragmentTab2 extends Fragment implements View.OnClickListener {
         mShopSearchSv.setSearchVegetableCallBack(new SearchView.SearchViewOnClick() {
             @Override
             public void searchVegetables() {//查询相关蔬菜
-                if (!PublicUtils.getStatusOfActivated(mContext)) {
+                if (!PublicUtils.ACTIVATED) {
                     PublicUtils.warnActivateDialog(mContext);
                     return;
                 }
@@ -228,7 +228,7 @@ public class FragmentTab2 extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        if (!PublicUtils.getStatusOfActivated(mContext)) {
+        if (!PublicUtils.ACTIVATED) {
             PublicUtils.warnActivateDialog(mContext);
             return;
         }

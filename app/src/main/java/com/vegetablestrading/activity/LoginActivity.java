@@ -81,6 +81,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         boolean pwdSaved = sharedPreferencesHelper.getBoolean("REMEMBERPWD", false);
         if (pwdSaved) {
             mRememberPwdCb.setChecked(true);
+//             String mobile = mUserMobileEt.getText().toString().trim();
+//            String pwd = mUserPwdEt.getText().toString().trim();
+//            loginToService(mobile, pwd);
         } else {
             mRememberPwdCb.setChecked(false);
         }
@@ -196,11 +199,23 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                                 JSONObject obj = new JSONObject(response);
                                 String result = obj.getString("Result");
                                 String message = obj.getString("Message");
-                                String object = obj.getString("Model");
-                                PublicUtils.userInfo = mGson.fromJson(object, UserInfo.class);
                                 if ("Ok".equals(result)) {
+                                    String object = obj.getString("Model");
+                                    PublicUtils.userInfo = mGson.fromJson(object, UserInfo.class);
+                                    String userStatus = PublicUtils.userInfo.getUserStatus();
+                                    switch (userStatus) {
+                                        case "0":
+                                            PublicUtils.ACTIVATED = false;
+                                            break;
+                                        case "1":
+                                            PublicUtils.ACTIVATED = true;
+                                            break;
+                                        default:
+                                            break;
+                                    }
                                     mLoginPb.setVisibility(View.GONE);
                                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                    finish();
                                 } else {
                                     mLoginPb.setVisibility(View.GONE);
                                     if ("账号不存在!".equals(message)) {

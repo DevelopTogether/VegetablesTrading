@@ -51,6 +51,7 @@ import okhttp3.Call;
 
 import static com.vegetablestrading.utils.CalendarUtil.GetWeekFromDate;
 import static com.vegetablestrading.utils.CalendarUtil.compareTime;
+import static com.zhy.http.okhttp.OkHttpUtils.post;
 
 /**
  * Created by ${王sir} on 2017/10/18.
@@ -166,9 +167,15 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
         mSwipeRefreshSl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                //TODO 请求数据 更新adapter
-                transportVegetablesByDate("2017-11-05 10:30:00", CalendarUtil.getCurrentTime());
-
+                // 请求数据 更新adapter
+                String tradeDate = mTradeDateTv.getText().toString().trim();
+                if (tradeDate.equals("本周")) {
+                    // 请求本周配送菜品信息
+                    transportVegetablesByDate(CalendarUtil.getTimeOfWeekStart(), CalendarUtil.getTimeOfWeekEnd());
+                } else {
+                    // 请求上周配送菜品信息
+                    transportVegetablesByDate(CalendarUtil.getTimeOfLastWeekStart(), CalendarUtil.getTimeOfWeekStart());
+                }
 
             }
         });
@@ -176,7 +183,7 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        if (!PublicUtils.getStatusOfActivated(mContext)) {
+        if (!PublicUtils.ACTIVATED) {
             PublicUtils.warnActivateDialog(mContext);
             return;
         }
@@ -292,8 +299,7 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
      * @param endTime
      */
     private void transportVegetablesByDate(String startTime, String endTime) {
-        OkHttpUtils
-                .post()
+        post()
                 .url(Constant.transportVegetablesByDate_url)
                 .addParams("startTime", startTime)
                 .addParams("endTime", endTime)
@@ -361,7 +367,8 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
         comfirmUnTrade.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Todo 将不配送的信息上传到平台
+                // 将不配送的信息上传到平台
+                applyToService("不配送");
                 //更改本周不配送按钮的状态
                 mUnTradeThisWeekTv.setBackgroundResource(R.drawable.cancel_regist_shape);
                 mUnTradeThisWeekTv.setEnabled(false);
@@ -377,7 +384,50 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
             }
         });
     }
+    /**
+     * 上传申请信息
+     * @param noteInfo
+     */
+    private void applyToService( String noteInfo) {
+        //1代表减少配送，2代表增加配送，3代表不配送
+        OkHttpUtils
+                .post()
+                .url(Constant.applyOfTransport_url)
+                .addParams("userId", PublicUtils.userInfo.getUserId())
+                .addParams("applyType", "3")
+                .addParams("applyInfo", noteInfo)
+                .addParams("startTime", CalendarUtil.getTimeOfWeekStart())
+                .addParams("endTime", CalendarUtil.getTimeOfWeekEnd())
+                .addParams("apply_time", CalendarUtil.getCurrentTime())
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        Toast.makeText(mContext, "", Toast.LENGTH_LONG).show();
+                    }
 
+                    @Override
+                    public void onResponse(String response, int id) {
+                        if (!TextUtils.isEmpty(response)) {
+                            try {
+                                JSONObject obj = new JSONObject(response);
+                                String result = obj.getString("Result");
+                                String message = obj.getString("Message");
+                                if ("Ok".equals(result)) {
+                                    Toast.makeText(mContext, "您已成功提交申请", Toast.LENGTH_LONG).show();
+                                } else {
+                                    Toast.makeText(mContext, message, Toast.LENGTH_LONG).show();
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        Log.e("DEBUG", response);
+
+                    }
+
+                });
+    }
     /**
      * 将配送蔬菜信息保存本地
      */
@@ -400,14 +450,15 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
         adapter.setOnTransportListItemClickListener(new TransportListAdapter.OnTransportListItemInterface() {
             @Override
             public void OnTransportListItemClick(TransportVegetableInfo transportVegetableInfo) {
-                if (!PublicUtils.getStatusOfActivated(mContext)) {
+                if (!PublicUtils.ACTIVATED) {
                     PublicUtils.warnActivateDialog(mContext);
                     return;
                 }
             }
         });
         if (PublicUtils.isConnected(mContext)) {
-            transportVegetablesByDate("2017-11-05 10:30:00", CalendarUtil.getCurrentTime());
+            // 请求本周配送菜品信息
+            transportVegetablesByDate(CalendarUtil.getTimeOfWeekStart(), CalendarUtil.getTimeOfWeekEnd());
         } else {//没有网络的情况下读取数据库里面的数据
             adapter.setData(daoUtil.listAll(TransportVegetableInfo.class));
         }

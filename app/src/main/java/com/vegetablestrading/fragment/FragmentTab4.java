@@ -16,14 +16,12 @@ import android.widget.TextView;
 import com.vegetablestrading.R;
 import com.vegetablestrading.activity.MineMode.AboutUsActivity;
 import com.vegetablestrading.activity.MineMode.ActivateUserActivity;
-import com.vegetablestrading.activity.MineMode.CustomerComplainActivity;
 import com.vegetablestrading.activity.MineMode.ModifyPwdActivity;
 import com.vegetablestrading.activity.MineMode.MyInfoActivity;
 import com.vegetablestrading.activity.MineMode.MyIntegralActivity;
 import com.vegetablestrading.activity.MineMode.QuitPetActivity;
 import com.vegetablestrading.activity.MineMode.TransportRecordActivity;
 import com.vegetablestrading.activity.MineMode.myApply.AddApplyActivity;
-import com.vegetablestrading.activity.MineMode.myPick.MyPickActivity;
 import com.vegetablestrading.adapter.MineModeAdapter;
 import com.vegetablestrading.interfaces.MineModeItemClickedListener;
 import com.vegetablestrading.utils.PublicUtils;
@@ -94,7 +92,7 @@ public class FragmentTab4 extends Fragment {
             public void itemClickedListener(TextView view) {
                 String text = view.getText().toString().trim();
                 if (!"会员激活".equals(text)) {
-                    if (!PublicUtils.getStatusOfActivated(context)) {
+                    if (!PublicUtils.ACTIVATED) {
                          PublicUtils.warnActivateDialog(context);
                         return;
                     }
@@ -118,9 +116,11 @@ public class FragmentTab4 extends Fragment {
                         startActivity(new Intent(context, MyIntegralActivity.class));
                         break;
                     case "我的订单":
+                        PublicUtils.warnUserDialog(context);
                         break;
                     case "我的采摘":
-                        startActivity(new Intent(context, MyPickActivity.class));
+                        PublicUtils.warnUserDialog(context);
+//                        startActivity(new Intent(context, MyPickActivity.class));
 
                         break;
                     case "我的信息":
@@ -136,7 +136,8 @@ public class FragmentTab4 extends Fragment {
                     case "使用帮助":
                         break;
                     case "客户投诉":
-                        startActivity(new Intent(context, CustomerComplainActivity.class));
+                        PublicUtils.warnUserDialog(context);
+//                        startActivity(new Intent(context, CustomerComplainActivity.class));
                         break;
                     case "退会":
                         startActivity(new Intent(context, QuitPetActivity.class));

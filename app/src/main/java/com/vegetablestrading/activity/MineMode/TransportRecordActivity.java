@@ -55,7 +55,7 @@ public class TransportRecordActivity extends AppCompatActivity implements View.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transport);
-        daoUtil = new DaoUtils(this, "");
+        daoUtil = new DaoUtils(this, "transport_record.sqlit");
         initView();
         initActionBar();
 
@@ -79,46 +79,17 @@ public class TransportRecordActivity extends AppCompatActivity implements View.O
         mTransportRecordRv.setLayoutManager(manager);
         adapter = new TransportRecordAdapter();
         mTransportRecordRv.setAdapter(adapter);
-        transportRecordsByDate("2017-11-5 10:30:22", CalendarUtil.getCurrentTime());
+        transportRecordsByDate(PublicUtils.userInfo.getRegistDate(), CalendarUtil.getCurrentTime());
         adapter.setTransportRecordItemClick(new TransportRecordAdapter.TransportRecordItemClick() {
             @Override
             public void itemClick(TransportRecord transportRecord) {//item点击事件
-                PublicUtils.transportRecord = transportRecord;
-                Toast.makeText(getApplicationContext(), transportRecord.getResidualIntegral(), Toast.LENGTH_LONG).show();
+                PublicUtils.transportRecordClicked = transportRecord;
                 startActivity(new Intent(TransportRecordActivity.this,TransportInfoActivity.class));
             }
 
         });
     }
 
-    /**
-     * 测试数据
-     * @return
-     */
-    private ArrayList<TransportRecord> getTransportRecordData(){
-        ArrayList<TransportRecord> arrayList = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            TransportRecord bean = new TransportRecord();
-            bean.setLogisticsNo("物流单号：110121211000200"+i);
-            bean.setLogisticsName("顺丰快递");
-//            bean.setLogisticsInfos(getLogisticsInfos());
-            bean.setTransportPeople("配送人：王彬");
-            bean.setTransportPeopleMobile("配送人电话：15311810032");
-            bean.setTransportTime("配送时间：2017-11-20 14:21:30");
-            bean.setTransportInfo("配送备注：多送点香菜");
-            bean.setUserName("收件人：王司令");
-            bean.setMobile("收件人电话：18888888888");
-            bean.setAddress("收件人地址：北京市海淀区增光路30号");
-            bean.setResidualIntegral(i+"");
-            bean.setRelayBoxNo("中转箱：168712357164563");
-            bean.setOperatingPeople("操作员：文员1");
-            bean.setOperateTime("操作时间：2017-11-20 14:22:46");
-            bean.setNoteInfo("操作备注：.dlkfj");
-            arrayList.add(bean);
-        }
-
-        return arrayList;
-    }
 
 
     @Override
@@ -189,11 +160,15 @@ public class TransportRecordActivity extends AppCompatActivity implements View.O
     /**
      * 将配送蔬菜信息保存本地
      */
-    private void putTransportRecordInfoToSqlite(ArrayList<TransportRecord> arrayList) {
-        ArrayList<TransportRecord> list =  daoUtil.listAll(TransportRecord.class);
-        for (TransportRecord transportRecord : arrayList ) {
-            if (!list.contains(transportRecord)) {
-                daoUtil.insertEntity(transportRecord);
+    private void putTransportRecordInfoToSqlite(ArrayList<TransportRecord> list_service) {
+        ArrayList<TransportRecord> list_local =  daoUtil.listAll(TransportRecord.class);
+        List<String> arrays_recordId = new ArrayList<>();
+        for (TransportRecord transportRecord : list_local) {
+            arrays_recordId.add(transportRecord.getTransportRecordId());
+        }
+        for (TransportRecord record : list_service) {
+            if (!arrays_recordId.contains(record.getTransportRecordId())) {
+                daoUtil.insertEntity(record);
             }
         }
 

@@ -60,19 +60,6 @@
                 app:right_button_text="VIP金卡"
                 app:right_button_text_color="#000000"></com.vegetablestrading.customViews.CustomView>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="#000000"></View>
-
-            <com.vegetablestrading.customViews.CustomView
-                android:id="@+id/expirationTime_cv"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                app:left_button_text="会员截止日期"
-                app:left_button_text_color="#000000"
-                app:right_button_text="2019-10-31"
-                app:right_button_text_color="#000000"></com.vegetablestrading.customViews.CustomView>
 
             <View
                 android:layout_width="match_parent"
@@ -190,10 +177,12 @@
                             android:textColor="@android:color/black" />
 
                         <TextView
+                            android:id="@+id/quitPet_depositToReturnAmount_tv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
                             android:text="100元"
+                            android:textStyle="bold"
                             android:textColor="@android:color/black" />
                     </RelativeLayout>
 
@@ -246,6 +235,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center"
+                android:focusable="true"
                 android:focusableInTouchMode="true"
                 android:orientation="horizontal">
 
