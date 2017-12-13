@@ -43,7 +43,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-    compile(name: 'chose_address1128', ext: 'aar')
+    compile(name: 'chose_address', ext: 'aar')
     compile(name: 'checkToUpdateApp', ext: 'aar')
 
     compile 'com.zhy:okhttputils:2.6.2'

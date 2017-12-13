@@ -56,7 +56,7 @@ MERGED from [:checkToUpdateApp:] C:\Users\Administrator\.android\build-cache\922
 		ADDED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\AndroidManifest.xml:14:22-72
 application
 ADDED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\AndroidManifest.xml:16:5-82:19
-MERGED from [:chose_address1128:] C:\Users\Administrator\.android\build-cache\43ff1c0edce6638cedf276f129a258d16265a34a\output\AndroidManifest.xml:11:5-17:19
+MERGED from [:chose_address:] C:\Users\Administrator\.android\build-cache\597cf0b9dbaaf60da37902f6a7f6a96563a0a427\output\AndroidManifest.xml:11:5-17:19
 MERGED from [:checkToUpdateApp:] C:\Users\Administrator\.android\build-cache\9221cf73d555d94b55cc85af076c1122c6bf579d\output\AndroidManifest.xml:31:5-32:19
 MERGED from [com.android.support:cardview-v7:25.3.1] C:\Users\Administrator\.android\build-cache\3661e94025fd691bba6e6a97ad5ca041c41ecc06\output\AndroidManifest.xml:26:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Administrator\.android\build-cache\dadb10d8a2c991c864bc3602f25fcd889ee76ec6\output\AndroidManifest.xml:9:5-20
@@ -240,7 +240,7 @@ ADDED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\Android
 		ADDED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\AndroidManifest.xml:80:19-74
 uses-sdk
 INJECTED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
-MERGED from [:chose_address1128:] C:\Users\Administrator\.android\build-cache\43ff1c0edce6638cedf276f129a258d16265a34a\output\AndroidManifest.xml:7:5-9:41
+MERGED from [:chose_address:] C:\Users\Administrator\.android\build-cache\597cf0b9dbaaf60da37902f6a7f6a96563a0a427\output\AndroidManifest.xml:7:5-9:41
 MERGED from [:checkToUpdateApp:] C:\Users\Administrator\.android\build-cache\9221cf73d555d94b55cc85af076c1122c6bf579d\output\AndroidManifest.xml:7:5-9:41
 MERGED from [com.zhy:okhttputils:2.6.2] C:\Users\Administrator\.android\build-cache\64055df7abb7c5250d436e9b300df59c72fdbe52\output\AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support:cardview-v7:25.3.1] C:\Users\Administrator\.android\build-cache\3661e94025fd691bba6e6a97ad5ca041c41ecc06\output\AndroidManifest.xml:20:5-43
@@ -267,11 +267,11 @@ MERGED from [com.github.zackratos.ultimatebar:ultimatebar2:2.0.0] C:\Users\Admin
 		INJECTED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\AndroidManifest.xml
 activity#com.choseaddrdemo.selectAddr.ChooserActivity
-ADDED from [:chose_address1128:] C:\Users\Administrator\.android\build-cache\43ff1c0edce6638cedf276f129a258d16265a34a\output\AndroidManifest.xml:14:9-16:59
+ADDED from [:chose_address:] C:\Users\Administrator\.android\build-cache\597cf0b9dbaaf60da37902f6a7f6a96563a0a427\output\AndroidManifest.xml:14:9-16:59
 	android:theme
-		ADDED from [:chose_address1128:] C:\Users\Administrator\.android\build-cache\43ff1c0edce6638cedf276f129a258d16265a34a\output\AndroidManifest.xml:16:13-56
+		ADDED from [:chose_address:] C:\Users\Administrator\.android\build-cache\597cf0b9dbaaf60da37902f6a7f6a96563a0a427\output\AndroidManifest.xml:16:13-56
 	android:name
-		ADDED from [:chose_address1128:] C:\Users\Administrator\.android\build-cache\43ff1c0edce6638cedf276f129a258d16265a34a\output\AndroidManifest.xml:15:13-72
+		ADDED from [:chose_address:] C:\Users\Administrator\.android\build-cache\597cf0b9dbaaf60da37902f6a7f6a96563a0a427\output\AndroidManifest.xml:15:13-72
 uses-permission#android.permission.ACCESS_COARSE_LOCATION
 ADDED from [:checkToUpdateApp:] C:\Users\Administrator\.android\build-cache\9221cf73d555d94b55cc85af076c1122c6bf579d\output\AndroidManifest.xml:11:5-81
 	android:name

@@ -4,7 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.vegetablestrading.R;
@@ -57,14 +57,14 @@ public class MyIntegralAdapter extends RecyclerView.Adapter<MyIntegralAdapter.Vi
         TextView mTransportDateTv;
         TextView mIrregularDetailTv;
         TextView mTransportNoTv;
-        private final LinearLayout my_integral_ll;
+        private final RelativeLayout my_integral_ll;
 
         ViewHolder(View view) {
             super(view);
             this.mTransportDateTv = (TextView) view.findViewById(R.id.transport_date_tv);
             this.mIrregularDetailTv = (TextView) view.findViewById(R.id.irregular_detail_tv);
             this.mTransportNoTv = (TextView) view.findViewById(R.id.transport_no_tv);
-            my_integral_ll = (LinearLayout) view.findViewById(R.id.my_integral_ll);
+            my_integral_ll = (RelativeLayout) view.findViewById(R.id.my_integral_ll);
         }
     }
 

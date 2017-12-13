@@ -220,6 +220,7 @@ public class ForgetPwdActivity extends AppCompatActivity implements View.OnClick
         String repwd = mFindReNewPwdEt.getText().toString().trim();
         if (TextUtils.isEmpty(mobile)) {
             Toast.makeText(getApplicationContext(), "请填写手机号", Toast.LENGTH_LONG).show();
+            return;
         } else {
             if (!PublicUtils.isMobileNO(mobile)) {
                 Toast.makeText(getApplicationContext(), "请填写正规的手机号", Toast.LENGTH_LONG).show();
@@ -256,9 +257,47 @@ public class ForgetPwdActivity extends AppCompatActivity implements View.OnClick
             }
         }
         Toast.makeText(getApplicationContext(), "密码更改成功", Toast.LENGTH_LONG).show();
-        //TODO 调用重置密码的接口
+        // 调用重置密码的接口
+//        modifyPwdThoughService();
     }
-
+//    /**
+//     * 更改密码
+//     */
+//    private void modifyPwdThoughService(String oldPwd,String newPwd) {
+//        OkHttpUtils
+//                .post()
+//                .url(Constant.modifyPwd_url)
+//                .addParams("userId", PublicUtils.userInfo.getUserId())
+//                .addParams("oldPwd", oldPwd)
+//                .addParams("newPwd", newPwd)
+//                .build()
+//                .execute(new StringCallback() {
+//                    @Override
+//                    public void onError(Call call, Exception e, int id) {
+//                        Toast.makeText(getApplicationContext(), "网络错误", Toast.LENGTH_LONG).show();
+//                    }
+//
+//                    @Override
+//                    public void onResponse(String response, int id) {
+//                        if (!TextUtils.isEmpty(response)) {
+//                            try {
+//                                JSONObject obj = new JSONObject(response);
+//                                String result = obj.getString("Result");
+//                                String message = obj.getString("Message");
+//                                if ("Ok".equals(result)) {
+//                                    Toast.makeText(getApplicationContext(), "密码修改成功", Toast.LENGTH_LONG).show();
+//                                } else {
+//                                }
+//                            } catch (JSONException e) {
+//                                e.printStackTrace();
+//                            }
+//                        }
+//
+//                    }
+//
+//                });
+//
+//    }
     /**
      * 获取保存的手机号
      *

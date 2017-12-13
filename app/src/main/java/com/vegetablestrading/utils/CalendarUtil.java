@@ -50,6 +50,17 @@ public class CalendarUtil {
         return sdf.format(ca.getTime());
 
     }
+    /**
+     * 获取当前的时间
+     *
+     * @return
+     */
+    public static String getCurrentTime2() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
+        Calendar ca = Calendar.getInstance();
+        return sdf.format(ca.getTime());
+
+    }
 
     /**
      * 获取当天12点的时间
@@ -216,11 +227,17 @@ return time_return;
         try {
             Long a = sdf.parse(startTime).getTime();
             Long b = sdf.parse(endTime).getTime();
-            if (a > b) {
+            Long currentTime = sdf.parse(getCurrentTime2()).getTime();
+            if (a<currentTime) {
                 return false;
-            } else {
-                return true;
+            }else{
+                if (a > b) {
+                    return false;
+                } else {
+                    return true;
+                }
             }
+
         } catch (ParseException e) {
             e.printStackTrace();
         }

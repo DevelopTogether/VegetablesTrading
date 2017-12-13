@@ -75,8 +75,8 @@ public class ActivatedActivity extends AppCompatActivity implements View.OnClick
             default:
                 break;
         }
-        mActivatedUserSum.getTitleBarRightBtn().setText(userInfo.getDues()+"/年");
-        mActivatedDeposit.getTitleBarRightBtn().setText(userInfo.getDeposit());
+        mActivatedUserSum.getTitleBarRightBtn().setText(userInfo.getDues()+" 元");
+        mActivatedDeposit.getTitleBarRightBtn().setText(userInfo.getDeposit()+" 元");
         mActivatedRegistDate.getTitleBarRightBtn().setText(userInfo.getRegistDate());
     }
 }

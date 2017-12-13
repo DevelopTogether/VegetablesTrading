@@ -72,11 +72,12 @@ public class QuitPetActivity extends AppCompatActivity implements View.OnClickLi
      */
     private TextView mQuitPetDepositToReturnAmountTv;
     private SharedPreferencesHelper sp;
+    private CustomView mQuitPetDepositCv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        sp = new SharedPreferencesHelper(this,"QUIT_PET");
+        sp = new SharedPreferencesHelper(this, "QUIT_PET");
         setContentView(R.layout.activity_quit_pet);
         initView();
         messageToView(PublicUtils.userInfo);
@@ -96,11 +97,11 @@ public class QuitPetActivity extends AppCompatActivity implements View.OnClickLi
         mQuitPetUserSumToReturn = (CustomView) findViewById(R.id.quitPet_userSumToReturn);
         mConfirmQuitPetTv = (TextView) findViewById(R.id.confirm_quitPet_tv);
         mConfirmQuitPetTv.setOnClickListener(this);
-        if (sp.getBoolean("QUIT_COMMIT",false)) {
+        if (sp.getBoolean("QUIT_COMMIT", false)) {
             mConfirmQuitPetTv.setText("处理中");
             mConfirmQuitPetTv.setClickable(false);
             mConfirmQuitPetTv.setBackgroundResource(R.drawable.bt_unpress_selecter);
-        }else{
+        } else {
             mConfirmQuitPetTv.setText("申请退会");
             mConfirmQuitPetTv.setClickable(true);
             mConfirmQuitPetTv.setBackgroundResource(R.drawable.bt_pressed_selecter);
@@ -121,6 +122,7 @@ public class QuitPetActivity extends AppCompatActivity implements View.OnClickLi
             }
         });
         mQuitPetDepositToReturnAmountTv = (TextView) findViewById(R.id.quitPet_depositToReturnAmount_tv);
+        mQuitPetDepositCv = (CustomView) findViewById(R.id.quitPet_deposit_cv);
     }
 
     /**
@@ -129,9 +131,10 @@ public class QuitPetActivity extends AppCompatActivity implements View.OnClickLi
     private void messageToView(UserInfo userInfo) {
         String residualIntegral = userInfo.getResidualIntegral();
         mQuitPetUserName.getTitleBarRightBtn().setText(userInfo.getUserName());
-        mQuitPetUserSum.getTitleBarRightBtn().setText(userInfo.getDues());
+        mQuitPetUserSum.getTitleBarRightBtn().setText(userInfo.getDues() + " 元");
         mQuitPetIntegral.getTitleBarRightBtn().setText(residualIntegral);
         mQuitPetMobile.getTitleBarRightBtn().setText(userInfo.getUserPhone());
+        mQuitPetDepositCv.getTitleBarRightBtn().setText(userInfo.getDeposit()+ " 元");
         mQuitPetDepositToReturn.setText(getQuitPetDepositToReturnText());
         switch (userInfo.getUserType()) {//1==N蓝卡，2==P银卡，3==VIP金卡
             case "3":
@@ -146,9 +149,9 @@ public class QuitPetActivity extends AppCompatActivity implements View.OnClickLi
             default:
                 break;
         }
-       if (!TextUtils.isEmpty(residualIntegral)) {
-           mQuitPetUserSumToReturn.getTitleBarRightBtn().setText((Integer.parseInt(residualIntegral))*100+"元");
-       }
+        if (!TextUtils.isEmpty(residualIntegral)) {
+            mQuitPetUserSumToReturn.getTitleBarRightBtn().setText((Integer.parseInt(residualIntegral)) * 100 + " 元");
+        }
 
     }
 
@@ -227,7 +230,7 @@ public class QuitPetActivity extends AppCompatActivity implements View.OnClickLi
                                 String message = obj.getString("Message");
                                 if ("Ok".equals(result)) {
                                     Toast.makeText(getApplicationContext(), "已成功提交申请", Toast.LENGTH_LONG).show();
-                                    sp.putBoolean("QUIT_COMMIT",true);
+                                    sp.putBoolean("QUIT_COMMIT", true);
                                     mConfirmQuitPetTv.setText("处理中");
                                     mConfirmQuitPetTv.setClickable(false);
                                     mConfirmQuitPetTv.setBackgroundResource(R.drawable.bt_unpress_selecter);

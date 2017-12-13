@@ -8,22 +8,21 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.vegetablestrading.R;
 
 public class CustomView extends RelativeLayout {
-    private Button titleBarLeftBtn;
-    private Button titleBarRightBtn;
+    private TextView titleBarLeftBtn;
+    private TextView titleBarRightBtn;
     private TextView titleBarTitle;
 
     public CustomView(Context context, AttributeSet attrs) {
         super(context, attrs);
         LayoutInflater.from(context).inflate(R.layout.custom_view, this, true);
-        titleBarLeftBtn = (Button) findViewById(R.id.title_bar_left);
-        titleBarRightBtn = (Button) findViewById(R.id.title_bar_right);
+        titleBarLeftBtn = (TextView) findViewById(R.id.title_bar_left);
+        titleBarRightBtn = (TextView) findViewById(R.id.title_bar_right);
         titleBarTitle = (TextView) findViewById(R.id.title_bar_title);
 
         initViewStatus(context, attrs);
@@ -48,8 +47,8 @@ public class CustomView extends RelativeLayout {
             if (!TextUtils.isEmpty(leftButtonText)) {
                 titleBarLeftBtn.setText(leftButtonText);
 //                //设置左边按钮文字颜色
-//                int leftButtonTextColor = attributes.getColor(R.styleable.CustomView_left_button_text_color, Color.WHITE);
-//                titleBarLeftBtn.setTextColor(leftButtonTextColor);
+                int leftButtonTextColor = attributes.getColor(R.styleable.CustomView_left_button_text_color, Color.RED);
+                titleBarLeftBtn.setTextColor(leftButtonTextColor);
             } else {
                 //设置左边图片icon 这里是二选一 要么只能是文字 要么只能是图片
                 int leftButtonDrawable = attributes.getResourceId(R.styleable.CustomView_left_button_drawable, R.drawable.back);
@@ -86,9 +85,9 @@ public class CustomView extends RelativeLayout {
             String rightButtonText = attributes.getString(R.styleable.CustomView_right_button_text);
             if (!TextUtils.isEmpty(rightButtonText)) {
                 titleBarRightBtn.setText(rightButtonText);
-//                //设置右边按钮文字颜色
-//                int rightButtonTextColor = attributes.getColor(R.styleable.CustomView_right_button_text_color, Color.WHITE);
-//                titleBarRightBtn.setTextColor(rightButtonTextColor);
+                //设置右边按钮文字颜色
+                int rightButtonTextColor = attributes.getColor(R.styleable.CustomView_right_button_text_color, Color.WHITE);
+                titleBarRightBtn.setTextColor(rightButtonTextColor);
             } else {
                 //设置右边图片icon 这里是二选一 要么只能是文字 要么只能是图片
                 int rightButtonDrawable = attributes.getResourceId(R.styleable.CustomView_right_button_drawable, -1);
@@ -105,14 +104,14 @@ public class CustomView extends RelativeLayout {
      * 获取左控件实例
      * @return
      */
-    public Button getTitleBarLeftBtn() {
+    public TextView getTitleBarLeftBtn() {
         return titleBarLeftBtn;
     }
     /**
      * 获取右控件实例
      * @return
      */
-    public Button getTitleBarRightBtn() {
+    public TextView getTitleBarRightBtn() {
         return titleBarRightBtn;
     }
     /**

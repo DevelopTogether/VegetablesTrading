@@ -87,8 +87,8 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
         mMineInfoUserPhone.getTitleBarRightBtn().setText(userInfo.getUserPhone());
         mMineInfoUserEmail.getTitleBarRightBtn().setText(userInfo.getUserEmail());
 
-        mUserSum.getTitleBarRightBtn().setText(userInfo.getDues());
-        mDeposit.getTitleBarRightBtn().setText(userInfo.getDeposit());
+        mUserSum.getTitleBarRightBtn().setText(userInfo.getDues()+" 元");
+        mDeposit.getTitleBarRightBtn().setText(userInfo.getDeposit()+" 元");
         mIntegral.getTitleBarRightBtn().setText(userInfo.getResidualIntegral());
         mPickAmount.getTitleBarRightBtn().setText(userInfo.getResidualPickAmount());
         mBoxNo.getTitleBarRightBtn().setText(userInfo.getBoxNo());

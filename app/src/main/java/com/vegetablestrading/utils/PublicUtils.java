@@ -42,10 +42,10 @@ public class PublicUtils {
     public static TransportRecord transportRecordClicked;//配送记录点击的实体类
     public static MyApply myApply;//申请详情实体类
     public static boolean ACTIVATED = false;//用户激活状态
-    public static String glodCard = "8000";//金卡金额
-    public static String silverCard = "4200";//银卡金额
-    public static String blueCard = "0";//蓝卡金额
-    public static String deposit = "100";//押金金额
+    public static String glodCard = "8000/年";//金卡金额
+    public static String silverCard = "4200/年";//银卡金额
+    public static String blueCard = "0 元";//蓝卡金额
+    public static String deposit = "100 元";//押金金额
     public static UserInfo userInfo;//用户个人信息
 
 

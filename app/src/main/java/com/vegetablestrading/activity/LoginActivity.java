@@ -36,10 +36,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
      * 登 录
      */
     private TextView mLoginConfirmTv;
-    /**
-     * 忘记密码
-     */
-    private TextView mForgetPwdTv;
+//    /**
+//     * 忘记密码
+//     */
+//    private TextView mForgetPwdTv;
     /**
      * 注册
      */
@@ -95,8 +95,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         mRememberPwdCb = (CheckBox) findViewById(R.id.remember_pwd_cb);
         mLoginConfirmTv = (TextView) findViewById(R.id.login_confirm_tv);
         mLoginConfirmTv.setOnClickListener(this);
-        mForgetPwdTv = (TextView) findViewById(R.id.forget_pwd_tv);
-        mForgetPwdTv.setOnClickListener(this);
+//        mForgetPwdTv = (TextView) findViewById(R.id.forget_pwd_tv);
+//        mForgetPwdTv.setOnClickListener(this);
         mRegistTv = (TextView) findViewById(R.id.regist_tv);
         mRegistTv.setOnClickListener(this);
         mUserMobileEt = (EditText) findViewById(R.id.user_mobile_et);
@@ -156,9 +156,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 putUserInfoToSp();
                 loginToService(mobile, pwd);
                 break;
-            case R.id.forget_pwd_tv://忘记密码
-                startActivity(new Intent(this, ForgetPwdActivity.class));
-                break;
+//            case R.id.forget_pwd_tv://忘记密码
+//                startActivity(new Intent(this, ForgetPwdActivity.class));
+//                break;
             case R.id.regist_tv://注册
                 startActivity(new Intent(this, RegistActivity.class));
                 break;

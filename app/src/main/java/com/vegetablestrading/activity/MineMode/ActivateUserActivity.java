@@ -213,19 +213,19 @@ public class ActivateUserActivity extends BaseActivity implements View.OnClickLi
         if (TextUtils.isEmpty(userSum)) {
             return;
         }
-        int payAmount = Integer.parseInt(userSum.split("/")[0]);
+        int payAmount = Integer.parseInt(userSum.substring(0,userSum.length()-2));
         switch (mYearLimitRg.getCheckedRadioButtonId()) {
             case R.id.limit_one_rb:
                 payAmount = payAmount + 100;
-                mPayAmount.getTitleBarRightBtn().setText(String.valueOf(payAmount));
+                mPayAmount.getTitleBarRightBtn().setText(String.valueOf(payAmount)+" 元");
                 break;
             case R.id.limit_two_rb:
                 payAmount = (payAmount * 2) + 100;
-                mPayAmount.getTitleBarRightBtn().setText(String.valueOf(payAmount));
+                mPayAmount.getTitleBarRightBtn().setText(String.valueOf(payAmount)+" 元");
                 break;
             case R.id.limit_three_rb:
                 payAmount = (payAmount * 3) + 100;
-                mPayAmount.getTitleBarRightBtn().setText(String.valueOf(payAmount));
+                mPayAmount.getTitleBarRightBtn().setText(String.valueOf(payAmount)+" 元");
                 break;
             default:
 

@@ -189,7 +189,7 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
         }
         switch (v.getId()) {
             case R.id.selected_date_ll://选择日期
-                selectTradeDate().showAsDropDown(mTradeDateTv, -40, 60);
+                selectTradeDate().showAsDropDown(mTradeDateTv, -40, 10);
                 break;
             case R.id.unTradeThisWeek_tv://本周不配送按钮点击事件
                 unTradeThisWeekDialog();

@@ -30,6 +30,7 @@
                 app:left_button_text="会员名称"
                 app:left_button_text_color="#000000"
                 app:right_button_text="张三"
+                app:right_button_text_color="#000000"
                ></com.vegetablestrading.customViews.CustomView>
 
 
@@ -82,7 +83,7 @@
                 android:background="#000000"></View>
 
             <com.vegetablestrading.customViews.CustomView
-                android:id="@+id/quitPet_deposit"
+                android:id="@+id/quitPet_deposit_cv"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 app:left_button_text="押金"
@@ -181,7 +182,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
-                            android:text="100元"
+                            android:text="100 元"
                             android:textColor="@android:color/black" />
                     </RelativeLayout>
 

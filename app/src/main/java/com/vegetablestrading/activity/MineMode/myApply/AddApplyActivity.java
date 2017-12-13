@@ -280,6 +280,7 @@ public class AddApplyActivity extends AppCompatActivity implements View.OnClickL
             confirm_apply_tv.setBackgroundResource(R.drawable.bt_unpress_selecter);
             confirm_apply_tv.setClickable(false);
         } else {
+            confirm_apply_tv.setClickable(true);
             confirm_apply_tv.setBackgroundResource(R.drawable.bt_pressed_selecter);
         }
     }
