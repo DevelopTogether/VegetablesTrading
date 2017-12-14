@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Thu Dec 14 17:17:22 CST 2017
+#Thu Dec 14 17:41:09 CST 2017
 20.base=C\:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\resources-debug.ap_
 143.base=C\:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\resources-debug.ap_
 340.file=C\:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_action_bar_view_list_nav_layout.xml

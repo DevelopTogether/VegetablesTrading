@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Thu Dec 14 17:18:25 CST 2017
+#Thu Dec 14 17:36:17 CST 2017
 20.base=C\:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\resources-debug.ap_
 143.base=C\:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\resources-debug.ap_
 340.file=C\:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_list_longpressed_holo.9.png

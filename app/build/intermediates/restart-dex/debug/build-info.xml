@@ -2,33 +2,30 @@
 <instant-run
     abi="armeabi-v7a,armeabi"
     api-level="23"
-    build-mode="COLD"
+    build-mode="HOT_WARM"
     density="xxhdpi"
     format="10"
     plugin-version="2.3.3"
-    timestamp="1513243104087"
+    timestamp="1513244468534"
     token="63650464987433071"
-    verifier="COLD_SWAP_REQUESTED" >
+    verifier="COMPATIBLE" >
 
     <task
         name="javac"
-        duration="398" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="9" />
+        duration="0" />
     <task
         name="verifier"
-        duration="6" />
+        duration="0" />
 
     <artifact
-        location="C:\Users\Administrator\Desktop\vegetablesTrading\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
-        type="SPLIT" />
-    <artifact
-        location="C:\Users\Administrator\Desktop\vegetablesTrading\app\build\outputs\apk\app-debug.apk"
-        type="SPLIT_MAIN" />
+        location="C:\Users\Administrator\Desktop\vegetablesTrading\app\build\intermediates\instant-run-resources\resources-debug.ir.ap_"
+        type="RESOURCES" />
 
     <build
         build-mode="FULL"
@@ -78,9 +75,25 @@
         <artifact
             location="C:\Users\Administrator\Desktop\vegetablesTrading\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
             type="SPLIT" />
+    </build>
+    <build
+        build-mode="COLD"
+        timestamp="1513244376249"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="C:\Users\Administrator\Desktop\vegetablesTrading\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
+            type="SPLIT" />
         <artifact
             location="C:\Users\Administrator\Desktop\vegetablesTrading\app\build\outputs\apk\app-debug.apk"
             type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="HOT_WARM"
+        timestamp="1513244468534"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="C:\Users\Administrator\Desktop\vegetablesTrading\app\build\intermediates\instant-run-resources\resources-debug.ir.ap_"
+            type="RESOURCES" />
     </build>
 
 </instant-run>
