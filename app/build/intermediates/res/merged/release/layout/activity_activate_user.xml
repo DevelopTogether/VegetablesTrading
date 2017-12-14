@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/app_top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"></include>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:orientation="vertical">
+
+        <com.vegetablestrading.customViews.CustomView
+            android:id="@+id/activate_userName"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            app:left_button_text="会员名"
+            app:left_button_text_color="#000000"
+            app:right_button_text="张三"
+            app:right_button_text_color="#000000"></com.vegetablestrading.customViews.CustomView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#000000"></View>
+
+        <com.vegetablestrading.customViews.CustomView
+            android:id="@+id/activate_mobile"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            app:left_button_text="手机号"
+            app:left_button_text_color="#000000"
+            app:right_button_text="15311810000"
+            app:right_button_text_color="#000000"></com.vegetablestrading.customViews.CustomView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#000000"></View>
+
+        <com.vegetablestrading.customViews.CustomView
+            android:id="@+id/activate_userType"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            app:left_button_text="会员类型"
+            app:left_button_text_color="#000000"
+            app:right_button_text="VIP金卡"
+            app:right_button_text_color="#000000"></com.vegetablestrading.customViews.CustomView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#000000"></View>
+
+        <com.vegetablestrading.customViews.CustomView
+            android:id="@+id/activate_userSum"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:gravity="left"
+            app:left_button_text="金额"
+            app:left_button_text_color="#000000"
+            app:right_button_text="8000/年"
+            app:right_button_text_color="#000000"></com.vegetablestrading.customViews.CustomView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#000000"></View>
+
+        <com.vegetablestrading.customViews.CustomView
+            android:id="@+id/activate_deposit"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            app:left_button_text="押金"
+            app:left_button_text_color="#000000"
+            app:right_button_text="100元"
+            app:right_button_text_color="#000000"></com.vegetablestrading.customViews.CustomView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#000000"></View>
+
+        <RadioGroup
+            android:id="@+id/yearLimit_rg"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left|center"
+                android:text="会员期限"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/limit_one_rb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/radio_button_select"
+                android:checked="true"
+                android:text="  一年"
+                android:textColor="@android:color/black" />
+
+            <RadioButton
+                android:id="@+id/limit_two_rb"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:button="@drawable/radio_button_select"
+                android:checked="false"
+                android:text="  两年"
+                android:textColor="@android:color/black" />
+
+            <RadioButton
+                android:id="@+id/limit_three_rb"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:button="@drawable/radio_button_select"
+                android:checked="false"
+                android:text="  三年"
+                android:textColor="@android:color/black" />
+        </RadioGroup>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#000000"></View>
+
+        <com.vegetablestrading.customViews.CustomView
+            android:id="@+id/activate_payAmount"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            app:left_button_text="实付金额"
+            app:left_button_text_color="#000000"
+            app:right_button_text="8100元"
+            app:right_button_text_color="#000000"></com.vegetablestrading.customViews.CustomView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|left"
+            android:text="类型介绍"
+            android:textColor="@android:color/black" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/white_shape"
+            android:gravity="start">
+
+            <TextView
+                android:id="@+id/petType_description_tv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="5dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="5dp"
+                android:textColor="@android:color/black" />
+        </ScrollView>
+
+        <TextView
+
+            android:id="@+id/activate_rightnow_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bt_pressed_selecter"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="立即激活"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+</LinearLayout>

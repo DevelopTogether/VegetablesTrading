@@ -1,0 +1,7 @@
+#Thu Dec 14 15:16:27 CST 2017
+base.0=C\:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_721850ca9defe00a508928aa730bcc7c0ca2c48e
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=C\:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_2c305a595ac763b8cfce06ec367384e2578c1cd1\\classes.dex
+base.1=C\:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_2c305a595ac763b8cfce06ec367384e2578c1cd1
+file.0=C\:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_721850ca9defe00a508928aa730bcc7c0ca2c48e\\classes.dex
