@@ -8,6 +8,8 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
@@ -30,6 +32,7 @@
 
 
         <LinearLayout
+            android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -56,6 +59,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
                     android:padding="2dp"
+                    android:gravity="right|center"
                     android:text="重量：2KG"
                     android:textColor="@android:color/black"
                     android:textSize="14sp" />
@@ -66,6 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:maxLines="2"
+                android:ellipsize="end"
                 android:padding="2dp"
                 android:text="描述信息"
                 android:textColor="@android:color/black"
