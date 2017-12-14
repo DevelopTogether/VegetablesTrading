@@ -1,4 +1,4 @@
-#Thu Dec 14 15:16:26 CST 2017
+#Thu Dec 14 17:08:46 CST 2017
 file.9=C\:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_19d571a687f9893b9b200a6bddd0aee4cfa2ee1f\\classes.dex
 base.10=C\:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_55a0af34df6edd9bc1f78389e48664c2b0ffcd7e
 file.8=C\:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_99219b52f190e60dd69e26f82d0fcdeb8c2020bf\\classes.dex
