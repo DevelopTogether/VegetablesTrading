@@ -85,8 +85,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         PublicUtils.app_height = wm.getDefaultDisplay().getHeight();
 //        startActivity(new Intent(this, ActivatedActivity.class));
         checkForUpdate(this);
-        Toast.makeText(getApplicationContext(), "这是分支", Toast.LENGTH_LONG).show();
-        Toast.makeText(getApplicationContext(), "111", Toast.LENGTH_LONG).show();
     }
 
     /**
