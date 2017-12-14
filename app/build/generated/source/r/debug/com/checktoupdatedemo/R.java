@@ -700,6 +700,7 @@ public final class R {
         public static final int text2 = 0x7f0d0156;
         public static final int textSpacerNoButtons = 0x7f0d0059;
         public static final int textSpacerNoTitle = 0x7f0d0058;
+        public static final int textView = 0x7f0d0191;
         public static final int time = 0x7f0d014e;
         public static final int title = 0x7f0d0051;
         public static final int titleDividerNoCustom = 0x7f0d0060;
@@ -707,10 +708,10 @@ public final class R {
         public static final int top = 0x7f0d0037;
         public static final int topPanel = 0x7f0d005d;
         public static final int up = 0x7f0d000d;
-        public static final int update_later_tv = 0x7f0d0193;
-        public static final int update_rightnow_tv = 0x7f0d0192;
+        public static final int update_later_tv = 0x7f0d0194;
+        public static final int update_rightnow_tv = 0x7f0d0193;
         public static final int useLogo = 0x7f0d0020;
-        public static final int version_description_lv = 0x7f0d0191;
+        public static final int version_description_lv = 0x7f0d0192;
         public static final int withText = 0x7f0d0045;
         public static final int wrap = 0x7f0d0011;
         public static final int wrap_content = 0x7f0d002c;

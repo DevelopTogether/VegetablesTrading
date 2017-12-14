@@ -48,9 +48,8 @@
                     android:paddingBottom="10dp"
                     android:layout_centerVertical="true"
                     android:paddingTop="10dp"
-                    android:text="配送中"
                     android:textColor="@android:color/black"
-                    android:textSize="14sp"></TextView>
+                    android:textSize="12sp"></TextView>
 
                 <ImageView
                     android:id="@+id/direction_icon_iv"

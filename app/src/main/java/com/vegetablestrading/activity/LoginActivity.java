@@ -161,6 +161,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 //                break;
             case R.id.regist_tv://注册
                 startActivity(new Intent(this, RegistActivity.class));
+                finish();
                 break;
             case R.id.save_pwd_ll://记住密码
                 if (mRememberPwdCb.isChecked()) {

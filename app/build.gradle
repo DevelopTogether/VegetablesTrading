@@ -9,7 +9,7 @@ android {
         minSdkVersion 19
         targetSdkVersion 21
         versionCode 1
-        versionName "1.0"
+        versionName "1.1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -44,7 +44,7 @@ dependencies {
     })
 
     compile(name: 'chose_address', ext: 'aar')
-    compile(name: 'checkToUpdateApp', ext: 'aar')
+    compile(name: 'checkUpdate1214', ext: 'aar')
 
     compile 'com.zhy:okhttputils:2.6.2'
     compile 'com.android.support:appcompat-v7:25.3.1'

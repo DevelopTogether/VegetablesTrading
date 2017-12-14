@@ -261,14 +261,16 @@ public class TransportInfoActivity extends AppCompatActivity implements View.OnC
                             try {
                                 JSONObject obj = new JSONObject(response);
                                 String result = obj.getString("Result");
-                                String message = obj.getString("Model");
+
                                 if ("Ok".equals(result)) {
+                                    String message = obj.getString("Model");
                                     ArrayList<LogisticsInfo> arrays = GsonUtils.jsonToArrayList(message, LogisticsInfo.class);
+
                                     Collections.reverse(arrays);
                                     adapter_logistics.setData(arrays);
                                     putLogisticsInfoToSqlite(arrays);
                                 } else {
-                                    Toast.makeText(TransportInfoActivity.this, message, Toast.LENGTH_LONG).show();
+                                    mLogisticsStatusTv.setText("暂无物流信息");
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();

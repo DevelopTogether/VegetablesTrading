@@ -2,10 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/regdialog"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@drawable/warn_update_bg_shape"
     android:orientation="vertical"
-    android:weightSum="1">
+>
 
 
     <TextView
@@ -19,17 +19,18 @@
         android:gravity="center"
         android:text="检测到软件有新版本，是否更新？"
         android:textColor="#000000"
-        android:textSize="18sp" />
+        android:textSize="16sp" />
+
     <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:lineSpacingExtra="10dp"
+        android:lineSpacingExtra="5dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:text="新版本特性："
         android:textColor="#000000"
-        android:textSize="16sp" />
+        android:textSize="14sp" />
 
     <ListView
         android:id="@+id/version_description_lv"

@@ -383,6 +383,7 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
         sharedPreferencesHelper.putString("USER_MOBILE", mobile);
         Toast.makeText(getApplicationContext(), "注册成功", Toast.LENGTH_LONG).show();
         startActivity(new Intent(this, LoginActivity.class));
+        finish();
 
 
     }
@@ -393,6 +394,7 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
      * @param petName
      */
     private void registToService(String pwd, String email, String petName,String detailAddr) {
+        String uploadAddr =  "1,"+cityId+","+detailAddr;
         OkHttpUtils
                 .post()
                 .url(Constant.regist_url)
@@ -401,7 +403,7 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
                 .addParams("email", email)
                 .addParams("userName", petName)
                 .addParams("userLevel", getVipType())
-                .addParams("address", cityId+","+detailAddr)
+                .addParams("address",uploadAddr)
                 .build()
                 .execute(new StringCallback() {
                     @Override
