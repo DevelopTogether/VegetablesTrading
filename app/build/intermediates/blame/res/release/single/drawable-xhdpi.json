@@ -4,12 +4,12 @@
         "source": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\drawable-xhdpi\\time_mark.png"
     },
     {
-        "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi\\warn_activate.png",
-        "source": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\drawable-xhdpi\\warn_activate.png"
-    },
-    {
         "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi\\activated_icon.png",
         "source": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\drawable-xhdpi\\activated_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi\\warn_activate.png",
+        "source": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\drawable-xhdpi\\warn_activate.png"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi\\add_apply_normal.png",
@@ -28,12 +28,12 @@
         "source": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\drawable-xhdpi\\menu_icon.png"
     },
     {
-        "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi\\integral_icon.png",
-        "source": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\drawable-xhdpi\\integral_icon.png"
-    },
-    {
         "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi\\regist_email.png",
         "source": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\drawable-xhdpi\\regist_email.png"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi\\integral_icon.png",
+        "source": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\drawable-xhdpi\\integral_icon.png"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi\\arrow_right_16.png",
@@ -64,16 +64,16 @@
         "source": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\drawable-xhdpi\\horizontal_line.png"
     },
     {
-        "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi\\mine_help.png",
-        "source": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\drawable-xhdpi\\mine_help.png"
+        "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi\\pick_record_icon.png",
+        "source": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\drawable-xhdpi\\pick_record_icon.png"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi\\radiobt_unselected.png",
         "source": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\drawable-xhdpi\\radiobt_unselected.png"
     },
     {
-        "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi\\pick_record_icon.png",
-        "source": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\drawable-xhdpi\\pick_record_icon.png"
+        "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi\\mine_help.png",
+        "source": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\drawable-xhdpi\\mine_help.png"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi\\delete_icon.png",

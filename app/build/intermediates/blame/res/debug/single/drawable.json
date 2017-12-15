@@ -28,12 +28,12 @@
         "source": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\drawable\\white_shape.xml"
     },
     {
-        "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_tab_indicator_material.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\8596fb658d42cd9e34405aecf52d5354d8001d94\\output\\res\\drawable\\abc_tab_indicator_material.xml"
-    },
-    {
         "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_spinner_textfield_background_material.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\8596fb658d42cd9e34405aecf52d5354d8001d94\\output\\res\\drawable\\abc_spinner_textfield_background_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_tab_indicator_material.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\8596fb658d42cd9e34405aecf52d5354d8001d94\\output\\res\\drawable\\abc_tab_indicator_material.xml"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\cancel_regist_shape.xml",
@@ -212,12 +212,12 @@
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\8596fb658d42cd9e34405aecf52d5354d8001d94\\output\\res\\drawable\\abc_ic_ab_back_material.xml"
     },
     {
-        "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\checkbox_select_status.xml",
-        "source": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\drawable\\checkbox_select_status.xml"
-    },
-    {
         "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\warn_update_bg_shape.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\a7f0937140e38f83ed51b8829cef80e24bd9c8a2\\output\\res\\drawable\\warn_update_bg_shape.xml"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\checkbox_select_status.xml",
+        "source": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\drawable\\checkbox_select_status.xml"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_keyboard_arrow_left_white_24dp.png",

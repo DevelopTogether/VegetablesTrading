@@ -4,12 +4,12 @@
         "source": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\layout\\transport_record_item.xml"
     },
     {
-        "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\release\\layout\\activity_customer_complain.xml",
-        "source": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\layout\\activity_customer_complain.xml"
-    },
-    {
         "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\release\\layout\\activity_apply_descript.xml",
         "source": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\layout\\activity_apply_descript.xml"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\release\\layout\\activity_customer_complain.xml",
+        "source": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\layout\\activity_customer_complain.xml"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\release\\layout\\activity_about_us.xml",
@@ -72,6 +72,10 @@
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\8596fb658d42cd9e34405aecf52d5354d8001d94\\output\\res\\layout\\support_simple_spinner_dropdown_item.xml"
     },
     {
+        "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\release\\layout\\pay_result.xml",
+        "source": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\layout\\pay_result.xml"
+    },
+    {
         "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\release\\layout\\abc_alert_dialog_title_material.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\8596fb658d42cd9e34405aecf52d5354d8001d94\\output\\res\\layout\\abc_alert_dialog_title_material.xml"
     },
@@ -120,12 +124,12 @@
         "source": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\release\\layout\\design_navigation_item_header.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\cd6bff5459b9ebfb6ba2f447ad3d3e773eb6a95d\\output\\res\\layout\\design_navigation_item_header.xml"
-    },
-    {
         "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\release\\layout\\abc_dialog_title_material.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\8596fb658d42cd9e34405aecf52d5354d8001d94\\output\\res\\layout\\abc_dialog_title_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\release\\layout\\design_navigation_item_header.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\cd6bff5459b9ebfb6ba2f447ad3d3e773eb6a95d\\output\\res\\layout\\design_navigation_item_header.xml"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\release\\layout\\abc_list_menu_item_layout.xml",
