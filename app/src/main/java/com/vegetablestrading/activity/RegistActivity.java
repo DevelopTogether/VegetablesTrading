@@ -7,6 +7,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.telephony.SmsMessage;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -107,6 +108,7 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
      */
     private TextView mSelectAddrTv;
     private LinearLayout mSelectAddrLl;
+    private DynamicReceiver receiver = new DynamicReceiver();
     /**
      * 街道门牌信息
      */
@@ -122,7 +124,44 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
         initActionBar();
         registBroadcast();
         sharedPreferencesHelper = new SharedPreferencesHelper(this, "USERINFO");
+        registSmsReceiver();
 
+
+    }
+    private void registSmsReceiver() {
+        IntentFilter filter = new IntentFilter(
+                "android.provider.Telephony.SMS_RECEIVED");
+        filter.setPriority(1000);
+        registerReceiver(receiver, filter);
+    }
+
+    public class DynamicReceiver extends BroadcastReceiver {
+        public static final String SMS_ACTION = "android.provider.Telephony.SMS_RECEIVED";
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (SMS_ACTION.equals(action)) {
+                Bundle bundle = intent.getExtras();
+                Object messages[] = (Object[]) bundle.get("pdus");
+                SmsMessage smsMessage[] = new SmsMessage[messages.length];
+                for (int n = 0; n < messages.length; n++) {
+                    smsMessage[n] = SmsMessage
+                            .createFromPdu((byte[]) messages[n]);
+                    if (smsMessage[n].getMessageBody().contains("京工科贸")) {
+
+                        String num = smsMessage[n].getOriginatingAddress();
+                        String content = smsMessage[n].getMessageBody();
+                         String code = content.substring(14,18);
+                        mUserTestEt.setText(code);
+                        abortBroadcast();
+                    }
+
+                }
+
+            }
+
+        }
 
     }
 
@@ -443,6 +482,7 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
     protected void onDestroy() {
         super.onDestroy();
         unregisterReceiver(echoRegionReceiver);
+        unregisterReceiver(receiver);
     }
 
     /**

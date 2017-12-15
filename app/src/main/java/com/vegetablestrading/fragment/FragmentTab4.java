@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.vegetablestrading.R;
 import com.vegetablestrading.activity.MineMode.AboutUsActivity;
@@ -98,10 +97,10 @@ public class FragmentTab4 extends Fragment {
                         return;
                     }
                 }else{
-                    if (PublicUtils.ACTIVATED) {
-                        Toast.makeText(context.getApplicationContext(), "您的账号已经激活，无需重复激活", Toast.LENGTH_LONG).show();
-                        return;
-                    }
+//                    if (PublicUtils.ACTIVATED) {
+//                        Toast.makeText(context.getApplicationContext(), "您的账号已经激活，无需重复激活", Toast.LENGTH_LONG).show();
+//                        return;
+//                    }
                 }
                 switch (text) {
                     case "会员激活":

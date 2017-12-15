@@ -21,6 +21,9 @@ import android.widget.Toast;
 
 import com.alipay.sdk.app.PayTask;
 import com.google.gson.Gson;
+import com.tencent.mm.opensdk.modelpay.PayReq;
+import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import com.vegetablestrading.R;
 import com.vegetablestrading.aLiPay.PayResult;
 import com.vegetablestrading.activity.BaseActivity;
@@ -161,6 +164,7 @@ public class ActivateUserActivity extends BaseActivity implements View.OnClickLi
 
     private PopupWindow popWindow;
     private TextView mPetTypeDescriptionTv;
+    private IWXAPI api;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -169,6 +173,9 @@ public class ActivateUserActivity extends BaseActivity implements View.OnClickLi
         initView();
         setViewValue(PublicUtils.userInfo);
         initActionBar();
+        api = WXAPIFactory.createWXAPI(this, null);
+// 将该app注册到微信
+        api.registerApp("wxdfeeca73484a5f0a");
 
     }
 
@@ -213,19 +220,19 @@ public class ActivateUserActivity extends BaseActivity implements View.OnClickLi
         if (TextUtils.isEmpty(userSum)) {
             return;
         }
-        int payAmount = Integer.parseInt(userSum.substring(0,userSum.length()-2));
+        int payAmount = Integer.parseInt(userSum.substring(0, userSum.length() - 2));
         switch (mYearLimitRg.getCheckedRadioButtonId()) {
             case R.id.limit_one_rb:
                 payAmount = payAmount + 100;
-                mPayAmount.getTitleBarRightBtn().setText(String.valueOf(payAmount)+" 元");
+                mPayAmount.getTitleBarRightBtn().setText(String.valueOf(payAmount) + " 元");
                 break;
             case R.id.limit_two_rb:
                 payAmount = (payAmount * 2) + 100;
-                mPayAmount.getTitleBarRightBtn().setText(String.valueOf(payAmount)+" 元");
+                mPayAmount.getTitleBarRightBtn().setText(String.valueOf(payAmount) + " 元");
                 break;
             case R.id.limit_three_rb:
                 payAmount = (payAmount * 3) + 100;
-                mPayAmount.getTitleBarRightBtn().setText(String.valueOf(payAmount)+" 元");
+                mPayAmount.getTitleBarRightBtn().setText(String.valueOf(payAmount) + " 元");
                 break;
             default:
 
@@ -331,8 +338,34 @@ public class ActivateUserActivity extends BaseActivity implements View.OnClickLi
                             try {
                                 JSONObject obj = new JSONObject(response);
                                 String result = obj.getString("Result");
-                                String orderInfo = obj.getString("OrderInfo");
-                                if ("Ok".equals(result) && !TextUtils.isEmpty(orderInfo)) {
+
+                                if ("Ok".equals(result)) {
+                                    String orderInfo = obj.getString("OrderInfo");
+                                    if (orderInfo==null||TextUtils.isEmpty(orderInfo)) {
+                                        return;
+                                    }
+                                    JSONObject obj_info = new JSONObject(orderInfo);
+
+                                    PayReq req = new PayReq();
+                                    //req.appId = "wxf8b4f85f3a794e77";  // 测试用appId
+                                    req.appId = obj_info.getString("appid");
+                                    //微信支付分配的商户号
+                                    req.partnerId = obj_info.getString("partnerid");
+                                    //预支付交易会话ID,微信返回的支付交易会话ID
+                                    req.prepayId = obj_info.getString("prepayid");
+                                    //随机字符串，不长于32位
+                                    req.nonceStr = obj_info.getString("noncestr");
+                                    //标准北京时间，时区为东八区，自1970年1月1日 0点0分0秒以来的秒数。注意：部分系统取到的值为毫秒级，需要转换成秒(10位数字)。
+                                    req.timeStamp =obj_info.getString("timestamp");
+                                    //暂填写固定值Sign=WXPay
+                                    req.packageValue = obj_info.getString("package");
+                                    //签名
+                                    req.sign = obj_info.getString("sign");
+                                    req.extData = "app data"; // optional
+//						Toast.makeText(PayActivity.this, "正常调起支付", Toast.LENGTH_SHORT).show();
+                                    // 在支付之前，如果应用没有注册到微信，应该先调用IWXMsg.registerApp将应用注册到微信
+                                    api.sendReq(req);
+
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -418,7 +451,6 @@ public class ActivateUserActivity extends BaseActivity implements View.OnClickLi
         mAliPayRl.setOnClickListener(this);
         mSelectedWeixinCb = (CheckBox) popView.findViewById(R.id.selected_weixin_cb);
         mWeixinPayRl = (RelativeLayout) popView.findViewById(R.id.weixin_pay_rl);
-        mWeixinPayRl.setVisibility(View.GONE);
         mWeixinPayRl.setOnClickListener(this);
         mConfirmPayTv = (TextView) popView.findViewById(R.id.confirm_pay_tv);
         mConfirmPayTv.setOnClickListener(this);

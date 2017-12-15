@@ -200,4 +200,5 @@
         completions."
     </string>
     <string name="warn_activated_status">账号暂未激活，请先激活账号</string>
+    <string name="pay_result_callback_msg" formatted="false">微信支付结果：%s</string>
 </resources>

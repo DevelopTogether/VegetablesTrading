@@ -116,6 +116,10 @@
         "source": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\layout\\tab4.xml"
     },
     {
+        "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\layout\\pay_result.xml",
+        "source": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\layout\\pay_result.xml"
+    },
+    {
         "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_menu_item_action_area.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\cd6bff5459b9ebfb6ba2f447ad3d3e773eb6a95d\\output\\res\\layout\\design_menu_item_action_area.xml"
     },
