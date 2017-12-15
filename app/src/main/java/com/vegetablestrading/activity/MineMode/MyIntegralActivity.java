@@ -82,7 +82,7 @@ public class MyIntegralActivity extends AppCompatActivity implements View.OnClic
         mTopTitleTv = (TextView) findViewById(R.id.top_title_tv);
         mTopRightImageIv = (ImageView) findViewById(R.id.top_right_image_iv);
         mIrregularDisplayCv = (CustomView) findViewById(R.id.irregular_display_cv);
-        mIrregularDisplayCv.getTitleBarRightBtn().setText(PublicUtils.userInfo.getResidualIntegral());
+        mIrregularDisplayCv.getTitleBarRightBtn().setText(PublicUtils.userInfo.getResidualIntegral()+"分");
         mTransportDateTv = (TextView) findViewById(R.id.transport_date_tv);
         mIrregularDetailTv = (TextView) findViewById(R.id.irregular_detail_tv);
         mTransportNoTv = (TextView) findViewById(R.id.transport_no_tv);

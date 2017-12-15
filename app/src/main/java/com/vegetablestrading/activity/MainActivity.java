@@ -85,11 +85,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         PublicUtils.app_height = wm.getDefaultDisplay().getHeight();
 //        startActivity(new Intent(this, ActivatedActivity.class));
         checkForUpdate(this);
-<<<<<<< HEAD
-        Toast.makeText(getApplicationContext(), "这是主分支", Toast.LENGTH_LONG).show();
-
-=======
->>>>>>> version1.1.0
     }
 
     /**
@@ -256,8 +251,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public Fragment getVisibleFragment() {
         List<Fragment> fragments = fragmentManager.getFragments();
         for (Fragment fragment : fragments) {
-            if (fragment != null && fragment.isVisible())
+            if (fragment != null && fragment.isVisible()) {
                 return fragment;
+            }
         }
         return null;
     }
