@@ -24,8 +24,10 @@ import android.widget.TextView;
 
 import com.vegetablestrading.R;
 import com.vegetablestrading.activity.MineMode.ActivateUserActivity;
+import com.vegetablestrading.activity.MyApplication;
 import com.vegetablestrading.bean.MyApply;
 import com.vegetablestrading.bean.TransportRecord;
+import com.vegetablestrading.bean.TransportVegetableInfo;
 import com.vegetablestrading.bean.UserInfo;
 
 import java.util.regex.Pattern;
@@ -40,6 +42,7 @@ public class PublicUtils {
     public static int app_width = 0;
     public static int app_height = 0;
     public static TransportRecord transportRecordClicked;//配送记录点击的实体类
+    public static TransportVegetableInfo transportVegetableInfo;//配送蔬菜点击的实体类
     public static MyApply myApply;//申请详情实体类
     public static boolean ACTIVATED = false;//用户激活状态
     public static boolean ActivatedActivityFinished = false;//已激活界面关闭
@@ -188,7 +191,6 @@ public class PublicUtils {
      * @param context
      */
     private static Dialog warnActivate(final Context context) {
-
         View v = LayoutInflater.from(context).inflate(R.layout.warn_activate_layout
                 , null);
         final Dialog dialog_toWarn = new Dialog(context, R.style.DialogStyle);
@@ -197,10 +199,11 @@ public class PublicUtils {
         Window window = dialog_toWarn.getWindow();
         WindowManager.LayoutParams lp = window.getAttributes();
         window.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL);
+        lp.width = app_width - 150;
+        window.setAttributes(lp);
 //        lp.width = dip2px(this, 300); // 宽度
 //        lp.height = dip2px(this, 160); // 高度
         // lp.alpha = 0.7f; // 透明度
-        window.setAttributes(lp);
         window.setContentView(v);
         dialog_toWarn.setOnKeyListener(new DialogInterface.OnKeyListener() {
             @Override
@@ -244,8 +247,9 @@ public class PublicUtils {
 //        lp.width = dip2px(this, 300); // 宽度
 //        lp.height = dip2px(this, 160); // 高度
         // lp.alpha = 0.7f; // 透明度
-        dialog_toWarn.show();
+        lp.width = app_width - 150;
         window.setAttributes(lp);
+        dialog_toWarn.show();
         window.setContentView(v);
         dialog_toWarn.setOnKeyListener(new DialogInterface.OnKeyListener() {
             @Override
@@ -261,6 +265,56 @@ public class PublicUtils {
         });
         final TextView activate_tv = (TextView) v.findViewById(R.id.activate_tv);
         activate_tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog_toWarn.dismiss();
+            }
+        });
+        return dialog_toWarn;
+    }
+    /**
+     * 提醒用户退出应用
+     *
+     * @param context
+     */
+    public static Dialog warnUserExitApp(final Context context) {
+
+        View v = LayoutInflater.from(context).inflate(R.layout.warn_user_exit_layout
+                , null);
+        final Dialog dialog_toWarn = new Dialog(context, R.style.DialogStyle);
+        dialog_toWarn.setCanceledOnTouchOutside(false);
+        dialog_toWarn.setCancelable(false);
+        Window window = dialog_toWarn.getWindow();
+        WindowManager.LayoutParams lp = window.getAttributes();
+        window.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL);
+        window.setAttributes(lp);
+//        lp.width = dip2px(this, 300); // 宽度
+//        lp.height = dip2px(this, 160); // 高度
+        // lp.alpha = 0.7f; // 透明度
+        dialog_toWarn.show();
+        window.setContentView(v);
+        dialog_toWarn.setOnKeyListener(new DialogInterface.OnKeyListener() {
+            @Override
+            public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+
+                if (keyCode == KeyEvent.KEYCODE_BACK) {
+                    if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                        dialog_toWarn.dismiss();
+                    }
+                }
+                return false;
+            }
+        });
+        final TextView confirm_exit = (TextView) v.findViewById(R.id.confirm_exit_tv);
+        final TextView cancel_exit = (TextView) v.findViewById(R.id.cancel_exit_tv);
+        confirm_exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog_toWarn.dismiss();
+                MyApplication.getInstance().clearAllActivity();
+            }
+        });
+        cancel_exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dialog_toWarn.dismiss();

@@ -1,7 +1,7 @@
 package com.vegetablestrading.activity.MineMode;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -13,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vegetablestrading.R;
+import com.vegetablestrading.activity.BaseActivity;
+import com.vegetablestrading.activity.VegetableDescriptActivity;
 import com.vegetablestrading.adapter.DividerItemDecoration;
 import com.vegetablestrading.adapter.LogisticsInfoAdapter;
 import com.vegetablestrading.adapter.TransportListAdapter;
@@ -38,7 +40,7 @@ import okhttp3.Call;
 /**
  * 配送详情
  */
-public class TransportInfoActivity extends AppCompatActivity implements View.OnClickListener {
+public class TransportInfoActivity extends BaseActivity implements View.OnClickListener {
 
     private ImageView mTopLeftImageIv;
     /**
@@ -128,6 +130,13 @@ public class TransportInfoActivity extends AppCompatActivity implements View.OnC
         };
         mTransportInfoDetailRv.setLayoutManager(linearLayoutManager);
         adapter = new TransportListAdapter(this);
+        adapter.setOnTransportListItemClickListener(new TransportListAdapter.OnTransportListItemInterface() {
+            @Override
+            public void OnTransportListItemClick(TransportVegetableInfo transportVegetableInfo) {
+                PublicUtils.transportVegetableInfo = transportVegetableInfo;
+                startActivity(new Intent(TransportInfoActivity.this, VegetableDescriptActivity.class));
+            }
+        });
         mTransportInfoDetailRv.setAdapter(adapter);
         mTransportInfoDetailRv.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.HORIZONTAL, R.drawable.horizontal_line_grey));
         String[] times = CalendarUtil.getWeekStartAndWeekEndBaseTime(CalendarUtil.getZeroTime(transportRecord.getTransportTime()));

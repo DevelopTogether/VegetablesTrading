@@ -3,6 +3,7 @@ package com.vegetablestrading.fragment;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -26,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vegetablestrading.R;
+import com.vegetablestrading.activity.VegetableDescriptActivity;
 import com.vegetablestrading.adapter.DividerItemDecoration;
 import com.vegetablestrading.adapter.TransportListAdapter;
 import com.vegetablestrading.bean.TransportVegetableInfo;
@@ -454,6 +456,8 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
                     PublicUtils.warnActivateDialog(mContext);
                     return;
                 }
+                PublicUtils.transportVegetableInfo = transportVegetableInfo;
+                startActivity(new Intent(mContext, VegetableDescriptActivity.class));
             }
         });
         if (PublicUtils.isConnected(mContext)) {

@@ -143,6 +143,9 @@ public class FragmentTab4 extends Fragment {
                         startActivity(new Intent(context, QuitPetActivity.class));
 
                         break;
+                    case "安全退出":
+                        PublicUtils.warnUserExitApp(context);
+                        break;
                     default:
                         break;
                 }

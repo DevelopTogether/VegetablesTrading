@@ -1,7 +1,6 @@
 package com.vegetablestrading.activity.MineMode;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
@@ -12,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vegetablestrading.R;
+import com.vegetablestrading.activity.BaseActivity;
 import com.vegetablestrading.utils.Constant;
 
 /**
@@ -20,7 +20,7 @@ import com.vegetablestrading.utils.Constant;
  * Description:This is 客户投诉
  */
 
-public class CustomerComplainActivity extends AppCompatActivity implements View.OnClickListener {
+public class CustomerComplainActivity extends BaseActivity implements View.OnClickListener {
 
     private ImageView mTopLeftImageIv;
     /**

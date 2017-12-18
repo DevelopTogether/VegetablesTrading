@@ -6815,11 +6815,11 @@
                 "from": {
                     "file": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\values\\strings.xml",
                     "position": {
-                        "startLine": 202,
+                        "startLine": 201,
                         "startColumn": 4,
-                        "startOffset": 5594,
+                        "startOffset": 5529,
                         "endColumn": 79,
-                        "endOffset": 5669
+                        "endOffset": 5604
                     }
                 }
             },
@@ -7013,11 +7013,11 @@
                 "from": {
                     "file": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\values\\strings.xml",
                     "position": {
-                        "startLine": 201,
+                        "startLine": 202,
                         "startColumn": 4,
-                        "startOffset": 5529,
+                        "startOffset": 5610,
                         "endColumn": 63,
-                        "endOffset": 5588
+                        "endOffset": 5669
                     }
                 }
             },

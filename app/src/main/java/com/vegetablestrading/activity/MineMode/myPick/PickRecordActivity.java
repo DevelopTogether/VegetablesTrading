@@ -1,7 +1,6 @@
 package com.vegetablestrading.activity.MineMode.myPick;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -12,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vegetablestrading.R;
+import com.vegetablestrading.activity.BaseActivity;
 import com.vegetablestrading.adapter.DividerItemDecoration;
 import com.vegetablestrading.adapter.PickRecordAdapter;
 import com.vegetablestrading.bean.MyPickInfo;
@@ -35,7 +35,7 @@ import okhttp3.Call;
 /**
  * 采摘记录
  */
-public class PickRecordActivity extends AppCompatActivity implements View.OnClickListener {
+public class PickRecordActivity extends BaseActivity implements View.OnClickListener {
 
     private ImageView mTopLeftImageIv;
     /**

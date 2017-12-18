@@ -900,7 +900,7 @@
 
  5、本协议从2017年起适用.\n</string>
     <string name="title_activity_login">Sign in</string>
-    <string name="warn_activated_status">账号暂未激活，请先激活账号</string>
+    <string name="warn_activated_status">会员暂未激活，请先激活账号</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="AnimBottom" parent="@android:style/Animation">

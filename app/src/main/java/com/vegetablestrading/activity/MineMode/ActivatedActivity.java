@@ -1,11 +1,11 @@
 package com.vegetablestrading.activity.MineMode;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
 import com.vegetablestrading.R;
+import com.vegetablestrading.activity.BaseActivity;
 import com.vegetablestrading.bean.UserInfo;
 import com.vegetablestrading.customViews.CustomView;
 import com.vegetablestrading.utils.PublicUtils;
@@ -17,7 +17,7 @@ import static com.vegetablestrading.utils.PublicUtils.ActivatedActivityFinished;
  * created date 2017/11/29 16:19.
  * application 已激活  当用户激活完账户后，即支付完成后展示的类
  */
-public class ActivatedActivity extends AppCompatActivity implements View.OnClickListener {
+public class ActivatedActivity extends BaseActivity implements View.OnClickListener {
 
     private CustomView mActivatedUserName;
     private CustomView mActivatedUserPhone;

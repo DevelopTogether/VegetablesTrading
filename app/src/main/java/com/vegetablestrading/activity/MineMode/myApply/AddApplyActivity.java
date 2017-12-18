@@ -2,7 +2,6 @@ package com.vegetablestrading.activity.MineMode.myApply;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -16,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vegetablestrading.R;
+import com.vegetablestrading.activity.BaseActivity;
 import com.vegetablestrading.utils.CalendarUtil;
 import com.vegetablestrading.utils.Constant;
 import com.vegetablestrading.utils.PublicUtils;
@@ -38,7 +38,7 @@ import static com.vegetablestrading.utils.CalendarUtil.compareTimeOfAddApply;
 /**
  * 添加申请
  */
-public class AddApplyActivity extends AppCompatActivity implements View.OnClickListener {
+public class AddApplyActivity extends BaseActivity implements View.OnClickListener {
 
     private ImageView mTopLeftImageIv;
     /**
@@ -89,6 +89,7 @@ public class AddApplyActivity extends AppCompatActivity implements View.OnClickL
 
 
     }
+
 
     private void initView() {
         mTopLeftImageIv = (ImageView) findViewById(R.id.top_left_image_iv);

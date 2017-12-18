@@ -1,19 +1,19 @@
 package com.vegetablestrading.activity.MineMode;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.vegetablestrading.R;
+import com.vegetablestrading.activity.BaseActivity;
 
 /**
  * created by 8级大的狂风
  * created date 2017/11/28 10:29.
  * application 服务条款
  */
-public class TermOfServiceActivity extends AppCompatActivity implements View.OnClickListener {
+public class TermOfServiceActivity extends BaseActivity implements View.OnClickListener {
 
     private ImageView mTopLeftImageIv;
     /**

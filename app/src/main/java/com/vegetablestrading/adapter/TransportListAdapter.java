@@ -3,6 +3,7 @@ package com.vegetablestrading.adapter;
 import android.content.Context;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,7 +54,12 @@ public class TransportListAdapter extends RecyclerView.Adapter<TransportListAdap
         Glide.with(context).load(Uri.parse(Constant.company_url+bean.getVegetableIcon())).into(holder.mVegetableIconIv);
         holder.mVegetableNameTv.setText(bean.getVegetableName());
         holder.mVegetableWeightTv.setText("重量："+bean.getWeight()+"g");
-        holder.mVegetableDescripTv.setText(bean.getVegetableInfo());
+        if (TextUtils.isEmpty(bean.getVegetableInfo())) {
+            holder.mVegetableDescripTv.setVisibility(View.GONE);
+        }else{
+            holder.mVegetableDescripTv.setVisibility(View.VISIBLE);
+            holder.mVegetableDescripTv.setText(bean.getVegetableInfo());
+        }
         holder.mStartTimeTransportTv.setText("开始有效期："+ CalendarUtil.getSpecialTypeTime(bean.getTransportStartTime()));
         holder.mEndTimeTransportTv.setText("结束有效期："+CalendarUtil.getSpecialTypeTime(bean.getTransportEndTime()));
         holder.trade_ll.setOnClickListener(new View.OnClickListener() {

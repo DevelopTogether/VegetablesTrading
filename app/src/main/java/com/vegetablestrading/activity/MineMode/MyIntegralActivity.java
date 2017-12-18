@@ -2,7 +2,6 @@ package com.vegetablestrading.activity.MineMode;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -13,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vegetablestrading.R;
+import com.vegetablestrading.activity.BaseActivity;
 import com.vegetablestrading.adapter.DividerItemDecoration;
 import com.vegetablestrading.adapter.MyIntegralAdapter;
 import com.vegetablestrading.bean.TransportRecord;
@@ -35,7 +35,7 @@ import okhttp3.Call;
 /**
  * 我的积分
  */
-public class MyIntegralActivity extends AppCompatActivity implements View.OnClickListener {
+public class MyIntegralActivity extends BaseActivity implements View.OnClickListener {
 
     private ImageView mTopLeftImageIv;
     /**
