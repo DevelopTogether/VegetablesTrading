@@ -118,7 +118,7 @@ public class ActivateUserActivity extends BaseActivity implements View.OnClickLi
     };
 
     /**
-     * 支付宝支付成功后调用激活接口激活账户
+     * 支付成功后调用激活接口激活账户
      */
     private void activateUserAfterPay(String tradeNo) {
         OkHttpUtils
@@ -173,10 +173,18 @@ public class ActivateUserActivity extends BaseActivity implements View.OnClickLi
         initView();
         setViewValue(PublicUtils.userInfo);
         initActionBar();
-        api = WXAPIFactory.createWXAPI(this, null);
-// 将该app注册到微信
-        api.registerApp("wxdfeeca73484a5f0a");
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+//        if (ActivatedActivityFinished) {
+//            ActivatedActivityFinished = false;
+//            mActivateRightnowTv.setText("已激活");
+//            mActivateRightnowTv.setClickable(false);
+//            mActivateRightnowTv.setBackgroundResource(R.drawable.bt_unpress_selecter);
+//        }
     }
 
     /**
@@ -341,7 +349,9 @@ public class ActivateUserActivity extends BaseActivity implements View.OnClickLi
 
                                 if ("Ok".equals(result)) {
                                     String orderInfo = obj.getString("OrderInfo");
-                                    if (orderInfo==null||TextUtils.isEmpty(orderInfo)) {
+                                    String tradeNo = obj.getString("tradeNo");
+                                    Constant.tradeNoOfWeiXin = tradeNo;
+                                    if (orderInfo == null || TextUtils.isEmpty(orderInfo)) {
                                         return;
                                     }
                                     JSONObject obj_info = new JSONObject(orderInfo);
@@ -356,7 +366,7 @@ public class ActivateUserActivity extends BaseActivity implements View.OnClickLi
                                     //随机字符串，不长于32位
                                     req.nonceStr = obj_info.getString("noncestr");
                                     //标准北京时间，时区为东八区，自1970年1月1日 0点0分0秒以来的秒数。注意：部分系统取到的值为毫秒级，需要转换成秒(10位数字)。
-                                    req.timeStamp =obj_info.getString("timestamp");
+                                    req.timeStamp = obj_info.getString("timestamp");
                                     //暂填写固定值Sign=WXPay
                                     req.packageValue = obj_info.getString("package");
                                     //签名
@@ -364,6 +374,9 @@ public class ActivateUserActivity extends BaseActivity implements View.OnClickLi
                                     req.extData = "app data"; // optional
 //						Toast.makeText(PayActivity.this, "正常调起支付", Toast.LENGTH_SHORT).show();
                                     // 在支付之前，如果应用没有注册到微信，应该先调用IWXMsg.registerApp将应用注册到微信
+                                    Constant.APP_ID = obj_info.getString("appid");
+                                    api = WXAPIFactory.createWXAPI(ActivateUserActivity.this, null);
+                                    api.registerApp(Constant.APP_ID);// 将该app注册到微信
                                     api.sendReq(req);
 
                                 }

@@ -9,6 +9,7 @@ public class Constant {
 //    public static String APP_MARK = "SCPS";//软件标识
     public static String APP_MARK = "SCPS_DEBUG";//调试软件标识
     public static String APP_ID = "";//软件APPID
+    public static String tradeNoOfWeiXin = "";//微信交易编号
     public static String sms_Test_juhe = "http://v.juhe.cn/sms/send";
     public static String sms_Test_mode_regist = "50884";//聚合注册验证模板
     public static String sms_Test_mode_pwd = "50885";//聚合找回密码验证模板

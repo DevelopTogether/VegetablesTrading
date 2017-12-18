@@ -10,6 +10,8 @@ import com.vegetablestrading.bean.UserInfo;
 import com.vegetablestrading.customViews.CustomView;
 import com.vegetablestrading.utils.PublicUtils;
 
+import static com.vegetablestrading.utils.PublicUtils.ActivatedActivityFinished;
+
 /**
  * created by 8级大的狂风
  * created date 2017/11/29 16:19.
@@ -51,6 +53,7 @@ public class ActivatedActivity extends AppCompatActivity implements View.OnClick
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.start_use_tv:
+                ActivatedActivityFinished = true;
                 finish();
                 break;
         }
