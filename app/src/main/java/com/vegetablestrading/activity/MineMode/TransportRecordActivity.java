@@ -2,7 +2,6 @@ package com.vegetablestrading.activity.MineMode;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -13,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vegetablestrading.R;
+import com.vegetablestrading.activity.BaseActivity;
 import com.vegetablestrading.adapter.DividerItemDecoration;
 import com.vegetablestrading.adapter.TransportRecordAdapter;
 import com.vegetablestrading.bean.LogisticsInfo;
@@ -40,7 +40,7 @@ import static com.vegetablestrading.R.id.top_left_image_iv;
 /**
  * 配送记录
  */
-public class TransportRecordActivity extends AppCompatActivity implements View.OnClickListener{
+public class TransportRecordActivity extends BaseActivity implements View.OnClickListener{
 
     private ImageView mTopLeftImageIv;
     /**

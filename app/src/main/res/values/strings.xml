@@ -199,5 +199,5 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-    <string name="warn_activated_status">账号暂未激活，请先激活账号</string>
+    <string name="warn_activated_status">会员暂未激活，请先激活账号</string>
 </resources>

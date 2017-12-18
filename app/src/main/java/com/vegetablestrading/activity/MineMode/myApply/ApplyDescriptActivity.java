@@ -1,16 +1,16 @@
 package com.vegetablestrading.activity.MineMode.myApply;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.vegetablestrading.R;
+import com.vegetablestrading.activity.BaseActivity;
 import com.vegetablestrading.customViews.CustomView;
 import com.vegetablestrading.utils.PublicUtils;
 
-public class ApplyDescriptActivity extends AppCompatActivity implements View.OnClickListener {
+public class ApplyDescriptActivity extends BaseActivity implements View.OnClickListener {
 
     private ImageView mTopLeftImageIv;
     /**
@@ -46,7 +46,6 @@ public class ApplyDescriptActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.activity_apply_descript);
         initView();
     }
-
     private void initView() {
         mTopLeftImageIv = (ImageView) findViewById(R.id.top_left_image_iv);
         mTopLeftImageIv.setOnClickListener(this);

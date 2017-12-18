@@ -123,6 +123,7 @@
         <activity
             android:name="com.vegetablestrading.activity.MineMode.myPick.MyPickActivity"
             android:screenOrientation="portrait" />
+        <activity android:name="com.vegetablestrading.activity.VegetableDescriptActivity" />
         <activity
             android:name="com.choseaddrdemo.selectAddr.ChooserActivity"
             android:theme="@style/AppTheme.NoActionBar" />

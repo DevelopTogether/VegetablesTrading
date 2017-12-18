@@ -17,8 +17,8 @@ import com.vegetablestrading.interfaces.MineModeItemClickedListener;
 
 public class MineModeAdapter extends RecyclerView.Adapter<MineModeAdapter.ViewHolder> {
 
-    private String[] names = {"会员激活", "配送记录", "我的申请", "我的积分", "我的订单", "我的采摘", "我的信息", "修改密码", "退会", "关于我们"};
-    private Integer[] icons = {R.drawable.mine_activated_icon, R.drawable.mine_tradelist, R.drawable.mine_apply, R.drawable.integral_icon, R.drawable.mine_order, R.drawable.mine_pick_list, R.drawable.mine_info, R.drawable.mine_modify_pwd, R.drawable.quit_member, R.drawable.mine_about_us};
+    private String[] names = {"会员激活", "配送记录", "我的申请", "我的积分", "我的订单", "我的采摘", "我的信息", "修改密码", "退会", "关于我们", "安全退出"};
+    private Integer[] icons = {R.drawable.mine_activated_icon, R.drawable.mine_tradelist, R.drawable.mine_apply, R.drawable.integral_icon, R.drawable.mine_order, R.drawable.mine_pick_list, R.drawable.mine_info, R.drawable.mine_modify_pwd, R.drawable.quit_member, R.drawable.mine_about_us, R.drawable.mine_safe_exit};
     private MineModeItemClickedListener listener;
     private int position;
 

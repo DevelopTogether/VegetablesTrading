@@ -81,9 +81,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         boolean pwdSaved = sharedPreferencesHelper.getBoolean("REMEMBERPWD", false);
         if (pwdSaved) {
             mRememberPwdCb.setChecked(true);
-//             String mobile = mUserMobileEt.getText().toString().trim();
-//            String pwd = mUserPwdEt.getText().toString().trim();
-//            loginToService(mobile, pwd);
+             String mobile = mUserMobileEt.getText().toString().trim();
+            String pwd = mUserPwdEt.getText().toString().trim();
+            loginToService(mobile, pwd);
         } else {
             mRememberPwdCb.setChecked(false);
         }

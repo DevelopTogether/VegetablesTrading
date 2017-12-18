@@ -2,7 +2,6 @@ package com.vegetablestrading.activity.MineMode.myApply;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -13,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vegetablestrading.R;
+import com.vegetablestrading.activity.BaseActivity;
 import com.vegetablestrading.adapter.DividerItemDecoration;
 import com.vegetablestrading.adapter.MyApplyAdapter;
 import com.vegetablestrading.bean.MyApply;
@@ -35,7 +35,7 @@ import okhttp3.Call;
 /**
  * 我的申请
  */
-public class MyApplyRecordActivity extends AppCompatActivity implements View.OnClickListener {
+public class MyApplyRecordActivity extends BaseActivity implements View.OnClickListener {
 
     private ImageView mTopLeftImageIv;
     /**

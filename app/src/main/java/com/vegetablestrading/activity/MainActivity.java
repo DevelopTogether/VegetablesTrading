@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
@@ -36,7 +35,7 @@ import java.util.List;
 
 import okhttp3.Call;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private FrameLayout mContentFl;
     private ImageView mNavigationImg1;
@@ -318,5 +317,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 });
     }
 
+    private long time = 0;
 
+    @Override
+    public void onBackPressed() {
+        exit();
+    }
+
+//退出方法
+
+    private void exit() {
+
+//如果在两秒大于2秒
+
+        if (System.currentTimeMillis() - time > 2000) {
+
+//获得当前的时间
+
+            time = System.currentTimeMillis();
+
+            Toast.makeText(getApplicationContext(), "再点击一次退出应用程序", Toast.LENGTH_LONG).show();
+
+        } else {
+
+//点击在两秒以内
+
+            MyApplication.getInstance().clearAllActivity();//执行移除所以Activity方法
+
+        }
+
+    }
 }

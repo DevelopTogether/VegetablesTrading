@@ -6,7 +6,6 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
@@ -15,6 +14,7 @@ import android.widget.Toast;
 
 import com.checktoupdatedemo.utils.CheckUpdateUtil;
 import com.vegetablestrading.R;
+import com.vegetablestrading.activity.BaseActivity;
 import com.vegetablestrading.customViews.CustomView;
 import com.vegetablestrading.utils.Constant;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -27,7 +27,7 @@ import org.json.JSONObject;
 import okhttp3.Call;
 
 
-public class AboutUsActivity extends AppCompatActivity implements View.OnClickListener {
+public class AboutUsActivity extends BaseActivity implements View.OnClickListener {
 
     private TextView mTestTv;
     private ImageView mTopLeftImageIv;

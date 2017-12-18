@@ -2,7 +2,6 @@ package com.vegetablestrading.activity.MineMode.myPick;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -12,6 +11,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.vegetablestrading.R;
+import com.vegetablestrading.activity.BaseActivity;
 import com.vegetablestrading.utils.CalendarUtil;
 import com.vegetablestrading.utils.PublicUtils;
 
@@ -27,7 +27,7 @@ import static com.vegetablestrading.utils.CalendarUtil.GetWeekFromDate;
  * created date 2017/12/1 9:56.
  * application
  */
-public class MyPickActivity extends AppCompatActivity implements View.OnClickListener {
+public class MyPickActivity extends BaseActivity implements View.OnClickListener {
 
     private ImageView mTopLeftImageIv;
     /**

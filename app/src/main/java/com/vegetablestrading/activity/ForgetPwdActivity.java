@@ -3,7 +3,6 @@ package com.vegetablestrading.activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
@@ -26,7 +25,7 @@ import okhttp3.Call;
  * created date 2017/11/27 16:51.
  * application  忘记密码的类
  */
-public class ForgetPwdActivity extends AppCompatActivity implements View.OnClickListener {
+public class ForgetPwdActivity extends BaseActivity implements View.OnClickListener {
 
     private ImageView mTopLeftImageIv;
     /**
