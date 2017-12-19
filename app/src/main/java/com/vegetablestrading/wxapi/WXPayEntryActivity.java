@@ -14,6 +14,7 @@ import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
+import com.vegetablestrading.activity.MineMode.ActivateUserActivity;
 import com.vegetablestrading.activity.MineMode.ActivatedActivity;
 import com.vegetablestrading.bean.UserInfo;
 import com.vegetablestrading.utils.Constant;
@@ -58,7 +59,23 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
     public void onResp(BaseResp resp) {
 
         if (resp.getType() == ConstantsAPI.COMMAND_PAY_BY_WX) {
-            activateUserAfterPay(Constant.tradeNoOfWeiXin);
+            switch (resp.errCode) {
+                case 0://正常完成支付
+                    activateUserAfterPay(Constant.tradeNoOfWeiXin);
+                    break;
+                case -1://支付异常
+                    startActivity(new Intent(this,ActivateUserActivity.class));
+                    finish();
+                    break;
+                case -2://用户取消支付
+                    startActivity(new Intent(this,ActivateUserActivity.class));
+                    finish();
+                    break;
+                default:
+
+                    break;
+            }
+//
 //			AlertDialog.Builder builder = new AlertDialog.Builder(this);
 //			builder.setTitle("提示");
 //			builder.setMessage(getString(R.string.pay_result_callback_msg, String.valueOf(resp.errCode)));
@@ -79,6 +96,8 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
                 .execute(new StringCallback() {
                     @Override
                     public void onError(Call call, Exception e, int id) {
+                        startActivity(new Intent(WXPayEntryActivity.this, ActivatedActivity.class));
+                        finish();
                         Toast.makeText(WXPayEntryActivity.this, "网络错误", Toast.LENGTH_LONG).show();
                     }
 

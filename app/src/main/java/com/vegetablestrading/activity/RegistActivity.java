@@ -98,6 +98,7 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
                 case 0x02:
                     mForTestContentTv.setText("获取验证码");
                     mForTestContentTv.setClickable(true);
+                    mForTestContentTv.setBackgroundResource(R.drawable.bt_pressed_selecter);
                     break;
             }
         }
@@ -197,6 +198,8 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
      */
     private void getTestCodeThroughJuHe(String mobile) {
         randomData = getRandomData();
+        mForTestContentTv.setClickable(false);
+        mForTestContentTv.setBackgroundResource(R.drawable.bt_unpress_selecter);
         OkHttpUtils
                 .get()
                 .url(Constant.sms_Test_juhe)
@@ -208,6 +211,8 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
                 .execute(new StringCallback() {
                     @Override
                     public void onError(Call call, Exception e, int id) {
+                        mForTestContentTv.setClickable(true);
+                        mForTestContentTv.setBackgroundResource(R.drawable.bt_pressed_selecter);
                         Toast.makeText(getApplicationContext(), "短信验证服务器异常，请联系管理员", Toast.LENGTH_LONG).show();
                     }
 
@@ -284,7 +289,7 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
 
                 break;
             case R.id.cancel_regist_tv://取消注册
-                finish();
+                startActivity(new Intent(this, LoginActivity.class));
                 break;
             case R.id.select_addr_ll://选择收货地址
                 ChooserActivity.start(RegistActivity.this, null);
@@ -315,7 +320,7 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
      * 同步获取验证码按钮的状态
      */
     private void initGetTestCodeButtonStatus() {
-        mForTestContentTv.setClickable(false);
+
         //开启线程去更新button的text
         new Thread() {
             @Override
@@ -422,7 +427,6 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
         sharedPreferencesHelper.putString("USER_MOBILE", mobile);
         Toast.makeText(getApplicationContext(), "注册成功", Toast.LENGTH_LONG).show();
         startActivity(new Intent(this, LoginActivity.class));
-        finish();
 
 
     }
@@ -434,6 +438,8 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
      */
     private void registToService(String pwd, String email, String petName,String detailAddr) {
         String uploadAddr =  "1,"+cityId+","+detailAddr;
+        mRegistRightnowTv.setClickable(false);
+        mRegistRightnowTv.setBackgroundResource(R.drawable.bt_unpress_selecter);
         OkHttpUtils
                 .post()
                 .url(Constant.regist_url)
@@ -447,6 +453,8 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
                 .execute(new StringCallback() {
                     @Override
                     public void onError(Call call, Exception e, int id) {
+                        mRegistRightnowTv.setClickable(true);
+                        mRegistRightnowTv.setBackgroundResource(R.drawable.bt_pressed_selecter);
                         Toast.makeText(getApplicationContext(), "", Toast.LENGTH_LONG).show();
                     }
 
@@ -467,6 +475,8 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
 
                                     }
                                 }
+                                mRegistRightnowTv.setClickable(true);
+                                mRegistRightnowTv.setBackgroundResource(R.drawable.bt_pressed_selecter);
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }

@@ -161,7 +161,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 //                break;
             case R.id.regist_tv://注册
                 startActivity(new Intent(this, RegistActivity.class));
-                finish();
                 break;
             case R.id.save_pwd_ll://记住密码
                 if (mRememberPwdCb.isChecked()) {
@@ -179,7 +178,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             Toast.makeText(getApplicationContext(), "无网络，请稍后再试", Toast.LENGTH_LONG).show();
             return;
         }
-        mLoginPb.setVisibility(View.VISIBLE);
+        initRefreshStatus(false);
         OkHttpUtils
                 .post()
                 .url(Constant.login_url)
@@ -189,7 +188,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 .execute(new StringCallback() {
                     @Override
                     public void onError(Call call, Exception e, int id) {
-                        mLoginPb.setVisibility(View.GONE);
+                        initRefreshStatus(true);
+
                         Toast.makeText(getApplicationContext(), "", Toast.LENGTH_LONG).show();
                     }
 
@@ -214,11 +214,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                                         default:
                                             break;
                                     }
-                                    mLoginPb.setVisibility(View.GONE);
+                                    initRefreshStatus(true);
                                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                     finish();
                                 } else {
-                                    mLoginPb.setVisibility(View.GONE);
+                                    initRefreshStatus(true);
                                     if ("账号不存在!".equals(message)) {
                                         Toast.makeText(getApplicationContext(), "账号不存在", Toast.LENGTH_LONG).show();
                                     } else {
@@ -235,6 +235,24 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                     }
 
                 });
+    }
+
+    /**
+     * 初始化更新时的状态
+     * @param b
+     */
+    private void initRefreshStatus(boolean b) {
+        if (b) {
+            mLoginPb.setVisibility(View.GONE);
+            mLoginConfirmTv.setClickable(b);
+            mLoginConfirmTv.setBackgroundResource(R.drawable.bt_pressed_selecter);
+        }else{
+            mLoginPb.setVisibility(View.VISIBLE);
+            mLoginConfirmTv.setClickable(b);
+            mLoginConfirmTv.setBackgroundResource(R.drawable.bt_unpress_selecter);
+        }
+
+
     }
 
 

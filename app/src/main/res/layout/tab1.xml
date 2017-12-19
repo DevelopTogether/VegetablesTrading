@@ -78,19 +78,47 @@
                 android:textSize="14sp" />
         </LinearLayout>
 
-        <android.support.v4.widget.SwipeRefreshLayout
-            android:id="@+id/swipe_refresh_sl"
-            android:layout_marginTop="1dp"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="1dp"
+            android:orientation="vertical">
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/vegetables_rv"
+            <LinearLayout
+                android:id="@+id/no_record_ll"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:background="@android:color/white"
+                android:gravity="center"
+                android:visibility="gone"
+                android:orientation="vertical"
+                >
 
-                android:background="@android:color/white"></android.support.v7.widget.RecyclerView>
-        </android.support.v4.widget.SwipeRefreshLayout>
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/no_record_icon" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="暂无配送菜品"
+                    android:textStyle="italic" />
+            </LinearLayout>
+
+            <android.support.v4.widget.SwipeRefreshLayout
+                android:id="@+id/swipe_refresh_sl"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+              >
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/vegetables_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/white"></android.support.v7.widget.RecyclerView>
+            </android.support.v4.widget.SwipeRefreshLayout>
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

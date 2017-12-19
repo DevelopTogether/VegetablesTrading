@@ -53,7 +53,6 @@ import okhttp3.Call;
 
 import static com.vegetablestrading.utils.CalendarUtil.GetWeekFromDate;
 import static com.vegetablestrading.utils.CalendarUtil.compareTime;
-import static com.zhy.http.okhttp.OkHttpUtils.post;
 
 /**
  * Created by ${王sir} on 2017/10/18.
@@ -89,6 +88,7 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
     private TransportListAdapter adapter;
     private DaoUtils daoUtil;
     private SwipeRefreshLayout mSwipeRefreshSl;
+    private LinearLayout mNoRecordLl;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -134,6 +134,20 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
         return view;
     }
 
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        if (!hidden) {
+            // 请求数据 更新adapter
+            String tradeDate = mTradeDateTv.getText().toString().trim();
+            if (tradeDate.equals("本周")) {
+                // 请求本周配送菜品信息
+                transportVegetablesByDate(CalendarUtil.getTimeOfWeekStart(), CalendarUtil.getTimeOfWeekEnd());
+            } else {
+                // 请求上周配送菜品信息
+                transportVegetablesByDate(CalendarUtil.getTimeOfLastWeekStart(), CalendarUtil.getTimeOfWeekStart());
+            }
+        }
+    }
 
     /**
      * 初始化actionBar
@@ -163,7 +177,7 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
 
         mDefaultTab1Ll = (LinearLayout) view.findViewById(R.id.default_tab1_ll);
         mVegetablesRv = (RecyclerView) view.findViewById(R.id.vegetables_rv);
-        initDataForAdapter();
+        mNoRecordLl = (LinearLayout) view.findViewById(R.id.no_record_ll);
         mSwipeRefreshSl = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_sl);
         mSwipeRefreshSl.setColorSchemeResources(R.color.colorPrimary);
         mSwipeRefreshSl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -181,6 +195,8 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
 
             }
         });
+        initDataForAdapter();
+
     }
 
     @Override
@@ -226,25 +242,6 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
         return clickable;
     }
 
-//    /**
-//     * 获取配送列表中的蔬菜信息
-//     *
-//     * @return
-//     */
-//    public ArrayList<TransportVegetableInfo> getTransportVegetables() {
-//        ArrayList<TransportVegetableInfo> arrays = new ArrayList<>();
-//        for (int i = 0; i < 10; i++) {
-//            TransportVegetableInfo bean = new TransportVegetableInfo();
-//            bean.setType(TransportVegetableInfo.TRANSPORT_MODE);
-//            bean.setVegetableName("白菜" + i);
-//            bean.setWeight("2kg");
-//            bean.setVegetableInfo("描述信息faslkdjfasdjfasdjfas;dfja;slkdjfa;sljdfaslkd;jf;askjdfljasdflajs;dfljasdf");
-//            bean.setTransportStartTime("2017-11-21 12:00:00");
-//            bean.setTransportEndTime("2017-11-21 12:00:00");
-//            arrays.add(bean);
-//        }
-//        return arrays;
-//    }
 
     /**
      * 选择查看配送菜品的日期
@@ -301,7 +298,8 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
      * @param endTime
      */
     private void transportVegetablesByDate(String startTime, String endTime) {
-        post()
+        mSwipeRefreshSl.setRefreshing(true);
+        OkHttpUtils.post()
                 .url(Constant.transportVegetablesByDate_url)
                 .addParams("startTime", startTime)
                 .addParams("endTime", endTime)
@@ -311,6 +309,13 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
                     public void onError(Call call, Exception e, int id) {
                         Toast.makeText(mContext, "网络错误", Toast.LENGTH_LONG).show();
                         mSwipeRefreshSl.setRefreshing(false);
+                        ArrayList<TransportVegetableInfo> arrayList = daoUtil.listAll(TransportVegetableInfo.class);
+                        if (arrayList.size() > 0) {
+                            mNoRecordLl.setVisibility(View.GONE);
+                            adapter.setData(arrayList);
+                        }else{
+                            mNoRecordLl.setVisibility(View.VISIBLE);
+                        }
                     }
 
                     @Override
@@ -320,19 +325,23 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
                             try {
                                 JSONObject obj = new JSONObject(response);
                                 String result = obj.getString("Result");
-                                String message = obj.getString("Model");
+
                                 if ("Ok".equals(result)) {
+                                    String message = obj.getString("Model");
                                     ArrayList<TransportVegetableInfo> arrays = GsonUtils.jsonToArrayList(message, TransportVegetableInfo.class);
-                                    adapter.setData(arrays);
+                                    if (arrays.size() > 0) {
+                                        mNoRecordLl.setVisibility(View.GONE);
+                                        adapter.setData(arrays);
+                                    } else {
+                                        mNoRecordLl.setVisibility(View.VISIBLE);
+                                    }
+
                                     putTransportVegetableInfoToSqlite(arrays);
-                                } else {
-                                    Toast.makeText(mContext, message, Toast.LENGTH_LONG).show();
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
                         }
-                        Log.e("DEBUG", response);
 
                     }
 
@@ -386,11 +395,13 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
             }
         });
     }
+
     /**
      * 上传申请信息
+     *
      * @param noteInfo
      */
-    private void applyToService( String noteInfo) {
+    private void applyToService(String noteInfo) {
         //1代表减少配送，2代表增加配送，3代表不配送
         OkHttpUtils
                 .post()
@@ -406,6 +417,7 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
                     @Override
                     public void onError(Call call, Exception e, int id) {
                         Toast.makeText(mContext, "", Toast.LENGTH_LONG).show();
+
                     }
 
                     @Override
@@ -430,12 +442,16 @@ public class FragmentTab1 extends Fragment implements View.OnClickListener {
 
                 });
     }
+
     /**
      * 将配送蔬菜信息保存本地
      */
     private void putTransportVegetableInfoToSqlite(ArrayList<TransportVegetableInfo> arrayList) {
         daoUtil.deleteAllEntity(TransportVegetableInfo.class);
-        daoUtil.insertMultEntity(arrayList);
+        if (arrayList.size() > 0) {
+            daoUtil.insertMultEntity(arrayList);
+        }
+
 
     }
 

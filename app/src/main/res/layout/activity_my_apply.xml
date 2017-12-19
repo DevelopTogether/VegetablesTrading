@@ -10,9 +10,36 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"></include>
 
-    <android.support.v7.widget.RecyclerView
-        android:padding="5dp"
-        android:id="@+id/my_apply_rv"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/no_record_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:visibility="gone"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/no_record_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="暂无申请记录"
+                android:textStyle="italic" />
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/my_apply_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="5dp"></android.support.v7.widget.RecyclerView>
+
+    </RelativeLayout>
 </LinearLayout>

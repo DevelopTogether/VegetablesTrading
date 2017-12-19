@@ -2,12 +2,12 @@ package com.vegetablestrading.activity;
 
 import android.app.Activity;
 import android.app.Application;
+import android.support.v4.util.ArrayMap;
 import android.util.Log;
 
 import com.zhy.http.okhttp.OkHttpUtils;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -19,7 +19,7 @@ import okhttp3.OkHttpClient;
 
 public class MyApplication extends Application {
     private static MyApplication instance;
-    private List<Activity> activityList = new LinkedList<Activity>();
+    private ArrayMap arrayMap = new ArrayMap();
     @Override
     public void onCreate() {
         super.onCreate();
@@ -48,9 +48,12 @@ public class MyApplication extends Application {
      * @param activity
      */
     public void addActivity(Activity activity) {
-        if(!activityList.contains(activity)){
-            activityList.add(activity);
-            Log.e("MyApplication",activityList.size()+"============");
+        String key = activity.getLocalClassName();
+        if(!arrayMap.containsKey(key)){
+            arrayMap.put(activity.getLocalClassName(),activity);
+            Log.e("MyApplication",arrayMap.size()+"======add======"+key);
+        }else{
+            activity.finish();
         }
 
     }
@@ -59,22 +62,25 @@ public class MyApplication extends Application {
      * @param activity
      */
     public void removeActivity(Activity activity) {
-        if(activityList.contains(activity)){
-            activityList.remove(activity);
+        String key = activity.getLocalClassName();
+        if(arrayMap.containsKey(key)){
+            arrayMap.remove(key);
             activity.finish();
-            Log.e("MyApplication",activityList.size()+"============");
+            Log.e("MyApplication",arrayMap.size()+"=======remove====="+key);
         }
 
     }
 
     /**
      * 遍历所有Activity并finish.
-     */
+    */
     public void clearAllActivity() {
-        for (Activity activity : activityList) {
-            if(activity!=null){
-                activity.finish();
-            }
+        Iterator it = arrayMap.keySet().iterator();
+        while (it.hasNext()){
+            String key = (String) it.next();
+            Activity activity = (Activity) arrayMap.get(key);
+            activity.finish();
+            Log.e("MyApplication",arrayMap.size()+"=======finish====="+key);
         }
     }
 

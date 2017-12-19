@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,7 +41,7 @@ import static com.vegetablestrading.R.id.top_left_image_iv;
 /**
  * 配送记录
  */
-public class TransportRecordActivity extends BaseActivity implements View.OnClickListener{
+public class TransportRecordActivity extends BaseActivity implements View.OnClickListener {
 
     private ImageView mTopLeftImageIv;
     /**
@@ -51,6 +52,7 @@ public class TransportRecordActivity extends BaseActivity implements View.OnClic
     private RecyclerView mTransportRecordRv;
     private TransportRecordAdapter adapter;
     private DaoUtils daoUtil;
+    private LinearLayout mNoRecordLl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,8 +77,8 @@ public class TransportRecordActivity extends BaseActivity implements View.OnClic
         mTopTitleTv = (TextView) findViewById(R.id.top_title_tv);
         mTopRightImageIv = (ImageView) findViewById(R.id.top_right_image_iv);
         mTransportRecordRv = (RecyclerView) findViewById(R.id.transport_record_rv);
-        mTransportRecordRv.addItemDecoration(new DividerItemDecoration(this,LinearLayoutManager.HORIZONTAL,R.drawable.horizontal_line_grey));
-        LinearLayoutManager manager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
+        mTransportRecordRv.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.HORIZONTAL, R.drawable.horizontal_line_grey));
+        LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mTransportRecordRv.setLayoutManager(manager);
         adapter = new TransportRecordAdapter();
         mTransportRecordRv.setAdapter(adapter);
@@ -85,12 +87,12 @@ public class TransportRecordActivity extends BaseActivity implements View.OnClic
             @Override
             public void itemClick(TransportRecord transportRecord) {//item点击事件
                 PublicUtils.transportRecordClicked = transportRecord;
-                startActivity(new Intent(TransportRecordActivity.this,TransportInfoActivity.class));
+                startActivity(new Intent(TransportRecordActivity.this, TransportInfoActivity.class));
             }
 
         });
+        mNoRecordLl = (LinearLayout) findViewById(R.id.no_record_ll);
     }
-
 
 
     @Override
@@ -123,7 +125,12 @@ public class TransportRecordActivity extends BaseActivity implements View.OnClic
                     @Override
                     public void onError(Call call, Exception e, int id) {
                         Toast.makeText(TransportRecordActivity.this, "网络错误", Toast.LENGTH_LONG).show();
-                        ArrayList<TransportRecord> arrayList =      daoUtil.listAll(TransportRecord.class);
+                        ArrayList<TransportRecord> arrayList = daoUtil.listAll(TransportRecord.class);
+                       if (arrayList.size()==0) {
+                           mNoRecordLl.setVisibility(View.VISIBLE);
+                       }else{
+                           mNoRecordLl.setVisibility(View.GONE);
+                       }
                         adapter.setData(arrayList);
                     }
 
@@ -133,20 +140,23 @@ public class TransportRecordActivity extends BaseActivity implements View.OnClic
                             try {
                                 JSONObject obj = new JSONObject(response);
                                 String result = obj.getString("Result");
-                                String message = obj.getString("Model");
                                 if ("Ok".equals(result)) {
+                                    String message = obj.getString("Model");
                                     ArrayList<TransportRecord> arrays = GsonUtils.jsonToArrayList(message, TransportRecord.class);
-                                    List<LogisticsInfo> arrays_list = new ArrayList<LogisticsInfo>();
-                                    List<TransportVegetableInfo> arrays_transport = new ArrayList<TransportVegetableInfo>();
-                                    for (TransportRecord array : arrays) {
-                                        array.setLogisticsInfos(arrays_list);
-                                        array.setTransportVegetableInfos(arrays_transport);
+                                    if (arrays.size() > 0) {
+                                        mNoRecordLl.setVisibility(View.GONE);
+                                        List<LogisticsInfo> arrays_list = new ArrayList<LogisticsInfo>();
+                                        List<TransportVegetableInfo> arrays_transport = new ArrayList<TransportVegetableInfo>();
+                                        for (TransportRecord array : arrays) {
+                                            array.setLogisticsInfos(arrays_list);
+                                            array.setTransportVegetableInfos(arrays_transport);
+                                        }
+                                        Collections.reverse(arrays);
+                                        adapter.setData(arrays);
+                                    } else {
+                                        mNoRecordLl.setVisibility(View.VISIBLE);
                                     }
-                                    Collections.reverse(arrays);
-                                    adapter.setData(arrays);
                                     putTransportRecordInfoToSqlite(arrays);
-                                } else {
-                                    Toast.makeText(TransportRecordActivity.this, message, Toast.LENGTH_LONG).show();
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -163,7 +173,10 @@ public class TransportRecordActivity extends BaseActivity implements View.OnClic
      * 将配送蔬菜信息保存本地
      */
     private void putTransportRecordInfoToSqlite(ArrayList<TransportRecord> list_service) {
-        ArrayList<TransportRecord> list_local =  daoUtil.listAll(TransportRecord.class);
+        ArrayList<TransportRecord> list_local = daoUtil.listAll(TransportRecord.class);
+        if (list_service.size()==0) {
+            daoUtil.deleteAllEntity(TransportRecord.class) ;
+        }
         List<String> arrays_recordId = new ArrayList<>();
         for (TransportRecord transportRecord : list_local) {
             arrays_recordId.add(transportRecord.getTransportRecordId());

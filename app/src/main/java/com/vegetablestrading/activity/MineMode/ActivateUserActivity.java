@@ -41,6 +41,8 @@ import java.util.Map;
 
 import okhttp3.Call;
 
+import static com.vegetablestrading.utils.PublicUtils.PayOfWeixin;
+
 
 /**
  * 会员激活类
@@ -378,7 +380,8 @@ public class ActivateUserActivity extends BaseActivity implements View.OnClickLi
                                     api = WXAPIFactory.createWXAPI(ActivateUserActivity.this, null);
                                     api.registerApp(Constant.APP_ID);// 将该app注册到微信
                                     api.sendReq(req);
-
+                                    PayOfWeixin = true;
+                                    finish();
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();

@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,6 +47,7 @@ public class MyApplyRecordActivity extends BaseActivity implements View.OnClickL
     private RecyclerView mMyApplyRv;
     private MyApplyAdapter adapter;
     private DaoUtils daoUtils;
+    private LinearLayout mNoRecordLl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +80,7 @@ public class MyApplyRecordActivity extends BaseActivity implements View.OnClickL
                 startActivity(new Intent(MyApplyRecordActivity.this, ApplyDescriptActivity.class));
             }
         });
+        mNoRecordLl = (LinearLayout) findViewById(R.id.no_record_ll);
     }
 
 
@@ -94,10 +97,11 @@ public class MyApplyRecordActivity extends BaseActivity implements View.OnClickL
     /**
      * 将申请记录信息保存本地
      */
-    private void putApplyRecordInfoToSqlite( ArrayList arrayList) {
+    private void putApplyRecordInfoToSqlite(ArrayList arrayList) {
         daoUtils.deleteAllEntity(MyApply.class);
-        daoUtils.insertMultEntity(arrayList);
-
+        if (arrayList.size() > 0) {
+            daoUtils.insertMultEntity(arrayList);
+        }
     }
 
     /**
@@ -116,7 +120,14 @@ public class MyApplyRecordActivity extends BaseActivity implements View.OnClickL
                     @Override
                     public void onError(Call call, Exception e, int id) {
                         Toast.makeText(getApplicationContext(), "网络错误", Toast.LENGTH_LONG).show();
-                        adapter.setData(daoUtils.listAll(MyApply.class));
+                        ArrayList<MyApply> applies = daoUtils.listAll(MyApply.class);
+                        if (applies.size()==0) {
+                            mNoRecordLl.setVisibility(View.VISIBLE);
+                        }else{
+                            mNoRecordLl.setVisibility(View.GONE);
+                            adapter.setData(applies);
+                        }
+
                     }
 
                     @Override
@@ -126,8 +137,14 @@ public class MyApplyRecordActivity extends BaseActivity implements View.OnClickL
                                 JSONObject obj = new JSONObject(response);
                                 String message = obj.getString("Model");
                                 ArrayList arrayList = GsonUtils.jsonToArrayList(message, MyApply.class);
-                                Collections.reverse(arrayList);
-                                adapter.setData(arrayList);
+                                if (arrayList.size() > 0) {
+                                    mNoRecordLl.setVisibility(View.GONE);
+                                    Collections.reverse(arrayList);
+                                    adapter.setData(arrayList);
+
+                                } else {
+                                    mNoRecordLl.setVisibility(View.VISIBLE);
+                                }
                                 putApplyRecordInfoToSqlite(arrayList);
                             } catch (JSONException e) {
                                 e.printStackTrace();

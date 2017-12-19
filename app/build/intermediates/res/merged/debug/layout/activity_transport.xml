@@ -3,15 +3,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    android:orientation="vertical"
->
+    android:orientation="vertical">
+
     <include
         layout="@layout/app_top_layout"
         android:layout_width="match_parent"
         android:layout_height="50dp"></include>
-    <android.support.v7.widget.RecyclerView
-        android:padding="2dp"
-        android:id="@+id/transport_record_rv"
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/no_record_ll"
+            android:layout_width="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:visibility="gone"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/no_record_icon"
+              />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="italic"
+                android:text="暂无配送记录"/>
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/transport_record_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="2dp"></android.support.v7.widget.RecyclerView>
+    </RelativeLayout>
+
 </LinearLayout>

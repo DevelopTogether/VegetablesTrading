@@ -1,5 +1,6 @@
 package com.vegetablestrading.activity.MineMode;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -10,7 +11,8 @@ import com.vegetablestrading.bean.UserInfo;
 import com.vegetablestrading.customViews.CustomView;
 import com.vegetablestrading.utils.PublicUtils;
 
-import static com.vegetablestrading.utils.PublicUtils.ActivatedActivityFinished;
+import static com.vegetablestrading.utils.PublicUtils.PayOfWeixin;
+
 
 /**
  * created by 8级大的狂风
@@ -53,7 +55,12 @@ public class ActivatedActivity extends BaseActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.start_use_tv:
-                ActivatedActivityFinished = true;
+                if (PayOfWeixin) {
+                   startActivity(new Intent(this,ActivateUserActivity.class));
+                }else{
+                    PayOfWeixin = false;
+
+                }
                 finish();
                 break;
         }
