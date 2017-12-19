@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+
+
+    <FrameLayout
+        android:layout_above="@+id/navigation_bottom"
+        android:id="@+id/content_fl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+       >
+
+    </FrameLayout>
+
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:id="@+id/navigation_bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="55dp"
+        android:layout_weight="0"
+        android:background="@color/app_green"
+        android:orientation="horizontal">
+        <!--模块一-->
+        <LinearLayout
+
+            android:id="@+id/navigation_line1"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/navigation_img1"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/my_normal" />
+
+            <TextView
+                android:id="@+id/navigation_tv1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="配送"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+        </LinearLayout>
+        <!--模块二-->
+        <LinearLayout
+            android:id="@+id/navigation_line2"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/navigation_img2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/my_normal" />
+
+            <TextView
+                android:id="@+id/navigation_tv2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="商城"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+        </LinearLayout>    <!--模块二-->
+        <!--<LinearLayout-->
+            <!--android:id="@+id/line5"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_marginBottom="20dp"-->
+            <!--android:gravity="center"-->
+            <!--android:clipChildren="false"-->
+            <!--android:orientation="vertical">-->
+
+            <!--<ImageView-->
+                <!--android:id="@+id/img5"-->
+                <!--android:scaleType="centerCrop"-->
+                <!--android:layout_width="80dp"-->
+                <!--android:layout_height="80dp"-->
+                <!--android:src="@drawable/src_image_btn_bill_add" />-->
+
+        <!--</LinearLayout>-->
+        <!--模块三-->
+        <LinearLayout
+            android:id="@+id/navigation_line3"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/navigation_img3"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/my_normal" />
+
+            <TextView
+                android:id="@+id/navigation_tv3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="购物车"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+        </LinearLayout>
+        <!--模块四-->
+        <LinearLayout
+            android:id="@+id/navigation_line4"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/navigation_img4"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/my_normal" />
+
+            <TextView
+                android:id="@+id/navigation_tv4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="我的"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+        </LinearLayout>
+        <!--此L布局是所有的空间集合-->
+    </LinearLayout>
+    <!--此R布局是后面的背景-->
+
+
+    <!--这是最上覆盖布局-->
+    <!--<de.hdodenhof.circleimageview.CircleImageView-->
+    <!--android:layout_width="70dp"-->
+    <!--android:layout_height="70dp"-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:background="#000"-->
+    <!--android:src="@mipmap/sfdlfsldkf" />-->
+
+</RelativeLayout>

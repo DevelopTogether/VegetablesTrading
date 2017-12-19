@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/app_top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"></include>
+
+    <ScrollView
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.vegetablestrading.customViews.CustomView
+                android:id="@+id/quitPet_userName"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                app:left_button_text="会员名称"
+                app:left_button_text_color="#000000"
+                app:right_button_text="张三"
+                app:right_button_text_color="#000000"
+               ></com.vegetablestrading.customViews.CustomView>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#000000"></View>
+            <com.vegetablestrading.customViews.CustomView
+                android:id="@+id/quitPet_mobile"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                app:left_button_text="手机"
+                app:left_button_text_color="#000000"
+                app:right_button_text="15311810088"
+                app:right_button_text_color="#000000"></com.vegetablestrading.customViews.CustomView>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#000000"></View>
+            <com.vegetablestrading.customViews.CustomView
+                android:id="@+id/quitPet_userType"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                app:left_button_text="会员类型"
+                app:left_button_text_color="#000000"
+                app:right_button_text="VIP金卡"
+                app:right_button_text_color="#000000"></com.vegetablestrading.customViews.CustomView>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#000000"></View>
+
+            <com.vegetablestrading.customViews.CustomView
+                android:id="@+id/quitPet_userSum"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="left"
+                app:left_button_text="会费"
+                app:left_button_text_color="#000000"
+                app:right_button_text="8000"
+                app:right_button_text_color="#000000"></com.vegetablestrading.customViews.CustomView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#000000"></View>
+
+            <com.vegetablestrading.customViews.CustomView
+                android:id="@+id/quitPet_deposit_cv"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                app:left_button_text="押金"
+                app:left_button_text_color="#000000"
+                app:right_button_text="100元"
+                app:right_button_text_color="#000000"></com.vegetablestrading.customViews.CustomView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#000000"></View>
+
+            <com.vegetablestrading.customViews.CustomView
+                android:id="@+id/quitPet_integral"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                app:left_button_text="剩余积分"
+                app:left_button_text_color="#000000"
+                app:right_button_text="13"
+                app:right_button_text_color="#000000"></com.vegetablestrading.customViews.CustomView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#000000"></View>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/white">
+
+                <LinearLayout
+                    android:id="@+id/bottom_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:paddingBottom="5dp"
+                        android:text="退会介绍"
+                        android:textColor="@android:color/black"
+                        android:textSize="14sp" />
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/white_shape"
+                        android:lineSpacingExtra="3dp"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:paddingTop="5dp"
+                        android:text="@string/quit_pet_info"
+                        android:textColor="@android:color/black" />
+
+
+                    <com.vegetablestrading.customViews.CustomView
+                        android:id="@+id/quitPet_userSumToReturn"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="10dp"
+                        app:left_button_text="应退会费"
+                        app:left_button_text_color="#000000"
+                        app:right_button_text="100元"
+                        app:right_button_text_color="#000000"></com.vegetablestrading.customViews.CustomView>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="#000000"></View>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:id="@+id/quitPet_depositToReturn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:text="押金"
+                            android:textColor="@android:color/black" />
+
+                        <TextView
+                            android:id="@+id/quitPet_depositToReturnAmount_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:text="100 元"
+                            android:textColor="@android:color/black" />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+            <RadioGroup
+                android:id="@+id/refund_type_rg"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="left|center"
+                    android:text="退会收款方式"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/zhifubao_rb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:button="@drawable/radio_button_select"
+                    android:checked="true"
+                    android:padding="5dp"
+                    android:text="支付宝"
+                    android:textColor="@android:color/black" />
+
+
+                <RadioButton
+                    android:id="@+id/weixin_rb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:button="@drawable/radio_button_select"
+                    android:checked="false"
+                    android:padding="5dp"
+                    android:text="微信"
+                    android:textColor="@android:color/black" />
+            </RadioGroup>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:id="@+id/refund_account_name_tv"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="支付宝账号"
+                    android:textSize="14sp"
+                    android:textColor="#000000" />
+
+                <EditText
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="70dp"
+                    android:id="@+id/refund_account_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_weight="1"
+                    android:hint="请输入退款账户"
+                    android:background="@drawable/white_shape"
+                    android:gravity="center"
+                    android:inputType="text"
+                    android:textSize="14sp"
+                    android:singleLine="true"
+                    android:textColor="#000000"
+                    android:textColorHint="#8a8a8a"
+                     />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/confirm_quitPet_tv"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="40dp"
+                android:background="@drawable/bt_pressed_selecter"
+                android:gravity="center"
+                android:text="申请退会"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

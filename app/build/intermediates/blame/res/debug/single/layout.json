@@ -229,7 +229,7 @@
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_chooser.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\615d654a19b78b029014f28f61b0c6f80ec3552a\\output\\res\\layout\\activity_chooser.xml"
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\33dcb238a0b6619340cc5a6a06857c37227d2094\\output\\res\\layout\\activity_chooser.xml"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_singlechoice_material.xml",
@@ -360,6 +360,10 @@
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\8596fb658d42cd9e34405aecf52d5354d8001d94\\output\\res\\layout\\abc_action_mode_bar.xml"
     },
     {
+        "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_chose_addr.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\166ee97a23a686852bb11c1cb5ae9ecf989cee2f\\output\\res\\layout\\activity_chose_addr.xml"
+    },
+    {
         "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_modify_pwd.xml",
         "source": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\layout\\activity_modify_pwd.xml"
     },
@@ -417,7 +421,7 @@
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\layout\\content_chooser.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\615d654a19b78b029014f28f61b0c6f80ec3552a\\output\\res\\layout\\content_chooser.xml"
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\33dcb238a0b6619340cc5a6a06857c37227d2094\\output\\res\\layout\\content_chooser.xml"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\layout\\vegetable_types_layout.xml",
