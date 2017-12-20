@@ -51,7 +51,9 @@ public class TransportListAdapter extends RecyclerView.Adapter<TransportListAdap
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         final TransportVegetableInfo bean = arrayList.get(position);
-        Glide.with(context).load(Uri.parse(Constant.company_url+bean.getVegetableIcon())).into(holder.mVegetableIconIv);
+        Glide.with(context)
+                .load(Uri.parse(Constant.company_url+bean.getVegetableIcon()))
+                .into(holder.mVegetableIconIv);
         holder.mVegetableNameTv.setText(bean.getVegetableName());
         holder.mVegetableWeightTv.setText("重量："+bean.getWeight()+"g");
         if (TextUtils.isEmpty(bean.getVegetableInfo())) {
