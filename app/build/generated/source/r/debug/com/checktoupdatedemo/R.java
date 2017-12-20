@@ -580,12 +580,12 @@ public final class R {
         public static final int notification_bg_normal = 0x7f02008f;
         public static final int notification_bg_normal_pressed = 0x7f020090;
         public static final int notification_icon_background = 0x7f020091;
-        public static final int notification_template_icon_bg = 0x7f0200ad;
-        public static final int notification_template_icon_low_bg = 0x7f0200ae;
+        public static final int notification_template_icon_bg = 0x7f0200ae;
+        public static final int notification_template_icon_low_bg = 0x7f0200af;
         public static final int notification_tile_bg = 0x7f020092;
         public static final int notify_panel_notification_icon_bg = 0x7f020093;
-        public static final int warn_update_bg = 0x7f0200a9;
-        public static final int warn_update_bg_shape = 0x7f0200aa;
+        public static final int warn_update_bg = 0x7f0200aa;
+        public static final int warn_update_bg_shape = 0x7f0200ab;
     }
     public static final class id {
         public static final int action0 = 0x7f0d014b;

@@ -724,13 +724,13 @@ public final class R {
         public static final int abc_textfield_search_material = 0x7f020051;
         public static final int abc_vector_test = 0x7f020052;
         public static final int avd_hide_password = 0x7f02005d;
-        public static final int avd_hide_password_1 = 0x7f0200af;
-        public static final int avd_hide_password_2 = 0x7f0200b0;
-        public static final int avd_hide_password_3 = 0x7f0200b1;
+        public static final int avd_hide_password_1 = 0x7f0200b0;
+        public static final int avd_hide_password_2 = 0x7f0200b1;
+        public static final int avd_hide_password_3 = 0x7f0200b2;
         public static final int avd_show_password = 0x7f02005e;
-        public static final int avd_show_password_1 = 0x7f0200b2;
-        public static final int avd_show_password_2 = 0x7f0200b3;
-        public static final int avd_show_password_3 = 0x7f0200b4;
+        public static final int avd_show_password_1 = 0x7f0200b3;
+        public static final int avd_show_password_2 = 0x7f0200b4;
+        public static final int avd_show_password_3 = 0x7f0200b5;
         public static final int back = 0x7f02005f;
         public static final int design_bottom_navigation_item_background = 0x7f020068;
         public static final int design_fab_background = 0x7f020069;
@@ -748,8 +748,8 @@ public final class R {
         public static final int notification_bg_normal = 0x7f02008f;
         public static final int notification_bg_normal_pressed = 0x7f020090;
         public static final int notification_icon_background = 0x7f020091;
-        public static final int notification_template_icon_bg = 0x7f0200ad;
-        public static final int notification_template_icon_low_bg = 0x7f0200ae;
+        public static final int notification_template_icon_bg = 0x7f0200ae;
+        public static final int notification_template_icon_low_bg = 0x7f0200af;
         public static final int notification_tile_bg = 0x7f020092;
         public static final int notify_panel_notification_icon_bg = 0x7f020093;
     }

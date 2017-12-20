@@ -51,17 +51,21 @@ public class TransportListAdapter extends RecyclerView.Adapter<TransportListAdap
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         final TransportVegetableInfo bean = arrayList.get(position);
-        Glide.with(context).load(Uri.parse(Constant.company_url+bean.getVegetableIcon())).into(holder.mVegetableIconIv);
+        Glide.with(context)
+                .load(Uri.parse(Constant.company_url + bean.getVegetableIcon()))
+                .placeholder(R.drawable.placeholder_icon) // can also be a drawable
+                .error(R.drawable.placeholder_icon) // will be displayed if the image cannot be loaded
+                .into(holder.mVegetableIconIv);
         holder.mVegetableNameTv.setText(bean.getVegetableName());
-        holder.mVegetableWeightTv.setText("重量："+bean.getWeight()+"g");
+        holder.mVegetableWeightTv.setText("重量：" + bean.getWeight() + "g");
         if (TextUtils.isEmpty(bean.getVegetableInfo())) {
             holder.mVegetableDescripTv.setVisibility(View.GONE);
-        }else{
+        } else {
             holder.mVegetableDescripTv.setVisibility(View.VISIBLE);
             holder.mVegetableDescripTv.setText(bean.getVegetableInfo());
         }
-        holder.mStartTimeTransportTv.setText("开始有效期："+ CalendarUtil.getSpecialTypeTime(bean.getTransportStartTime()));
-        holder.mEndTimeTransportTv.setText("结束有效期："+CalendarUtil.getSpecialTypeTime(bean.getTransportEndTime()));
+        holder.mStartTimeTransportTv.setText("开始有效期：" + CalendarUtil.getSpecialTypeTime(bean.getTransportStartTime()));
+        holder.mEndTimeTransportTv.setText("结束有效期：" + CalendarUtil.getSpecialTypeTime(bean.getTransportEndTime()));
         holder.trade_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

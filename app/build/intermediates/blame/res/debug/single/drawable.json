@@ -28,12 +28,12 @@
         "source": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\drawable\\white_shape.xml"
     },
     {
-        "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_spinner_textfield_background_material.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\8596fb658d42cd9e34405aecf52d5354d8001d94\\output\\res\\drawable\\abc_spinner_textfield_background_material.xml"
-    },
-    {
         "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_tab_indicator_material.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\8596fb658d42cd9e34405aecf52d5354d8001d94\\output\\res\\drawable\\abc_tab_indicator_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_spinner_textfield_background_material.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\8596fb658d42cd9e34405aecf52d5354d8001d94\\output\\res\\drawable\\abc_spinner_textfield_background_material.xml"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\cancel_regist_shape.xml",
@@ -221,7 +221,7 @@
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_keyboard_arrow_left_white_24dp.png",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\166ee97a23a686852bb11c1cb5ae9ecf989cee2f\\output\\res\\drawable\\ic_keyboard_arrow_left_white_24dp.png"
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\d802aa2f1504f31a910be4718ed5c6ae414a29b1\\output\\res\\drawable\\ic_keyboard_arrow_left_white_24dp.png"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_seekbar_tick_mark_material.xml",

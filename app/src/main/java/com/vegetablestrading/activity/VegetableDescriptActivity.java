@@ -75,7 +75,10 @@ public class VegetableDescriptActivity extends AppCompatActivity implements View
 
     private void initDataToView(TransportVegetableInfo bean) {
         mTopTitleTv.setText(bean.getVegetableName() + "详情");
-        Glide.with(this).load(Uri.parse(Constant.company_url + bean.getVegetableIcon())).into(mVegetableDescriptionIconIv);
+        Glide.with(this).load(Uri.parse(Constant.company_url + bean.getVegetableIcon()))
+                .placeholder(R.drawable.placeholder_icon) // can also be a drawable
+                .error(R.drawable.placeholder_icon) // will be displayed if the image cannot be loaded
+                .into(mVegetableDescriptionIconIv);
         mVegetableDescriptionNameTv.setText(bean.getVegetableName());
         mVegetableDescriptionWeightTv.setText("重量："+bean.getWeight());
         if (TextUtils.isEmpty(bean.getVegetableInfo())) {
