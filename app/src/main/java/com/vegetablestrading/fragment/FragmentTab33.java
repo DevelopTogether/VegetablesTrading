@@ -60,7 +60,10 @@ public class FragmentTab33 extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = getActivity();
+
+
     }
+
 
     @Nullable
     @Override
@@ -77,6 +80,7 @@ public class FragmentTab33 extends Fragment {
         mTopTitleTv.setText("购物车");
         mTopRightImageIv = (ImageView) view.findViewById(R.id.top_right_image_iv);
     }
+
     public void setFinishActivity(FinishActivityInterface finishActivityInterface) {
         this.finishActivityInterface = finishActivityInterface;
     }

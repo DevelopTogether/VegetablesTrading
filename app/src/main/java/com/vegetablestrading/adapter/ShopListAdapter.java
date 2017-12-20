@@ -47,8 +47,8 @@ public class ShopListAdapter extends RecyclerView.Adapter<ShopListAdapter.ViewHo
     public void onBindViewHolder(ViewHolder holder, int position) {
        final TransportVegetableInfo bean = arrayList.get(position);
         Glide.with(context).load(R.drawable.app_logo)
-                .placeholder(R.drawable.placeholder_icon) // can also be a drawable
-                .error(R.drawable.placeholder_icon) // will be displayed if the image cannot be loaded
+                .placeholder(R.drawable.loading_icon) // can also be a drawable
+                .error(R.drawable.unload_icon) // will be displayed if the image cannot be loaded
                 .into(holder.mVegetableIconIv);
         holder.mShopVegetableNameTv.setText(bean.getVegetableName());
         holder.mShopVegetableDescripTv.setText(bean.getVegetableInfo());

@@ -6,43 +6,25 @@
     density="xxhdpi"
     format="10"
     plugin-version="2.3.3"
-    timestamp="1513737089887"
+    timestamp="1513760863964"
     token="63650464987433071"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="1805" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="106" />
+        duration="0" />
     <task
         name="verifier"
-        duration="45" />
+        duration="0" />
 
     <artifact
-        location="C:\Users\Administrator\Desktop\vegetablesTrading\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
-        type="SPLIT" />
-    <artifact
-        location="C:\Users\Administrator\Desktop\vegetablesTrading\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
-        type="SPLIT" />
-    <artifact
         location="C:\Users\Administrator\Desktop\vegetablesTrading\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
-        type="SPLIT" />
-    <artifact
-        location="C:\Users\Administrator\Desktop\vegetablesTrading\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
-        type="SPLIT" />
-    <artifact
-        location="C:\Users\Administrator\Desktop\vegetablesTrading\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
-        type="SPLIT" />
-    <artifact
-        location="C:\Users\Administrator\Desktop\vegetablesTrading\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
-        type="SPLIT" />
-    <artifact
-        location="C:\Users\Administrator\Desktop\vegetablesTrading\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
         type="SPLIT" />
     <artifact
         location="C:\Users\Administrator\Desktop\vegetablesTrading\app\build\outputs\apk\app-debug.apk"
@@ -50,10 +32,13 @@
 
     <build
         build-mode="FULL"
-        timestamp="1513734201694"
+        timestamp="1513760590707"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
-            location="C:\Users\Administrator\Desktop\vegetablesTrading\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
+            location="C:\Users\Administrator\Desktop\vegetablesTrading\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\Administrator\Desktop\vegetablesTrading\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
             type="SPLIT" />
         <artifact
             location="C:\Users\Administrator\Desktop\vegetablesTrading\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
@@ -68,16 +53,13 @@
             location="C:\Users\Administrator\Desktop\vegetablesTrading\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\Administrator\Desktop\vegetablesTrading\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\Administrator\Desktop\vegetablesTrading\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
+            location="C:\Users\Administrator\Desktop\vegetablesTrading\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
             type="SPLIT" />
         <artifact
             location="C:\Users\Administrator\Desktop\vegetablesTrading\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\Administrator\Desktop\vegetablesTrading\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
+            location="C:\Users\Administrator\Desktop\vegetablesTrading\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
             type="SPLIT" />
         <artifact
             location="C:\Users\Administrator\Desktop\vegetablesTrading\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
@@ -91,28 +73,18 @@
     </build>
     <build
         build-mode="COLD"
-        timestamp="1513737089887"
+        timestamp="1513760804098"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="C:\Users\Administrator\Desktop\vegetablesTrading\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\Administrator\Desktop\vegetablesTrading\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
-            type="SPLIT" />
+            location="C:\Users\Administrator\Desktop\vegetablesTrading\app\build\outputs\apk\app-debug.apk"
+            type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="COLD"
+        timestamp="1513760863964"
+        verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="C:\Users\Administrator\Desktop\vegetablesTrading\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\Administrator\Desktop\vegetablesTrading\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\Administrator\Desktop\vegetablesTrading\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\Administrator\Desktop\vegetablesTrading\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\Administrator\Desktop\vegetablesTrading\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
             type="SPLIT" />
         <artifact
             location="C:\Users\Administrator\Desktop\vegetablesTrading\app\build\outputs\apk\app-debug.apk"

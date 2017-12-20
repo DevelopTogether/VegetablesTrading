@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.vegetablestrading.R;
 import com.vegetablestrading.bean.TransportRecord;
+import com.vegetablestrading.utils.CalendarUtil;
 
 import java.util.ArrayList;
 
@@ -39,6 +40,11 @@ public class TransportRecordAdapter extends RecyclerView.Adapter<TransportRecord
         holder.mTransportNoTv.setText("配送单号："+transportRecord.getLogisticsNo());
         holder.mTransportPersonTv.setText("配送人："+ transportRecord.getTransportPeople());
         holder.mTransportTimeTv.setText( "配送时间："+transportRecord.getTransportTime());
+        if (!CalendarUtil.checkDateBelongThisWeek(transportRecord.getTransportTime())) {
+            holder.transport_status_tv.setText("已过期");
+        }else{
+            holder.transport_status_tv.setText("");
+        }
         holder.mTransportPersonMobileTv.setText( "配送人手机："+transportRecord.getTransportPeopleMobile());
         holder.transport_record_ll.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +67,7 @@ public class TransportRecordAdapter extends RecyclerView.Adapter<TransportRecord
         TextView mTransportPersonTv;
         TextView mTransportTimeTv;
         TextView mTransportPersonMobileTv;
+        TextView transport_status_tv;
         LinearLayout transport_record_ll;
 
         ViewHolder(View view) {
@@ -69,6 +76,7 @@ public class TransportRecordAdapter extends RecyclerView.Adapter<TransportRecord
             this.mTransportPersonTv = (TextView) view.findViewById(R.id.transport_person_tv);
             this.mTransportTimeTv = (TextView) view.findViewById(R.id.transportTime_tv);
             this.mTransportPersonMobileTv = (TextView) view.findViewById(R.id.transport_person_mobile_tv);
+            this.transport_status_tv = (TextView) view.findViewById(R.id.transport_status_tv);
             this.transport_record_ll = (LinearLayout) view.findViewById(R.id.transport_record_ll);
         }
     }

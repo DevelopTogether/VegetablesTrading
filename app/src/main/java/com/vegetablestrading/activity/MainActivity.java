@@ -86,6 +86,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         checkForUpdate(this);
     }
 
+
     /**
      * 关闭Activity的回调
      */

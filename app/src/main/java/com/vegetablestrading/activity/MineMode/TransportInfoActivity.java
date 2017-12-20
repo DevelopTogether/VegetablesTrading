@@ -34,6 +34,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 
 import okhttp3.Call;
 
@@ -140,17 +141,17 @@ public class TransportInfoActivity extends BaseActivity implements View.OnClickL
         mTransportInfoDetailRv.setAdapter(adapter);
         mTransportInfoDetailRv.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.HORIZONTAL, R.drawable.horizontal_line_grey));
         String[] times = CalendarUtil.getWeekStartAndWeekEndBaseTime(CalendarUtil.getZeroTime(transportRecord.getTransportTime()));
-       if (times.length>1) {
-           transportVegetablesByDate(times[0], times[1]);
-       }
+        if (times.length > 1) {
+            transportVegetablesByDate(times[0], times[1]);
+        }
 
-        mTransportNoTv.setText("配送单号："+transportRecord.getLogisticsNo());
-        mTransportTimeTv.setText("配送时间："+transportRecord.getTransportTime());
-        mTransportPersionTv.setText("配送人："+transportRecord.getTransportPeople());
-        mTransportPersionMobileTv.setText("配送人电话："+transportRecord.getTransportPeopleMobile());
-        mAcceptPersionTv.setText("收货人："+transportRecord.getUserName());
-        mAcceptPersionMobileTv.setText("收货人电话："+transportRecord.getMobile());
-        mAcceptAddrTv.setText("收货地址："+transportRecord.getAddress());
+        mTransportNoTv.setText("配送单号：" + transportRecord.getLogisticsNo());
+        mTransportTimeTv.setText("配送时间：" + transportRecord.getTransportTime());
+        mTransportPersionTv.setText("配送人：" + transportRecord.getTransportPeople());
+        mTransportPersionMobileTv.setText("配送人电话：" + transportRecord.getTransportPeopleMobile());
+        mAcceptPersionTv.setText("收货人：" + transportRecord.getUserName());
+        mAcceptPersionMobileTv.setText("收货人电话：" + transportRecord.getMobile());
+        mAcceptAddrTv.setText("收货地址：" + transportRecord.getAddress());
         mLogisticsStatusTv = (TextView) findViewById(R.id.logistics_status_tv);
         mDirectionIconIv = (ImageView) findViewById(R.id.direction_icon_iv);
         mDirectionIconIv.setBackgroundResource(R.drawable.down);
@@ -274,10 +275,21 @@ public class TransportInfoActivity extends BaseActivity implements View.OnClickL
                                 if ("Ok".equals(result)) {
                                     String message = obj.getString("Model");
                                     ArrayList<LogisticsInfo> arrays = GsonUtils.jsonToArrayList(message, LogisticsInfo.class);
+                                    Iterator<LogisticsInfo> it = arrays.iterator();
+                                    while (it.hasNext()){
+                                        LogisticsInfo logisticsInfo=it.next();
+                                        if (logisticsInfo.getRemark()==null||TextUtils.isEmpty(logisticsInfo.getRemark())) {
+                                            it.remove();
+                                        }
+                                    }
+                                    if (arrays.size() > 0) {
+                                        Collections.reverse(arrays);
+                                        adapter_logistics.setData(arrays);
+                                        putLogisticsInfoToSqlite(arrays);
+                                    } else {
+                                        mLogisticsStatusTv.setText("暂无物流信息");
+                                    }
 
-                                    Collections.reverse(arrays);
-                                    adapter_logistics.setData(arrays);
-                                    putLogisticsInfoToSqlite(arrays);
                                 } else {
                                     mLogisticsStatusTv.setText("暂无物流信息");
                                 }

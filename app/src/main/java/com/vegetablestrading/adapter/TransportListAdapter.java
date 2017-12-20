@@ -53,8 +53,8 @@ public class TransportListAdapter extends RecyclerView.Adapter<TransportListAdap
         final TransportVegetableInfo bean = arrayList.get(position);
         Glide.with(context)
                 .load(Uri.parse(Constant.company_url + bean.getVegetableIcon()))
-                .placeholder(R.drawable.placeholder_icon) // can also be a drawable
-                .error(R.drawable.placeholder_icon) // will be displayed if the image cannot be loaded
+                .placeholder(R.drawable.loading_icon) // can also be a drawable
+                .error(R.drawable.unload_icon) // will be displayed if the image cannot be loaded
                 .into(holder.mVegetableIconIv);
         holder.mVegetableNameTv.setText(bean.getVegetableName());
         holder.mVegetableWeightTv.setText("重量：" + bean.getWeight() + "g");
