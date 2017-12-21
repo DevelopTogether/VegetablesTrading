@@ -84,6 +84,9 @@ public class EditTestChangedListener implements TextWatcher{
                }
                break;
            case 2://密码
+               if (TextUtils.isEmpty(mString)) {
+                   return;
+               }
                if (mString.length()>11) {
                    if (!PublicUtils.isContainAll(mString)) {
                        Toast.makeText(context, "请按规定格式填写密码以保证账号安全", Toast.LENGTH_LONG).show();
@@ -94,6 +97,9 @@ public class EditTestChangedListener implements TextWatcher{
                break;
            case 3://重复密码
                String pwd = editText_pre.getText().toString().trim();
+               if (TextUtils.isEmpty(pwd)) {
+                   return;
+               }
                if (mString.length()>pwd.length()-1) {
                    if (!PublicUtils.isContainAll(pwd)) {
                        Toast.makeText(context, "密码设置不符合规范，需要字母和数字的组合", Toast.LENGTH_LONG).show();

@@ -115,20 +115,97 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
      */
     private EditText mDetailAddrEt;
     private SharedPreferencesHelper sharedPreferencesHelper;
+    private SharedPreferencesHelper sharedPreferencesHelper_edit;
     private String cityId;
+    private boolean registed = false;//是否注册成功
+    private boolean selectAddrClicked = false;//选择地区点击事件
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_regist);
         initView();
+        sharedPreferencesHelper = new SharedPreferencesHelper(this, "USERINFO");
+        sharedPreferencesHelper_edit = new SharedPreferencesHelper(this, "USERINFO_TOEDIE");
+
         initActionBar();
         registBroadcast();
-        sharedPreferencesHelper = new SharedPreferencesHelper(this, "USERINFO");
         registSmsReceiver();
 
 
     }
+
+    /**
+     * 初始化view数据
+     */
+    private void initViewData() {
+        String mobile = sharedPreferencesHelper_edit.getString("MOBILE", "");
+        String testCode = sharedPreferencesHelper_edit.getString("TEST_CODE", "");
+        String pwd = sharedPreferencesHelper_edit.getString("PWD", "");
+        String repwd = sharedPreferencesHelper_edit.getString("REPWD", "");
+        String email = sharedPreferencesHelper_edit.getString("EMAIL", "");
+        String petName = sharedPreferencesHelper_edit.getString("PETNAME", "");
+        String addr = sharedPreferencesHelper_edit.getString("ADDR", "");
+        String addr_detail = sharedPreferencesHelper_edit.getString("ADDR_DETAIL", "");
+        mUserMobileEt.setText(mobile);
+        mUserTestEt.setText(testCode);
+        mUserPwdEt.setText(pwd);
+        mUserRePwdEt.setText(repwd);
+        mUserEmailEt.setText(email);
+        mUserPetNameEt.setText(petName);
+        mSelectAddrTv.setText(addr);
+        mDetailAddrEt.setText(addr_detail);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (!selectAddrClicked) {
+            initViewData();
+        }else{
+            selectAddrClicked = false;
+        }
+
+    }
+
+    /**
+     * 清除数据
+     */
+
+    private void clearViewData() {
+        sharedPreferencesHelper_edit.putString("MOBILE", "");
+        sharedPreferencesHelper_edit.putString("TEST_CODE", "");
+        sharedPreferencesHelper_edit.putString("PWD", "");
+        sharedPreferencesHelper_edit.putString("REPWD", "");
+        sharedPreferencesHelper_edit.putString("EMAIL", "");
+        sharedPreferencesHelper_edit.putString("PETNAME", "");
+        sharedPreferencesHelper_edit.putString("ADDR", "");
+        sharedPreferencesHelper_edit.putString("ADDR_DETAIL", "");
+    }
+
+    /**
+     * 保存view数据
+     */
+
+    private void saveViewData() {
+        mobile = mUserMobileEt.getText().toString().trim();
+        String testCode = mUserTestEt.getText().toString().trim();
+        String pwd = mUserPwdEt.getText().toString().trim();
+        String repwd = mUserRePwdEt.getText().toString().trim();
+        String email = mUserEmailEt.getText().toString().trim();
+        String petName = mUserPetNameEt.getText().toString().trim();
+        String addr = mSelectAddrTv.getText().toString().trim();
+        String addr_detail = mDetailAddrEt.getText().toString().trim();
+        sharedPreferencesHelper_edit.putString("MOBILE", mobile);
+        sharedPreferencesHelper_edit.putString("TEST_CODE", testCode);
+        sharedPreferencesHelper_edit.putString("PWD", pwd);
+        sharedPreferencesHelper_edit.putString("REPWD", repwd);
+        sharedPreferencesHelper_edit.putString("EMAIL", email);
+        sharedPreferencesHelper_edit.putString("PETNAME", petName);
+        sharedPreferencesHelper_edit.putString("ADDR", addr);
+        sharedPreferencesHelper_edit.putString("ADDR_DETAIL", addr_detail);
+    }
+
     private void registSmsReceiver() {
         IntentFilter filter = new IntentFilter(
                 "android.provider.Telephony.SMS_RECEIVED");
@@ -153,7 +230,7 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
 
                         String num = smsMessage[n].getOriginatingAddress();
                         String content = smsMessage[n].getMessageBody();
-                         String code = content.substring(14,18);
+                        String code = content.substring(14, 18);
                         mUserTestEt.setText(code);
                         abortBroadcast();
                     }
@@ -292,6 +369,7 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
                 startActivity(new Intent(this, LoginActivity.class));
                 break;
             case R.id.select_addr_ll://选择收货地址
+                selectAddrClicked = true;
                 ChooserActivity.start(RegistActivity.this, null);
                 break;
         }
@@ -421,11 +499,10 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
             Toast.makeText(this, "请选择是否同意《账号服务条款，隐私政策》", Toast.LENGTH_SHORT).show();
             return;
         }
-        registToService(pwd, email, petName,addr_detail);
+        registToService(pwd, email, petName, addr_detail);
 
         //将手机号保存到sp中
         sharedPreferencesHelper.putString("USER_MOBILE", mobile);
-        Toast.makeText(getApplicationContext(), "注册成功", Toast.LENGTH_LONG).show();
         startActivity(new Intent(this, LoginActivity.class));
 
 
@@ -436,8 +513,8 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
      * @param email
      * @param petName
      */
-    private void registToService(String pwd, String email, String petName,String detailAddr) {
-        String uploadAddr =  "1,"+cityId+","+detailAddr;
+    private void registToService(String pwd, String email, String petName, String detailAddr) {
+        String uploadAddr = "1," + cityId + "," + detailAddr;
         mRegistRightnowTv.setClickable(false);
         mRegistRightnowTv.setBackgroundResource(R.drawable.bt_unpress_selecter);
         OkHttpUtils
@@ -448,11 +525,12 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
                 .addParams("email", email)
                 .addParams("userName", petName)
                 .addParams("userLevel", getVipType())
-                .addParams("address",uploadAddr)
+                .addParams("address", uploadAddr)
                 .build()
                 .execute(new StringCallback() {
                     @Override
                     public void onError(Call call, Exception e, int id) {
+                        registed = false;
                         mRegistRightnowTv.setClickable(true);
                         mRegistRightnowTv.setBackgroundResource(R.drawable.bt_pressed_selecter);
                         Toast.makeText(getApplicationContext(), "", Toast.LENGTH_LONG).show();
@@ -466,8 +544,11 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
                                 String result = obj.getString("Result");
                                 String message = obj.getString("Message");
                                 if ("Ok".equals(result)) {
+                                    registed = true;
                                     Toast.makeText(getApplicationContext(), "注册成功", Toast.LENGTH_LONG).show();
+                                    finish();
                                 } else {
+                                    registed = false;
                                     if ("账号已存在".equals(message)) {
                                         Toast.makeText(getApplicationContext(), "账号已存在,无需重复注册", Toast.LENGTH_LONG).show();
                                     } else {
@@ -509,5 +590,25 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
             default:
                 return "3";
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (registed) {
+            clearViewData();
+        } else {
+            saveViewData();
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        if (registed) {
+            clearViewData();
+        } else {
+            saveViewData();
+        }
+        super.onSaveInstanceState(outState);
     }
 }
