@@ -309,16 +309,20 @@ public class ActivateUserActivity extends BaseActivity implements View.OnClickLi
                 changeCheckBoxStatus(false);
                 break;
             case R.id.confirm_pay_tv://开始支付
+
+                if (mSelectedAliPayCb.isChecked()) {//通过支付宝支付
+                    getOrderInfoByService(getYearLimit(), "100");
+                } else {
+                    if (!PublicUtils.isWeixinAvilible(this)) {
+                        Toast.makeText(getApplicationContext(), "您还没有安装微信，请安装后再使用微信支付", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                    getMsgForWeixinPay(getYearLimit(), "100");
+                }
                 if (popWindow != null && popWindow.isShowing()) {
                     popWindow.dismiss();
                     popWindow = null;
                 }
-                if (mSelectedAliPayCb.isChecked()) {//通过支付宝支付
-                    getOrderInfoByService(getYearLimit(), "100");
-                } else {
-                    getMsgForWeixinPay(getYearLimit(), "100");
-                }
-
                 break;
         }
     }

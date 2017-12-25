@@ -34,11 +34,11 @@ public class CalendarUtil {
      */
     public static String getSpecialTypeTime(String time) {
         // 将时间戳转为字符串
-            String re_StrTime = null;
-            long lcc_time = Long.valueOf(time);
-            re_StrTime = sdf.format(new Date(lcc_time * 1000L));
-            return re_StrTime;
-}
+        String re_StrTime = null;
+        long lcc_time = Long.valueOf(time);
+        re_StrTime = sdf.format(new Date(lcc_time * 1000L));
+        return re_StrTime;
+    }
 
     /**
      * 获取当前的时间
@@ -50,6 +50,7 @@ public class CalendarUtil {
         return sdf.format(ca.getTime());
 
     }
+
     /**
      * 获取当前的时间
      *
@@ -73,22 +74,23 @@ public class CalendarUtil {
         return sdf.format(ca.getTime()) + " " + "12:00:00";
 
     }
+
     /**
      * 获取0点的时间
      *
+     * @return yyyy-MM-dd 00:00:00
      * @time yyyy-MM-dd **:**:**
-     * @return  yyyy-MM-dd 00:00:00
      */
     public static String getZeroTime(String time) {
         String time_return = "";
         SimpleDateFormat sdf_a = new SimpleDateFormat("yyyy-MM-dd");
         try {
-           Date date =  sdf.parse(time);
-           time_return =  sdf_a.format(date)+" 00:00:00";
+            Date date = sdf.parse(time);
+            time_return = sdf_a.format(date) + " 00:00:00";
         } catch (ParseException e) {
             e.printStackTrace();
         }
-return time_return;
+        return time_return;
     }
 
     /**
@@ -204,7 +206,7 @@ return time_return;
         try {
             Long a = sdf.parse(startTime).getTime();
             Long b = sdf.parse(endTime).getTime();
-            if (a > b) {
+            if ((a-b)>0) {
                 return true;
             } else {
                 return false;
@@ -228,9 +230,9 @@ return time_return;
             Long a = sdf.parse(startTime).getTime();
             Long b = sdf.parse(endTime).getTime();
             Long currentTime = sdf.parse(getCurrentTime2()).getTime();
-            if (a<currentTime) {
+            if (a < currentTime) {
                 return false;
-            }else{
+            } else {
                 if (a > b) {
                     return false;
                 } else {
@@ -310,6 +312,20 @@ return time_return;
             e.printStackTrace();
         }
         return time_info;
+    }
+
+    /**
+     * 判定当前日期是否属于本周,如果时间大于本周的第一天，属于本周，否则不属于本周
+     *
+     * @param date yyyy-MM-dd HH:mm:ss
+     */
+
+    public static boolean checkDateBelongThisWeek(String date) {
+        if (compareTime(date, getTimeOfWeekStart())) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.vegetablestrading"
     android:versionCode="1"
-    android:versionName="1.1.0" >
+    android:versionName="1.2.0" >
 
     <uses-sdk
         android:minSdkVersion="19"
@@ -44,7 +44,6 @@
         android:theme="@style/AppTheme.NoActionBar" >
         <activity
             android:name="com.vegetablestrading.activity.LoginActivity"
-            android:launchMode="singleTask"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

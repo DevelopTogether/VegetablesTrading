@@ -40,6 +40,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
+                android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -51,6 +52,8 @@
                     android:layout_weight="1"
                     android:paddingLeft="8dp"
                     android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:gravity="center"
                     android:text="油菜"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />

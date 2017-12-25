@@ -5,6 +5,7 @@ import android.app.Application;
 import android.support.v4.util.ArrayMap;
 import android.util.Log;
 
+import com.vegetablestrading.utils.CrashHandler;
 import com.zhy.http.okhttp.OkHttpUtils;
 
 import java.util.Iterator;
@@ -23,6 +24,8 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        CrashHandler crashHandler = CrashHandler.getInstance();
+        crashHandler.init(getApplicationContext());
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
 //                .addInterceptor(new LoggerInterceptor("TAG"))
                 .connectTimeout(10000L, TimeUnit.MILLISECONDS)

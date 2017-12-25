@@ -5,6 +5,8 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
@@ -30,6 +32,7 @@ import com.vegetablestrading.bean.TransportRecord;
 import com.vegetablestrading.bean.TransportVegetableInfo;
 import com.vegetablestrading.bean.UserInfo;
 
+import java.util.List;
 import java.util.regex.Pattern;
 
 /**
@@ -121,6 +124,11 @@ public class PublicUtils {
         return Pattern.matches(REGEX_EMAIL, email);
     }
 
+    /**
+     * 判定是否有网络
+     * @param context
+     * @return
+     */
     public static boolean isConnected(Context context) {
         boolean isOk = true;
         try {
@@ -348,5 +356,19 @@ public class PublicUtils {
         AbsoluteSizeSpan spanSize = new AbsoluteSizeSpan(14, true);//true代表dp单位生效
         spanString.setSpan(spanSize, 0, spanString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         et.setHint(new SpannedString(spanString));
+    }
+
+    public static boolean isWeixinAvilible(Context context) {
+        final PackageManager packageManager = context.getPackageManager();// 获取packagemanager
+        List<PackageInfo> pinfo = packageManager.getInstalledPackages(0);// 获取所有已安装程序的包信息
+        if (pinfo != null) {
+            for (int i = 0; i < pinfo.size(); i++) {
+                String pn = pinfo.get(i).packageName;
+                if (pn.equals("com.tencent.mm")) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

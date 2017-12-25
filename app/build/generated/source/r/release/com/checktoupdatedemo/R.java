@@ -572,20 +572,20 @@ public final class R {
         public static final int abc_textfield_search_material = 0x7f020051;
         public static final int abc_vector_test = 0x7f020052;
         public static final int check_update_progressbar = 0x7f020063;
-        public static final int notification_action_background = 0x7f02008a;
-        public static final int notification_bg = 0x7f02008b;
-        public static final int notification_bg_low = 0x7f02008c;
-        public static final int notification_bg_low_normal = 0x7f02008d;
-        public static final int notification_bg_low_pressed = 0x7f02008e;
-        public static final int notification_bg_normal = 0x7f02008f;
-        public static final int notification_bg_normal_pressed = 0x7f020090;
-        public static final int notification_icon_background = 0x7f020091;
-        public static final int notification_template_icon_bg = 0x7f0200ad;
-        public static final int notification_template_icon_low_bg = 0x7f0200ae;
-        public static final int notification_tile_bg = 0x7f020092;
-        public static final int notify_panel_notification_icon_bg = 0x7f020093;
-        public static final int warn_update_bg = 0x7f0200a9;
-        public static final int warn_update_bg_shape = 0x7f0200aa;
+        public static final int notification_action_background = 0x7f02008b;
+        public static final int notification_bg = 0x7f02008c;
+        public static final int notification_bg_low = 0x7f02008d;
+        public static final int notification_bg_low_normal = 0x7f02008e;
+        public static final int notification_bg_low_pressed = 0x7f02008f;
+        public static final int notification_bg_normal = 0x7f020090;
+        public static final int notification_bg_normal_pressed = 0x7f020091;
+        public static final int notification_icon_background = 0x7f020092;
+        public static final int notification_template_icon_bg = 0x7f0200b0;
+        public static final int notification_template_icon_low_bg = 0x7f0200b1;
+        public static final int notification_tile_bg = 0x7f020093;
+        public static final int notify_panel_notification_icon_bg = 0x7f020094;
+        public static final int warn_update_bg = 0x7f0200ac;
+        public static final int warn_update_bg_shape = 0x7f0200ad;
     }
     public static final class id {
         public static final int action0 = 0x7f0d014b;
@@ -663,7 +663,7 @@ public final class R {
         public static final int progress_number = 0x7f0d012c;
         public static final int progress_percent = 0x7f0d012b;
         public static final int radio = 0x7f0d0064;
-        public static final int regdialog = 0x7f0d0195;
+        public static final int regdialog = 0x7f0d0196;
         public static final int right_icon = 0x7f0d0157;
         public static final int right_side = 0x7f0d0152;
         public static final int screen = 0x7f0d0028;
@@ -700,7 +700,7 @@ public final class R {
         public static final int text2 = 0x7f0d015b;
         public static final int textSpacerNoButtons = 0x7f0d0059;
         public static final int textSpacerNoTitle = 0x7f0d0058;
-        public static final int textView = 0x7f0d0196;
+        public static final int textView = 0x7f0d0197;
         public static final int time = 0x7f0d0153;
         public static final int title = 0x7f0d0051;
         public static final int titleDividerNoCustom = 0x7f0d0060;
@@ -708,10 +708,10 @@ public final class R {
         public static final int top = 0x7f0d0037;
         public static final int topPanel = 0x7f0d005d;
         public static final int up = 0x7f0d000d;
-        public static final int update_later_tv = 0x7f0d0199;
-        public static final int update_rightnow_tv = 0x7f0d0198;
+        public static final int update_later_tv = 0x7f0d019a;
+        public static final int update_rightnow_tv = 0x7f0d0199;
         public static final int useLogo = 0x7f0d0020;
-        public static final int version_description_lv = 0x7f0d0197;
+        public static final int version_description_lv = 0x7f0d0198;
         public static final int withText = 0x7f0d0045;
         public static final int wrap = 0x7f0d0011;
         public static final int wrap_content = 0x7f0d002c;
