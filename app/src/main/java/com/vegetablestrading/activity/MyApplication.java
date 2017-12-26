@@ -32,7 +32,6 @@ public class MyApplication extends Application {
                 .readTimeout(10000L, TimeUnit.MILLISECONDS)
                 //其他配置
                 .build();
-
         OkHttpUtils.initClient(okHttpClient);
     }
 
