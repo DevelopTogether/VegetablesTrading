@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.vegetablestrading"
     android:versionCode="1"
-    android:versionName="1.2.0" >
+    android:versionName="1.3.0" >
 
     <uses-sdk
         android:minSdkVersion="19"
@@ -124,6 +124,8 @@
             android:name="com.vegetablestrading.activity.MineMode.myPick.MyPickActivity"
             android:screenOrientation="portrait" />
         <activity android:name="com.vegetablestrading.activity.VegetableDescriptActivity" />
+        <activity android:name="com.vegetablestrading.activity.MineMode.AddrManagerActivity" />
+        <activity android:name="com.vegetablestrading.activity.MineMode.AddAddressActivity" />
         <activity
             android:name="com.choseaddrdemo.selectAddr.ChooserActivity"
             android:theme="@style/AppTheme.NoActionBar" />

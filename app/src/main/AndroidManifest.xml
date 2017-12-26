@@ -106,7 +106,9 @@
         <activity
             android:name=".activity.MineMode.myPick.MyPickActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.VegetableDescriptActivity"></activity>
+        <activity android:name=".activity.VegetableDescriptActivity" />
+        <activity android:name=".activity.MineMode.AddrManagerActivity" />
+        <activity android:name=".activity.MineMode.AddAddressActivity"></activity>
     </application>
 
 </manifest>

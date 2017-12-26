@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.vegetablestrading.R;
 import com.vegetablestrading.activity.MineMode.AboutUsActivity;
 import com.vegetablestrading.activity.MineMode.ActivateUserActivity;
+import com.vegetablestrading.activity.MineMode.AddrManagerActivity;
 import com.vegetablestrading.activity.MineMode.ModifyPwdActivity;
 import com.vegetablestrading.activity.MineMode.MyInfoActivity;
 import com.vegetablestrading.activity.MineMode.MyIntegralActivity;
@@ -146,6 +147,9 @@ public class FragmentTab4 extends Fragment {
                         break;
                     case "安全退出":
                         PublicUtils.warnUserExitApp(context);
+                        break;
+                    case "地址管理":
+                        startActivity(new Intent(context, AddrManagerActivity.class));
                         break;
                     default:
                         break;
