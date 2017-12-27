@@ -146,7 +146,7 @@ public class FragmentTab4 extends Fragment {
 
                         break;
                     case "安全退出":
-                        PublicUtils.warnUserExitApp(context);
+                        PublicUtils.warnUserForOperate(context,"exit");
                         break;
                     case "地址管理":
                         startActivity(new Intent(context, AddrManagerActivity.class));

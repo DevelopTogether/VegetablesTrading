@@ -33,11 +33,11 @@
             android:layout_weight="1"
             android:background="@null"
             android:gravity="center_vertical"
-            android:hint="会员名称，不能使用特殊字符"
+            android:hint="收货人姓名，不能使用特殊字符"
             android:inputType="text"
             android:maxLength="10"
             android:singleLine="true"
-            android:textColor="#000000"
+            android:textColor="#8a8a8a"
             android:textColorHint="#8a8a8a"
             android:textSize="16sp" />
     </LinearLayout>
@@ -73,7 +73,7 @@
             android:hint="请输入手机号"
             android:inputType="phone"
             android:singleLine="true"
-            android:textColor="#000000"
+            android:textColor="#8a8a8a"
             android:textColorHint="#8a8a8a"
             android:textSize="16sp" />
     </LinearLayout>
@@ -99,8 +99,8 @@
             android:textColor="@android:color/black"
             android:textSize="16sp" />
 
-        <EditText
-            android:id="@+id/accepter_addr_et"
+        <TextView
+            android:id="@+id/accepter_addr_tv"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="15dp"
@@ -109,7 +109,7 @@
             android:gravity="center_vertical"
             android:hint="请选择地区"
             android:singleLine="true"
-            android:textColor="#000000"
+            android:textColor="#8a8a8a"
             android:textColorHint="#8a8a8a"
             android:textSize="16sp" />
 
@@ -149,9 +149,9 @@
             android:layout_weight="1"
             android:background="@null"
             android:gravity="center_vertical"
-            android:hint="街道门牌信息"
+            android:hint="详细信息"
             android:singleLine="true"
-            android:textColor="#000000"
+            android:textColor="#8a8a8a"
             android:textColorHint="#8a8a8a"
             android:textSize="16sp" />
         />
@@ -185,6 +185,7 @@
             android:layout_height="27dp"
             android:buttonTint="@color/app_green"
             android:checked="false"
+            android:focusable="false"
             android:textColor="@android:color/black"
             android:textSize="16sp"
             android:textStyle="bold" />

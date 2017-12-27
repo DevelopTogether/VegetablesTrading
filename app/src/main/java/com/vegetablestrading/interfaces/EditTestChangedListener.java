@@ -181,6 +181,15 @@ public class EditTestChangedListener implements TextWatcher{
 //                   mTextView.setBackgroundResource(R.drawable.cancel_regist_shape);
 //               }
                break;
+           case 15://地址管理中的收货人手机号监听
+               if (mString.length()>10) {
+                   if (!PublicUtils.isMobileNO(mString)) {
+                       Toast.makeText(context, "手机号格式不正确", Toast.LENGTH_LONG).show();
+                       return;
+                   }
+
+               }
+               break;
            default:
                break;
        }

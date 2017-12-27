@@ -281,11 +281,11 @@ public class PublicUtils {
         return dialog_toWarn;
     }
     /**
-     * 提醒用户退出应用
+     * 用户操作提醒
      *
      * @param context
      */
-    public static Dialog warnUserExitApp(final Context context) {
+    public static Dialog warnUserForOperate(final Context context,String tag) {
 
         View v = LayoutInflater.from(context).inflate(R.layout.warn_user_exit_layout
                 , null);
@@ -315,6 +315,8 @@ public class PublicUtils {
         });
         final TextView confirm_exit = (TextView) v.findViewById(R.id.confirm_exit_tv);
         final TextView cancel_exit = (TextView) v.findViewById(R.id.cancel_exit_tv);
+        final TextView warn_content_tv = (TextView) v.findViewById(R.id.warn_content_tv);
+        warn_content_tv.setText("您确定退出应用？");
         confirm_exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

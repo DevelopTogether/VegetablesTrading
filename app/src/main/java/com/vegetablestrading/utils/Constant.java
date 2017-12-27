@@ -39,6 +39,10 @@ public class Constant {
     public static String userActivateThroughALiPay_url = company_url + "/index.php/Home/vegetableshop/userActivateThroughALiPay.html";
     public static String userActivateThroughWeiXinPay_url = company_url + "/index.php/Home/vegetableshop/userActivateThroughWeiXinPay.html";
     public static String userActivateAfterPay_url = company_url + "/index.php/Home/vegetableshop/userActivateAfterPay.html";
+    public static String addAddress_url = company_url + "/index.php/Home/vegetableshop/addAddress.html";
+    public static String delAddress_url = company_url + "/index.php/Home/vegetableshop/delAddress.html";
+    public static String setDefaultAddress_url = company_url + "/index.php/Home/vegetableshop/setDefaultAddress.html";
+    public static String getAllAddress_url = company_url + "/index.php/Home/vegetableshop/getAllAddress.html";
 
 
 }
