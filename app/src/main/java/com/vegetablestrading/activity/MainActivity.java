@@ -51,21 +51,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private TextView mNavigationTv4;
     private LinearLayout mNavigationLine4;
     private FragmentManager fragmentManager;
-    private FragmentTab1 navitionFragment1;
-    private FragmentTab4 navitionFragment4;
-    private FragmentTab33 navitionFragment3;
-    private FragmentTab22 navitionFragment2;
+    private FragmentTab1 navitionFragment1 = new FragmentTab1();;
+    private FragmentTab4 navitionFragment4  = new FragmentTab4();;
+    private FragmentTab33 navitionFragment3  = new FragmentTab33();;
+    private FragmentTab22 navitionFragment2 = new FragmentTab22();;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         fragmentManager = getSupportFragmentManager();
-        if (savedInstanceState == null) {
-            navitionFragment1 = new FragmentTab1();
-            navitionFragment4 = new FragmentTab4();
-            navitionFragment3 = new FragmentTab33();
-            navitionFragment2 = new FragmentTab22();
-        }else{
+        if (savedInstanceState != null) {
             navitionFragment1 = (FragmentTab1) fragmentManager.getFragment(savedInstanceState,"navitionFragment1");
             navitionFragment2 = (FragmentTab22) fragmentManager.getFragment(savedInstanceState,"navitionFragment2");
             navitionFragment3 = (FragmentTab33) fragmentManager.getFragment(savedInstanceState,"navitionFragment3");

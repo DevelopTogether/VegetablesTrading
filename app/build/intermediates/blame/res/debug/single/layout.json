@@ -48,6 +48,10 @@
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\8596fb658d42cd9e34405aecf52d5354d8001d94\\output\\res\\layout\\abc_popup_menu_item_layout.xml"
     },
     {
+        "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\layout\\my_address_three.xml",
+        "source": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\layout\\my_address_three.xml"
+    },
+    {
         "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_time.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\8596fb658d42cd9e34405aecf52d5354d8001d94\\output\\res\\layout\\notification_template_part_time.xml"
     },
@@ -426,6 +430,10 @@
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_multichoice_material.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\8596fb658d42cd9e34405aecf52d5354d8001d94\\output\\res\\layout\\select_dialog_multichoice_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\layout\\no_record.xml",
+        "source": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\layout\\no_record.xml"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\layout\\vegetable_types_layout.xml",

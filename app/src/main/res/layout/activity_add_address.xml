@@ -37,9 +37,9 @@
             android:inputType="text"
             android:maxLength="10"
             android:singleLine="true"
-            android:textColor="#8a8a8a"
+            android:textColor="#000000"
             android:textColorHint="#8a8a8a"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
     </LinearLayout>
 
     <View
@@ -73,9 +73,9 @@
             android:hint="请输入手机号"
             android:inputType="phone"
             android:singleLine="true"
-            android:textColor="#8a8a8a"
+            android:textColor="#000000"
             android:textColorHint="#8a8a8a"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
     </LinearLayout>
 
     <View
@@ -109,9 +109,9 @@
             android:gravity="center_vertical"
             android:hint="请选择地区"
             android:singleLine="true"
-            android:textColor="#8a8a8a"
+            android:textColor="#000000"
             android:textColorHint="#8a8a8a"
-            android:textSize="16sp" />
+            android:textSize="14sp"/>
 
         <ImageView
             android:layout_width="27dp"
@@ -151,9 +151,9 @@
             android:gravity="center_vertical"
             android:hint="详细信息"
             android:singleLine="true"
-            android:textColor="#8a8a8a"
+            android:textColor="#000000"
             android:textColorHint="#8a8a8a"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
         />
     </LinearLayout>
 
@@ -210,7 +210,7 @@
             android:padding="10dp"
             android:text="保 存"
             android:textColor="#ffffff"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
     </LinearLayout>
 
 </LinearLayout>

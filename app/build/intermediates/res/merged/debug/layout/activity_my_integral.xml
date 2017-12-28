@@ -60,6 +60,11 @@
             android:textColor="@android:color/black"
             android:textSize="14sp" />
     </LinearLayout>
+    <include
+        android:layout_marginTop="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        layout="@layout/no_record"></include>
     <android.support.v7.widget.RecyclerView
         android:layout_marginTop="2dp"
         android:id="@+id/mine_integral_rv"

@@ -36,9 +36,12 @@ import okhttp3.Call;
  * Time:2017/12/26 11:21
  * Description:This is AddressListAdapter
  */
-public class AddressListAdapter extends RecyclerView.Adapter<AddressListAdapter.ViewHolder> {
+public class AddressListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<AddressInfo> arrays;
     private Context context;
+    private final int Address_View_One = 1;
+    private final int Address_View_Two = 2;
+    private final int Address_View_Three = 3;
 
     public void setData(List<AddressInfo> arrays, Context context) {
         this.arrays = arrays;
@@ -47,40 +50,74 @@ public class AddressListAdapter extends RecyclerView.Adapter<AddressListAdapter.
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.my_address, parent, false));
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
+        if (viewType == Address_View_One) {
+            return new AddressViewHolderOne(LayoutInflater.from(context).inflate(R.layout.no_record, parent, false));
+        } else if (viewType == Address_View_Two) {
+            return new AddressViewHolderTwo(LayoutInflater.from(context).inflate(R.layout.my_address, parent, false));
+        } else {
+            return new AddressViewHolderThree(LayoutInflater.from(context).inflate(R.layout.my_address_three, parent, false));
+        }
+
+
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        final AddressInfo bean = arrays.get(position);
-        holder.mAccepterNameTv.setText(bean.getAccepter());
-        holder.mAccepterPhoneTv.setText(bean.getAccepterPhone());
-        holder.mAddrInfoTv.setText(bean.getAddress());
-        if (bean.getIsDefault() == null || TextUtils.isEmpty(bean.getIsDefault())) {
-            holder.mAgreeProvisionCb.setChecked(false);
-        } else {
-            if ("1".equals(bean.getIsDefault())) {
-                holder.mAgreeProvisionCb.setChecked(true);
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        if (holder instanceof AddressViewHolderOne) {
+            AddressViewHolderOne holderOne = (AddressViewHolderOne) holder;
+            holderOne.mNoRecordTv.setText("暂无收件地址信息");
+
+        } else if (holder instanceof AddressViewHolderTwo) {
+            AddressViewHolderTwo holderTwo = (AddressViewHolderTwo) holder;
+            final AddressInfo bean = arrays.get(position);
+            holderTwo.mAccepterNameTv.setText(bean.getAccepter());
+            holderTwo.mAccepterPhoneTv.setText(bean.getAccepterPhone());
+            holderTwo.mAddrInfoTv.setText(bean.getAddress());
+            if (bean.getIsDefault() == null || TextUtils.isEmpty(bean.getIsDefault())) {
+                holderTwo.mAgreeProvisionCb.setChecked(false);
             } else {
-                holder.mAgreeProvisionCb.setChecked(false);
+                if ("1".equals(bean.getIsDefault())) {
+                    holderTwo.mAgreeProvisionCb.setChecked(true);
+                } else {
+                    holderTwo.mAgreeProvisionCb.setChecked(false);
+                }
             }
+            holderTwo.mAgreeProvisionCb.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    setDefaultAddr(bean.getAddressId());
+                }
+            });
+            holderTwo.mDeleteAddressLl.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    warnUserForOperate(bean);
+
+                }
+            });
+
+        } else {
+            AddressViewHolderThree holderThree = (AddressViewHolderThree) holder;
+            holderThree.addressCount.setText("共有"+(arrays.size()-1)+"条地址信息");
         }
-        holder.mAgreeProvisionCb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setDefaultAddr(bean.getAddressId());
-            }
-        });
-        holder.mDeleteAddressLl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                warnUserForOperate(bean);
-
-            }
-        });
-
     }
+
+
+    @Override
+    public int getItemViewType(int position) {
+        if (arrays.size() == 1) {
+            return Address_View_One;
+
+        } else if ("2".equals(arrays.get(position).getLayoutTag())) {
+            return Address_View_Two;
+        } else {
+            return Address_View_Three;
+        }
+    }
+
+
     /**
      * 设置默认地址
      */
@@ -122,9 +159,8 @@ public class AddressListAdapter extends RecyclerView.Adapter<AddressListAdapter.
 
     /**
      * 用户操作提醒
-     *
      */
-    private Dialog warnUserForOperate( final AddressInfo bean) {
+    private Dialog warnUserForOperate(final AddressInfo bean) {
 
         View v = LayoutInflater.from(context).inflate(R.layout.warn_user_exit_layout
                 , null);
@@ -172,14 +208,24 @@ public class AddressListAdapter extends RecyclerView.Adapter<AddressListAdapter.
         });
         return dialog_toWarn;
     }
+
     @Override
     public int getItemCount() {
         return arrays == null ? 0 : arrays.size();
     }
 
-    static
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    class AddressViewHolderOne extends RecyclerView.ViewHolder {
+
+        TextView mNoRecordTv;
+
+        AddressViewHolderOne(View view) {
+            super(view);
+            this.mNoRecordTv = (TextView) view.findViewById(R.id.no_record_tv);
+        }
+    }
+
+    class AddressViewHolderTwo extends RecyclerView.ViewHolder {
 
         TextView mAccepterNameTv;
         TextView mAccepterPhoneTv;
@@ -187,13 +233,23 @@ public class AddressListAdapter extends RecyclerView.Adapter<AddressListAdapter.
         CheckBox mAgreeProvisionCb;
         LinearLayout mDeleteAddressLl;
 
-        public ViewHolder(View itemView) {
+        public AddressViewHolderTwo(View itemView) {
             super(itemView);
             this.mAccepterNameTv = (TextView) itemView.findViewById(R.id.accepter_name_tv);
             this.mAccepterPhoneTv = (TextView) itemView.findViewById(R.id.accepter_phone_tv);
             this.mAddrInfoTv = (TextView) itemView.findViewById(R.id.addr_info_tv);
             this.mAgreeProvisionCb = (CheckBox) itemView.findViewById(R.id.agree_provision_cb);
             this.mDeleteAddressLl = (LinearLayout) itemView.findViewById(R.id.delete_address_ll);
+        }
+    }
+
+    class AddressViewHolderThree extends RecyclerView.ViewHolder {
+
+        TextView addressCount;
+
+        AddressViewHolderThree(View view) {
+            super(view);
+            this.addressCount = (TextView) view.findViewById(R.id.addressCount_tv);
         }
     }
 

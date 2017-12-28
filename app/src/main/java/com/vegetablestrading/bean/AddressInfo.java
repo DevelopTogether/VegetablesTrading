@@ -14,6 +14,7 @@ public class AddressInfo implements Comparable<AddressInfo> {
     private String addressId;//地址ID
     private String address;//地址信息
     private String isDefault;//是否是默认地址  1=> 是默认地址 2=> 不是默认地址
+    private String layoutTag ;
 
     public String getAccepter() {
         return accepter;
@@ -55,6 +56,13 @@ public class AddressInfo implements Comparable<AddressInfo> {
         this.isDefault = isDefault;
     }
 
+    public String getLayoutTag() {
+        return layoutTag;
+    }
+
+    public void setLayoutTag(String layoutTag) {
+        this.layoutTag = layoutTag;
+    }
 
     @Override
     public int compareTo(@NonNull AddressInfo addressInfo) {

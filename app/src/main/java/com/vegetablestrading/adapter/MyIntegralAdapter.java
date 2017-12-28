@@ -22,6 +22,9 @@ public class MyIntegralAdapter extends RecyclerView.Adapter<MyIntegralAdapter.Vi
     private ArrayList<TransportRecord> arrays;
     private MyIntegralItemClick myIntegralItemClick;
 
+    private final int no_data_view = 1;
+    private final int data_view = 2;
+
     public void setData(ArrayList<TransportRecord> arrays) {
       this.arrays = arrays;
         notifyDataSetChanged();
@@ -52,6 +55,14 @@ public class MyIntegralAdapter extends RecyclerView.Adapter<MyIntegralAdapter.Vi
         return arrays == null ? 0 : arrays.size();
     }
 
+    @Override
+    public int getItemViewType(int position) {
+        if (arrays==null||arrays.size()==0) {
+            return no_data_view;
+        }else{
+            return data_view;
+        }
+    }
 
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView mTransportDateTv;

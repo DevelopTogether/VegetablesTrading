@@ -5,9 +5,9 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -59,12 +59,17 @@ public class MyIntegralActivity extends BaseActivity implements View.OnClickList
     private RecyclerView mMineIntegralRv;
     private MyIntegralAdapter adapter;
     private DaoUtils daoUtils;
+    private LinearLayout mNoRecordLayoutLl;
+    /**
+     * 暂无配送记录
+     */
+    private TextView mNoRecordTv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_integral);
-        daoUtils = new DaoUtils(this,"shop_vagetable_myIntegral.sqlite");
+        daoUtils = new DaoUtils(this, "shop_vagetable_myIntegral.sqlite");
         initView();
         initActionBar();
     }
@@ -82,13 +87,13 @@ public class MyIntegralActivity extends BaseActivity implements View.OnClickList
         mTopTitleTv = (TextView) findViewById(R.id.top_title_tv);
         mTopRightImageIv = (ImageView) findViewById(R.id.top_right_image_iv);
         mIrregularDisplayCv = (CustomView) findViewById(R.id.irregular_display_cv);
-        mIrregularDisplayCv.getTitleBarRightBtn().setText(PublicUtils.userInfo.getResidualIntegral()+"分");
+        mIrregularDisplayCv.getTitleBarRightBtn().setText(PublicUtils.userInfo.getResidualIntegral() + "分");
         mTransportDateTv = (TextView) findViewById(R.id.transport_date_tv);
         mIrregularDetailTv = (TextView) findViewById(R.id.irregular_detail_tv);
         mTransportNoTv = (TextView) findViewById(R.id.transport_no_tv);
         mMineIntegralRv = (RecyclerView) findViewById(R.id.mine_integral_rv);
-        mMineIntegralRv.addItemDecoration(new DividerItemDecoration(this,LinearLayoutManager.HORIZONTAL,R.drawable.horizontal_line_grey));
-        LinearLayoutManager manager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
+        mMineIntegralRv.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.HORIZONTAL, R.drawable.horizontal_line_grey));
+        LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mMineIntegralRv.setLayoutManager(manager);
         adapter = new MyIntegralAdapter();
         mMineIntegralRv.setAdapter(adapter);
@@ -97,9 +102,12 @@ public class MyIntegralActivity extends BaseActivity implements View.OnClickList
             @Override
             public void itemClick(TransportRecord transportRecord) {
                 PublicUtils.transportRecordClicked = transportRecord;
-                startActivity(new Intent(MyIntegralActivity.this,TransportInfoActivity.class));
+                startActivity(new Intent(MyIntegralActivity.this, TransportInfoActivity.class));
             }
         });
+        mNoRecordLayoutLl = (LinearLayout) findViewById(R.id.no_record_layout_ll);
+        mNoRecordTv = (TextView) findViewById(R.id.no_record_tv);
+        mNoRecordTv.setText("暂无消费记录");
     }
 
     @Override
@@ -110,6 +118,7 @@ public class MyIntegralActivity extends BaseActivity implements View.OnClickList
                 break;
         }
     }
+
     /**
      * 根据起始时间获取配送清单
      *
@@ -128,7 +137,13 @@ public class MyIntegralActivity extends BaseActivity implements View.OnClickList
                     @Override
                     public void onError(Call call, Exception e, int id) {
                         Toast.makeText(MyIntegralActivity.this, "网络错误", Toast.LENGTH_LONG).show();
-                        adapter.setData(daoUtils.listAll(TransportRecord.class));
+                        ArrayList<TransportRecord> arrays = daoUtils.listAll(TransportRecord.class);
+                        if (arrays.size() == 0) {
+                            mNoRecordLayoutLl.setVisibility(View.VISIBLE);
+                        } else {
+                            mNoRecordLayoutLl.setVisibility(View.GONE);
+                            adapter.setData(arrays);
+                        }
                     }
 
                     @Override
@@ -140,8 +155,14 @@ public class MyIntegralActivity extends BaseActivity implements View.OnClickList
                                 String message = obj.getString("Model");
                                 if ("Ok".equals(result)) {
                                     ArrayList<TransportRecord> arrays = GsonUtils.jsonToArrayList(message, TransportRecord.class);
-                                    adapter.setData(arrays);
-                                    putIntegralInfoToSqlite(arrays);
+                                    if (arrays.size() == 0) {
+                                        mNoRecordLayoutLl.setVisibility(View.VISIBLE);
+                                    } else {
+                                        mNoRecordLayoutLl.setVisibility(View.GONE);
+                                        adapter.setData(arrays);
+                                        putIntegralInfoToSqlite(arrays);
+                                    }
+
                                 } else {
                                     Toast.makeText(MyIntegralActivity.this, message, Toast.LENGTH_LONG).show();
                                 }
@@ -149,16 +170,16 @@ public class MyIntegralActivity extends BaseActivity implements View.OnClickList
                                 e.printStackTrace();
                             }
                         }
-                        Log.e("DEBUG", response);
 
                     }
 
                 });
     }
+
     /**
      * 将我的积分信息保存本地
      */
-    private void putIntegralInfoToSqlite(ArrayList<TransportRecord> arrayList){
+    private void putIntegralInfoToSqlite(ArrayList<TransportRecord> arrayList) {
         daoUtils.deleteAllEntity(TransportRecord.class);
         daoUtils.insertMultEntity(arrayList);
 

@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.CheckBox;
@@ -17,6 +16,7 @@ import android.widget.Toast;
 
 import com.choseaddrdemo.selectAddr.ChooserActivity;
 import com.vegetablestrading.R;
+import com.vegetablestrading.activity.BaseActivity;
 import com.vegetablestrading.interfaces.EditTestChangedListener;
 import com.vegetablestrading.utils.Constant;
 import com.vegetablestrading.utils.PublicUtils;
@@ -33,7 +33,7 @@ import okhttp3.Call;
  * created date 2017/12/26 16:33.
  * application 添加新地址
  */
-public class AddAddressActivity extends AppCompatActivity implements View.OnClickListener {
+public class AddAddressActivity extends BaseActivity implements View.OnClickListener {
 
     private ImageView mTopLeftImageIv;
     /**

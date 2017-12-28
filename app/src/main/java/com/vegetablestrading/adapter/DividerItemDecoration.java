@@ -175,7 +175,7 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
         final int width = parent.getMeasuredWidth() - parent.getPaddingRight()*2;
         //getChildCount()(ViewGroup.getChildCount) 返回的是显示层面上的“所包含的子 View 个数”。
         final int childSize = parent.getChildCount();
-        for (int i = 0; i < childSize; i++) {
+        for (int i = 0; i < childSize-1; i++) {
             final View child = parent.getChildAt(i);
             RecyclerView.LayoutParams layoutParams =
                     (RecyclerView.LayoutParams) child.getLayoutParams();
