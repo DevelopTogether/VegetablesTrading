@@ -100,7 +100,7 @@ public class AddressListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
         } else {
             AddressViewHolderThree holderThree = (AddressViewHolderThree) holder;
-            holderThree.addressCount.setText("共有"+(arrays.size()-1)+"条地址信息");
+            holderThree.addressCount.setText(""+(arrays.size()-1)+"条记录");
         }
     }
 

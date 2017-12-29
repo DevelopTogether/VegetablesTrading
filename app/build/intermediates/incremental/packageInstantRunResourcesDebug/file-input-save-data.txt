@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Thu Dec 28 14:39:58 CST 2017
+#Thu Dec 28 17:09:15 CST 2017
 20.base=C\:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\resources-debug.ap_
 143.base=C\:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\resources-debug.ap_
 340.file=C\:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\mine_guest_complain.png

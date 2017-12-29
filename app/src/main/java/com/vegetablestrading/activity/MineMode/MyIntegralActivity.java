@@ -106,6 +106,7 @@ public class MyIntegralActivity extends BaseActivity implements View.OnClickList
             }
         });
         mNoRecordLayoutLl = (LinearLayout) findViewById(R.id.no_record_layout_ll);
+        mNoRecordLayoutLl.setVisibility(View.GONE);
         mNoRecordTv = (TextView) findViewById(R.id.no_record_tv);
         mNoRecordTv.setText("暂无消费记录");
     }

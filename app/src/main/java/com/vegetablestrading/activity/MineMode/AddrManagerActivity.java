@@ -61,7 +61,7 @@ public class AddrManagerActivity extends BaseActivity implements View.OnClickLis
 
     private List<AddressInfo> initData() {
         List<AddressInfo> arrays = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 2; i++) {
             AddressInfo bean = new AddressInfo();
             bean.setAccepter(i+"");
             bean.setAccepterPhone("15311810000");

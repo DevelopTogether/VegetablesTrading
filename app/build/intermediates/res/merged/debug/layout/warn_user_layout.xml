@@ -5,39 +5,25 @@
     android:background="@drawable/warn_bg_shape"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:orientation="horizontal">
 
-        <ImageView
-            android:layout_margin="10dp"
-            android:layout_width="50dp"
-            android:src="@drawable/warn_activate"
-            android:visibility="gone"
-            android:layout_height="50dp" />
 
         <TextView
             android:id="@+id/warn_activate_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:lineSpacingExtra="5dp"
-            android:gravity="left|center"
-            android:paddingRight="10dp"
+            android:paddingTop="20dp"
+            android:gravity="center"
             android:layout_marginRight="10dp"
             android:text="暂未开放，敬请期待！"
             android:textColor="#000000"
-            android:textSize="18sp" />
-    </LinearLayout>
+            android:textSize="16sp" />
 
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="10dp"
-        android:background="@android:color/holo_blue_light" />
+        android:layout_height="1px"
+        android:background="@android:color/white" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -49,11 +35,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="25dp"
-            android:padding="12dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="20dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="25dp"
             android:text="我知道了"
             android:textColor="@color/app_green"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
     </RelativeLayout>
 

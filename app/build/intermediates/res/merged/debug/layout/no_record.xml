@@ -8,7 +8,6 @@
         android:id="@+id/no_record_layout_ll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
         android:background="#ffffff"
         android:layout_centerInParent="true"
         android:gravity="center"
