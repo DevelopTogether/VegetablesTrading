@@ -5,7 +5,7 @@ import android.app.Application;
 import android.support.v4.util.ArrayMap;
 import android.util.Log;
 
-import com.vegetablestrading.utils.CrashHandler;
+import com.uploadbugs.utils.CrashHandler;
 import com.zhy.http.okhttp.OkHttpUtils;
 
 import java.util.Iterator;

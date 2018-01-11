@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.checktoupdatedemo.utils.CheckUpdateUtil;
+import com.uploadbugs.utils.BugUtil;
 import com.vegetablestrading.R;
 import com.vegetablestrading.fragment.FragmentTab1;
 import com.vegetablestrading.fragment.FragmentTab22;
@@ -68,6 +69,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        BugUtil.checkLocalBugsToUpload(this,"/SCPS_crash","http://zc.xun365.net/WebService/SoftWare.asmx/SetBugInfo","88888888","SCPS");
         initView();
 
         initBottomViewStatus(0);
@@ -80,6 +83,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 //        startActivity(new Intent(this, ActivatedActivity.class));
         checkForUpdate(this);
     }
+
 
     /**
      * 关闭Activity的回调

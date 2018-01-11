@@ -190,7 +190,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                     public void onError(Call call, Exception e, int id) {
                         initRefreshStatus(true);
 
-                        Toast.makeText(getApplicationContext(), "", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "无网络，请稍后再试", Toast.LENGTH_LONG).show();
                     }
 
                     @Override

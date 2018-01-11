@@ -29,6 +29,18 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 在SDCard中创建与删除文件权限 -->
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" /> <!-- 用于申请调用A-GPS模块 -->
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+
+    <uses-feature android:name="android.hardware.wifi" />
+
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
 
     <meta-data
         android:name="android.support.VERSION"
@@ -129,6 +141,10 @@
         <activity
             android:name="com.choseaddrdemo.selectAddr.ChooserActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <service
+            android:name="com.uploadbugs.service.BugUploadIntentService"
+            android:exported="false" />
     </application>
 
 </manifest>
