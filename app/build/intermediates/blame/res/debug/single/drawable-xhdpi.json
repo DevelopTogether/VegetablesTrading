@@ -1,15 +1,15 @@
 [
     {
-        "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\add_device_press_press.png",
-        "source": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\drawable-xhdpi\\add_device_press_press.png"
+        "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\regist_addr_info.png",
+        "source": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\drawable-xhdpi\\regist_addr_info.png"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\mine_info.png",
         "source": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\drawable-xhdpi\\mine_info.png"
     },
     {
-        "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\regist_addr_info.png",
-        "source": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\drawable-xhdpi\\regist_addr_info.png"
+        "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\add_device_press_press.png",
+        "source": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\drawable-xhdpi\\add_device_press_press.png"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\integral_icon.png",
@@ -44,12 +44,12 @@
         "source": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\drawable-xhdpi\\login_bg_icon.png"
     },
     {
-        "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\mine_safe_exit.png",
-        "source": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\drawable-xhdpi\\mine_safe_exit.png"
-    },
-    {
         "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\add_address_press.png",
         "source": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\drawable-xhdpi\\add_address_press.png"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\mine_safe_exit.png",
+        "source": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\drawable-xhdpi\\mine_safe_exit.png"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\loading_icon.png",
