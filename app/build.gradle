@@ -55,7 +55,6 @@ dependencies {
     })
 
     compile(name: 'chose_address', ext: 'aar')
-    compile(name: 'checkUpdate1214', ext: 'aar')
 
     compile 'com.zhy:okhttputils:2.6.2'
     compile 'com.android.support:appcompat-v7:25.3.1'
@@ -70,4 +69,5 @@ dependencies {
     compile 'org.greenrobot:greendao-generator:3.2.2'
     compile 'com.google.code.gson:gson:2.6.2'
     testCompile 'junit:junit:4.12'
+    compile project(path: ':checkUpdate')
 }

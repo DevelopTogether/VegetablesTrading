@@ -20,6 +20,14 @@
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\8596fb658d42cd9e34405aecf52d5354d8001d94\\output\\res\\drawable\\abc_ratingbar_small_material.xml"
     },
     {
+        "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\progressbar.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\eb1ca0ee50d5b028b4bd0c9907206d8133d5199e\\output\\res\\drawable\\progressbar.xml"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\bg_bt111.png",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\eb1ca0ee50d5b028b4bd0c9907206d8133d5199e\\output\\res\\drawable\\bg_bt111.png"
+    },
+    {
         "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_dialog_material_background.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\8596fb658d42cd9e34405aecf52d5354d8001d94\\output\\res\\drawable\\abc_dialog_material_background.xml"
     },
@@ -66,10 +74,6 @@
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_go_search_api_material.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\8596fb658d42cd9e34405aecf52d5354d8001d94\\output\\res\\drawable\\abc_ic_go_search_api_material.xml"
-    },
-    {
-        "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\warn_update_bg.png",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\a7f0937140e38f83ed51b8829cef80e24bd9c8a2\\output\\res\\drawable\\warn_update_bg.png"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_clear_material.xml",
@@ -156,6 +160,10 @@
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\8596fb658d42cd9e34405aecf52d5354d8001d94\\output\\res\\drawable\\abc_item_background_holo_light.xml"
     },
     {
+        "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\warn_bg_shape.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\eb1ca0ee50d5b028b4bd0c9907206d8133d5199e\\output\\res\\drawable\\warn_bg_shape.xml"
+    },
+    {
         "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_colored_material.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\8596fb658d42cd9e34405aecf52d5354d8001d94\\output\\res\\drawable\\abc_btn_colored_material.xml"
     },
@@ -192,10 +200,6 @@
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\8596fb658d42cd9e34405aecf52d5354d8001d94\\output\\res\\drawable\\notification_icon_background.xml"
     },
     {
-        "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\check_update_progressbar.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\a7f0937140e38f83ed51b8829cef80e24bd9c8a2\\output\\res\\drawable\\check_update_progressbar.xml"
-    },
-    {
         "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\navigation_empty_icon.xml",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\cd6bff5459b9ebfb6ba2f447ad3d3e773eb6a95d\\output\\res\\drawable\\navigation_empty_icon.xml"
     },
@@ -216,16 +220,12 @@
         "source": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\src\\main\\res\\drawable\\checkbox_select_status.xml"
     },
     {
-        "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\warn_update_bg_shape.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\a7f0937140e38f83ed51b8829cef80e24bd9c8a2\\output\\res\\drawable\\warn_update_bg_shape.xml"
+        "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_seekbar_tick_mark_material.xml",
+        "source": "C:\\Users\\Administrator\\.android\\build-cache\\8596fb658d42cd9e34405aecf52d5354d8001d94\\output\\res\\drawable\\abc_seekbar_tick_mark_material.xml"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_keyboard_arrow_left_white_24dp.png",
         "source": "C:\\Users\\Administrator\\.android\\build-cache\\d802aa2f1504f31a910be4718ed5c6ae414a29b1\\output\\res\\drawable\\ic_keyboard_arrow_left_white_24dp.png"
-    },
-    {
-        "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_seekbar_tick_mark_material.xml",
-        "source": "C:\\Users\\Administrator\\.android\\build-cache\\8596fb658d42cd9e34405aecf52d5354d8001d94\\output\\res\\drawable\\abc_seekbar_tick_mark_material.xml"
     },
     {
         "merged": "C:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_search_api_material.xml",
