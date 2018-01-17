@@ -571,7 +571,7 @@ public final class R {
         public static final int abc_textfield_search_default_mtrl_alpha = 0x7f020050;
         public static final int abc_textfield_search_material = 0x7f020051;
         public static final int abc_vector_test = 0x7f020052;
-        public static final int check_update_progressbar = 0x7f020066;
+        public static final int bg_bt111 = 0x7f020063;
         public static final int notification_action_background = 0x7f020090;
         public static final int notification_bg = 0x7f020091;
         public static final int notification_bg_low = 0x7f020092;
@@ -580,12 +580,12 @@ public final class R {
         public static final int notification_bg_normal = 0x7f020095;
         public static final int notification_bg_normal_pressed = 0x7f020096;
         public static final int notification_icon_background = 0x7f020097;
-        public static final int notification_template_icon_bg = 0x7f0200b5;
-        public static final int notification_template_icon_low_bg = 0x7f0200b6;
+        public static final int notification_template_icon_bg = 0x7f0200b4;
+        public static final int notification_template_icon_low_bg = 0x7f0200b5;
         public static final int notification_tile_bg = 0x7f020098;
         public static final int notify_panel_notification_icon_bg = 0x7f020099;
-        public static final int warn_update_bg = 0x7f0200b1;
-        public static final int warn_update_bg_shape = 0x7f0200b2;
+        public static final int progressbar = 0x7f02009c;
+        public static final int warn_bg_shape = 0x7f0200b1;
     }
     public static final class id {
         public static final int action0 = 0x7f0d015b;
@@ -632,7 +632,7 @@ public final class R {
         public static final int end_padder = 0x7f0d016d;
         public static final int expand_activities_button = 0x7f0d004c;
         public static final int expanded_menu = 0x7f0d0061;
-        public static final int feature_tv = 0x7f0d0131;
+        public static final int feature_tv = 0x7f0d0144;
         public static final int home = 0x7f0d0004;
         public static final int homeAsUp = 0x7f0d001c;
         public static final int icon = 0x7f0d0050;
@@ -656,12 +656,12 @@ public final class R {
         public static final int packed = 0x7f0d0012;
         public static final int parent = 0x7f0d000f;
         public static final int parentPanel = 0x7f0d0054;
-        public static final int progress = 0x7f0d0133;
+        public static final int progress = 0x7f0d0132;
         public static final int progress_circular = 0x7f0d0006;
         public static final int progress_horizontal = 0x7f0d0007;
-        public static final int progress_message = 0x7f0d0132;
-        public static final int progress_number = 0x7f0d0135;
-        public static final int progress_percent = 0x7f0d0134;
+        public static final int progress_message = 0x7f0d0131;
+        public static final int progress_number = 0x7f0d0134;
+        public static final int progress_percent = 0x7f0d0133;
         public static final int radio = 0x7f0d0064;
         public static final int regdialog = 0x7f0d01a6;
         public static final int right_icon = 0x7f0d0167;
@@ -700,7 +700,6 @@ public final class R {
         public static final int text2 = 0x7f0d016b;
         public static final int textSpacerNoButtons = 0x7f0d0059;
         public static final int textSpacerNoTitle = 0x7f0d0058;
-        public static final int textView = 0x7f0d01a7;
         public static final int time = 0x7f0d0163;
         public static final int title = 0x7f0d0051;
         public static final int titleDividerNoCustom = 0x7f0d0060;
@@ -708,10 +707,10 @@ public final class R {
         public static final int top = 0x7f0d0037;
         public static final int topPanel = 0x7f0d005d;
         public static final int up = 0x7f0d000d;
-        public static final int update_later_tv = 0x7f0d01aa;
-        public static final int update_rightnow_tv = 0x7f0d01a9;
+        public static final int update_later_tv = 0x7f0d01a9;
+        public static final int update_rightnow_tv = 0x7f0d01a8;
         public static final int useLogo = 0x7f0d0020;
-        public static final int version_description_lv = 0x7f0d01a8;
+        public static final int version_description_lv = 0x7f0d01a7;
         public static final int withText = 0x7f0d0045;
         public static final int wrap = 0x7f0d0011;
         public static final int wrap_content = 0x7f0d002c;
@@ -751,8 +750,8 @@ public final class R {
         public static final int abc_search_view = 0x7f040019;
         public static final int abc_select_dialog_material = 0x7f04001a;
         public static final int activity_main = 0x7f040026;
-        public static final int check_update_version_feature_layout = 0x7f040035;
-        public static final int common_update_progress_dialog = 0x7f040036;
+        public static final int common_progress_dialog = 0x7f040035;
+        public static final int feature_layout = 0x7f040045;
         public static final int notification_action = 0x7f04004e;
         public static final int notification_action_tombstone = 0x7f04004f;
         public static final int notification_media_action = 0x7f040050;

@@ -6,8 +6,8 @@ package com.vegetablestrading.utils;
  */
 
 public class Constant {
-//    public static String APP_MARK = "SCPS";//软件标识
-    public static String APP_MARK = "SCPS_DEBUG";//调试软件标识
+    public static String APP_MARK = "SCPS";//软件标识
+//    public static String APP_MARK = "SCPS_DEBUG";//调试软件标识
     public static String APP_ID = "";//软件APPID
     public static String tradeNoOfWeiXin = "";//微信交易编号
     public static String sms_Test_juhe = "http://v.juhe.cn/sms/send";

@@ -1,4 +1,4 @@
-#Fri Jan 12 11:06:15 CST 2018
+#Wed Jan 17 15:18:14 CST 2018
 base.0=C\:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_0
 renamed.0=classes.dex
 file.0=C\:\\Users\\Administrator\\Desktop\\vegetablesTrading\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_0\\classes.dex

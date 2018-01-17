@@ -15,8 +15,8 @@ ADDED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\Android
 		INJECTED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\AndroidManifest.xml
 uses-permission#android.permission.INTERNET
 ADDED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\AndroidManifest.xml:5:5-67
-MERGED from [:checkUpdate1214:] C:\Users\Administrator\.android\build-cache\a7f0937140e38f83ed51b8829cef80e24bd9c8a2\output\AndroidManifest.xml:21:5-67
-MERGED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\8f00bac56f45aeb04ca64f0c50863328375e0672\output\AndroidManifest.xml:19:5-67
+MERGED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\6da050d87b805d023bb0233326b3bd1168582ee7\output\AndroidManifest.xml:19:5-67
+MERGED from [vegetablesTrading:checkUpdate:unspecified] C:\Users\Administrator\Desktop\vegetablesTrading\checkUpdate\build\intermediates\bundles\default\AndroidManifest.xml:21:5-67
 	android:name
 		ADDED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\AndroidManifest.xml:5:22-64
 uses-permission#android.permission.GET_ACCOUNTS
@@ -29,13 +29,13 @@ ADDED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\Android
 		ADDED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\AndroidManifest.xml:8:22-68
 uses-permission#android.permission.READ_CONTACTS
 ADDED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\AndroidManifest.xml:9:5-72
-MERGED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\8f00bac56f45aeb04ca64f0c50863328375e0672\output\AndroidManifest.xml:17:5-72
+MERGED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\6da050d87b805d023bb0233326b3bd1168582ee7\output\AndroidManifest.xml:17:5-72
 	android:name
 		ADDED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\AndroidManifest.xml:9:22-69
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
 ADDED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\AndroidManifest.xml:10:5-81
-MERGED from [:checkUpdate1214:] C:\Users\Administrator\.android\build-cache\a7f0937140e38f83ed51b8829cef80e24bd9c8a2\output\AndroidManifest.xml:27:5-81
-MERGED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\8f00bac56f45aeb04ca64f0c50863328375e0672\output\AndroidManifest.xml:13:5-81
+MERGED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\6da050d87b805d023bb0233326b3bd1168582ee7\output\AndroidManifest.xml:13:5-81
+MERGED from [vegetablesTrading:checkUpdate:unspecified] C:\Users\Administrator\Desktop\vegetablesTrading\checkUpdate\build\intermediates\bundles\default\AndroidManifest.xml:27:5-81
 	android:name
 		ADDED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\AndroidManifest.xml:10:22-78
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
@@ -44,20 +44,20 @@ ADDED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\Android
 		ADDED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\AndroidManifest.xml:11:22-77
 uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\AndroidManifest.xml:12:5-79
-MERGED from [:checkUpdate1214:] C:\Users\Administrator\.android\build-cache\a7f0937140e38f83ed51b8829cef80e24bd9c8a2\output\AndroidManifest.xml:15:5-79
-MERGED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\8f00bac56f45aeb04ca64f0c50863328375e0672\output\AndroidManifest.xml:18:5-79
+MERGED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\6da050d87b805d023bb0233326b3bd1168582ee7\output\AndroidManifest.xml:18:5-79
+MERGED from [vegetablesTrading:checkUpdate:unspecified] C:\Users\Administrator\Desktop\vegetablesTrading\checkUpdate\build\intermediates\bundles\default\AndroidManifest.xml:15:5-79
 	android:name
 		ADDED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\AndroidManifest.xml:12:22-76
 uses-permission#android.permission.ACCESS_WIFI_STATE
 ADDED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\AndroidManifest.xml:13:5-76
-MERGED from [:checkUpdate1214:] C:\Users\Administrator\.android\build-cache\a7f0937140e38f83ed51b8829cef80e24bd9c8a2\output\AndroidManifest.xml:17:5-76
-MERGED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\8f00bac56f45aeb04ca64f0c50863328375e0672\output\AndroidManifest.xml:27:5-76
+MERGED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\6da050d87b805d023bb0233326b3bd1168582ee7\output\AndroidManifest.xml:27:5-76
+MERGED from [vegetablesTrading:checkUpdate:unspecified] C:\Users\Administrator\Desktop\vegetablesTrading\checkUpdate\build\intermediates\bundles\default\AndroidManifest.xml:17:5-76
 	android:name
 		ADDED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\AndroidManifest.xml:13:22-73
 uses-permission#android.permission.READ_PHONE_STATE
 ADDED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\AndroidManifest.xml:14:5-75
-MERGED from [:checkUpdate1214:] C:\Users\Administrator\.android\build-cache\a7f0937140e38f83ed51b8829cef80e24bd9c8a2\output\AndroidManifest.xml:23:5-75
-MERGED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\8f00bac56f45aeb04ca64f0c50863328375e0672\output\AndroidManifest.xml:20:5-75
+MERGED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\6da050d87b805d023bb0233326b3bd1168582ee7\output\AndroidManifest.xml:20:5-75
+MERGED from [vegetablesTrading:checkUpdate:unspecified] C:\Users\Administrator\Desktop\vegetablesTrading\checkUpdate\build\intermediates\bundles\default\AndroidManifest.xml:23:5-75
 	android:name
 		ADDED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\AndroidManifest.xml:14:22-72
 uses-permission#android.permission.RECEIVE_SMS
@@ -79,22 +79,22 @@ ADDED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\Android
 application
 ADDED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\AndroidManifest.xml:20:5-112:19
 MERGED from [:chose_address:] C:\Users\Administrator\.android\build-cache\d802aa2f1504f31a910be4718ed5c6ae414a29b1\output\AndroidManifest.xml:11:5-17:19
-MERGED from [:checkUpdate1214:] C:\Users\Administrator\.android\build-cache\a7f0937140e38f83ed51b8829cef80e24bd9c8a2\output\AndroidManifest.xml:31:5-33:38
-MERGED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\8f00bac56f45aeb04ca64f0c50863328375e0672\output\AndroidManifest.xml:35:5-41:19
+MERGED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\6da050d87b805d023bb0233326b3bd1168582ee7\output\AndroidManifest.xml:35:5-41:19
 MERGED from [com.android.support:cardview-v7:25.3.1] C:\Users\Administrator\.android\build-cache\3661e94025fd691bba6e6a97ad5ca041c41ecc06\output\AndroidManifest.xml:26:5-20
-MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Administrator\.android\build-cache\dadb10d8a2c991c864bc3602f25fcd889ee76ec6\output\AndroidManifest.xml:9:5-20
 MERGED from [com.android.support:design:25.3.1] C:\Users\Administrator\.android\build-cache\cd6bff5459b9ebfb6ba2f447ad3d3e773eb6a95d\output\AndroidManifest.xml:29:5-20
-MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\Administrator\.android\build-cache\8596fb658d42cd9e34405aecf52d5354d8001d94\output\AndroidManifest.xml:29:5-20
-MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\Administrator\.android\build-cache\2480a8ea8cd8b70b26bfdb66731e7d01c90554a1\output\AndroidManifest.xml:26:5-20
-MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\Administrator\.android\build-cache\aafdb3a90d8493dd3c48463e85630718bfdd4f3c\output\AndroidManifest.xml:26:5-20
 MERGED from [com.android.support:transition:25.3.1] C:\Users\Administrator\.android\build-cache\eccc9fdca94566d44a9933a6cef2600adc8c6651\output\AndroidManifest.xml:26:5-20
+MERGED from [com.github.zackratos.ultimatebar:ultimatebar2:2.0.0] C:\Users\Administrator\.android\build-cache\48146cc4bfc8fca8745061b7778806fd609cb7d5\output\AndroidManifest.xml:11:5-14:19
+MERGED from [vegetablesTrading:checkUpdate:unspecified] C:\Users\Administrator\Desktop\vegetablesTrading\checkUpdate\build\intermediates\bundles\default\AndroidManifest.xml:31:5-47
+MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\Administrator\.android\build-cache\8596fb658d42cd9e34405aecf52d5354d8001d94\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-v4:25.3.1] C:\Users\Administrator\.android\build-cache\67a8f4a1123464c97fffb29db3d5111eab80d094\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\Administrator\.android\build-cache\7d953b18b8ce7f6037c5997480773256ded4454e\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\Administrator\.android\build-cache\374d0074c5de431e2c9785c10ce5cbb46cf036c1\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\Administrator\.android\build-cache\fddebac3541a8d55da3976c18ad57c9bcffc8da9\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\Administrator\.android\build-cache\10a43159bd91e8fcf0efb1a5665583fcf496cb66\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\Administrator\.android\build-cache\2480a8ea8cd8b70b26bfdb66731e7d01c90554a1\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\Administrator\.android\build-cache\aafdb3a90d8493dd3c48463e85630718bfdd4f3c\output\AndroidManifest.xml:26:5-20
 MERGED from [com.android.support:support-compat:25.3.1] C:\Users\Administrator\.android\build-cache\5eccd016a1353753be8798236bea88351bf52134\output\AndroidManifest.xml:29:5-20
-MERGED from [com.github.zackratos.ultimatebar:ultimatebar2:2.0.0] C:\Users\Administrator\.android\build-cache\48146cc4bfc8fca8745061b7778806fd609cb7d5\output\AndroidManifest.xml:11:5-14:19
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Administrator\.android\build-cache\dadb10d8a2c991c864bc3602f25fcd889ee76ec6\output\AndroidManifest.xml:9:5-20
 	android:label
 		ADDED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\AndroidManifest.xml:24:9-41
 	android:supportsRtl
@@ -284,24 +284,24 @@ ADDED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\Android
 uses-sdk
 INJECTED from C:\Users\Administrator\Desktop\vegetablesTrading\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [:chose_address:] C:\Users\Administrator\.android\build-cache\d802aa2f1504f31a910be4718ed5c6ae414a29b1\output\AndroidManifest.xml:7:5-9:41
-MERGED from [:checkUpdate1214:] C:\Users\Administrator\.android\build-cache\a7f0937140e38f83ed51b8829cef80e24bd9c8a2\output\AndroidManifest.xml:7:5-9:41
-MERGED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\8f00bac56f45aeb04ca64f0c50863328375e0672\output\AndroidManifest.xml:7:5-9:41
+MERGED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\6da050d87b805d023bb0233326b3bd1168582ee7\output\AndroidManifest.xml:7:5-9:41
 MERGED from [com.zhy:okhttputils:2.6.2] C:\Users\Administrator\.android\build-cache\64055df7abb7c5250d436e9b300df59c72fdbe52\output\AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support:cardview-v7:25.3.1] C:\Users\Administrator\.android\build-cache\3661e94025fd691bba6e6a97ad5ca041c41ecc06\output\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Administrator\.android\build-cache\dadb10d8a2c991c864bc3602f25fcd889ee76ec6\output\AndroidManifest.xml:5:5-7:41
 MERGED from [com.android.support:design:25.3.1] C:\Users\Administrator\.android\build-cache\cd6bff5459b9ebfb6ba2f447ad3d3e773eb6a95d\output\AndroidManifest.xml:21:5-23:62
-MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\Administrator\.android\build-cache\8596fb658d42cd9e34405aecf52d5354d8001d94\output\AndroidManifest.xml:21:5-23:78
-MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\Administrator\.android\build-cache\2480a8ea8cd8b70b26bfdb66731e7d01c90554a1\output\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\Administrator\.android\build-cache\aafdb3a90d8493dd3c48463e85630718bfdd4f3c\output\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:recyclerview-v7:25.3.1] C:\Users\Administrator\.android\build-cache\64f50ea0dfbe3911dd84ef3f23144e7551ac7f7b\output\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:transition:25.3.1] C:\Users\Administrator\.android\build-cache\eccc9fdca94566d44a9933a6cef2600adc8c6651\output\AndroidManifest.xml:20:5-44
+MERGED from [com.github.zackratos.ultimatebar:ultimatebar2:2.0.0] C:\Users\Administrator\.android\build-cache\48146cc4bfc8fca8745061b7778806fd609cb7d5\output\AndroidManifest.xml:7:5-9:41
+MERGED from [vegetablesTrading:checkUpdate:unspecified] C:\Users\Administrator\Desktop\vegetablesTrading\checkUpdate\build\intermediates\bundles\default\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\Administrator\.android\build-cache\8596fb658d42cd9e34405aecf52d5354d8001d94\output\AndroidManifest.xml:21:5-23:78
 MERGED from [com.android.support:support-v4:25.3.1] C:\Users\Administrator\.android\build-cache\67a8f4a1123464c97fffb29db3d5111eab80d094\output\AndroidManifest.xml:21:5-23:54
 MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\Administrator\.android\build-cache\7d953b18b8ce7f6037c5997480773256ded4454e\output\AndroidManifest.xml:21:5-23:60
 MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\Administrator\.android\build-cache\374d0074c5de431e2c9785c10ce5cbb46cf036c1\output\AndroidManifest.xml:21:5-23:63
 MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\Administrator\.android\build-cache\fddebac3541a8d55da3976c18ad57c9bcffc8da9\output\AndroidManifest.xml:21:5-23:58
 MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\Administrator\.android\build-cache\10a43159bd91e8fcf0efb1a5665583fcf496cb66\output\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\Administrator\.android\build-cache\2480a8ea8cd8b70b26bfdb66731e7d01c90554a1\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\Administrator\.android\build-cache\aafdb3a90d8493dd3c48463e85630718bfdd4f3c\output\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:support-compat:25.3.1] C:\Users\Administrator\.android\build-cache\5eccd016a1353753be8798236bea88351bf52134\output\AndroidManifest.xml:21:5-23:58
-MERGED from [com.github.zackratos.ultimatebar:ultimatebar2:2.0.0] C:\Users\Administrator\.android\build-cache\48146cc4bfc8fca8745061b7778806fd609cb7d5\output\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Administrator\.android\build-cache\dadb10d8a2c991c864bc3602f25fcd889ee76ec6\output\AndroidManifest.xml:5:5-7:41
 	tools:overrideLibrary
 		ADDED from [com.android.support:design:25.3.1] C:\Users\Administrator\.android\build-cache\cd6bff5459b9ebfb6ba2f447ad3d3e773eb6a95d\output\AndroidManifest.xml:23:9-59
 	android:targetSdkVersion
@@ -316,87 +316,87 @@ ADDED from [:chose_address:] C:\Users\Administrator\.android\build-cache\d802aa2
 		ADDED from [:chose_address:] C:\Users\Administrator\.android\build-cache\d802aa2f1504f31a910be4718ed5c6ae414a29b1\output\AndroidManifest.xml:16:13-56
 	android:name
 		ADDED from [:chose_address:] C:\Users\Administrator\.android\build-cache\d802aa2f1504f31a910be4718ed5c6ae414a29b1\output\AndroidManifest.xml:15:13-72
-uses-permission#android.permission.ACCESS_COARSE_LOCATION
-ADDED from [:checkUpdate1214:] C:\Users\Administrator\.android\build-cache\a7f0937140e38f83ed51b8829cef80e24bd9c8a2\output\AndroidManifest.xml:11:5-81
-MERGED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\8f00bac56f45aeb04ca64f0c50863328375e0672\output\AndroidManifest.xml:32:5-81
-	android:name
-		ADDED from [:checkUpdate1214:] C:\Users\Administrator\.android\build-cache\a7f0937140e38f83ed51b8829cef80e24bd9c8a2\output\AndroidManifest.xml:11:22-78
-uses-permission#android.permission.ACCESS_FINE_LOCATION
-ADDED from [:checkUpdate1214:] C:\Users\Administrator\.android\build-cache\a7f0937140e38f83ed51b8829cef80e24bd9c8a2\output\AndroidManifest.xml:13:5-79
-MERGED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\8f00bac56f45aeb04ca64f0c50863328375e0672\output\AndroidManifest.xml:33:5-79
-	android:name
-		ADDED from [:checkUpdate1214:] C:\Users\Administrator\.android\build-cache\a7f0937140e38f83ed51b8829cef80e24bd9c8a2\output\AndroidManifest.xml:13:22-76
-uses-permission#android.permission.CHANGE_WIFI_STATE
-ADDED from [:checkUpdate1214:] C:\Users\Administrator\.android\build-cache\a7f0937140e38f83ed51b8829cef80e24bd9c8a2\output\AndroidManifest.xml:19:5-76
-MERGED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\8f00bac56f45aeb04ca64f0c50863328375e0672\output\AndroidManifest.xml:28:5-76
-	android:name
-		ADDED from [:checkUpdate1214:] C:\Users\Administrator\.android\build-cache\a7f0937140e38f83ed51b8829cef80e24bd9c8a2\output\AndroidManifest.xml:19:22-73
 uses-permission#android.permission.MOUNT_UNMOUNT_FILESYSTEMS
-ADDED from [:checkUpdate1214:] C:\Users\Administrator\.android\build-cache\a7f0937140e38f83ed51b8829cef80e24bd9c8a2\output\AndroidManifest.xml:25:5-84
-MERGED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\8f00bac56f45aeb04ca64f0c50863328375e0672\output\AndroidManifest.xml:11:5-84
+ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\6da050d87b805d023bb0233326b3bd1168582ee7\output\AndroidManifest.xml:11:5-84
+MERGED from [vegetablesTrading:checkUpdate:unspecified] C:\Users\Administrator\Desktop\vegetablesTrading\checkUpdate\build\intermediates\bundles\default\AndroidManifest.xml:25:5-84
 	android:name
-		ADDED from [:checkUpdate1214:] C:\Users\Administrator\.android\build-cache\a7f0937140e38f83ed51b8829cef80e24bd9c8a2\output\AndroidManifest.xml:25:22-81
-uses-permission#android.permission.ACCESS_LOCATION_EXTRA_COMMANDS
-ADDED from [:checkUpdate1214:] C:\Users\Administrator\.android\build-cache\a7f0937140e38f83ed51b8829cef80e24bd9c8a2\output\AndroidManifest.xml:29:5-89
-	android:name
-		ADDED from [:checkUpdate1214:] C:\Users\Administrator\.android\build-cache\a7f0937140e38f83ed51b8829cef80e24bd9c8a2\output\AndroidManifest.xml:29:22-86
+		ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\6da050d87b805d023bb0233326b3bd1168582ee7\output\AndroidManifest.xml:11:22-81
 uses-permission#com.android.launcher.permission.INSTALL_SHORTCUT
-ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\8f00bac56f45aeb04ca64f0c50863328375e0672\output\AndroidManifest.xml:14:5-88
+ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\6da050d87b805d023bb0233326b3bd1168582ee7\output\AndroidManifest.xml:14:5-88
 	android:name
-		ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\8f00bac56f45aeb04ca64f0c50863328375e0672\output\AndroidManifest.xml:14:22-85
+		ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\6da050d87b805d023bb0233326b3bd1168582ee7\output\AndroidManifest.xml:14:22-85
 uses-permission#android.permission.VIBRATE
-ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\8f00bac56f45aeb04ca64f0c50863328375e0672\output\AndroidManifest.xml:15:5-66
+ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\6da050d87b805d023bb0233326b3bd1168582ee7\output\AndroidManifest.xml:15:5-66
 	android:name
-		ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\8f00bac56f45aeb04ca64f0c50863328375e0672\output\AndroidManifest.xml:15:22-63
+		ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\6da050d87b805d023bb0233326b3bd1168582ee7\output\AndroidManifest.xml:15:22-63
 uses-permission#android.permission.CHANGE_CONFIGURATION
-ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\8f00bac56f45aeb04ca64f0c50863328375e0672\output\AndroidManifest.xml:16:5-79
+ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\6da050d87b805d023bb0233326b3bd1168582ee7\output\AndroidManifest.xml:16:5-79
 	android:name
-		ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\8f00bac56f45aeb04ca64f0c50863328375e0672\output\AndroidManifest.xml:16:22-76
+		ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\6da050d87b805d023bb0233326b3bd1168582ee7\output\AndroidManifest.xml:16:22-76
 uses-permission#android.permission.MODIFY_AUDIO_SETTINGS
-ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\8f00bac56f45aeb04ca64f0c50863328375e0672\output\AndroidManifest.xml:22:5-80
+ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\6da050d87b805d023bb0233326b3bd1168582ee7\output\AndroidManifest.xml:22:5-80
 	android:name
-		ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\8f00bac56f45aeb04ca64f0c50863328375e0672\output\AndroidManifest.xml:22:22-77
+		ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\6da050d87b805d023bb0233326b3bd1168582ee7\output\AndroidManifest.xml:22:22-77
 uses-permission#android.permission.DISABLE_KEYGUARD
-ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\8f00bac56f45aeb04ca64f0c50863328375e0672\output\AndroidManifest.xml:23:5-75
+ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\6da050d87b805d023bb0233326b3bd1168582ee7\output\AndroidManifest.xml:23:5-75
 	android:name
-		ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\8f00bac56f45aeb04ca64f0c50863328375e0672\output\AndroidManifest.xml:23:22-72
+		ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\6da050d87b805d023bb0233326b3bd1168582ee7\output\AndroidManifest.xml:23:22-72
 uses-feature#android.hardware.wifi
-ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\8f00bac56f45aeb04ca64f0c50863328375e0672\output\AndroidManifest.xml:25:5-58
+ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\6da050d87b805d023bb0233326b3bd1168582ee7\output\AndroidManifest.xml:25:5-58
 	android:name
-		ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\8f00bac56f45aeb04ca64f0c50863328375e0672\output\AndroidManifest.xml:25:19-55
+		ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\6da050d87b805d023bb0233326b3bd1168582ee7\output\AndroidManifest.xml:25:19-55
+uses-permission#android.permission.CHANGE_WIFI_STATE
+ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\6da050d87b805d023bb0233326b3bd1168582ee7\output\AndroidManifest.xml:28:5-76
+MERGED from [vegetablesTrading:checkUpdate:unspecified] C:\Users\Administrator\Desktop\vegetablesTrading\checkUpdate\build\intermediates\bundles\default\AndroidManifest.xml:19:5-76
+	android:name
+		ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\6da050d87b805d023bb0233326b3bd1168582ee7\output\AndroidManifest.xml:28:22-73
 uses-permission#android.permission.CHANGE_WIFI_MULTICAST_STATE
-ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\8f00bac56f45aeb04ca64f0c50863328375e0672\output\AndroidManifest.xml:29:5-86
+ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\6da050d87b805d023bb0233326b3bd1168582ee7\output\AndroidManifest.xml:29:5-86
 	android:name
-		ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\8f00bac56f45aeb04ca64f0c50863328375e0672\output\AndroidManifest.xml:29:22-83
+		ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\6da050d87b805d023bb0233326b3bd1168582ee7\output\AndroidManifest.xml:29:22-83
 uses-permission#android.permission.CHANGE_NETWORK_STATE
-ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\8f00bac56f45aeb04ca64f0c50863328375e0672\output\AndroidManifest.xml:30:5-79
+ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\6da050d87b805d023bb0233326b3bd1168582ee7\output\AndroidManifest.xml:30:5-79
 	android:name
-		ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\8f00bac56f45aeb04ca64f0c50863328375e0672\output\AndroidManifest.xml:30:22-76
+		ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\6da050d87b805d023bb0233326b3bd1168582ee7\output\AndroidManifest.xml:30:22-76
 uses-permission#android.permission.WRITE_CONTACTS
-ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\8f00bac56f45aeb04ca64f0c50863328375e0672\output\AndroidManifest.xml:31:5-73
+ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\6da050d87b805d023bb0233326b3bd1168582ee7\output\AndroidManifest.xml:31:5-73
 	android:name
-		ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\8f00bac56f45aeb04ca64f0c50863328375e0672\output\AndroidManifest.xml:31:22-70
+		ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\6da050d87b805d023bb0233326b3bd1168582ee7\output\AndroidManifest.xml:31:22-70
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\6da050d87b805d023bb0233326b3bd1168582ee7\output\AndroidManifest.xml:32:5-81
+MERGED from [vegetablesTrading:checkUpdate:unspecified] C:\Users\Administrator\Desktop\vegetablesTrading\checkUpdate\build\intermediates\bundles\default\AndroidManifest.xml:11:5-81
+	android:name
+		ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\6da050d87b805d023bb0233326b3bd1168582ee7\output\AndroidManifest.xml:32:22-78
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\6da050d87b805d023bb0233326b3bd1168582ee7\output\AndroidManifest.xml:33:5-79
+MERGED from [vegetablesTrading:checkUpdate:unspecified] C:\Users\Administrator\Desktop\vegetablesTrading\checkUpdate\build\intermediates\bundles\default\AndroidManifest.xml:13:5-79
+	android:name
+		ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\6da050d87b805d023bb0233326b3bd1168582ee7\output\AndroidManifest.xml:33:22-76
 service#com.uploadbugs.service.BugUploadIntentService
-ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\8f00bac56f45aeb04ca64f0c50863328375e0672\output\AndroidManifest.xml:38:9-40:40
+ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\6da050d87b805d023bb0233326b3bd1168582ee7\output\AndroidManifest.xml:38:9-40:40
 	android:exported
-		ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\8f00bac56f45aeb04ca64f0c50863328375e0672\output\AndroidManifest.xml:40:13-37
+		ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\6da050d87b805d023bb0233326b3bd1168582ee7\output\AndroidManifest.xml:40:13-37
 	android:name
-		ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\8f00bac56f45aeb04ca64f0c50863328375e0672\output\AndroidManifest.xml:39:13-73
+		ADDED from [:bug_upload:] C:\Users\Administrator\.android\build-cache\6da050d87b805d023bb0233326b3bd1168582ee7\output\AndroidManifest.xml:39:13-73
 meta-data#android.support.VERSION
 ADDED from [com.android.support:cardview-v7:25.3.1] C:\Users\Administrator\.android\build-cache\3661e94025fd691bba6e6a97ad5ca041c41ecc06\output\AndroidManifest.xml:22:5-24:34
 MERGED from [com.android.support:design:25.3.1] C:\Users\Administrator\.android\build-cache\cd6bff5459b9ebfb6ba2f447ad3d3e773eb6a95d\output\AndroidManifest.xml:25:5-27:34
-MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\Administrator\.android\build-cache\8596fb658d42cd9e34405aecf52d5354d8001d94\output\AndroidManifest.xml:25:5-27:34
-MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\Administrator\.android\build-cache\2480a8ea8cd8b70b26bfdb66731e7d01c90554a1\output\AndroidManifest.xml:22:5-24:34
-MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\Administrator\.android\build-cache\aafdb3a90d8493dd3c48463e85630718bfdd4f3c\output\AndroidManifest.xml:22:5-24:34
 MERGED from [com.android.support:recyclerview-v7:25.3.1] C:\Users\Administrator\.android\build-cache\64f50ea0dfbe3911dd84ef3f23144e7551ac7f7b\output\AndroidManifest.xml:22:5-24:34
 MERGED from [com.android.support:transition:25.3.1] C:\Users\Administrator\.android\build-cache\eccc9fdca94566d44a9933a6cef2600adc8c6651\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\Administrator\.android\build-cache\8596fb658d42cd9e34405aecf52d5354d8001d94\output\AndroidManifest.xml:25:5-27:34
 MERGED from [com.android.support:support-v4:25.3.1] C:\Users\Administrator\.android\build-cache\67a8f4a1123464c97fffb29db3d5111eab80d094\output\AndroidManifest.xml:25:5-27:34
 MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\Administrator\.android\build-cache\7d953b18b8ce7f6037c5997480773256ded4454e\output\AndroidManifest.xml:25:5-27:34
 MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\Administrator\.android\build-cache\374d0074c5de431e2c9785c10ce5cbb46cf036c1\output\AndroidManifest.xml:25:5-27:34
 MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\Administrator\.android\build-cache\fddebac3541a8d55da3976c18ad57c9bcffc8da9\output\AndroidManifest.xml:25:5-27:34
 MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\Administrator\.android\build-cache\10a43159bd91e8fcf0efb1a5665583fcf496cb66\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\Administrator\.android\build-cache\2480a8ea8cd8b70b26bfdb66731e7d01c90554a1\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\Administrator\.android\build-cache\aafdb3a90d8493dd3c48463e85630718bfdd4f3c\output\AndroidManifest.xml:22:5-24:34
 MERGED from [com.android.support:support-compat:25.3.1] C:\Users\Administrator\.android\build-cache\5eccd016a1353753be8798236bea88351bf52134\output\AndroidManifest.xml:25:5-27:34
 	android:value
 		ADDED from [com.android.support:cardview-v7:25.3.1] C:\Users\Administrator\.android\build-cache\3661e94025fd691bba6e6a97ad5ca041c41ecc06\output\AndroidManifest.xml:24:9-31
 	android:name
 		ADDED from [com.android.support:cardview-v7:25.3.1] C:\Users\Administrator\.android\build-cache\3661e94025fd691bba6e6a97ad5ca041c41ecc06\output\AndroidManifest.xml:23:9-47
+uses-permission#android.permission.ACCESS_LOCATION_EXTRA_COMMANDS
+ADDED from [vegetablesTrading:checkUpdate:unspecified] C:\Users\Administrator\Desktop\vegetablesTrading\checkUpdate\build\intermediates\bundles\default\AndroidManifest.xml:29:5-89
+	android:name
+		ADDED from [vegetablesTrading:checkUpdate:unspecified] C:\Users\Administrator\Desktop\vegetablesTrading\checkUpdate\build\intermediates\bundles\default\AndroidManifest.xml:29:22-86
