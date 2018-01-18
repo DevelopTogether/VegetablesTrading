@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.github.zackratos.ultimatebar.UltimateBar;
 import com.google.gson.Gson;
+import com.vegetablestrading.MainActivity;
 import com.vegetablestrading.R;
 import com.vegetablestrading.bean.UserInfo;
 import com.vegetablestrading.utils.Constant;

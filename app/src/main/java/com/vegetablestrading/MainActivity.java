@@ -1,4 +1,4 @@
-package com.vegetablestrading.activity;
+package com.vegetablestrading;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import com.checktoupdatedemo.utils.CheckUpdateUtil;
 import com.uploadbugs.utils.BugPublicUtils;
-import com.vegetablestrading.R;
+import com.vegetablestrading.activity.BaseActivity;
 import com.vegetablestrading.fragment.FragmentTab1;
 import com.vegetablestrading.fragment.FragmentTab22;
 import com.vegetablestrading.fragment.FragmentTab33;
@@ -69,10 +69,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        BugPublicUtils.checkToUploadBugInfos(this,"/SCPS_crash","http://zc.xun365.net/WebService/SoftWare.asmx/SetBugInfo","201801121105","SCPS");
         initView();
-
+        BugPublicUtils.checkToUploadBugInfos(this,"SCPS_crash","http://zc.xun365.net/WebService/SoftWare.asmx/SetBugInfo","201801181017","SCPS");
         initBottomViewStatus(0);
         initFragmentSelected(0);
         fragmentCallBackForFinishActivity();

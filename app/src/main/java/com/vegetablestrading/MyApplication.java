@@ -1,4 +1,4 @@
-package com.vegetablestrading.activity;
+package com.vegetablestrading;
 
 import android.app.Activity;
 import android.app.Application;

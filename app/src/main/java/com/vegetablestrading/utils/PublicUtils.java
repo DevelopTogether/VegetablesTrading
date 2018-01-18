@@ -26,7 +26,7 @@ import android.widget.TextView;
 
 import com.vegetablestrading.R;
 import com.vegetablestrading.activity.MineMode.ActivateUserActivity;
-import com.vegetablestrading.activity.MyApplication;
+import com.vegetablestrading.MyApplication;
 import com.vegetablestrading.bean.MyApply;
 import com.vegetablestrading.bean.TransportRecord;
 import com.vegetablestrading.bean.TransportVegetableInfo;
